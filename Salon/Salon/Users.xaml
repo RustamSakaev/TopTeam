@@ -13,8 +13,8 @@
         <Label x:Name="label1" Content="Roles" HorizontalAlignment="Left" Margin="201,49,0,0" VerticalAlignment="Top" />
         <Button x:Name="button" Content="+" HorizontalAlignment="Left" Margin="356,72,0,0" VerticalAlignment="Top" Width="27" Click="button_Click"/>
         <Button x:Name="button1" Content="-" HorizontalAlignment="Left" Margin="356,97,0,0" VerticalAlignment="Top" Width="27"/>
-        <Grid Name="Dop" HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="417">
-            <ListBox x:Name="listBox2" HorizontalAlignment="Left" Height="269" Margin="34,24,0,0" VerticalAlignment="Top" Width="282">
+        <Grid Name="Dop" HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="417" Margin="201,19,-201,-19">
+            <ListBox x:Name="listBox2" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top" Width="282" Margin="10,19,0,0">
                 <Button x:Name="button2" Content="Button" Width="75"/>
             </ListBox>
 

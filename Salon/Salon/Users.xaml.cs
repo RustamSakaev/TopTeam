@@ -88,36 +88,164 @@ namespace Salon
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            //AddRole();
-            Osnova.Visibility = Visibility.Hidden;
+            ShowRole("yes");
+            first.Visibility = Visibility.Hidden;
+            second.Visibility = Visibility.Visible;
         }
-        public void AddRole1()
+        public void ShowRole(string Have)
         {
-            //listBox2.Items.Clear();
-            //List<string> user = new List<string>();
-            //List<string> db = new List<string>();
-            //string str = "use Task3 EXEC sp_helpuser '" + listBox.SelectedValue + "'";
-            //DataTable dt = ZaprosList(str);
-            //foreach (DataRow dr in dt.Rows)
-            //{
-            //    user.Add(dr["RoleName"].ToString());
-            //}
-            //string str1 = "use Task3 EXEC sp_helprole";
-            //DataTable dt1 = ZaprosList(str1);
-            //foreach (DataRow dr in dt1.Rows)
-            //{
-            //    db.Add(dr["RoleName"].ToString());
-            //}
-            //List<string> NoUserRole = db.Except(user).ToList();
-            //foreach (var no in NoUserRole)
-            //{
-            //    listBox2.Items.Add(no.ToString());
-            //}
-            //listBox2.Visibility = Visibility.Visible;
+            if (Have == "yes")
+            {
+                listBox2.Items.Clear();
+                List<string> user = new List<string>();
+                List<string> db = new List<string>();
+                string str = "use Task3 EXEC sp_helpuser '" + listBox.SelectedValue + "'";
+                DataTable dt = ZaprosList(str);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    user.Add(dr["RoleName"].ToString());
+                }
+                string str1 = "use Task3 EXEC sp_helprole";
+                DataTable dt1 = ZaprosList(str1);
+                foreach (DataRow dr in dt1.Rows)
+                {
+                    db.Add(dr["RoleName"].ToString());
+                }
+                List<string> NoUserRole = db.Except(user).ToList();
+                foreach (var no in NoUserRole)
+                {
+                    listBox2.Items.Add(no.ToString());
+                }
+            }
+            if (Have == "no")
+            {
+                listBox2.Items.Clear();
+                List<string> user = new List<string>();
+                List<string> db = new List<string>();
+                string str = "use Task3 EXEC sp_helpuser '" + listBox.SelectedValue + "'";
+                DataTable dt = ZaprosList(str);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    listBox2.Items.Add(dr["RoleName"].ToString());
+                }
+            }
         }
-        public void LoseFocus(object sender, RoutedEventArgs e)
+
+        public void AddRole(string user, string role)
         {
-            //listBox2.Visibility = Visibility.Hidden;
+            string connectionStr = Connection();
+            SqlConnection con = null;
+            SqlCommand com = null;
+            try
+            {
+                con = new SqlConnection(connectionStr);
+                con.Open();
+                string sql = "use [Task3] EXEC sp_addrolemember '" + role + "', '" + user + "'; ";
+                if (con != null)
+                {
+                    com = con.CreateCommand();
+                    com.CommandText = sql;
+                    com.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (con != null)
+                    con.Close();
+            }
+        }
+
+        public void DelRole(string user, string role)
+        {
+            string connectionStr = Connection();
+            SqlConnection con = null;
+            SqlCommand com = null;
+            try
+            {
+                con = new SqlConnection(connectionStr);
+                con.Open();
+                string sql = "use [Task3] EXEC sp_droprolemember '" + role + "', '" + user + "'; ";
+                if (con != null)
+                {
+                    com = con.CreateCommand();
+                    com.CommandText = sql;
+                    com.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (con != null)
+                    con.Close();
+            }
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (string item in listBox2.SelectedItems)
+            {
+                AddRole(listBox.SelectedValue.ToString(), item.ToString());
+            }
+            listBox1.Items.Clear();
+            if (listBox.Items.Count != 0)
+            {
+                string str = "use Task3 EXEC sp_helpuser '" + listBox.SelectedValue + "'";
+                DataTable dt = ZaprosList(str);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    listBox1.Items.Add(dr["RoleName"].ToString());
+                }
+            }
+            first.Visibility = Visibility.Visible;
+            second.Visibility = Visibility.Hidden;
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            ShowRole("no");
+            first.Visibility = Visibility.Hidden;
+            second.Visibility = Visibility.Visible;
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (string item in listBox2.SelectedItems)
+            {
+                DelRole(listBox.SelectedValue.ToString(), item.ToString());
+            }
+            listBox1.Items.Clear();
+            if (listBox.Items.Count != 0)
+            {
+                string str = "use Task3 EXEC sp_helpuser '" + listBox.SelectedValue + "'";
+                DataTable dt = ZaprosList(str);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    listBox1.Items.Add(dr["RoleName"].ToString());
+                }
+            }
+            first.Visibility = Visibility.Visible;
+            second.Visibility = Visibility.Hidden;
+        }
+
+        private void button4_Click(object sender, RoutedEventArgs e)
+        {
+            if (first.Visibility == Visibility.Visible)
+            {
+                first.Visibility = Visibility.Hidden;
+                second.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                first.Visibility = Visibility.Visible;
+                second.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

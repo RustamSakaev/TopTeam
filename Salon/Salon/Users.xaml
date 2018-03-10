@@ -7,17 +7,19 @@
         mc:Ignorable="d"
         Title="Users" Height="350" Width="427">
     <Grid Name="Osnova"  Height="319" VerticalAlignment="Bottom" RenderTransformOrigin="0.522,0.586" Margin="0,0,2,0">
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="223" Margin="19,72,0,0" VerticalAlignment="Top" Width="138" Loaded="OnLoad" SelectionChanged="listBox_SelectionChanged"/>
-        <Label x:Name="label" Content="Users" HorizontalAlignment="Left" Margin="19,41,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="listBox1" HorizontalAlignment="Left" Height="223" Margin="201,72,0,0" VerticalAlignment="Top" Width="138"/>
-        <Label x:Name="label1" Content="Roles" HorizontalAlignment="Left" Margin="201,49,0,0" VerticalAlignment="Top" />
-        <Button x:Name="button" Content="+" HorizontalAlignment="Left" Margin="356,72,0,0" VerticalAlignment="Top" Width="27" Click="button_Click"/>
-        <Button x:Name="button1" Content="-" HorizontalAlignment="Left" Margin="356,97,0,0" VerticalAlignment="Top" Width="27"/>
-        <Grid Name="Dop" HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="417" Margin="201,19,-201,-19">
-            <ListBox x:Name="listBox2" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top" Width="282" Margin="10,19,0,0">
-                <Button x:Name="button2" Content="Button" Width="75"/>
-            </ListBox>
-
-        </Grid>
+        <Canvas Name="first">
+            <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="223" Margin="19,72,0,0" VerticalAlignment="Top" Width="138" Loaded="OnLoad" SelectionChanged="listBox_SelectionChanged"/>
+            <Label x:Name="label" Content="Users" HorizontalAlignment="Left" Margin="19,41,0,0" VerticalAlignment="Top"/>
+            <ListBox x:Name="listBox1" HorizontalAlignment="Left" Height="223" Margin="201,72,0,0" VerticalAlignment="Top" Width="138"/>
+            <Label x:Name="label1" Content="Roles" HorizontalAlignment="Left" Margin="201,49,0,0" VerticalAlignment="Top" />
+            <Button x:Name="button" Content="+" HorizontalAlignment="Left" Margin="356,72,0,0" VerticalAlignment="Top" Width="27" Click="button_Click"/>
+            <Button x:Name="button1" Content="-" HorizontalAlignment="Left" Margin="356,97,0,0" VerticalAlignment="Top" Width="27" Click="button1_Click"/>
+        </Canvas>
+        <Canvas Name="second" Margin="0,1,0,-1" Visibility="Hidden">
+            <Button x:Name="button2" Content="Add" Canvas.Left="289" Canvas.Top="43" Width="75" Click="button2_Click"/>
+            <ListBox x:Name="listBox2" Height="273" Canvas.Left="23" Canvas.Top="26" Width="252" SelectionMode="Extended"/>
+            <Button x:Name="button3" Content="Delete" Canvas.Left="289" Canvas.Top="63" Width="75" Click="button3_Click"/>
+            <Button x:Name="button4" Content="Button" Canvas.Left="332" Canvas.Top="141" Width="75" Click="button4_Click"/>
+        </Canvas>
     </Grid>
 </Window>

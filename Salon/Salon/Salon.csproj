@@ -63,6 +63,9 @@
       <DependentUpon>ClientForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database\DBCore.cs" />
+    <Compile Include="GruppaUslug.xaml.cs">
+      <DependentUpon>GruppaUslug.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Kabinet.xaml.cs">
       <DependentUpon>Kabinet.xaml</DependentUpon>
     </Compile>
@@ -107,6 +110,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ClientForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GruppaUslug.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

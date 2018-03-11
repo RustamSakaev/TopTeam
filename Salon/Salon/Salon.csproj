@@ -59,6 +59,7 @@
     <Compile Include="AddEditMasterPage.xaml.cs">
       <DependentUpon>AddEditMasterPage.xaml</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="BillForm.xaml.cs">
       <DependentUpon>BillForm.xaml</DependentUpon>
     </Compile>
@@ -67,6 +68,15 @@
     <Compile Include="Database\DBPaymentMethod.cs" />
     <Compile Include="Enums\FormState.cs" />
     <Compile Include="Enums\FormOpenAs.cs" />
+=======
+    <Compile Include="ClientForm.xaml.cs">
+      <DependentUpon>ClientForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Database\DBCore.cs" />
+    <Compile Include="GruppaUslug.xaml.cs">
+      <DependentUpon>GruppaUslug.xaml</DependentUpon>
+    </Compile>
+>>>>>>> master
     <Compile Include="Kabinet.xaml.cs">
       <DependentUpon>Kabinet.xaml</DependentUpon>
     </Compile>
@@ -76,14 +86,31 @@
     <Compile Include="MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="PaymentMethodActionForm.xaml.cs">
       <DependentUpon>PaymentMethodActionForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="PaymentMethodForm.xaml.cs">
       <DependentUpon>PaymentMethodForm.xaml</DependentUpon>
+=======
+    <Compile Include="ProvidingServiceForm.xaml.cs">
+      <DependentUpon>ProvidingServiceForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StatusForm.xaml.cs">
+      <DependentUpon>StatusForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TariffForm.xaml.cs">
+      <DependentUpon>TariffForm.xaml</DependentUpon>
+>>>>>>> master
     </Compile>
     <Compile Include="Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Uslugi.xaml.cs">
+      <DependentUpon>Uslugi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VisitForm.xaml.cs">
+      <DependentUpon>VisitForm.xaml</DependentUpon>
     </Compile>
     <Page Include="AddEditMasterPage.xaml">
       <SubType>Designer</SubType>
@@ -101,7 +128,15 @@
       <DependentUpon>Authorization.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+<<<<<<< HEAD
     <Page Include="BillForm.xaml">
+=======
+    <Page Include="ClientForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GruppaUslug.xaml">
+>>>>>>> master
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,11 +152,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< HEAD
     <Page Include="PaymentMethodActionForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PaymentMethodForm.xaml">
+=======
+    <Page Include="ProvidingServiceForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StatusForm.xaml">
+>>>>>>> master
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -129,7 +172,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TariffForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Users.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Uslugi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VisitForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

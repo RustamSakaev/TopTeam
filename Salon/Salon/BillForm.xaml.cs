@@ -29,7 +29,6 @@ namespace Salon
             var data = DBBill.GetBills();
 
             BillGrid.DataContext = data.DefaultView;
-
         }
     }
 }

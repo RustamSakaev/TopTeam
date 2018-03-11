@@ -44,5 +44,11 @@ namespace Salon
             var form = new BillForm();
             form.ShowDialog();
         }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            var form = new PaymentMethodForm();
+            form.ShowDialog();
+        }
     }
 }

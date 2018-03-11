@@ -23,5 +23,12 @@ namespace Salon
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var data = DBPaymentMethod.GetPaymentMethods();
+
+            PaymentMethodGrid.DataContext = data.DefaultView;
+        }
     }
 }

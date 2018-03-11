@@ -42,7 +42,7 @@
                 <MenuItem Header="ТипМастера_Услуга"></MenuItem>
             </MenuItem>
             <MenuItem Header="Прочие">
-                <MenuItem Header="Способ оплаты"></MenuItem>
+                <MenuItem Header="Способ оплаты" Click="MenuItem_Click_1"></MenuItem>
                 <MenuItem Header="Статус посещения"></MenuItem>
                 <MenuItem Header="Тип мастера"></MenuItem>              
             </MenuItem>

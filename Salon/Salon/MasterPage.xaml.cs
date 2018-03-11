@@ -42,14 +42,12 @@ public partial class MasterPage : Window
         {
             SearchStack.Visibility = Visibility.Collapsed;
             FullSearchGroup.Visibility = Visibility.Visible;
-            Header.Height = 125;
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             SearchStack.Visibility = Visibility.Visible;
             FullSearchGroup.Visibility = Visibility.Collapsed;
-            Header.Height = 75;
         }
     }
 }

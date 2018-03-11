@@ -1,0 +1,83 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Salon"
+                    x:Class="Directory">
+
+    <Style x:Key="mainDockPanel" TargetType="DockPanel">
+        <Setter Property="LastChildFill" Value="True" />
+        <Setter Property="Control.FontFamily" Value="Segoe WP" />
+        <Setter Property="Control.FontSize" Value="14" />
+        <Setter Property="Background" Value="#484c65" />
+    </Style>
+
+    <Style x:Key="header" TargetType="StackPanel">
+        <Setter Property="DockPanel.Dock" Value="Top"/>
+    </Style>
+
+    <Style x:Key="search" TargetType="StackPanel">
+        <Setter Property="DockPanel.Dock" Value="Top"/>
+    </Style>
+
+    <Style x:Key="entryField">
+        <Setter Property="Control.Margin" Value="5"/>
+        <Setter Property="Control.Height" Value="28"/>
+        <Setter Property="Control.Background" Value="#484c65"/>
+        <Setter Property="Control.BorderBrush" Value="#646e87"/>
+    </Style>
+
+    <Style x:Key="textBox" BasedOn="{StaticResource entryField}" TargetType="TextBox">
+        <Setter Property="Control.BorderThickness" Value="0 0 0 2"/>
+        <Setter Property="Control.Foreground" Value="#d9dfeb"/>
+    </Style>
+
+    <Style x:Key="searchBox" BasedOn="{StaticResource textBox}" TargetType="TextBox">
+        <Setter Property="Width" Value="300"/>
+    </Style>
+
+    <Style x:Key="checkBox" BasedOn="{StaticResource entryField}" TargetType="CheckBox">
+        <Setter Property="Margin" Value="5 30 5 5"/>
+    </Style>
+
+    <Style x:Key="buttonsPanel" TargetType="StackPanel">
+        <Setter Property="DockPanel.Dock" Value="Right"/>
+        <Setter Property="Width" Value="150"/>
+    </Style>
+
+    <Style x:Key="tablePanel" TargetType="StackPanel">
+        <Setter Property="DockPanel.Dock" Value="Left"/>
+    </Style>
+
+    <Style x:Key="caption" TargetType="Label">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="#d9dfeb" />
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+
+    <Style x:Key="signature" TargetType="Label">
+        <Setter Property="Foreground" Value="#a5b0c6" />
+        <Setter Property="Margin" Value="0,0,0,-10"/>
+    </Style>
+
+    <Style x:Key="button" TargetType="Button">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="0 5 0 5"/>
+        <Setter Property="Width" Value="140"/>
+        <Setter Property="Background" Value="#61718b"/>
+        <Setter Property="Foreground" Value="#d9dfeb"/>
+    </Style>
+
+    <Style x:Key="buttonDelete" BasedOn="{StaticResource button}" TargetType="Button">
+        <Setter Property="Margin" Value="5 20 5 5"/>
+    </Style>
+
+    <Style x:Key="buttonAnyLength" BasedOn="{StaticResource button}" TargetType="Button">
+        <Setter Property="Width" Value="auto"/>
+        <Setter Property="Padding" Value="5"/>
+    </Style>
+
+    <Style x:Key="dataGrid" TargetType="DataGrid">
+        <Setter Property="AutoGenerateColumns" Value="True"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+
+</ResourceDictionary>

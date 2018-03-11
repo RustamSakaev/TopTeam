@@ -38,5 +38,11 @@ namespace Salon
         {
             DBCore.Destroy();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var form = new BillForm();
+            form.ShowDialog();
+        }
     }
 }

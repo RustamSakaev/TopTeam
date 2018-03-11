@@ -59,7 +59,10 @@
     <Compile Include="AddEditMasterPage.xaml.cs">
       <DependentUpon>AddEditMasterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Database\Bill.cs" />
+    <Compile Include="BillForm.xaml.cs">
+      <DependentUpon>BillForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Database\DBBill.cs" />
     <Compile Include="Database\DBCore.cs" />
     <Compile Include="Kabinet.xaml.cs">
       <DependentUpon>Kabinet.xaml</DependentUpon>
@@ -89,6 +92,10 @@
       <DependentUpon>Authorization.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="BillForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Kabinet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

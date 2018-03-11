@@ -25,7 +25,7 @@
             <MenuItem Header="Посещение и оплата">
                 <MenuItem Header="Посещение"></MenuItem>
                 <MenuItem Header="Оказание услуг"></MenuItem>
-                <MenuItem Header="Счет"></MenuItem>
+                <MenuItem Header="Счет" Click="MenuItem_Click"></MenuItem>
                 <MenuItem Header="Подарочные карты"></MenuItem>
             </MenuItem>
             <MenuItem Header="Работа с клиентами">

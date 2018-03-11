@@ -22,12 +22,21 @@ namespace Salon
         public Main()
         {
             InitializeComponent();
+
+            DBCore.Init("DESKTOP-D3KKSHS\\SQLEXPRESS");
+
+            var result = DBBill.GetBills();
         }
 
         private void Prototype_Click(object sender, RoutedEventArgs e)
         {
             MasterPage master = new MasterPage();
             master.ShowDialog();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            DBCore.Destroy();
         }
     }
 }

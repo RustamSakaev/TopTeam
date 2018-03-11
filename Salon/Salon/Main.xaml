@@ -24,7 +24,7 @@
             </MenuItem>
             <MenuItem Header="Посещение и оплата">
                 <MenuItem Header="Посещение" Click="Visit_Click"></MenuItem>
-                <MenuItem Header="Оказание услуг"></MenuItem>
+                <MenuItem Header="Оказание услуг" Click="ProvidingService_Click"></MenuItem>
                 <MenuItem Header="Счет"></MenuItem>
                 <MenuItem Header="Подарочные карты"></MenuItem>
             </MenuItem>
@@ -37,13 +37,13 @@
                 <MenuItem Header="Группы услуг"></MenuItem>
                 <MenuItem Header="Типы услуг"></MenuItem>
                 <MenuItem Header="Виды услуг"></MenuItem>
-                <MenuItem Header="Тарифы"></MenuItem>
+                <MenuItem Header="Тарифы" Click="Tariff_Click"></MenuItem>
                 <MenuItem Header="Тип_Вид"></MenuItem>
                 <MenuItem Header="ТипМастера_Услуга"></MenuItem>
             </MenuItem>
             <MenuItem Header="Прочие">
                 <MenuItem Header="Способ оплаты"></MenuItem>
-                <MenuItem Header="Статус посещения"></MenuItem>
+                <MenuItem Header="Статус посещения" Click="Status_Click"></MenuItem>
                 <MenuItem Header="Тип мастера"></MenuItem>              
             </MenuItem>
         </MenuItem>        

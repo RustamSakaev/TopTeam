@@ -1,0 +1,53 @@
+﻿<Window x:Class="Salon.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Salon"
+        mc:Ignorable="d"
+        Title="Главная" Height="445.81" Width="593.296" ResizeMode="CanMinimize">
+    <Menu Height="25" VerticalAlignment="Top">
+        <MenuItem Header="Администрированиe">            
+            <MenuItem Header="Смена пароля" ></MenuItem>
+           <MenuItem Header="Изменение роли полльзователя" >             
+            </MenuItem>
+            <Separator />
+            <MenuItem Header="Выход" ></MenuItem>
+        </MenuItem>
+        <MenuItem Header="Справочники" >
+            <MenuItem Header="Работа с сотрудниками">
+                <MenuItem Header="Список сотрудников"></MenuItem>
+                <MenuItem Header="График работы"></MenuItem>
+                <MenuItem Header="Расчеты с сотрудниками"></MenuItem>
+                <MenuItem Header="Оказываемые услуги"></MenuItem>
+                <MenuItem Header="Выбор профиля сотрудника"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Посещение и оплата">
+                <MenuItem Header="Посещение"></MenuItem>
+                <MenuItem Header="Оказание услуг"></MenuItem>
+                <MenuItem Header="Счет"></MenuItem>
+                <MenuItem Header="Подарочные карты"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Работа с клиентами">
+                <MenuItem Header="Список клиентов"></MenuItem>
+                <MenuItem Header="Банковские карты"></MenuItem>               
+            </MenuItem>
+            <MenuItem Header="Работа с услугами">
+                <MenuItem Header="Список услуг"></MenuItem>
+                <MenuItem Header="Группы услуг"></MenuItem>
+                <MenuItem Header="Типы услуг"></MenuItem>
+                <MenuItem Header="Виды услуг"></MenuItem>
+                <MenuItem Header="Тарифы"></MenuItem>
+                <MenuItem Header="Тип_Вид"></MenuItem>
+                <MenuItem Header="ТипМастера_Услуга"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Прочие">
+                <MenuItem Header="Способ оплаты"></MenuItem>
+                <MenuItem Header="Статус посещения"></MenuItem>
+                <MenuItem Header="Тип мастера"></MenuItem>              
+            </MenuItem>
+        </MenuItem>        
+        <MenuItem Header="Отчеты" ></MenuItem>
+        <MenuItem Header="Прототип" Click="Prototype_Click"></MenuItem>
+    </Menu>
+</Window>

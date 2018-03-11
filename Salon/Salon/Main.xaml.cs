@@ -23,9 +23,9 @@ namespace Salon
         {
             InitializeComponent();
 
-          //  DBCore.Init("DESKTOP-D3KKSHS\\SQLEXPRESS");
+            DBCore.Init("DESKTOP-D3KKSHS\\SQLEXPRESS");
 
-            //var result = DBBill.GetBills();
+            var result = DBBill.GetBills();
         }
 
         private void Prototype_Click(object sender, RoutedEventArgs e)
@@ -39,7 +39,6 @@ namespace Salon
             DBCore.Destroy();
         }
 
-<<<<<<< HEAD
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             var form = new BillForm();
@@ -50,7 +49,8 @@ namespace Salon
         {
             var form = new PaymentMethodForm();
             form.ShowDialog();
-=======
+        }
+
         private void Client_Click(object sender, RoutedEventArgs e)
         {
             ClientForm client = new ClientForm();
@@ -80,8 +80,6 @@ namespace Salon
             tariff.ShowDialog();
         }
 
-        
-
         private void SpisokUslug_Click(object sender, RoutedEventArgs e)
         {
             Uslugi uslugi = new Uslugi();
@@ -92,7 +90,6 @@ namespace Salon
         {
             Gruppa_Uslug gruppaUslug = new Gruppa_Uslug();
             gruppaUslug.ShowDialog();
->>>>>>> master
         }
     }
 }

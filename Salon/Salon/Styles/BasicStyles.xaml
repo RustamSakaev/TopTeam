@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:Salon"
                     x:Class="Directory">
 
-    <Style x:Key="mainDockPanel" TargetType="DockPanel">
+    <Style TargetType="DockPanel">
         <Setter Property="LastChildFill" Value="True" />
         <Setter Property="Control.FontFamily" Value="Segoe WP" />
         <Setter Property="Control.FontSize" Value="14" />
@@ -25,16 +25,14 @@
         <Setter Property="Control.BorderBrush" Value="#646e87"/>
     </Style>
 
-    <Style x:Key="textBox" BasedOn="{StaticResource entryField}" TargetType="TextBox">
+    <Style BasedOn="{StaticResource entryField}" TargetType="ComboBox"></Style>
+
+        <Style BasedOn="{StaticResource entryField}" TargetType="TextBox">
         <Setter Property="Control.BorderThickness" Value="0 0 0 2"/>
         <Setter Property="Control.Foreground" Value="#d9dfeb"/>
     </Style>
 
-    <Style x:Key="searchBox" BasedOn="{StaticResource textBox}" TargetType="TextBox">
-        <Setter Property="Width" Value="300"/>
-    </Style>
-
-    <Style x:Key="checkBox" BasedOn="{StaticResource entryField}" TargetType="CheckBox">
+    <Style BasedOn="{StaticResource entryField}" TargetType="CheckBox">
         <Setter Property="Margin" Value="5 30 5 5"/>
     </Style>
 
@@ -58,24 +56,20 @@
         <Setter Property="Margin" Value="0,0,0,-10"/>
     </Style>
 
-    <Style x:Key="button" TargetType="Button">
+    <Style TargetType="Button">
         <Setter Property="Margin" Value="5"/>
-        <Setter Property="Padding" Value="0 5 0 5"/>
-        <Setter Property="Width" Value="140"/>
+        <Setter Property="Padding" Value="5"/>
         <Setter Property="Background" Value="#61718b"/>
         <Setter Property="Foreground" Value="#d9dfeb"/>
+        <Setter Property="MinWidth" Value="140"/>
+        <Setter Property="MinHeight" Value="31"/>
     </Style>
 
-    <Style x:Key="buttonDelete" BasedOn="{StaticResource button}" TargetType="Button">
+    <Style x:Key="buttonDelete" BasedOn="{StaticResource {x:Type Button}}" TargetType="Button">
         <Setter Property="Margin" Value="5 20 5 5"/>
     </Style>
 
-    <Style x:Key="buttonAnyLength" BasedOn="{StaticResource button}" TargetType="Button">
-        <Setter Property="Width" Value="auto"/>
-        <Setter Property="Padding" Value="5"/>
-    </Style>
-
-    <Style x:Key="dataGrid" TargetType="DataGrid">
+    <Style TargetType="DataGrid">
         <Setter Property="AutoGenerateColumns" Value="True"/>
         <Setter Property="Margin" Value="5"/>
     </Style>

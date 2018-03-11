@@ -59,6 +59,8 @@
     <Compile Include="AddEditMasterPage.xaml.cs">
       <DependentUpon>AddEditMasterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Database\Bill.cs" />
+    <Compile Include="Database\DBCore.cs" />
     <Compile Include="Kabinet.xaml.cs">
       <DependentUpon>Kabinet.xaml</DependentUpon>
     </Compile>

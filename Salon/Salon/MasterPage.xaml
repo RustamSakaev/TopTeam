@@ -4,27 +4,63 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MasterPage" Height="300" Width="437.334" ResizeMode="CanMinimize">
+        Title="Образец" Height="354.667" Width="490.667" ResizeMode="CanMinimize">
     <DockPanel LastChildFill="True">
-        <StackPanel x:Name="Header" DockPanel.Dock="Top" Background="AliceBlue" Height="25" >
-            
-        </StackPanel>
-        <StackPanel x:Name="Footer" DockPanel.Dock="Bottom" Background="BlanchedAlmond" Height="25">
-            
-        </StackPanel>
-        
-        <StackPanel x:Name="ButtonsPanel" DockPanel.Dock="Right" Background="DarkGreen" Width="100" >
-            <Button x:Name="button" Margin="5 10 5 10" Content="Добавить"/>
-            <Button x:Name="button1" Margin="5 0 5 10" Content="Редактировать"/>
-            <Button x:Name="button2" Margin="5 20 5 10" Content="Удалить"/>
+        <StackPanel x:Name="Header" DockPanel.Dock="Top" Height="75" >
+            <Label Content="Таблица 'Клиенты'" FontWeight="Bold"/>
+            <StackPanel x:Name="SearchStack">
+                <Label Content="Поиск" Margin="0 0 0 -5"/>
+                <WrapPanel>
+                    <TextBox x:Name="SearchBox" Width="280" Margin="5 0 5 0" />
+                    <Button x:Name="FullSearchButton"  Content="Расширенный поиск" Click="FullSearchButton_Click"/>
+                </WrapPanel>
+            </StackPanel>
+            <GroupBox x:Name="FullSearchGroup" Header="Критерии поиска" Padding="-2" Visibility="Collapsed">
+                <DockPanel>
+                    <WrapPanel DockPanel.Dock="Top">
+                        <StackPanel Margin="5 0 5 0">
+                            <Label Content="ФИО"  Margin="0 5 0 -5"></Label>
+                            <TextBox x:Name="FioBox" Width="200"></TextBox>
+                        </StackPanel>
+                        <StackPanel Margin="5 0 5 0">
+                            <Label Content="Должность"  Margin="0 5 0 -5"></Label>
+                            <ComboBox x:Name="PostCmbBox" Width="150">
+                                <ComboBoxItem IsSelected="True">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock>cats.jpg</TextBlock>
+                                    </StackPanel>
+                                </ComboBoxItem>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>windowcat.jpg</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>234.jpg</TextBlock>
+                                </StackPanel>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Margin="5 0 5 0">
+                            <Label Content="Костыль"  Margin="0 5 0 -5" Visibility="Hidden"></Label>
+                            <CheckBox x:Name="KrasavaChkBox" IsChecked="False" Height="20" Content="Красава" />
+                        </StackPanel>
+                    </WrapPanel>
+                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button x:Name="ClearButton" Width="80" Margin="3">Очистить</Button>
+                        <Button x:Name="CloseButton" Width="80" Margin="3" Click="Close_Click">Закрыть</Button>
+                    </StackPanel>
+                </DockPanel>
+            </GroupBox>
 
         </StackPanel>
-        <StackPanel x:Name="TablePanel" DockPanel.Dock="Left" Background="Aquamarine" >
-            <DataGrid x:Name="dataGrid">
-                
-            </DataGrid>
+        <StackPanel x:Name="ButtonsPanel" DockPanel.Dock="Right" Width="100" >
+            <Button x:Name="AddButton" Margin="5 0 5 10" Content="Добавить"/>
+            <Button x:Name="EditButton" Margin="5 0 5 10" Content="Редактировать"/>
+            <Button x:Name="DeleteButton" Margin="5 20 5 10" Content="Удалить"/>
+
+        </StackPanel>
+        <StackPanel x:Name="TablePanel" DockPanel.Dock="Left" >
+            <DataGrid x:Name="ClientGrid" AutoGenerateColumns="True" Margin="5 0 0 0"></DataGrid>
         </StackPanel>
     </DockPanel>
-
 </Window>

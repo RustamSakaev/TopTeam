@@ -1,0 +1,34 @@
+Руководство по наименованию компонентов
+
+Наименование форм (таблица в БД+Form)
+ClientForm
+BillForm
+ServiceForm
+
+Наименование кнопок (функционал,который выполняет кнопка+Button)
+AddButton
+EditButton 
+SearchButton
+OKButton
+CancelButton
+
+Наименование текстовых полей (поле в БД+Box)
+NameBox
+FamilyBox
+AmountBox
+
+Наименование комбобоксов (поле в БД+Box)
+PostCmbBox
+DeptCmbBox
+
+Наименование датапикеров (поле в БД+Picker)
+GivingDatePicker
+BirthDatePicker
+
+Наименование чекбоксов (поле в БД+CmbBox)
+DiscountChkBox
+PaidChkBox
+
+Наименование таблиц (таблица в БД+Grid)
+ClientGrid
+BillGrid

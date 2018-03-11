@@ -49,5 +49,11 @@ public partial class MasterPage : Window
             SearchStack.Visibility = Visibility.Visible;
             FullSearchGroup.Visibility = Visibility.Collapsed;
         }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditMasterPage add = new AddEditMasterPage();
+                add.ShowDialog();
+        }
     }
 }

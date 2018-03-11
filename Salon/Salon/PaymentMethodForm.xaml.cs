@@ -31,7 +31,7 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var form = new PaymentMethodActionForm(() => { CurrentFormData = DBPaymentMethod.GetPaymentMethods();});
+            var form = new PaymentMethodActionForm(() => { CurrentFormData = DBPaymentMethod.GetPaymentMethods();}, FormState.Add);
             form.ShowDialog();
         }
 

@@ -54,7 +54,7 @@
 
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel" DockPanel.Dock="Right" Width="100" >
-            <Button x:Name="AddButton" Margin="5 0 5 10" Content="Добавить"/>
+            <Button x:Name="AddButton" Margin="5 0 5 10" Content="Добавить" Click="AddButton_Click"/>
             <Button x:Name="EditButton" Margin="5 0 5 10" Content="Редактировать"/>
             <Button x:Name="DeleteButton" Margin="5 20 5 10" Content="Удалить"/>
 

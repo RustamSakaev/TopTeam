@@ -51,5 +51,11 @@ public partial class MasterPage : Window
             FullSearchGroup.Visibility = Visibility.Collapsed;
             Header.Height = 75;
         }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditMasterPage add = new AddEditMasterPage();
+                add.ShowDialog();
+        }
     }
 }

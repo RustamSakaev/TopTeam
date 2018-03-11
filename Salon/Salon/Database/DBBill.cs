@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Data.SqlClient;
 
 namespace Salon
 {
@@ -20,7 +21,36 @@ namespace Salon
                 INNER JOIN Visit
                     ON Visit.ID_Visit = Bill.Visit_ID
                 INNER JOIN Client
-                    ON Client.ID_Client = Visit.ID_Visit"
+                    ON Client.ID_Client = Visit.Client_ID;"
             );
+
+        public static void DeleteBill(string id)
+        {
+            var command = new SqlCommand
+            {
+                CommandText = $@"
+                    DELETE FROM Bill
+                    WHERE ID_Bill = @id;"
+            };
+
+            command.Parameters.AddWithValue("@id", id);
+
+            DBCore.ExecuteCommand(command);
+        }
+
+        public static void CompleteBill(string id)
+        {
+            var command = new SqlCommand
+            {
+                CommandText = $@"
+                    UPDATE Bill
+                    SET Paid = 1
+                    WHERE ID_Bill = @id;"
+            };
+
+            command.Parameters.AddWithValue("@id", id);
+
+            DBCore.ExecuteCommand(command);
+        }
     }
 }

@@ -17,15 +17,15 @@
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
             <StackPanel x:Name="SearchStack" >
                 <Label Content="Поиск:" Style="{StaticResource signature}"/>
-                <TextBox x:Name="SearchBox"/>
+                <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged"/>
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
-            <Button x:Name="PaidButton" Content="Оплачено"/>
-            <Button x:Name="DeleteButton" Content="Удалить" VerticalAlignment="Bottom"/>
+            <Button x:Name="PaidButton" Content="Оплачено" Click="PaidButton_Click"/>
+            <Button x:Name="DeleteButton" Content="Удалить" VerticalAlignment="Bottom" Click="DeleteButton_Click"/>
         </StackPanel>
         <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="BillGrid" ItemsSource="{Binding}" IsReadOnly="True" ColumnWidth="*" />
+            <DataGrid x:Name="BillGrid" ItemsSource="{Binding}" IsReadOnly="True" ColumnWidth="*" AutoGeneratingColumn="BillGrid_AutoGeneratingColumn" DataContextChanged="BillGrid_DataContextChanged" />
         </StackPanel>
     </DockPanel>
 </Window>

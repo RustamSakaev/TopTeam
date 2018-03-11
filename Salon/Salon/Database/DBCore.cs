@@ -35,6 +35,11 @@ namespace Salon
                 command.ExecuteNonQuery();
             }
         }
+        public static void ExecuteCommand(SqlCommand sqlCommand)
+        {
+            sqlCommand.Connection = _connection;
+            sqlCommand.ExecuteNonQuery();
+        }
         public static void Init(string server)
         {
             _connection = new SqlConnection();

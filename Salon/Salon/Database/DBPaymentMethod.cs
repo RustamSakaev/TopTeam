@@ -9,7 +9,7 @@ namespace Salon
                 SELECT 
                     ID_PaymentMethod as id,
                     Name as [Способ оплаты] 
-                FROM PaymentMethod"
+                FROM PaymentMethod;"
             );
     }
 }

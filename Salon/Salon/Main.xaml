@@ -33,8 +33,8 @@
                 <MenuItem Header="Банковские карты"></MenuItem>               
             </MenuItem>
             <MenuItem Header="Работа с услугами">
-                <MenuItem Header="Список услуг"></MenuItem>
-                <MenuItem Header="Группы услуг"></MenuItem>
+                <MenuItem x:Name="spisokUslug" Header="Список услуг" Click="SpisokUslug_Click"></MenuItem>
+                <MenuItem Header="Группы услуг" Click="GruppiUslug_Click"></MenuItem>
                 <MenuItem Header="Типы услуг"></MenuItem>
                 <MenuItem Header="Виды услуг"></MenuItem>
                 <MenuItem Header="Тарифы" Click="Tariff_Click"></MenuItem>

@@ -56,6 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Kabinet.xaml.cs">
+      <DependentUpon>Kabinet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
     </Compile>
@@ -74,6 +77,10 @@
       <DependentUpon>Authorization.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Kabinet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MasterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

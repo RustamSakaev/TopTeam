@@ -62,7 +62,6 @@
     <Compile Include="ClientForm.xaml.cs">
       <DependentUpon>ClientForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Database\Bill.cs" />
     <Compile Include="Database\DBCore.cs" />
     <Compile Include="Kabinet.xaml.cs">
       <DependentUpon>Kabinet.xaml</DependentUpon>

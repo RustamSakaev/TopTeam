@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="StatusForm" Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+        Title="Статус посещения" Height="300" Width="628">
+    <Window.Resources>
+        <ResourceDictionary Source="Styles/BasicStyles.xaml" />
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel x:Name="Header" Style="{StaticResource header}">
+            <Label Content="Таблица 'Статус посещения'" Style="{StaticResource caption}"/>
+        </StackPanel>
+        <StackPanel x:Name="Search" Style="{StaticResource search}" >
+            <StackPanel x:Name="SearchStack" >
+                <Label Content="Поиск:" Style="{StaticResource signature}"/>
+                <WrapPanel>
+                    <TextBox x:Name="SearchBox" Width="300"/>                  
+                </WrapPanel>
+            </StackPanel>
+            
+        </StackPanel>
+        <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
+            <Button x:Name="AddButton" Content="Добавить"/>
+            <Button x:Name="EditButton" Content="Редактировать"/>
+            <Button x:Name="DeleteButton"  Content="Удалить"/>
+        </StackPanel>
+        <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
+            <DataGrid x:Name="StatusGrid"></DataGrid>
+        </StackPanel>
+    </DockPanel>
 </Window>

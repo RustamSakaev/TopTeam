@@ -23,7 +23,7 @@ namespace Salon
         {
             InitializeComponent();
 
-            DBCore.Init("DESKTOP-D3KKSHS\\SQLEXPRESS");
+          //  DBCore.Init("DESKTOP-D3KKSHS\\SQLEXPRESS");
 
             //var result = DBBill.GetBills();
         }

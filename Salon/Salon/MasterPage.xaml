@@ -55,7 +55,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
-            <Button x:Name="AddButton"  Style="{StaticResource button}" Content="Добавить"/>
+            <Button x:Name="AddButton"  Style="{StaticResource button}" Content="Добавить" Click="AddButton_Click"/>
             <Button x:Name="EditButton" Style="{StaticResource button}" Content="Редактировать"/>
             <Button x:Name="DeleteButton" Style="{StaticResource buttonDelete}" Content="Удалить"/>
         </StackPanel>

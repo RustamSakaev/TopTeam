@@ -8,11 +8,13 @@ namespace Salon
             SELECT 
                 ID_Bill as id, 
                 Date as Дата,
-Number as Номер,
-BillAmount as Сумма,
-Paid as Заплачено,
-PaymentMethod.Name as [Тип оплаты]
+                Number as Номер,
+                BillAmount as Сумма,
+                Paid as Заплачено,
+                PaymentMethod.Name as [Тип оплаты]
             FROM Bill
-            INNER JOIN PaymentMethod ON PaymentMethod.ID_PaymentMethod = Bill.PaymentMethod_ID");
+            INNER JOIN PaymentMethod 
+                ON PaymentMethod.ID_PaymentMethod = Bill.PaymentMethod_ID"
+        );
     }
 }

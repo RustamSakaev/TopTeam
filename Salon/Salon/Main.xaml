@@ -23,13 +23,13 @@
                 <MenuItem Header="Выбор профиля сотрудника"></MenuItem>
             </MenuItem>
             <MenuItem Header="Посещение и оплата">
-                <MenuItem Header="Посещение"></MenuItem>
+                <MenuItem Header="Посещение" Click="Visit_Click"></MenuItem>
                 <MenuItem Header="Оказание услуг"></MenuItem>
                 <MenuItem Header="Счет"></MenuItem>
                 <MenuItem Header="Подарочные карты"></MenuItem>
             </MenuItem>
             <MenuItem Header="Работа с клиентами">
-                <MenuItem Header="Список клиентов"></MenuItem>
+                <MenuItem Header="Список клиентов" Click="Client_Click"></MenuItem>
                 <MenuItem Header="Банковские карты"></MenuItem>               
             </MenuItem>
             <MenuItem Header="Работа с услугами">

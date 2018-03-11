@@ -38,5 +38,17 @@ namespace Salon
         {
             DBCore.Destroy();
         }
+
+        private void Client_Click(object sender, RoutedEventArgs e)
+        {
+            ClientForm client = new ClientForm();
+            client.ShowDialog();
+        }
+
+        private void Visit_Click(object sender, RoutedEventArgs e)
+        {
+            VisitForm visit = new VisitForm();
+            visit.ShowDialog();
+        }
     }
 }

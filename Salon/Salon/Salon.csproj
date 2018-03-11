@@ -70,6 +70,7 @@
     <Compile Include="ClientForm.xaml.cs">
       <DependentUpon>ClientForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="GruppaUslug.xaml.cs">
       <DependentUpon>GruppaUslug.xaml</DependentUpon>
     </Compile>

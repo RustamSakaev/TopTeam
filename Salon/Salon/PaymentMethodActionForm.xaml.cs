@@ -21,11 +21,21 @@ namespace Salon
     {
         private Action callback;
 
-        public PaymentMethodActionForm(Action cb)
+        public PaymentMethodActionForm(Action cb, FormState state)
         {
             InitializeComponent();
 
             callback = cb;
+
+            switch (state)
+            {
+                case FormState.Edit:
+                    this.Title = "Редактирование способа оплаты";
+                    break;
+                case FormState.Add:
+                    this.Title = "Добавление способа оплаты";
+                    break;
+            }
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)

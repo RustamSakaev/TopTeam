@@ -41,9 +41,7 @@ namespace Salon
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            _currentFormData = DBBill.GetBills();
-
-            BillGrid.DataContext = _currentFormData;
+            CurrentFormData = DBBill.GetBills();
         }
 
         private void SearchBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)

@@ -16,12 +16,12 @@
         </StackPanel>
 
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
-            <Button x:Name="AddButton" Content="Добавить"/>
-            <Button x:Name="EditButton" Content="Редактировать"/>
-            <Button x:Name="DeleteButton"  Content="Удалить"/>
+            <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
+            <Button x:Name="EditButton" Content="Редактировать" Click="EditButton_Click"/>
+            <Button x:Name="DeleteButton"  Content="Удалить" Click="DeleteButton_Click"/>
         </StackPanel>
         <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="PaymentMethodGrid" ItemsSource="{Binding}" IsReadOnly="True" ColumnWidth="*" />
+            <DataGrid x:Name="PaymentMethodGrid" ItemsSource="{Binding}" IsReadOnly="True" ColumnWidth="*" AutoGeneratingColumn="PaymentMethodGrid_AutoGeneratingColumn" />
         </StackPanel>
     </DockPanel>
 </Window>

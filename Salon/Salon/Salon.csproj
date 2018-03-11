@@ -74,6 +74,9 @@
     <Compile Include="MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PaymentMethodActionForm.xaml.cs">
+      <DependentUpon>PaymentMethodActionForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PaymentMethodForm.xaml.cs">
       <DependentUpon>PaymentMethodForm.xaml</DependentUpon>
     </Compile>
@@ -109,6 +112,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MasterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaymentMethodActionForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

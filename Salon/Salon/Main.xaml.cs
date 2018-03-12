@@ -25,7 +25,7 @@ namespace Salon
 
             DBCore.Init("DESKTOP-D3KKSHS\\SQLEXPRESS");
 
-            var result = DBBill.GetBills();
+            //var result = DBBill.GetBills();
         }
 
         private void Prototype_Click(object sender, RoutedEventArgs e)
@@ -94,6 +94,11 @@ namespace Salon
         {
             var form = new BankCardForm();
             form.ShowDialog();
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Образец формы добавления/редактирования" Height="401.289" Width="723.53" >
+        Title="Образец формы добавления/редактирования" Height="378.521" Width="697.916" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -85,7 +85,16 @@
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
-                    <Button x:Name="DeptFormButton" Content="..." Style="{StaticResource threeDots}"></Button>
+                    <Button x:Name="DeptFormButton" Content="..." Style="{StaticResource threeDots}" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="1.955"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                    </Button>
                 </StackPanel>
             </StackPanel>
         </WrapPanel>

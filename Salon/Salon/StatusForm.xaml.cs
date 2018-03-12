@@ -48,6 +48,9 @@ namespace Salon
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             var idx = ((DataTable)StatusGrid.DataContext).Columns.IndexOf("id");
+
+            if (idx == -1) return;
+
             var id = ((DataRowView)StatusGrid.SelectedItem)?.Row[idx].ToString();
 
             if (id is null) return;

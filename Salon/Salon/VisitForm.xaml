@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Посещения" Height="300" Width="500">
+        Title="Посещения" Height="402" Width="604" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -17,17 +17,17 @@
             <StackPanel x:Name="SearchStack" >
                 <Label Content="Поиск:" Style="{StaticResource signature}"/>
                 <WrapPanel>
-                    <TextBox x:Name="SearchBox" Width="300"/>
-                    <Button x:Name="FullSearchButton"  Content="Расширенный поиск" Click="FullSearchButton_Click"/>
+                    <TextBox x:Name="SearchBox" Width="435"/>
+                    <Button x:Name="FullSearchButton"  Content="Расширенный поиск" Click="FullSearchButton_Click" Width="130" Height="28"/>
                 </WrapPanel>
             </StackPanel>
             <StackPanel x:Name="FullSearchGroup" Visibility="Collapsed">
                 <DockPanel>
-                    <WrapPanel DockPanel.Dock="Top">                        
+                    <WrapPanel DockPanel.Dock="Top">
                         <StackPanel Margin="5 0 5 0">
                             <Label Style="{StaticResource signature}">Клиент:</Label>
-                            <ComboBox x:Name="ClientCmbBox"  Width="150">                             
-                                    
+                            <ComboBox x:Name="ClientCmbBox"  Width="150">
+
                             </ComboBox>
                         </StackPanel>
                         <StackPanel Margin="5 0 5 0">
@@ -54,11 +54,11 @@
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
-            <Button x:Name="EditButton" Content="Редактировать"/>
-            <Button x:Name="DeleteButton"  Content="Удалить"/>
+            <Button x:Name="EditButton" Content="Редактировать" Click="EditButton_Click"/>
+            <Button x:Name="DeleteButton"  Content="Удалить" Click="DeleteButton_Click"/>
         </StackPanel>
         <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="VisitGrid"></DataGrid>
+            <DataGrid x:Name="VisitGrid" ItemsSource="{Binding}" IsReadOnly="True" ColumnWidth="*" AutoGeneratingColumn="VisitGrid_AutoGeneratingColumn" DataContextChanged="VisitGrid_DataContextChanged"></DataGrid>
         </StackPanel>
     </DockPanel>
 </Window>

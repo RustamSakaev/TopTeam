@@ -106,5 +106,11 @@ namespace Salon
             var form = new GiftCardForm();
             form.ShowDialog();
         }
+
+        private void MenuItem_Click_5(object sender, RoutedEventArgs e)
+        {
+            var form = new VisitForm();
+            form.ShowDialog();
+        }
     }
 }

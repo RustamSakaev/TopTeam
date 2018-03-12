@@ -18,7 +18,7 @@ namespace Salon
                     Phone as Телефон,
                     (CASE WHEN Gender <> 0 THEN 'Мужской' ELSE 'Женский' END) as Пол,
                     Discount as Скидка
-                FROM Client"
+                FROM Client;"
             );
         }
 

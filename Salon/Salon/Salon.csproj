@@ -89,6 +89,7 @@
     <Compile Include="Database\DBBankCard.cs" />
     <Compile Include="Database\DBBill.cs" />
     <Compile Include="Database\DBStatus.cs" />
+    <Compile Include="Database\DBVisit.cs" />
     <Compile Include="Database\DBWorker.cs" />
     <Compile Include="Database\DBClient.cs" />
     <Compile Include="Database\DBCore.cs" />
@@ -162,6 +163,9 @@
     </Compile>
     <Compile Include="Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VisitActionForm.xaml.cs">
+      <DependentUpon>VisitActionForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="VisitForm.xaml.cs">
       <DependentUpon>VisitForm.xaml</DependentUpon>
@@ -310,6 +314,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Users.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VisitActionForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

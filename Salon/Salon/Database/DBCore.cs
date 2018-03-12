@@ -24,23 +24,6 @@ namespace Salon
 
             return dtable;
         }
-        /// <summary>
-        /// Dlya Select'a s navorotami
-        /// </summary>
-        /// <param name="sqlCommand"></param>
-        public static DataTable GetDataWithCommand(SqlCommand sqlCommand)
-        {
-            var dtable = new DataTable();
-
-            sqlCommand.Connection = _connection;
-
-            using (var adapter = new SqlDataAdapter(sqlCommand.CommandText, _connection))
-            {
-                adapter.Fill(dtable);
-            }
-
-            return dtable;
-        }
 
         /// <summary>
         /// Update, delete, insert

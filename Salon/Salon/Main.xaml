@@ -16,8 +16,8 @@
         </MenuItem>
         <MenuItem Header="Справочники" >
             <MenuItem Header="Работа с сотрудниками">
-                <MenuItem Header="Список сотрудников"></MenuItem>
-                <MenuItem Header="График работы"></MenuItem>
+                <MenuItem Header="Список сотрудников" Click="MenuItem_Click_3"></MenuItem>
+                <MenuItem Header="График работы" Click="MenuItem_Click_5"></MenuItem>
                 <MenuItem Header="Расчеты с сотрудниками"></MenuItem>
                 <MenuItem Header="Оказываемые услуги"></MenuItem>
                 <MenuItem Header="Выбор профиля сотрудника"></MenuItem>
@@ -28,31 +28,33 @@
                 <MenuItem Header="Счет" Click="MenuItem_Click"></MenuItem>
                 <MenuItem Header="Посещение" Click="Visit_Click"></MenuItem>
                 <MenuItem Header="Оказание услуг" Click="ProvidingService_Click"></MenuItem>
-                <MenuItem Header="Счет"></MenuItem>
-                <MenuItem Header="Подарочные карты"></MenuItem>
+                <MenuItem Header="Подарочные карты" Click="MenuItem_Click_4"></MenuItem>
             </MenuItem>
             <MenuItem Header="Работа с клиентами">
                 <MenuItem Header="Список клиентов" Click="Client_Click"></MenuItem>
-                <MenuItem Header="Банковские карты"></MenuItem>               
+                <MenuItem Header="Банковские карты" Click="MenuItem_Click_2"></MenuItem>               
             </MenuItem>
             <MenuItem Header="Работа с услугами">
                 <MenuItem x:Name="spisokUslug" Header="Список услуг" Click="SpisokUslug_Click"></MenuItem>
-                <MenuItem Header="Группы услуг" Click="GruppiUslug_Click"></MenuItem>
-                <MenuItem Header="Типы услуг"></MenuItem>
-                <MenuItem Header="Виды услуг"></MenuItem>
+                <MenuItem Header="Группы услуг" Click="GroupService_Click"></MenuItem>
+                <MenuItem Header="Типы услуг" Click="TypeService_Click"></MenuItem>
+                <MenuItem Header="Виды услуг" Click="KindService_Click" ></MenuItem>
                 <MenuItem Header="Тарифы" Click="Tariff_Click"></MenuItem>
                 <MenuItem Header="Тип_Вид"></MenuItem>
                 <MenuItem Header="ТипМастера_Услуга"></MenuItem>
             </MenuItem>
             <MenuItem Header="Прочие">
                 <MenuItem Header="Способ оплаты" Click="MenuItem_Click_1"></MenuItem>
-                <MenuItem Header="Статус посещения"></MenuItem>
-                <MenuItem Header="Способ оплаты"></MenuItem>
                 <MenuItem Header="Статус посещения" Click="Status_Click"></MenuItem>
                 <MenuItem Header="Тип мастера"></MenuItem>              
             </MenuItem>
         </MenuItem>        
-        <MenuItem Header="Отчеты" ></MenuItem>
+        <MenuItem Header="Отчеты" >
+            <MenuItem Header="Данные по сотрудникам" Click="EmployeeData_Click"></MenuItem>
+            <MenuItem Header="Доходы по сотруднику" Click="EmployeeProfit_Click"></MenuItem>
+            <MenuItem Header="Количество обслуженных клиентов по сотруднику" Click="EmployeeClient_Click"></MenuItem>
+            <MenuItem Header="Отчет по видам услуг" Click="TypeService_Click"></MenuItem>
+        </MenuItem>
         <MenuItem Header="Прототип" Click="Prototype_Click"></MenuItem>
     </Menu>
 </Window>

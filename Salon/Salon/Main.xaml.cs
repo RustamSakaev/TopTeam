@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Data.SqlClient;
+using System.Data;
+using Excel = Microsoft.Office.Interop.Excel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +26,7 @@ namespace Salon
         {
             InitializeComponent();
 
-            DBCore.Init("DESKTOP-D3KKSHS\\SQLEXPRESS");
+            DBCore.Init(@"DESKTOP-KTDJ5PD\SQLEXPRESS");
 
             var result = DBBill.GetBills();
         }
@@ -88,6 +91,133 @@ namespace Salon
         private void GruppiUslug_Click(object sender, RoutedEventArgs e)
         {
          
+        }
+               
+        private void EmployeeData_Click(object sender, RoutedEventArgs e)
+        {
+            string connectionStr = @"Data Source=MARGOSHA;Initial Catalog=Salon;Integrated Security=True";
+            SqlConnection con = null;
+            SqlCommand com = null;
+            try
+            {
+                Excel.Application app = new Excel.Application();
+                app.Visible = false;
+                string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                app.Workbooks.Add(path.Substring(0, path.LastIndexOf('\\')) + "\\По сотрудникам.xlsx");
+                Excel.Workbook wb = app.Workbooks[1];
+                Excel.Worksheet ws = app.Worksheets[1];
+                con = new SqlConnection(connectionStr);
+                con.Open();
+                string sql = @"SELECT Surname, Worker.Name, DBirth, MasterType.Name FROM MasterType, Worker, Worker_MasterType
+                                WHERE Worker.ID_Worker = Worker_MasterType.Worker_ID AND MasterType.ID_MasterType = Worker_MasterType.MasterType_ID
+                                ORDER BY MasterType.Name";
+                if (con != null)
+                {
+                    DataTable dt = new DataTable();
+                    com = con.CreateCommand();
+                    com.CommandText = sql;
+                    SqlDataAdapter adapter = new SqlDataAdapter(com);
+                    adapter.Fill(dt);
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        ws.Cells[i + 2, 1].Value2 = dt.Rows[i][0];
+                        ws.Cells[i + 2, 2].Value2 = dt.Rows[i][1];
+                        ws.Cells[i + 2, 4].Value2 = dt.Rows[i][3];
+                        ws.Cells[i + 2, 3].Value2 = Convert.ToDateTime(dt.Rows[i][2]);
+                    }
+                    app.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (con != null)
+                    con.Close();
+            }
+        }
+
+        private void EmployeeClient_Click(object sender, RoutedEventArgs e)
+        {
+            ChooseEmployeeForm employee = new ChooseEmployeeForm(1);
+            employee.ShowDialog();
+        }
+
+        private void TypeService_Click(object sender, RoutedEventArgs e)
+        {
+            string connectionStr = @"Data Source=MARGOSHA;Initial Catalog=Salon;Integrated Security=True";
+            SqlConnection con = null;
+            SqlCommand com = null;
+            try
+            {
+                Excel.Application app = new Excel.Application();
+                app.Visible = false;
+                string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                app.Workbooks.Add(path.Substring(0, path.LastIndexOf('\\')) + "\\По видам услуг.xlsx");
+                Excel.Workbook wb = app.Workbooks[1];
+                Excel.Worksheet ws = app.Worksheets[1];
+                con = new SqlConnection(connectionStr);
+                con.Open();
+                //ComboData name = (ComboData)FioCmbBox.SelectedItem;
+                string sql = @"SELECT Name, COUNT(Service_ID) FROM Service, ProvidingServices
+                                WHERE Service.ID_Service = ProvidingServices.Service_ID
+                                GROUP BY Name ORDER BY COUNT(Service_ID)";
+                if (con != null)
+                {
+                    DataTable dt = new DataTable();
+                    com = con.CreateCommand();
+                    com.CommandText = sql;
+                    SqlDataAdapter adapter = new SqlDataAdapter(com);
+                    adapter.Fill(dt);
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        ws.Cells[i + 2, 1].Value2 = dt.Rows[i][0];
+                        ws.Cells[i + 2, 2].Value2 = dt.Rows[i][1];
+                    }
+                    app.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (con != null)
+                    con.Close();
+            }
+        }
+
+        private void EmployeeProfit_Click(object sender, RoutedEventArgs e)
+        {
+            ChooseEmployeeForm employee = new ChooseEmployeeForm(0);
+            employee.ShowDialog();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            var form = new BankCardForm();
+            form.ShowDialog();
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            WorkerForm formWorker = new WorkerForm();
+            formWorker.ShowDialog();
+        }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            var form = new GiftCardForm();
+            form.ShowDialog();
+        }
+
+        private void MenuItem_Click_5(object sender, RoutedEventArgs e)
+        {
+            ScheduleForm formSchedule = new ScheduleForm();
+            formSchedule.ShowDialog();
         }
     }
 }

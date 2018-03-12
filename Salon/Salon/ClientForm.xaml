@@ -17,26 +17,7 @@
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
             <StackPanel x:Name="SearchStack" >
                 <Label Content="Поиск:" Style="{StaticResource signature}"/>
-                <WrapPanel>
-                    <TextBox x:Name="SearchBox" Width="300"/>
-                    <Button x:Name="FullSearchButton"  Content="Расширенный поиск" Click="FullSearchButton_Click"/>
-                </WrapPanel>
-            </StackPanel>
-            <StackPanel x:Name="FullSearchGroup" Visibility="Collapsed">
-                <DockPanel>
-                    <WrapPanel DockPanel.Dock="Top">
-                        <StackPanel Margin="5 0 5 0">
-                            <Label Style="{StaticResource signature}">ФИО:</Label>
-                            <TextBox x:Name="FullName" Width="200"></TextBox>
-                        </StackPanel>                        
-                        <CheckBox x:Name="MaleGenderChkBox" IsChecked="False" Content="М" />
-                        <CheckBox x:Name="FemaleGenderChkBox" IsChecked="False" Content="Ж" />
-                    </WrapPanel>
-                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button x:Name="ClearButton" Width="80">Очистить</Button>
-                        <Button x:Name="CloseButton" Width="80" Click="Close_Click">Закрыть</Button>
-                    </StackPanel>
-                </DockPanel>
+                <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged"/>
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >

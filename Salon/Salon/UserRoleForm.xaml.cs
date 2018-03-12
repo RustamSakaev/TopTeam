@@ -40,20 +40,20 @@ namespace Salon
             DataTable dt = ZaprosList(str);
             foreach (DataRow dr in dt.Rows)
             {
-                listBox.Items.Add(dr["name"].ToString());
+                UserslistBox.Items.Add(dr["name"].ToString());
             }
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            listBox1.Items.Clear();
-            if (listBox.Items.Count != 0)
+            RoleslistBox.Items.Clear();
+            if (UserslistBox.Items.Count != 0)
             {
-                string str = "use Task3 EXEC sp_helpuser '"+listBox.SelectedValue+"'";
+                string str = "use Task3 EXEC sp_helpuser '"+ UserslistBox.SelectedValue+"'";
                 DataTable dt = ZaprosList(str);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    listBox1.Items.Add(dr["RoleName"].ToString());
+                    RoleslistBox.Items.Add(dr["RoleName"].ToString());
                 }
             }
         }
@@ -88,18 +88,16 @@ namespace Salon
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            ShowRole("yes");
-            first.Visibility = Visibility.Hidden;
-            second.Visibility = Visibility.Visible;
+            ShowRole();
+            First.Visibility = Visibility.Collapsed;
+            Second.Visibility = Visibility.Visible;
         }
-        public void ShowRole(string Have)
+        public void ShowRole()
         {
-            if (Have == "yes")
-            {
-                listBox2.Items.Clear();
+                AllRoleslistBox.Items.Clear();
                 List<string> user = new List<string>();
                 List<string> db = new List<string>();
-                string str = "use Task3 EXEC sp_helpuser '" + listBox.SelectedValue + "'";
+                string str = "use Task3 EXEC sp_helpuser '" + UserslistBox.SelectedValue + "'";
                 DataTable dt = ZaprosList(str);
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -114,21 +112,8 @@ namespace Salon
                 List<string> NoUserRole = db.Except(user).ToList();
                 foreach (var no in NoUserRole)
                 {
-                    listBox2.Items.Add(no.ToString());
-                }
-            }
-            if (Have == "no")
-            {
-                listBox2.Items.Clear();
-                List<string> user = new List<string>();
-                List<string> db = new List<string>();
-                string str = "use Task3 EXEC sp_helpuser '" + listBox.SelectedValue + "'";
-                DataTable dt = ZaprosList(str);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    listBox2.Items.Add(dr["RoleName"].ToString());
-                }
-            }
+                    AllRoleslistBox.Items.Add(no.ToString());
+                }           
         }
 
         public void AddRole(string user, string role)
@@ -189,62 +174,39 @@ namespace Salon
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            foreach (string item in listBox2.SelectedItems)
+            foreach (string item in AllRoleslistBox.SelectedItems)
             {
-                AddRole(listBox.SelectedValue.ToString(), item.ToString());
+                AddRole(UserslistBox.SelectedValue.ToString(), item.ToString());
             }
-            listBox1.Items.Clear();
-            if (listBox.Items.Count != 0)
+            RoleslistBox.Items.Clear();
+            if (UserslistBox.Items.Count != 0)
             {
-                string str = "use Task3 EXEC sp_helpuser '" + listBox.SelectedValue + "'";
+                string str = "use Task3 EXEC sp_helpuser '" + UserslistBox.SelectedValue + "'";
                 DataTable dt = ZaprosList(str);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    listBox1.Items.Add(dr["RoleName"].ToString());
+                    RoleslistBox.Items.Add(dr["RoleName"].ToString());
                 }
             }
-            first.Visibility = Visibility.Visible;
-            second.Visibility = Visibility.Hidden;
+            First.Visibility = Visibility.Visible;
+            Second.Visibility = Visibility.Collapsed;
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            ShowRole("no");
-            first.Visibility = Visibility.Hidden;
-            second.Visibility = Visibility.Visible;
-        }
-
-        private void button3_Click(object sender, RoutedEventArgs e)
-        {
-            foreach (string item in listBox2.SelectedItems)
+            foreach (string item in RoleslistBox.SelectedItems)
             {
-                DelRole(listBox.SelectedValue.ToString(), item.ToString());
+                DelRole(UserslistBox.SelectedValue.ToString(), item.ToString());
             }
-            listBox1.Items.Clear();
-            if (listBox.Items.Count != 0)
+            RoleslistBox.Items.Clear();
+            if (UserslistBox.Items.Count != 0)
             {
-                string str = "use Task3 EXEC sp_helpuser '" + listBox.SelectedValue + "'";
+                string str = "use Task3 EXEC sp_helpuser '" + UserslistBox.SelectedValue + "'";
                 DataTable dt = ZaprosList(str);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    listBox1.Items.Add(dr["RoleName"].ToString());
+                    RoleslistBox.Items.Add(dr["RoleName"].ToString());
                 }
-            }
-            first.Visibility = Visibility.Visible;
-            second.Visibility = Visibility.Hidden;
-        }
-
-        private void button4_Click(object sender, RoutedEventArgs e)
-        {
-            if (first.Visibility == Visibility.Visible)
-            {
-                first.Visibility = Visibility.Hidden;
-                second.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                first.Visibility = Visibility.Visible;
-                second.Visibility = Visibility.Hidden;
             }
         }
     }

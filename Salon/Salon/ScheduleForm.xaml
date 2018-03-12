@@ -1,0 +1,27 @@
+﻿<Window x:Class="Salon.ScheduleForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Salon"
+        mc:Ignorable="d"
+        Title="ScheduleForm" Height="325.424" Width="495.116">
+    <Window.Resources>
+        <ResourceDictionary Source="Styles/BasicStyles.xaml" />
+    </Window.Resources>
+    <DockPanel>
+        <WrapPanel Height="294" VerticalAlignment="Top" Width="176">
+            <StackPanel Height="270" Width="394">
+                <Label Content="Мастер" Margin="0,0,49,0"/>
+                <ComboBox Margin="0,0,-20,0" Width="120" HorizontalAlignment="Left"/>
+                <Label Content="Тип мастера" Margin="0,0,22,0"/>
+                <ComboBox Margin="0" HorizontalAlignment="Left" Width="120"/>
+                <Calendar Margin="0,0,282,0"/>
+                <StackPanel Height="100" Width="100"/>
+            </StackPanel>
+        </WrapPanel>
+        <WrapPanel Height="294" VerticalAlignment="Top" Width="172">
+            <DataGrid Height="100" Margin="0" Width="100"/>
+        </WrapPanel>
+    </DockPanel>
+</Window>

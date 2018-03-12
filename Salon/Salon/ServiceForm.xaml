@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Услуги" Height="300" Width="600">
+        Title="Услуги" Height="300" Width="500">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
-    <DockPanel>
+    <DockPanel Loaded="OnLoad">
         <StackPanel x:Name="Header" Style="{StaticResource header}">
             <Label Content="Таблица 'Услуги'" Style="{StaticResource caption}"/>
         </StackPanel>
@@ -17,18 +17,17 @@
             <StackPanel x:Name="SearchStack" >
                 <Label Content="Поиск:" Style="{StaticResource signature}"/>
                 <WrapPanel>
-                    <TextBox x:Name="SearchBox" Width="300"/>
+                    <TextBox x:Name="SearchBox" Width="400"/>
                 </WrapPanel>
             </StackPanel>
-
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
-            <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
-            <Button x:Name="EditButton" Content="Редактировать"/>
-            <Button x:Name="DeleteButton"  Content="Удалить" Click="DeleteButton_Click"/>
-        </StackPanel>
-        <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="StatusGrid"></DataGrid>
-        </StackPanel>
+                <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
+                <Button x:Name="EditButton" Content="Редактировать"/>
+                <Button x:Name="DeleteButton"  Content="Удалить"/>
+            </StackPanel>
+            <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
+                <DataGrid x:Name="ServiceGrid" ></DataGrid>
+            </StackPanel>
     </DockPanel>
 </Window>

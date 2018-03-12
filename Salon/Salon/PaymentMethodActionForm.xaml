@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Height="401.289" Width="723.53" >
+        Title="Способ оплаты" Height="132" Width="323.765" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -20,7 +20,7 @@
         <WrapPanel>
             <StackPanel>
                 <Label Content="Наименование"  Style="{StaticResource signature}"></Label>
-                <TextBox x:Name="NameBox" ></TextBox>
+                <TextBox x:Name="NameBox" Height="26" Width="705" ></TextBox>
             </StackPanel>
         </WrapPanel>
     </DockPanel>

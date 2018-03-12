@@ -10,12 +10,12 @@ namespace Salon
     /// </summary>
     public partial class PaymentMethodForm : Window
     {
-        private readonly string[] hiddenFields = { "id" };
+        private readonly string[] _hiddenFields = { "id" };
         private DataTable _currentFormData = new DataTable();
 
         private DataTable CurrentFormData
         {
-            get => _currentFormData;
+            get { return _currentFormData; }
             set { _currentFormData = value; PaymentMethodGrid.DataContext = _currentFormData; }
             } 
 
@@ -31,23 +31,36 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var form = new PaymentMethodActionForm(() => { CurrentFormData = DBPaymentMethod.GetPaymentMethods();}, FormState.Add);
+            var form = new PaymentMethodActionForm(new Action(() => { CurrentFormData = DBPaymentMethod.GetPaymentMethods();}), FormState.Add);
             form.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
+            var idx = ((DataTable) PaymentMethodGrid.DataContext).Columns.IndexOf("id");
+            var id = ((DataRowView) PaymentMethodGrid.SelectedItem)?.Row[idx].ToString();
 
+            if (id == null) return;
+
+            var form = new PaymentMethodActionForm(new Action(() => { CurrentFormData = DBPaymentMethod.GetPaymentMethods(); }), FormState.Edit, id);
+            form.ShowDialog();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            var idx = ((DataTable) PaymentMethodGrid.DataContext).Columns.IndexOf("id");
 
+            foreach (DataRowView selectedItem in PaymentMethodGrid.SelectedItems)
+            {
+                DBPaymentMethod.DeletePaymentMethod(selectedItem.Row[idx].ToString());
+            }
+
+            CurrentFormData = DBPaymentMethod.GetPaymentMethods();
         }
 
         private void PaymentMethodGrid_AutoGeneratingColumn(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (!hiddenFields?.Contains(e.PropertyName) == true) return;
+            if (!_hiddenFields?.Contains(e.PropertyName) == true) return;
 
             e.Cancel = true;
         }

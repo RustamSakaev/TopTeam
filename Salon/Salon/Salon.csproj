@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Salon.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -59,44 +62,55 @@
     <Compile Include="AddEditMasterPage.xaml.cs">
       <DependentUpon>AddEditMasterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddTypeMasterWorker.xaml.cs">
-      <DependentUpon>AddTypeMasterWorker.xaml</DependentUpon>
+    <Compile Include="AddGroupServiceForm.xaml.cs">
+      <DependentUpon>AddGroupServiceForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddWorker.xaml.cs">
-      <DependentUpon>AddWorker.xaml</DependentUpon>
+    <Compile Include="AddKindServiceForm.xaml.cs">
+      <DependentUpon>AddKindServiceForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddWorkerService.xaml.cs">
-      <DependentUpon>AddWorkerService.xaml</DependentUpon>
+    <Compile Include="AddServiceForm.xaml.cs">
+      <DependentUpon>AddServiceForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddTypeMaster.xaml.cs">
-      <DependentUpon>AddTypeMaster.xaml</DependentUpon>
+    <Compile Include="AddTariffForm.xaml.cs">
+      <DependentUpon>AddTariffForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddTypeMasterService1.xaml.cs">
-      <DependentUpon>AddTypeMasterService1.xaml</DependentUpon>
+    <Compile Include="BankCardActionForm.xaml.cs">
+      <DependentUpon>BankCardActionForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankCardForm.xaml.cs">
+      <DependentUpon>BankCardForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddTypeServiceForm.xaml.cs">
+      <DependentUpon>AddTypeServiceForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="BillForm.xaml.cs">
       <DependentUpon>BillForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClientActionForm.xaml.cs">
+      <DependentUpon>ClientActionForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Database\DBBankCard.cs" />
     <Compile Include="Database\DBBill.cs" />
+    <Compile Include="Database\DBStatus.cs" />
+    <Compile Include="Database\DBWorker.cs" />
+    <Compile Include="Database\DBClient.cs" />
     <Compile Include="Database\DBCore.cs" />
+    <Compile Include="Database\DBGiftCard.cs" />
     <Compile Include="Database\DBPaymentMethod.cs" />
-    <Compile Include="EditTypeMaster.xaml.cs">
-      <DependentUpon>EditTypeMaster.xaml</DependentUpon>
+    <Compile Include="EditGroupServiceForm.xaml.cs">
+      <DependentUpon>EditGroupServiceForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditTypeMasterServiceForm.xaml.cs">
-      <DependentUpon>EditTypeMasterServiceForm.xaml</DependentUpon>
+    <Compile Include="EditKindServiceForm.xaml.cs">
+      <DependentUpon>EditKindServiceForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditTypeMasterWorker.xaml.cs">
-      <DependentUpon>EditTypeMasterWorker.xaml</DependentUpon>
+    <Compile Include="EditServiceForm.xaml.cs">
+      <DependentUpon>EditServiceForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditWorkerService.xaml.cs">
-      <DependentUpon>EditWorkerService.xaml</DependentUpon>
+    <Compile Include="EditTariffForm.xaml.cs">
+      <DependentUpon>EditTariffForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TypeMasterWorkerForm.xaml.cs">
-      <DependentUpon>TypeMasterWorkerForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WorkerServiceForm.xaml.cs">
-      <DependentUpon>WorkerServiceForm.xaml</DependentUpon>
+    <Compile Include="EditTypeServiceForm.xaml.cs">
+      <DependentUpon>EditTypeServiceForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\FormState.cs" />
     <Compile Include="Enums\FormOpenAs.cs" />
@@ -104,6 +118,12 @@
       <DependentUpon>ClientForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="GiftCardActionForm.xaml.cs">
+      <DependentUpon>GiftCardActionForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiftCardForm.xaml.cs">
+      <DependentUpon>GiftCardForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GroupServiceForm.xaml.cs">
       <DependentUpon>GroupServiceForm.xaml</DependentUpon>
     </Compile>
@@ -115,6 +135,9 @@
     </Compile>
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChooseEmployeeForm.xaml.cs">
+      <DependentUpon>ChooseEmployeeForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
@@ -128,8 +151,14 @@
     <Compile Include="ProvidingServiceForm.xaml.cs">
       <DependentUpon>ProvidingServiceForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ScheduleForm.xaml.cs">
+      <DependentUpon>ScheduleForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ServiceForm.xaml.cs">
       <DependentUpon>ServiceForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StatusActionForm.xaml.cs">
+      <DependentUpon>StatusActionForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="StatusForm.xaml.cs">
       <DependentUpon>StatusForm.xaml</DependentUpon>
@@ -137,45 +166,42 @@
     <Compile Include="TariffForm.xaml.cs">
       <DependentUpon>TariffForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TypeMasterForm.xaml.cs">
-      <DependentUpon>TypeMasterForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TypeMasterServiceForm.xaml.cs">
-      <DependentUpon>TypeMasterServiceForm.xaml</DependentUpon>
-    </Compile>
     <Compile Include="TypeServiceForm.xaml.cs">
       <DependentUpon>TypeServiceForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Users.xaml.cs">
-      <DependentUpon>Users.xaml</DependentUpon>
+    <Compile Include="UserRoleForm.xaml.cs">
+      <DependentUpon>UserRoleForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="VisitForm.xaml.cs">
       <DependentUpon>VisitForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerActionForm.xaml.cs">
+      <DependentUpon>WorkerActionForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="WorkerForm.xaml.cs">
       <DependentUpon>WorkerForm.xaml</DependentUpon>
     </Compile>
     <Page Include="AddEditMasterPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="AddTypeMasterWorker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddWorker.xaml">
+    <Page Include="AddGroupServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddWorkerService.xaml">
+    <Page Include="AddKindServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddTypeMaster.xaml">
+    <Page Include="AddServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddTypeMasterService1.xaml">
+    <Page Include="AddTariffForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTypeServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -191,6 +217,18 @@
       <DependentUpon>AuthorizationForm.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="BankCardActionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankCardForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientActionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ClientForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -199,27 +237,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditTypeMaster.xaml">
+    <Page Include="EditGroupServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditTypeMasterServiceForm.xaml">
+    <Page Include="EditKindServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditTypeMasterWorker.xaml">
+    <Page Include="EditServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditWorkerService.xaml">
+    <Page Include="EditTariffForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TypeMasterWorkerForm.xaml">
+    <Page Include="EditTypeServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WorkerServiceForm.xaml">
+    <Page Include="GiftCardActionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiftCardForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -239,6 +281,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ChooseEmployeeForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MasterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -255,7 +301,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ScheduleForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ServiceForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StatusActionForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -271,25 +325,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TypeMasterForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TypeMasterServiceForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="TypeServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Users.xaml">
+    <Page Include="UserRoleForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VisitForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorkerActionForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="WorkerForm.xaml">
       <SubType>Designer</SubType>
@@ -326,7 +376,35 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

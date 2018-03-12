@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Статус посещения" Height="300" Width="628">
+        Title="Статус посещения" Height="300" Width="628" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -15,20 +15,17 @@
         </StackPanel>
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
             <StackPanel x:Name="SearchStack" >
-                <Label Content="Поиск:" Style="{StaticResource signature}"/>
-                <WrapPanel>
-                    <TextBox x:Name="SearchBox" Width="300"/>                  
-                </WrapPanel>
+                <WrapPanel/>
             </StackPanel>
             
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
             <Button x:Name="EditButton" Content="Редактировать" Click="EditButton_Click"/>
-            <Button x:Name="DeleteButton"  Content="Удалить"/>
+            <Button x:Name="DeleteButton"  Content="Удалить" Click="DeleteButton_Click"/>
         </StackPanel>
         <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="StatusGrid"></DataGrid>
+            <DataGrid x:Name="StatusGrid" ItemsSource="{Binding}" IsReadOnly="True" ColumnWidth="*" AutoGeneratingColumn="StatusGrid_AutoGeneratingColumn"></DataGrid>
         </StackPanel>
     </DockPanel>
 </Window>

@@ -49,7 +49,10 @@ namespace Salon
         private void ExportButton_Click(object sender, RoutedEventArgs e)
         {
             if (_currentFormData == null || _currentFormData.Columns.Count == 0)
-                throw new Exception("ExportToExcel: Null or empty input table!\n");
+            { MessageBox.Show("База пустая");
+                return;
+            }
+
             Microsoft.Office.Interop.Excel.Application ObjExcel = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel.Workbook ObjWorkBook;
             Microsoft.Office.Interop.Excel.Worksheet ObjWorkSheet;

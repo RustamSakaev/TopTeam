@@ -71,9 +71,6 @@
       <DependentUpon>ClientForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Extensions.cs" />
-    <Compile Include="GruppaUslug.xaml.cs">
-      <DependentUpon>GruppaUslug.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Kabinet.xaml.cs">
       <DependentUpon>Kabinet.xaml</DependentUpon>
     </Compile>
@@ -101,9 +98,6 @@
     <Compile Include="Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Uslugi.xaml.cs">
-      <DependentUpon>Uslugi.xaml</DependentUpon>
-    </Compile>
     <Compile Include="VisitForm.xaml.cs">
       <DependentUpon>VisitForm.xaml</DependentUpon>
     </Compile>
@@ -128,10 +122,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BillForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GruppaUslug.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,10 +162,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Users.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Uslugi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

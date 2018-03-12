@@ -53,7 +53,7 @@ namespace Salon
 
         public void Authorization_()
         {
-            string connectionStr = Connection(textBox.Text, textBox1.Text);
+            string connectionStr = Connection(LoginBox.Text, PassBox.Text);
             SqlConnection con = null;
             try
             {
@@ -82,10 +82,10 @@ namespace Salon
                 con = new SqlConnection(connectionStr);
                 con.Open();
                 string sql = @"USE master "+
-"create login "+textBox.Text+@" with password = '"+textBox1.Text+ @"', check_policy = off;
+"create login "+LoginBox.Text+@" with password = '"+PassBox.Text+ @"', check_policy = off;
 USE[Task3]
-create user " + textBox.Text + @" from login " + textBox.Text + @";
-exec sp_addrolemember 'db_datareader', '" + textBox.Text + "'";                
+create user " + LoginBox.Text + @" from login " + LoginBox.Text + @";
+exec sp_addrolemember 'db_datareader', '" + LoginBox.Text + "'";                
                 if (con != null)
                 {
                     com = con.CreateCommand();

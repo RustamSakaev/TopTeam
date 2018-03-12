@@ -9,7 +9,7 @@
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
-    <DockPanel>
+    <DockPanel Loaded="OnLoad">
         <StackPanel x:Name="Header" Style="{StaticResource header}">
             <Label Content="Таблица 'Услуги'" Style="{StaticResource caption}"/>
         </StackPanel>
@@ -22,12 +22,12 @@
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
-            <Button x:Name="AddButton" Content="Добавить"/>
-            <Button x:Name="EditButton" Content="Редактировать"/>
-            <Button x:Name="DeleteButton"  Content="Удалить"/>
-        </StackPanel>
-        <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="StatusGrid"></DataGrid>
-        </StackPanel>
+                <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
+                <Button x:Name="EditButton" Content="Редактировать"/>
+                <Button x:Name="DeleteButton"  Content="Удалить"/>
+            </StackPanel>
+            <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
+                <DataGrid x:Name="ServiceGrid" ></DataGrid>
+            </StackPanel>
     </DockPanel>
 </Window>

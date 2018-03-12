@@ -17,13 +17,13 @@ namespace Salon
 
         private DataTable CurrentFormData
         {
-            get => _currentFormData;
+            get { return _currentFormData; }
             set { _currentFormData = value; ClientGrid.DataContext = _currentFormData.DefaultView; }
         }
 
         private string CurrentFilter
         {
-            get => _currentFilter;
+            get { return _currentFilter; }
             set { _currentFilter = value; DisplayDataWithFilter(); }
         }
 
@@ -61,7 +61,7 @@ namespace Salon
             var idx = ((DataView)ClientGrid.DataContext).Table.Columns.IndexOf("id");
             var id = ((DataRowView)ClientGrid.SelectedItem)?.Row[idx].ToString();
 
-            if (id is null) return;
+            if (id == null) return;
 
             var form = new ClientActionForm(new Action(() => { CurrentFormData = DBClient.GetClients(); }), FormState.Edit, id);
             form.ShowDialog();

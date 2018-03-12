@@ -9,7 +9,7 @@
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
-    <DockPanel>
+    <DockPanel Loaded="OnLoad">
         <StackPanel x:Name="Header" Style="{StaticResource header}">
             <Label Content="Добавление услуги" Style="{StaticResource caption}"/>
         </StackPanel>

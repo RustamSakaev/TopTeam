@@ -23,7 +23,7 @@ namespace Salon
         {
             InitializeComponent();
 
-            DBCore.Init("DESKTOP-D3KKSHS\\SQLEXPRESS");
+            DBCore.Init("LENOVO-PC");
 
             //var result = DBBill.GetBills();
         }
@@ -80,15 +80,7 @@ namespace Salon
             tariff.ShowDialog();
         }
 
-        private void SpisokUslug_Click(object sender, RoutedEventArgs e)
-        {
-          
-        }
-
-        private void GruppiUslug_Click(object sender, RoutedEventArgs e)
-        {
-         
-        }
+       
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
@@ -96,9 +88,38 @@ namespace Salon
             form.ShowDialog();
         }
 
+        private void SpisokUslug_Click(object sender, RoutedEventArgs e)
+        {
+            ServiceForm service = new ServiceForm();
+            service.ShowDialog();
+        }
+
+
+       
+
+
+        private void GroupService_Click(object sender, RoutedEventArgs e)
+        {
+            GroupServiceForm group_service = new GroupServiceForm();
+            group_service.ShowDialog();
+        }
+
+        private void TypeService_Click(object sender, RoutedEventArgs e)
+        {
+            TypeServiceForm type_service = new TypeServiceForm();
+            type_service.ShowDialog();
+        }
+
+        private void KindService_Click(object sender, RoutedEventArgs e)
+        {
+            KindService kind_service = new KindService();
+            kind_service.ShowDialog();
+        }
+
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
-            
+            WorkerForm worker = new WorkerForm();
+            worker.ShowDialog();
         }
     }
 }

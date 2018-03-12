@@ -40,7 +40,7 @@ namespace Salon
             var idx = ((DataTable) PaymentMethodGrid.DataContext).Columns.IndexOf("id");
             var id = ((DataRowView) PaymentMethodGrid.SelectedItem)?.Row[idx].ToString();
 
-            if (id is null) return;
+            if (id == null) return;
 
             var form = new PaymentMethodActionForm(new Action(() => { CurrentFormData = DBPaymentMethod.GetPaymentMethods(); }), FormState.Edit, id);
             form.ShowDialog();

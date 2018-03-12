@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="ScheduleForm" Height="446.916" Width="562.804" Loaded="Window_Loaded">
+        Title="Расписание" Height="446.916" Width="562.804" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -13,32 +13,32 @@
         <WrapPanel Width="180">
             <StackPanel Width="181" Height="412">
                 <Label Content="Мастер" Margin="0,0,0,0" Height="22"/>
-                <ComboBox x:Name="workerCmbBox" Margin="0" Width="120" ItemsSource="{Binding}" DisplayMemberPath="Фамилия" SelectedValuePath="id" HorizontalAlignment="Left" LayoutUpdated="ComboBox_LayoutUpdated" SelectionChanged="workerChkBox_SelectionChanged" Height="20"/>
+                <ComboBox x:Name="workerCmbBox" Margin="0" Width="171" ItemsSource="{Binding}" DisplayMemberPath="Фамилия" SelectedValuePath="id" HorizontalAlignment="Left" LayoutUpdated="ComboBox_LayoutUpdated" SelectionChanged="workerChkBox_SelectionChanged" Height="20"/>
                 <Label Content="Тип мастера" Margin="0,0,22,0"/>
-                <ComboBox x:Name="typeMasterCmbBox" Margin="0" ItemsSource="{Binding}" DisplayMemberPath="Name" SelectedValuePath="ID" HorizontalAlignment="Left" Width="120" Height="20"/>
-                <Calendar HorizontalAlignment="Left" Width="176"/>
+                <ComboBox x:Name="typeMasterCmbBox" Margin="0" ItemsSource="{Binding}" DisplayMemberPath="Name" SelectedValuePath="ID" HorizontalAlignment="Left" Width="171" Height="20"/>
+                <Calendar x:Name="datePicker" HorizontalAlignment="Left" Width="176"/>
                 <WrapPanel Height="62">
                     <WrapPanel Height="32" Width="179">
                         <Label Content="С:  "/>
-                        <TextBox x:Name="sHTB" Height="24" Margin="0" TextWrapping="Wrap" Text="" Width="64"/>
+                        <TextBox x:Name="sHTB" Height="24" Margin="0" TextWrapping="Wrap" Text="13" Width="64"/>
                         <TextBlock TextWrapping="Wrap" Text="ч."/>
-                        <TextBox x:Name="sMTB" Height="23" Margin="0" TextWrapping="Wrap" Text="" Width="52"/>
+                        <TextBox x:Name="sMTB" Height="23" Margin="0" TextWrapping="Wrap" Text="00" Width="52"/>
                         <TextBlock TextWrapping="Wrap" Text="м."/>
                     </WrapPanel>
                     <WrapPanel Height="28" Width="181">
                         <Label Content="До:"/>
-                        <TextBox x:Name="dHTB" Height="24" Margin="0" TextWrapping="Wrap" Text="" Width="64"/>
+                        <TextBox x:Name="dHTB" Height="24" Margin="0" TextWrapping="Wrap" Text="13" Width="64"/>
                         <TextBlock TextWrapping="Wrap" Text="ч."/>
-                        <TextBox x:Name="dMTB" Height="24" Margin="0" TextWrapping="Wrap" Text="" Width="52"/>
+                        <TextBox x:Name="dMTB" Height="24" Margin="0" TextWrapping="Wrap" Text="30" Width="52"/>
                         <TextBlock TextWrapping="Wrap" Text="м."/>
                     </WrapPanel>
                 </WrapPanel>
-                <Button Content="Сохранить" Margin="0"/>
-                <Button Content="Закрыть" Margin="0"/>
+                <Button Content="Сохранить" Margin="0" Click="Button_Click"/>
+                <Button Content="Закрыть" Margin="0" Click="Button_Click_1"/>
             </StackPanel>
         </WrapPanel>
         <WrapPanel Height="406" VerticalAlignment="Top" Width="371" HorizontalAlignment="Left">
-            <DataGrid Height="380" Margin="0" Width="354" Background="#FF484C65"/>
+            <DataGrid x:Name="ScheduleGrid" Height="380" Margin="0" Width="354" ItemsSource="{Binding}" Background="#FF484C65"/>
         </WrapPanel>
     </DockPanel>
 </Window>

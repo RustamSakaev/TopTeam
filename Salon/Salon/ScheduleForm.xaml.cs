@@ -26,8 +26,17 @@ namespace Salon
         }
         DataTable _workers;
         DataTable _typesMasters;
+
+        private DataTable _currentFormData = new DataTable();
+
+        private DataTable CurrentFormData
+        {
+            get => _currentFormData;
+            set { _currentFormData = value; ScheduleGrid.DataContext = _currentFormData.DefaultView; }
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            CurrentFormData = DBWorker.GetSchedule();
             _workers = DBWorker.GetWorkers();
             _typesMasters = DBWorker.GetTypesOfMasters();
             workerCmbBox.DataContext = _workers.DefaultView;
@@ -50,6 +59,22 @@ namespace Salon
         private void workerChkBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DBWorker.AddScedule(
+                workerCmbBox.SelectedValue.ToString(),
+                datePicker.SelectedDate.ToString(),
+                "" + sHTB.Text + ":" + sMTB.Text + ":00",
+                "" + dHTB.Text + ":" + dMTB.Text + ":00"
+                );
+            CurrentFormData = DBWorker.GetSchedule();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

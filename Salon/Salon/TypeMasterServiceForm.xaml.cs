@@ -15,23 +15,19 @@ using System.Windows.Shapes;
 namespace Salon
 {
     /// <summary>
-    /// Логика взаимодействия для ServiceForm.xaml
+    /// Логика взаимодействия для TypeMasterServiceForm.xaml
     /// </summary>
-    public partial class ServiceForm : Window
+    public partial class TypeMasterServiceForm : Window
     {
-        public ServiceForm()
+        public TypeMasterServiceForm()
         {
             InitializeComponent();
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            AddTypeMasterService1 add = new AddTypeMasterService1();
+            add.ShowDialog();
         }
     }
 }

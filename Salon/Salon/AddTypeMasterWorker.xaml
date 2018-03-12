@@ -1,0 +1,71 @@
+﻿<Window x:Class="Salon.AddTypeMasterWorker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Salon"
+        mc:Ignorable="d"
+        Title="Образец формы добавления/редактирования" Height="322.566" Width="513.956" >
+    <Window.Resources>
+        <ResourceDictionary Source="Styles/BasicStyles.xaml" />
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel x:Name="Header" Style="{StaticResource header}">
+            <Label Content="Добавление ТипМастераСотрудник" Style="{StaticResource caption}"/>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource bottom}">
+            <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+            <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+        </StackPanel>
+        <WrapPanel Margin="0,0,0,156">
+            <StackPanel/>
+            <StackPanel/>
+            <StackPanel/>
+            <StackPanel/>
+            <StackPanel/>
+            <StackPanel/>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Label Content="Сотрудник"  Style="{StaticResource signature}"></Label>
+                    <ComboBox x:Name="ServiceCmbBox" Width="150">
+                        <ComboBoxItem IsSelected="True">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Иванов</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>Петров</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>Сидоров</TextBlock>
+                        </StackPanel>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel>
+                    <Button x:Name="WorkerFormButton" Content="..." Style="{StaticResource threeDots}" Click="ServiceFormButton_Click"></Button>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Label Content="Тип мастера"  Style="{StaticResource signature}"></Label>
+                    <ComboBox x:Name="MasterCmbBox" Width="150">
+                        <ComboBoxItem IsSelected="True">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Парикмахер</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>Визажист</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>Косметолог</TextBlock>
+                        </StackPanel>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel>
+                    <Button x:Name="MasterFormButton" Content="..." Style="{StaticResource threeDots}" Click="MasterFormButton_Click"></Button>
+                </StackPanel>
+            </StackPanel>
+        </WrapPanel>
+    </DockPanel>
+</Window>

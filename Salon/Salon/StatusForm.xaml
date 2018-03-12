@@ -23,8 +23,8 @@
             
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
-            <Button x:Name="AddButton" Content="Добавить"/>
-            <Button x:Name="EditButton" Content="Редактировать"/>
+            <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
+            <Button x:Name="EditButton" Content="Редактировать" Click="EditButton_Click"/>
             <Button x:Name="DeleteButton"  Content="Удалить"/>
         </StackPanel>
         <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >

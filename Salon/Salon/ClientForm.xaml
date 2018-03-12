@@ -18,7 +18,7 @@
                 <Label Content="Поиск:" Style="{StaticResource signature}"/>
                 <WrapPanel>
                     <TextBox x:Name="SearchBox" Width="300"/>
-                    <Button x:Name="FullSearchButton"  Content="Расширенный поиск" Click="FullSearchButton_Click"/>
+                    <Button x:Name="FullSearchButton"  Content="Расширенный поиск" Click="FullSearchButton_Click" Width="143"/>
                 </WrapPanel>
             </StackPanel>
             <StackPanel x:Name="FullSearchGroup" Visibility="Collapsed">

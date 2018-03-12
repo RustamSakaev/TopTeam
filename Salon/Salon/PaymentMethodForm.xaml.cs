@@ -17,7 +17,7 @@ namespace Salon
         {
             get => _currentFormData;
             set { _currentFormData = value; PaymentMethodGrid.DataContext = _currentFormData; }
-        }
+            } 
 
         public PaymentMethodForm()
         {

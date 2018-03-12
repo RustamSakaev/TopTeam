@@ -59,12 +59,45 @@
     <Compile Include="AddEditMasterPage.xaml.cs">
       <DependentUpon>AddEditMasterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddTypeMasterWorker.xaml.cs">
+      <DependentUpon>AddTypeMasterWorker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddWorker.xaml.cs">
+      <DependentUpon>AddWorker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddWorkerService.xaml.cs">
+      <DependentUpon>AddWorkerService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddTypeMaster.xaml.cs">
+      <DependentUpon>AddTypeMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddTypeMasterService1.xaml.cs">
+      <DependentUpon>AddTypeMasterService1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BillForm.xaml.cs">
       <DependentUpon>BillForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database\DBBill.cs" />
     <Compile Include="Database\DBCore.cs" />
     <Compile Include="Database\DBPaymentMethod.cs" />
+    <Compile Include="EditTypeMaster.xaml.cs">
+      <DependentUpon>EditTypeMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditTypeMasterServiceForm.xaml.cs">
+      <DependentUpon>EditTypeMasterServiceForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditTypeMasterWorker.xaml.cs">
+      <DependentUpon>EditTypeMasterWorker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditWorkerService.xaml.cs">
+      <DependentUpon>EditWorkerService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TypeMasterWorkerForm.xaml.cs">
+      <DependentUpon>TypeMasterWorkerForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerServiceForm.xaml.cs">
+      <DependentUpon>WorkerServiceForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Enums\FormState.cs" />
     <Compile Include="Enums\FormOpenAs.cs" />
     <Compile Include="ClientForm.xaml.cs">
@@ -104,6 +137,12 @@
     <Compile Include="TariffForm.xaml.cs">
       <DependentUpon>TariffForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TypeMasterForm.xaml.cs">
+      <DependentUpon>TypeMasterForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TypeMasterServiceForm.xaml.cs">
+      <DependentUpon>TypeMasterServiceForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TypeServiceForm.xaml.cs">
       <DependentUpon>TypeServiceForm.xaml</DependentUpon>
     </Compile>
@@ -117,6 +156,26 @@
       <DependentUpon>WorkerForm.xaml</DependentUpon>
     </Compile>
     <Page Include="AddEditMasterPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddTypeMasterWorker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddWorker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddWorkerService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTypeMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTypeMasterService1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,6 +196,30 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BillForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditTypeMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditTypeMasterServiceForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditTypeMasterWorker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditWorkerService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TypeMasterWorkerForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorkerServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,6 +268,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TariffForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TypeMasterForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TypeMasterServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

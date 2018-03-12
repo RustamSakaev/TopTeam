@@ -15,23 +15,19 @@ using System.Windows.Shapes;
 namespace Salon
 {
     /// <summary>
-    /// Логика взаимодействия для ServiceForm.xaml
+    /// Логика взаимодействия для EmployeeServiceForm.xaml
     /// </summary>
-    public partial class ServiceForm : Window
+    public partial class EmployeeServiceForm : Window
     {
-        public ServiceForm()
+        public EmployeeServiceForm()
         {
             InitializeComponent();
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            AddWorkerService addw = new AddWorkerService();
+            addw.ShowDialog();
         }
     }
 }

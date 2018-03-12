@@ -101,6 +101,9 @@
     <Compile Include="VisitForm.xaml.cs">
       <DependentUpon>VisitForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WorkerForm.xaml.cs">
+      <DependentUpon>WorkerForm.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddEditMasterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -166,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VisitForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorkerForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

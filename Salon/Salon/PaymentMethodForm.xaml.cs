@@ -15,7 +15,7 @@ namespace Salon
 
         private DataTable CurrentFormData
         {
-            get => _currentFormData;
+            get { return _currentFormData; }
             set { _currentFormData = value; PaymentMethodGrid.DataContext = _currentFormData; }
         }
 

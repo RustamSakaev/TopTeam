@@ -22,7 +22,7 @@ namespace Salon.Extensions
 
         public static bool Validate(this TextBox tb, bool isRequired, Func<string, bool> validationStrategy)
         {
-            var shouldValidate = !(validationStrategy is null);
+            bool shouldValidate = !(validationStrategy == null);
             var isValid = true;
 
             if (isRequired && tb.Text.Length <= 0)

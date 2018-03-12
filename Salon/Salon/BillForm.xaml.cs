@@ -16,13 +16,13 @@ namespace Salon
 
         private DataTable CurrentFormData
         {
-            get => _currentFormData;
+            get { return _currentFormData; }
             set { _currentFormData = value; BillGrid.DataContext = _currentFormData;}
         }
 
         private string CurrentFilter
         {
-            get => _currentFilter;
+            get { return _currentFilter; }
             set { _currentFilter = value; DisplayDataWithFilter(); }
         }
 

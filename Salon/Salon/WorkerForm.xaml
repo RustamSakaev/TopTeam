@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Сотрудники" Height="456.717" Width="859.821">
+        Title="Сотрудники" Height="456.717" Width="859.821" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -28,7 +28,7 @@
             <Button x:Name="DeleteButton"  Content="Удалить"/>
         </StackPanel>
         <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="StatusGrid"></DataGrid>
+            <DataGrid x:Name="WorkersGrid" Height="323" ItemsSource="{Binding}" Background="#FF484C65"></DataGrid>
         </StackPanel>
     </DockPanel>
 </Window>

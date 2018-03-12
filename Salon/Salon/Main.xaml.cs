@@ -26,9 +26,9 @@ namespace Salon
         {
             InitializeComponent();
 
-            //DBCore.Init("DESKTOP-D3KKSHS\\SQLEXPRESS");
+            DBCore.Init("DESKTOP-D3KKSHS\\SQLEXPRESS");
 
-            //var result = DBBill.GetBills();
+            var result = DBBill.GetBills();
         }
 
         private void Prototype_Click(object sender, RoutedEventArgs e)
@@ -39,7 +39,7 @@ namespace Salon
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //DBCore.Destroy();
+            DBCore.Destroy();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -194,6 +194,23 @@ namespace Salon
         {
             ChooseEmployeeForm employee = new ChooseEmployeeForm(0);
             employee.ShowDialog();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            var form = new BankCardForm();
+            form.ShowDialog();
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            var form = new GiftCardForm();
+            form.ShowDialog();
         }
     }
 }

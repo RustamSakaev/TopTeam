@@ -15,23 +15,13 @@ using System.Windows.Shapes;
 namespace Salon
 {
     /// <summary>
-    /// Interaction logic for AddGroupServiceForm.xaml
+    /// Логика взаимодействия для Worker_MasterTypeForm.xaml
     /// </summary>
-    public partial class AddGroupServiceForm : Window
+    public partial class Worker_MasterTypeForm : Window
     {
-        public AddGroupServiceForm()
+        public Worker_MasterTypeForm()
         {
             InitializeComponent();
-        }
-
-        private void OKButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Клиенты" Height="300" Width="470.803">
+        Title="Клиенты" Height="341.917" Width="658.917" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -16,35 +17,16 @@
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
             <StackPanel x:Name="SearchStack" >
                 <Label Content="Поиск:" Style="{StaticResource signature}"/>
-                <WrapPanel>
-                    <TextBox x:Name="SearchBox" Width="300"/>
-                    <Button x:Name="FullSearchButton"  Content="Расширенный поиск" Click="FullSearchButton_Click"/>
-                </WrapPanel>
-            </StackPanel>
-            <StackPanel x:Name="FullSearchGroup" Visibility="Collapsed">
-                <DockPanel>
-                    <WrapPanel DockPanel.Dock="Top">
-                        <StackPanel Margin="5 0 5 0">
-                            <Label Style="{StaticResource signature}">ФИО:</Label>
-                            <TextBox x:Name="FullName" Width="200"></TextBox>
-                        </StackPanel>                        
-                        <CheckBox x:Name="MaleGenderChkBox" IsChecked="False" Content="М" />
-                        <CheckBox x:Name="FemaleGenderChkBox" IsChecked="False" Content="Ж" />
-                    </WrapPanel>
-                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button x:Name="ClearButton" Width="80">Очистить</Button>
-                        <Button x:Name="CloseButton" Width="80" Click="Close_Click">Закрыть</Button>
-                    </StackPanel>
-                </DockPanel>
+                <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged"/>
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
-            <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
-            <Button x:Name="EditButton" Content="Редактировать"/>
-            <Button x:Name="DeleteButton"  Content="Удалить"/>
+            <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click" />
+            <Button x:Name="EditButton" Content="Редактировать" Click="EditButton_Click" />
+            <Button x:Name="DeleteButton" Content="Удалить" VerticalAlignment="Bottom" Click="DeleteButton_Click"/>
         </StackPanel>
         <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="ClientGrid"></DataGrid>
+            <DataGrid x:Name="ClientGrid" ItemsSource="{Binding}" IsReadOnly="True" ColumnWidth="*" AutoGeneratingColumn="ClientGrid_AutoGeneratingColumn" DataContextChanged="ClientGrid_DataContextChanged" />
         </StackPanel>
     </DockPanel>
 </Window>

@@ -15,21 +15,21 @@ using System.Windows.Shapes;
 namespace Salon
 {
     /// <summary>
-    /// Interaction logic for AddGroupServiceForm.xaml
+    /// Логика взаимодействия для AddTariffForm.xaml
     /// </summary>
-    public partial class AddGroupServiceForm : Window
+    public partial class AddTariffForm : Window
     {
-        public AddGroupServiceForm()
+        public AddTariffForm()
         {
             InitializeComponent();
         }
 
-        private void OKButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void OKButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

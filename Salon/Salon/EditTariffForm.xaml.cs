@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Salon
 {
     /// <summary>
-    /// Interaction logic for AddGroupServiceForm.xaml
+    /// Логика взаимодействия для EditTariffForm.xaml
     /// </summary>
-    public partial class AddGroupServiceForm : Window
+    public partial class EditTariffForm : Window
     {
-        public AddGroupServiceForm()
+        public EditTariffForm()
         {
             InitializeComponent();
         }

@@ -1,0 +1,46 @@
+﻿<Window x:Class="Salon.AddTariffForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Salon"
+        mc:Ignorable="d"
+        Title="" Height="300" Width="300">
+    <Window.Resources>
+        <ResourceDictionary Source="Styles/BasicStyles.xaml" />
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel x:Name="Header" Style="{StaticResource header}">
+            <Label Content="Добавление тарифа" Style="{StaticResource caption}"/>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource bottom}">
+            <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+            <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+        </StackPanel>
+        <WrapPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Label Content="Услуга"  Style="{StaticResource signature}"></Label>
+                    <ComboBox x:Name="Service_IDCmbBox" Width="150">
+                        <ComboBoxItem IsSelected="True">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Укладка</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel>
+                    <Button x:Name="Service_IDFormButton" Content="..." Style="{StaticResource threeDots}"></Button>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Дата начала" Style="{StaticResource signature}"></Label>
+                <DatePicker x:Name="StartDateDatePicker"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Цена"  Style="{StaticResource signature}"></Label>
+                <TextBox x:Name="CostBox" Width="100"></TextBox>
+            </StackPanel>
+        </WrapPanel>
+    </DockPanel>
+</Window>

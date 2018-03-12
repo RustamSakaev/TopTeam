@@ -5,8 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="ClientForm" Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+        Title="ClientForm" Height="300" Width="470.803">
+    <Window.Resources>
+        <ResourceDictionary Source="Styles/BasicStyles.xaml" />
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel x:Name="Header" Style="{StaticResource header}">
+            <Label Content="Таблица 'Клиенты'" Style="{StaticResource caption}"/>
+        </StackPanel>
+        <StackPanel x:Name="Search" Style="{StaticResource search}" >
+            <StackPanel x:Name="SearchStack" >
+                <Label Content="Поиск:" Style="{StaticResource signature}"/>
+                <WrapPanel>
+                    <TextBox x:Name="SearchBox" Width="300"/>
+                    <Button x:Name="FullSearchButton"  Content="Расширенный поиск" Click="FullSearchButton_Click"/>
+                </WrapPanel>
+            </StackPanel>
+            <StackPanel x:Name="FullSearchGroup" Visibility="Collapsed">
+                <DockPanel>
+                    <WrapPanel DockPanel.Dock="Top">
+                        <StackPanel Margin="5 0 5 0">
+                            <Label Style="{StaticResource signature}">ФИО:</Label>
+                            <TextBox x:Name="FioBox" Width="200"></TextBox>
+                        </StackPanel>
+                        <StackPanel Margin="5 0 5 0">
+                            <Label Style="{StaticResource signature}">Должность:</Label>
+                            <ComboBox x:Name="PostCmbBox"  Width="150">
+                                <ComboBoxItem IsSelected="True">
+                                    <StackPanel>
+                                        <TextBlock>cats.jpg</TextBlock>
+                                    </StackPanel>
+                                </ComboBoxItem>
+                                <StackPanel>
+                                    <TextBlock>windowcat.jpg</TextBlock>
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock>234.jpg</TextBlock>
+                                </StackPanel>
+                            </ComboBox>
+                        </StackPanel>
+                        <CheckBox x:Name="KrasavaChkBox" IsChecked="False" Content="Красава" />
+                    </WrapPanel>
+                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button x:Name="ClearButton" Width="80">Очистить</Button>
+                        <Button x:Name="CloseButton" Width="80" Click="Close_Click">Закрыть</Button>
+                    </StackPanel>
+                </DockPanel>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
+            <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
+            <Button x:Name="EditButton" Content="Редактировать"/>
+            <Button x:Name="DeleteButton"  Content="Удалить"/>
+        </StackPanel>
+        <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
+            <DataGrid x:Name="ClientGrid"></DataGrid>
+        </StackPanel>
+    </DockPanel>
 </Window>

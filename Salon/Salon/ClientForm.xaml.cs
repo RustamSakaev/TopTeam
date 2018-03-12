@@ -34,5 +34,10 @@ namespace Salon
             SearchStack.Visibility = Visibility.Visible;
             FullSearchGroup.Visibility = Visibility.Collapsed;
         }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

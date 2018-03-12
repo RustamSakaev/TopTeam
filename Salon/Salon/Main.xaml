@@ -52,7 +52,12 @@
                 <MenuItem Header="Тип мастера"></MenuItem>              
             </MenuItem>
         </MenuItem>        
-        <MenuItem Header="Отчеты" ></MenuItem>
+        <MenuItem Header="Отчеты" >
+            <MenuItem Header="Данные по сотрудникам" Click="EmployeeData_Click"></MenuItem>
+            <MenuItem Header="Доходы по сотруднику" Click="EmployeeProfit_Click"></MenuItem>
+            <MenuItem Header="Количество обслуженных клиентов по сотруднику" Click="EmployeeClient_Click"></MenuItem>
+            <MenuItem Header="Отчет по видам услуг" Click="TypeService_Click"></MenuItem>
+        </MenuItem>
         <MenuItem Header="Прототип" Click="Prototype_Click"></MenuItem>
     </Menu>
 </Window>

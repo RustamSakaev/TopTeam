@@ -1,0 +1,32 @@
+﻿<Window x:Class="Salon.ChooseEmployeeForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Salon"
+        mc:Ignorable="d"
+        Title="Доходы по сотруднику" Height="263" Width="300">
+    <Window.Resources>
+        <ResourceDictionary Source="Styles/BasicStyles.xaml" />
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel x:Name="Header" Style="{StaticResource header}">
+            <Label Content="Выбрать сотрудника" Style="{StaticResource caption}"/>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource bottom}">
+            <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+            <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+        </StackPanel>
+        <WrapPanel Height="163" VerticalAlignment="Top">
+            <StackPanel>
+                <Label Content="ФИО"  Style="{StaticResource signature}"></Label>
+                <ComboBox x:Name="FioCmbBox" Width="200"></ComboBox>
+                <Label Content="С"  Style="{StaticResource signature}"></Label>
+                <DatePicker x:Name="FromPicker"></DatePicker>
+                <Label Content="По"  Style="{StaticResource signature}"></Label>
+                <DatePicker x:Name="ToPicker"></DatePicker>
+            </StackPanel>
+        </WrapPanel>
+    </DockPanel>
+</Window>
+    

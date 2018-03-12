@@ -17,8 +17,22 @@
                 <Label Content="Тип мастера" Margin="0,0,22,0"/>
                 <ComboBox x:Name="typeMasterCmbBox" Margin="0" ItemsSource="{Binding}" DisplayMemberPath="Name" SelectedValuePath="ID" HorizontalAlignment="Left" Width="120" Height="20"/>
                 <Calendar HorizontalAlignment="Left" Width="176"/>
-                <TextBox Height="23" Margin="0" TextWrapping="Wrap" Text="От"/>
-                <TextBox Height="23" Margin="0" TextWrapping="Wrap" Text="До"/>
+                <WrapPanel Height="62">
+                    <WrapPanel Height="32" Width="179">
+                        <Label Content="С:  "/>
+                        <TextBox x:Name="sHTB" Height="24" Margin="0" TextWrapping="Wrap" Text="" Width="64"/>
+                        <TextBlock TextWrapping="Wrap" Text="ч."/>
+                        <TextBox x:Name="sMTB" Height="23" Margin="0" TextWrapping="Wrap" Text="" Width="52"/>
+                        <TextBlock TextWrapping="Wrap" Text="м."/>
+                    </WrapPanel>
+                    <WrapPanel Height="28" Width="181">
+                        <Label Content="До:"/>
+                        <TextBox x:Name="dHTB" Height="24" Margin="0" TextWrapping="Wrap" Text="" Width="64"/>
+                        <TextBlock TextWrapping="Wrap" Text="ч."/>
+                        <TextBox x:Name="dMTB" Height="24" Margin="0" TextWrapping="Wrap" Text="" Width="52"/>
+                        <TextBlock TextWrapping="Wrap" Text="м."/>
+                    </WrapPanel>
+                </WrapPanel>
                 <Button Content="Сохранить" Margin="0"/>
                 <Button Content="Закрыть" Margin="0"/>
             </StackPanel>

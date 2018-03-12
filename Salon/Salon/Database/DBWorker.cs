@@ -30,5 +30,14 @@ namespace Salon
                 FROM MasterType"
             );
         }
+        public static DataTable GetSchedule()
+        {
+            return DBCore.GetData($@"
+                SELECT 
+                    ID_MasterType as ID,
+                    Name as Name
+                FROM MasterType"
+            );
+        }
     }
 }

@@ -21,5 +21,14 @@ namespace Salon
                 FROM Worker"
             );
         }
+        public static DataTable GetTypesOfMasters()
+        {
+            return DBCore.GetData($@"
+                SELECT 
+                    ID_MasterType as ID,
+                    Name as Name
+                FROM MasterType"
+            );
+        }
     }
 }

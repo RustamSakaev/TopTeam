@@ -17,7 +17,7 @@
         <MenuItem Header="Справочники" >
             <MenuItem Header="Работа с сотрудниками">
                 <MenuItem Header="Список сотрудников" Click="MenuItem_Click_3"></MenuItem>
-                <MenuItem Header="График работы"></MenuItem>
+                <MenuItem Header="График работы" Click="MenuItem_Click_5"></MenuItem>
                 <MenuItem Header="Расчеты с сотрудниками"></MenuItem>
                 <MenuItem Header="Оказываемые услуги"></MenuItem>
                 <MenuItem Header="Выбор профиля сотрудника"></MenuItem>

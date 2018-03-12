@@ -20,27 +20,21 @@
         <WrapPanel>
             <StackPanel>
                 <Label Content="Наименование"  Style="{StaticResource signature}"></Label>
-                <TextBox x:Name="FioBox" Width="188"></TextBox>
+                <TextBox x:Name="NameBox" Width="188"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
                     <Label Content="Группа услуги"  Style="{StaticResource signature}"></Label>
-                    <ComboBox x:Name="DeptCmbBox" Width="150">
+                    <ComboBox x:Name="GroupService_IDCmbBox" Width="150">
                         <ComboBoxItem IsSelected="True">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock>Косметология</TextBlock>
                             </StackPanel>
                         </ComboBoxItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock>Бета</TextBlock>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock>Гамма</TextBlock>
-                        </StackPanel>
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
-                    <Button x:Name="DeptFormButton" Content="..." Style="{StaticResource threeDots}"></Button>
+                    <Button x:Name="GroupService_IDFormButton" Content="..." Style="{StaticResource threeDots}"></Button>
                 </StackPanel>
             </StackPanel>
         </WrapPanel>

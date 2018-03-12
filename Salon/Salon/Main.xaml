@@ -36,9 +36,9 @@
             </MenuItem>
             <MenuItem Header="Работа с услугами">
                 <MenuItem x:Name="spisokUslug" Header="Список услуг" Click="SpisokUslug_Click"></MenuItem>
-                <MenuItem Header="Группы услуг" Click="GruppiUslug_Click"></MenuItem>
-                <MenuItem Header="Типы услуг"></MenuItem>
-                <MenuItem Header="Виды услуг"></MenuItem>
+                <MenuItem Header="Группы услуг" Click="GroupService_Click"></MenuItem>
+                <MenuItem Header="Типы услуг" Click="TypeService_Click"></MenuItem>
+                <MenuItem Header="Виды услуг" Click="KindService_Click" ></MenuItem>
                 <MenuItem Header="Тарифы" Click="Tariff_Click"></MenuItem>
                 <MenuItem Header="Тип_Вид"></MenuItem>
                 <MenuItem Header="ТипМастера_Услуга"></MenuItem>

@@ -17,13 +17,22 @@ namespace Salon
 
         private DataTable CurrentFormData
         {
-            get => _currentFormData;
+            //не компилируется в таком варианте у многих
+            //get => _currentFormData;
+            //set { _currentFormData = value; BankCardGrid.DataContext = _currentFormData;}
+
+            get { return _currentFormData; }
             set { _currentFormData = value; BankCardGrid.DataContext = _currentFormData; }
         }
 
         private string CurrentFilter
         {
-            get => _currentFilter;
+            //не компилируется в таком варианте у многих
+            //get => _currentFilter;
+            //set { _currentFilter = value; DisplayDataWithFilter(); }
+
+
+            get { return _currentFilter; }
             set { _currentFilter = value; DisplayDataWithFilter(); }
         }
 
@@ -64,7 +73,10 @@ namespace Salon
 
             var id = ((DataRowView)BankCardGrid.SelectedItem)?.Row[idx].ToString();
 
-            if (id is null) return;
+            //не компилируется в таком варианте у многих
+            //if (id is null) return;
+
+            if (id == null) return;
 
             var form = new BankCardActionForm(new Action(() => { CurrentFormData = DBBankCard.GetBankCards(); }), FormState.Edit, id);
             form.ShowDialog();

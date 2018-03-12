@@ -97,7 +97,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Authorization.xaml">
+    <Page Include="AuthorizationForm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -106,7 +106,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Authorization.xaml.cs">
-      <DependentUpon>Authorization.xaml</DependentUpon>
+      <DependentUpon>AuthorizationForm.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ClientForm.xaml">

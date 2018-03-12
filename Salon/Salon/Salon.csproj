@@ -85,6 +85,9 @@
     <Compile Include="EditGroupServiceForm.xaml.cs">
       <DependentUpon>EditGroupServiceForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditKindServiceForm.xaml.cs">
+      <DependentUpon>EditKindServiceForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditTypeServiceForm.xaml.cs">
       <DependentUpon>EditTypeServiceForm.xaml</DependentUpon>
     </Compile>
@@ -188,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditGroupServiceForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditKindServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

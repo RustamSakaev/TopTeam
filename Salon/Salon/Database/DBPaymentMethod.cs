@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Salon
@@ -17,19 +18,13 @@ namespace Salon
 
         public static DataTable GetPaymentMethod(string id)
         {
-            var command = new SqlCommand
-            {
-                CommandText = $@"
-                    SELECT 
-                        ID_PaymentMethod as id,
-                        Name as [Способ оплаты] 
-                    FROM PaymentMethod
-                    WHERE ID_PaymentMethod = @id;"
-            };
-
-            command.Parameters.AddWithValue("@id", id);
-
-            return DBCore.GetDataWithCommand(command);
+            return DBCore.GetData($@"
+                SELECT 
+                    ID_PaymentMethod as id,
+                    Name as [Способ оплаты]
+                FROM PaymentMethod
+                WHERE ID_PaymentMethod = {id};"
+            );
         }
             
 
@@ -58,6 +53,20 @@ namespace Salon
             };
 
             command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@name", name);
+
+            DBCore.ExecuteCommand(command);
+        }
+
+        public static void AddPaymentMethod(string name)
+        {
+            var command = new SqlCommand
+            {
+                CommandText = $@"
+                    INSERT INTO PaymentMethod (Name)
+                    VALUES (@name);"
+            };
+
             command.Parameters.AddWithValue("@name", name);
 
             DBCore.ExecuteCommand(command);

@@ -1,4 +1,4 @@
-﻿<Window x:Class="Salon.ClientForm"
+﻿<Window x:Class="Salon.BankCardForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:Salon"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Клиенты" Height="341.917" Width="658.917" Loaded="Window_Loaded">
+        Title="Банковские карты" Height="354.667" Width="490.667" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
     <DockPanel>
         <StackPanel x:Name="Header" Style="{StaticResource header}">
-            <Label Content="Таблица 'Клиенты'" Style="{StaticResource caption}"/>
+            <Label Content="Таблица 'Банковская карта'" Style="{StaticResource caption}"/>
         </StackPanel>
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
             <StackPanel x:Name="SearchStack" >
@@ -21,12 +21,12 @@
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
-            <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click" />
-            <Button x:Name="EditButton" Content="Редактировать" Click="EditButton_Click" />
-            <Button x:Name="DeleteButton" Content="Удалить" VerticalAlignment="Bottom" Click="DeleteButton_Click"/>
+            <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
+            <Button x:Name="EditButton" Content="Редактировать" Click="EditButton_Click"/>
+            <Button x:Name="DeleteButton"  Content="Удалить" Click="DeleteButton_Click"/>
         </StackPanel>
         <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="ClientGrid" ItemsSource="{Binding}" IsReadOnly="True" ColumnWidth="*" AutoGeneratingColumn="ClientGrid_AutoGeneratingColumn" DataContextChanged="ClientGrid_DataContextChanged" />
+            <DataGrid x:Name="BankCardGrid" ItemsSource="{Binding}" IsReadOnly="True" ColumnWidth="*" AutoGeneratingColumn="BankCardGrid_AutoGeneratingColumn" DataContextChanged="BankCardGrid_DataContextChanged" />
         </StackPanel>
     </DockPanel>
 </Window>

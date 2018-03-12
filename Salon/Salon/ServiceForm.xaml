@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Услуги" Height="300" Width="600">
+        Title="Услуги" Height="300" Width="500">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -17,10 +17,9 @@
             <StackPanel x:Name="SearchStack" >
                 <Label Content="Поиск:" Style="{StaticResource signature}"/>
                 <WrapPanel>
-                    <TextBox x:Name="SearchBox" Width="300"/>
+                    <TextBox x:Name="SearchBox" Width="400"/>
                 </WrapPanel>
             </StackPanel>
-
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="AddButton" Content="Добавить"/>

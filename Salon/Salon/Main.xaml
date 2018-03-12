@@ -23,6 +23,9 @@
                 <MenuItem Header="Выбор профиля сотрудника"></MenuItem>
             </MenuItem>
             <MenuItem Header="Посещение и оплата">
+                <MenuItem Header="Посещение"></MenuItem>
+                <MenuItem Header="Оказание услуг"></MenuItem>
+                <MenuItem Header="Счет" Click="MenuItem_Click"></MenuItem>
                 <MenuItem Header="Посещение" Click="Visit_Click"></MenuItem>
                 <MenuItem Header="Оказание услуг" Click="ProvidingService_Click"></MenuItem>
                 <MenuItem Header="Счет"></MenuItem>
@@ -33,8 +36,8 @@
                 <MenuItem Header="Банковские карты"></MenuItem>               
             </MenuItem>
             <MenuItem Header="Работа с услугами">
-                <MenuItem Header="Список услуг"></MenuItem>
-                <MenuItem Header="Группы услуг"></MenuItem>
+                <MenuItem x:Name="spisokUslug" Header="Список услуг" Click="SpisokUslug_Click"></MenuItem>
+                <MenuItem Header="Группы услуг" Click="GruppiUslug_Click"></MenuItem>
                 <MenuItem Header="Типы услуг"></MenuItem>
                 <MenuItem Header="Виды услуг"></MenuItem>
                 <MenuItem Header="Тарифы" Click="Tariff_Click"></MenuItem>
@@ -42,6 +45,8 @@
                 <MenuItem Header="ТипМастера_Услуга"></MenuItem>
             </MenuItem>
             <MenuItem Header="Прочие">
+                <MenuItem Header="Способ оплаты" Click="MenuItem_Click_1"></MenuItem>
+                <MenuItem Header="Статус посещения"></MenuItem>
                 <MenuItem Header="Способ оплаты"></MenuItem>
                 <MenuItem Header="Статус посещения" Click="Status_Click"></MenuItem>
                 <MenuItem Header="Тип мастера"></MenuItem>              

@@ -25,6 +25,24 @@ namespace Salon
             return dtable;
         }
         /// <summary>
+        /// Dlya Select'a s navorotami
+        /// </summary>
+        /// <param name="sqlCommand"></param>
+        public static DataTable GetDataWithCommand(SqlCommand sqlCommand)
+        {
+            var dtable = new DataTable();
+
+            sqlCommand.Connection = _connection;
+
+            using (var adapter = new SqlDataAdapter(sqlCommand.CommandText, _connection))
+            {
+                adapter.Fill(dtable);
+            }
+
+            return dtable;
+        }
+
+        /// <summary>
         /// Update, delete, insert
         /// </summary>
         /// <param name="sqlQuery"></param>
@@ -34,6 +52,11 @@ namespace Salon
             {
                 command.ExecuteNonQuery();
             }
+        }
+        public static void ExecuteCommand(SqlCommand sqlCommand)
+        {
+            sqlCommand.Connection = _connection;
+            sqlCommand.ExecuteNonQuery();
         }
         public static void Init(string server)
         {

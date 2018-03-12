@@ -59,10 +59,18 @@
     <Compile Include="AddEditMasterPage.xaml.cs">
       <DependentUpon>AddEditMasterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BillForm.xaml.cs">
+      <DependentUpon>BillForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Database\DBBill.cs" />
+    <Compile Include="Database\DBCore.cs" />
+    <Compile Include="Database\DBPaymentMethod.cs" />
+    <Compile Include="Enums\FormState.cs" />
+    <Compile Include="Enums\FormOpenAs.cs" />
     <Compile Include="ClientForm.xaml.cs">
       <DependentUpon>ClientForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Database\DBCore.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="GruppaUslug.xaml.cs">
       <DependentUpon>GruppaUslug.xaml</DependentUpon>
     </Compile>
@@ -74,6 +82,12 @@
     </Compile>
     <Compile Include="MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentMethodForm.xaml.cs">
+      <DependentUpon>PaymentMethodForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentMethodActionForm.xaml.cs">
+      <DependentUpon>PaymentMethodActionForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProvidingServiceForm.xaml.cs">
       <DependentUpon>ProvidingServiceForm.xaml</DependentUpon>
@@ -113,6 +127,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BillForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GruppaUslug.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -126,6 +144,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MasterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaymentMethodForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaymentMethodActionForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

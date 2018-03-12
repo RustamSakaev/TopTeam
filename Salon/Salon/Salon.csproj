@@ -59,6 +59,9 @@
     <Compile Include="AddEditMasterPage.xaml.cs">
       <DependentUpon>AddEditMasterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddKindServiceForm.xaml.cs">
+      <DependentUpon>AddKindServiceForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BankCardActionForm.xaml.cs">
       <DependentUpon>BankCardActionForm.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddGroupServiceForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddKindServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

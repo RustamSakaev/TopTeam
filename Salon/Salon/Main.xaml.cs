@@ -82,14 +82,12 @@ namespace Salon
 
         private void SpisokUslug_Click(object sender, RoutedEventArgs e)
         {
-            Uslugi uslugi = new Uslugi();
-            uslugi.ShowDialog();
+          
         }
 
         private void GruppiUslug_Click(object sender, RoutedEventArgs e)
         {
-            Gruppa_Uslug gruppaUslug = new Gruppa_Uslug();
-            gruppaUslug.ShowDialog();
+         
         }
     }
 }

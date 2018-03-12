@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,11 @@ namespace Salon
         public ScheduleForm()
         {
             InitializeComponent();
+        }
+        DataTable _workers;
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            _workers = DBWorker.GetWorkers();
         }
     }
 }

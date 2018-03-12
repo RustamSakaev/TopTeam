@@ -74,6 +74,9 @@
     <Compile Include="AddTariffForm.xaml.cs">
       <DependentUpon>AddTariffForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddTypeMasterService1.xaml.cs">
+      <DependentUpon>AddTypeMasterService1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BankCardActionForm.xaml.cs">
       <DependentUpon>BankCardActionForm.xaml</DependentUpon>
     </Compile>
@@ -109,6 +112,9 @@
     </Compile>
     <Compile Include="EditTariffForm.xaml.cs">
       <DependentUpon>EditTariffForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditTypeMaster.xaml.cs">
+      <DependentUpon>EditTypeMaster.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditTypeServiceForm.xaml.cs">
       <DependentUpon>EditTypeServiceForm.xaml</DependentUpon>
@@ -167,6 +173,9 @@
     <Compile Include="TariffForm.xaml.cs">
       <DependentUpon>TariffForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TypeMasterForm.xaml.cs">
+      <DependentUpon>TypeMasterForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TypeServiceForm.xaml.cs">
       <DependentUpon>TypeServiceForm.xaml</DependentUpon>
     </Compile>
@@ -204,6 +213,10 @@
     <Page Include="AddTariffForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTypeMasterService1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="AddTypeServiceForm.xaml">
       <SubType>Designer</SubType>
@@ -256,6 +269,10 @@
     <Page Include="EditTariffForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditTypeMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="EditTypeServiceForm.xaml">
       <SubType>Designer</SubType>
@@ -328,6 +345,10 @@
     <Page Include="TariffForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TypeMasterForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="TypeServiceForm.xaml">
       <SubType>Designer</SubType>

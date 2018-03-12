@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="ScheduleForm" Height="446.916" Width="562.804">
+        Title="ScheduleForm" Height="446.916" Width="562.804" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>

@@ -1,0 +1,50 @@
+﻿<Window x:Class="Salon.VisitActionForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Salon"
+        mc:Ignorable="d"
+        Title="Посещение" Height="267" Width="653.998" >
+    <Window.Resources>
+        <ResourceDictionary Source="Styles/BasicStyles.xaml" />
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel x:Name="Header" Style="{StaticResource header}">
+            <Label x:Name="HeaderInner" Style="{StaticResource caption}"/>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource bottom}">
+            <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+            <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+        </StackPanel>
+        <WrapPanel>
+            <StackPanel>
+                <Label Content="Клиент"  Style="{StaticResource signature}"></Label>
+                <ComboBox x:Name="ClientCmbBox" Width="305" ItemsSource="{Binding ComboItems}">
+                </ComboBox>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Сотрудник"  Style="{StaticResource signature}"></Label>
+                <ComboBox x:Name="WorkerCmbBox" Width="305" ItemsSource="{Binding ComboItems}">
+                </ComboBox>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Дата посещения"  Style="{StaticResource signature}"></Label>
+                <DatePicker x:Name="DateDatePicker"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Начальное время"  Style="{StaticResource signature}"></Label>
+                <TextBox x:Name="TimeSBox" Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Конечное время"  Style="{StaticResource signature}"></Label>
+                <TextBox x:Name="TimeEBox" Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Статус"  Style="{StaticResource signature}"></Label>
+                <ComboBox x:Name="StatusCmbBox" Width="305" ItemsSource="{Binding ComboItems}">
+                </ComboBox>
+            </StackPanel>
+        </WrapPanel>
+    </DockPanel>
+</Window>

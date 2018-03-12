@@ -5,23 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="ScheduleForm" Height="325.424" Width="495.116">
+        Title="ScheduleForm" Height="446.916" Width="562.804">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
     <DockPanel>
-        <WrapPanel Height="294" VerticalAlignment="Top" Width="176">
-            <StackPanel Height="270" Width="394">
-                <Label Content="Мастер" Margin="0,0,49,0"/>
+        <WrapPanel Width="180">
+            <StackPanel Width="181" Height="412">
+                <Label Content="Мастер" Margin="0,0,0,0" Height="22"/>
                 <ComboBox Margin="0,0,-20,0" Width="120" HorizontalAlignment="Left"/>
                 <Label Content="Тип мастера" Margin="0,0,22,0"/>
                 <ComboBox Margin="0" HorizontalAlignment="Left" Width="120"/>
-                <Calendar Margin="0,0,282,0"/>
-                <StackPanel Height="100" Width="100"/>
+                <Calendar HorizontalAlignment="Left" Width="176"/>
+                <TextBox Height="23" Margin="0" TextWrapping="Wrap" Text="От"/>
+                <TextBox Height="23" Margin="0" TextWrapping="Wrap" Text="До"/>
+                <Button Content="Сохранить" Margin="0"/>
+                <Button Content="Закрыть" Margin="0"/>
             </StackPanel>
         </WrapPanel>
-        <WrapPanel Height="294" VerticalAlignment="Top" Width="172">
-            <DataGrid Height="100" Margin="0" Width="100"/>
+        <WrapPanel Height="406" VerticalAlignment="Top" Width="371" HorizontalAlignment="Left">
+            <DataGrid Height="380" Margin="0" Width="354" Background="#FF484C65"/>
         </WrapPanel>
     </DockPanel>
 </Window>

@@ -43,50 +43,41 @@ namespace Salon
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
-            if (
-                SurnameBox.Validate(true) &&
-                NameBox.Validate(true) &&
-                PatronymicBox.Validate(true) &&
-                DBirthDatePicker.Validate(true) &&
-                PhoneBox.Validate(true) &&
-                GenderCmbBox.Validate(true) &&
-                DiscountBox.Validate(false)
-            )
-            {
-                switch (_state)
-                {
-                    case FormState.Edit:
-                        DBClient.EditClient(
-                            _currentDataItem.Rows[0]["id"].ToString(), 
-                            SurnameBox.Text, 
-                            NameBox.Text, 
-                            PatronymicBox.Text, 
-                            DBirthDatePicker.DisplayDate.ToString(), 
-                            PhoneBox.Text,
-                            ((ComboBoxItem)GenderCmbBox.SelectedValue).Content.ToString() == "Мужской" ? "1" : "0",
-                            DiscountBox.Text
-                        );
-                        break;
-                    case FormState.Add:
-                        DBClient.AddClient(
-                            SurnameBox.Text,
-                            NameBox.Text,
-                            PatronymicBox.Text,
-                            DBirthDatePicker.DisplayDate.ToString(),
-                            PhoneBox.Text,
-                            ((ComboBoxItem)GenderCmbBox.SelectedValue).Content.ToString() == "Мужской" ? "1" : "0",
-                            DiscountBox.Text
-                        );
-                        break;
-                }
-
-                _callback();
-            }
-            else
+            if (!SurnameBox.Validate(true) || !NameBox.Validate(true) || !PatronymicBox.Validate(true) ||
+                !DBirthDatePicker.Validate(true) || !PhoneBox.Validate(true) || !GenderCmbBox.Validate(true) ||
+                !DiscountBox.Validate(false))
             {
                 return;
             }
 
+            switch (_state)
+            {
+                case FormState.Edit:
+                    DBClient.EditClient(
+                        _currentDataItem.Rows[0]["id"].ToString(),
+                        SurnameBox.Text,
+                        NameBox.Text,
+                        PatronymicBox.Text,
+                        DBirthDatePicker.DisplayDate.ToString(),
+                        PhoneBox.Text,
+                        ((ComboBoxItem) GenderCmbBox.SelectedValue).Content.ToString() == "Мужской" ? "1" : "0",
+                        DiscountBox.Text
+                    );
+                    break;
+                case FormState.Add:
+                    DBClient.AddClient(
+                        SurnameBox.Text,
+                        NameBox.Text,
+                        PatronymicBox.Text,
+                        DBirthDatePicker.DisplayDate.ToString(),
+                        PhoneBox.Text,
+                        ((ComboBoxItem) GenderCmbBox.SelectedValue).Content.ToString() == "Мужской" ? "1" : "0",
+                        DiscountBox.Text
+                    );
+                    break;
+            }
+
+            _callback();
             this.Close();
         }
 

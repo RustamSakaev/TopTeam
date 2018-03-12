@@ -24,29 +24,28 @@ namespace Salon
             switch (state)
             {
                 case FormState.Edit:
-                    this.Title = "Редактирование способа оплаты";
+                    HeaderInner.Content = "Редактирование способа оплаты";
                     _currentDataItem = DBPaymentMethod.GetPaymentMethod(editId);
                     NameBox.Text = _currentDataItem.Rows[0]["Способ оплаты"].ToString();
                     break;
                 case FormState.Add:
-                    this.Title = "Добавление способа оплаты";
+                    HeaderInner.Content = "Добавление способа оплаты";
                     break;
             }
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
-            if (NameBox.Validate(true))
+            if (!NameBox.Validate(true)) return;
+
+            switch (_state)
             {
-                switch (_state)
-                {
-                    case FormState.Edit:
-                        DBPaymentMethod.EditPaymentMethod(_currentDataItem.Rows[0]["id"].ToString(), NameBox.Text);
-                        break;
-                    case FormState.Add:
-                        DBPaymentMethod.AddPaymentMethod(NameBox.Text);
-                        break;
-                }    
+                case FormState.Edit:
+                    DBPaymentMethod.EditPaymentMethod(_currentDataItem.Rows[0]["id"].ToString(), NameBox.Text);
+                    break;
+                case FormState.Add:
+                    DBPaymentMethod.AddPaymentMethod(NameBox.Text);
+                    break;
             }
 
             _callback();

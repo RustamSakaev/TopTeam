@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -51,17 +52,34 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var form = new BankCardActionForm(new Action(() => { CurrentFormData = DBBankCard.GetBankCards(); }), FormState.Add);
+            form.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
+            var idx = ((DataView)BankCardGrid.DataContext).Table.Columns.IndexOf("id");
 
+            if (idx == -1) return;
+
+            var id = ((DataRowView)BankCardGrid.SelectedItem)?.Row[idx].ToString();
+
+            if (id is null) return;
+
+            var form = new BankCardActionForm(new Action(() => { CurrentFormData = DBBankCard.GetBankCards(); }), FormState.Edit, id);
+            form.ShowDialog();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            var idx = ((DataView)BankCardGrid.DataContext).Table.Columns.IndexOf("id");
 
+            foreach (DataRowView selectedItem in BankCardGrid.SelectedItems)
+            {
+                DBBankCard.DeleteBankCard(selectedItem.Row[idx].ToString());
+            }
+
+            CurrentFormData = DBBankCard.GetBankCards();
         }
 
         private void BankCardGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)

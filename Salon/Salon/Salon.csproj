@@ -74,6 +74,9 @@
     <Compile Include="AddTariffForm.xaml.cs">
       <DependentUpon>AddTariffForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddTypeMaster.xaml.cs">
+      <DependentUpon>AddTypeMaster.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddTypeMasterService1.xaml.cs">
       <DependentUpon>AddTypeMasterService1.xaml</DependentUpon>
     </Compile>
@@ -213,6 +216,10 @@
     <Page Include="AddTariffForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTypeMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="AddTypeMasterService1.xaml">
       <Generator>MSBuild:Compile</Generator>

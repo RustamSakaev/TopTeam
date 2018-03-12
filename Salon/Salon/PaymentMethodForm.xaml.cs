@@ -39,7 +39,9 @@ namespace Salon
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             var idx = ((DataTable) PaymentMethodGrid.DataContext).Columns.IndexOf("id");
-            var id = ((DataRowView) PaymentMethodGrid.SelectedItem).Row[idx].ToString();
+            var id = ((DataRowView) PaymentMethodGrid.SelectedItem)?.Row[idx].ToString();
+
+            if (id is null) return;
 
             var form = new PaymentMethodActionForm(new Action(() => { CurrentFormData = DBPaymentMethod.GetPaymentMethods(); }), FormState.Edit, id);
             form.ShowDialog();

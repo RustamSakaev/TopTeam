@@ -11,7 +11,7 @@ namespace Salon
     /// </summary>
     public partial class PaymentMethodActionForm : Window
     {
-        private readonly DataTable _currentItemData;
+        private readonly DataTable _currentDataItem;
         private readonly FormState _state;
         private readonly Action _callback;
 
@@ -25,8 +25,8 @@ namespace Salon
             {
                 case FormState.Edit:
                     this.Title = "Редактирование способа оплаты";
-                    _currentItemData = DBPaymentMethod.GetPaymentMethod(editId);
-                    NameBox.Text = _currentItemData.Rows[0]["Способ оплаты"].ToString();
+                    _currentDataItem = DBPaymentMethod.GetPaymentMethod(editId);
+                    NameBox.Text = _currentDataItem.Rows[0]["Способ оплаты"].ToString();
                     break;
                 case FormState.Add:
                     this.Title = "Добавление способа оплаты";
@@ -41,7 +41,7 @@ namespace Salon
                 switch (_state)
                 {
                     case FormState.Edit:
-                        DBPaymentMethod.EditPaymentMethod(_currentItemData.Rows[0]["id"].ToString(), NameBox.Text);
+                        DBPaymentMethod.EditPaymentMethod(_currentDataItem.Rows[0]["id"].ToString(), NameBox.Text);
                         break;
                     case FormState.Add:
                         DBPaymentMethod.AddPaymentMethod(NameBox.Text);

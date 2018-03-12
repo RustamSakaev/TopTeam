@@ -43,7 +43,15 @@ namespace Salon
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
-            if (NameBox.Validate(true))
+            if (
+                SurnameBox.Validate(true) &&
+                NameBox.Validate(true) &&
+                PatronymicBox.Validate(true) &&
+                DBirthDatePicker.Validate(true) &&
+                PhoneBox.Validate(true) &&
+                GenderCmbBox.Validate(true) &&
+                DiscountBox.Validate(false)
+            )
             {
                 switch (_state)
                 {
@@ -71,9 +79,14 @@ namespace Salon
                         );
                         break;
                 }
+
+                _callback();
+            }
+            else
+            {
+                return;
             }
 
-            _callback();
             this.Close();
         }
 

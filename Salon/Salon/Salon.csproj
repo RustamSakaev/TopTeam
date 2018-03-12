@@ -59,12 +59,19 @@
     <Compile Include="AddEditMasterPage.xaml.cs">
       <DependentUpon>AddEditMasterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BankCardActionForm.xaml.cs">
+      <DependentUpon>BankCardActionForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankCardForm.xaml.cs">
+      <DependentUpon>BankCardForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BillForm.xaml.cs">
       <DependentUpon>BillForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="ClientActionForm.xaml.cs">
       <DependentUpon>ClientActionForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Database\DBBankCard.cs" />
     <Compile Include="Database\DBBill.cs" />
     <Compile Include="Database\DBClient.cs" />
     <Compile Include="Database\DBCore.cs" />
@@ -115,18 +122,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AuthorizationForm.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Authorization.xaml.cs">
-      <DependentUpon>AuthorizationForm.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="BankCardActionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankCardForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ClientActionForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

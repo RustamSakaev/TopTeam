@@ -10,7 +10,7 @@ namespace Salon
     /// </summary>
     public partial class BillForm : Window
     {
-        private readonly string[] hiddenFields = {"id"};
+        private readonly string[] _hiddenFields = {"id"};
         private DataTable _currentFormData = new DataTable();
         private string _currentFilter = "";
 
@@ -75,7 +75,7 @@ namespace Salon
 
         private void BillGrid_AutoGeneratingColumn(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (!hiddenFields?.Contains(e.PropertyName) == true) return;
+            if (!_hiddenFields?.Contains(e.PropertyName) == true) return;
 
             e.Cancel = true;
         }

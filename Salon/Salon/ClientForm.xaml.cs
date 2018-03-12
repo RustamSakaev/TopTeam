@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Salon
 {
@@ -20,7 +11,7 @@ namespace Salon
     /// </summary>
     public partial class ClientForm : Window
     {
-        private readonly string[] hiddenFields = { "id" };
+        private readonly string[] _hiddenFields = { "id" };
         private DataTable _currentFormData = new DataTable();
         private string _currentFilter = "";
 
@@ -90,7 +81,7 @@ namespace Salon
 
         private void ClientGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (!hiddenFields?.Contains(e.PropertyName) == true) return;
+            if (!_hiddenFields?.Contains(e.PropertyName) == true) return;
 
             e.Cancel = true;
         }

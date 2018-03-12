@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows;
@@ -11,7 +10,7 @@ namespace Salon
     /// </summary>
     public partial class PaymentMethodForm : Window
     {
-        private readonly string[] hiddenFields = { "id" };
+        private readonly string[] _hiddenFields = { "id" };
         private DataTable _currentFormData = new DataTable();
 
         private DataTable CurrentFormData
@@ -61,7 +60,7 @@ namespace Salon
 
         private void PaymentMethodGrid_AutoGeneratingColumn(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (!hiddenFields?.Contains(e.PropertyName) == true) return;
+            if (!_hiddenFields?.Contains(e.PropertyName) == true) return;
 
             e.Cancel = true;
         }

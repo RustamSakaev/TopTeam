@@ -91,5 +91,11 @@ namespace Salon
             Gruppa_Uslug gruppaUslug = new Gruppa_Uslug();
             gruppaUslug.ShowDialog();
         }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            var form = new BankCardForm();
+            form.ShowDialog();
+        }
     }
 }

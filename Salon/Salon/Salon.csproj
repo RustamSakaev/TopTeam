@@ -151,8 +151,8 @@
     <Compile Include="TypeServiceForm.xaml.cs">
       <DependentUpon>TypeServiceForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Users.xaml.cs">
-      <DependentUpon>Users.xaml</DependentUpon>
+    <Compile Include="UserRoleForm.xaml.cs">
+      <DependentUpon>UserRoleForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="VisitForm.xaml.cs">
       <DependentUpon>VisitForm.xaml</DependentUpon>
@@ -292,7 +292,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Users.xaml">
+    <Page Include="UserRoleForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:Salon"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Клиенты" Height="341.917" Width="658.917" Loaded="Window_Loaded" >
+        Title="Клиенты" Height="341.917" Width="658.917" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
     <DockPanel>
         <StackPanel x:Name="Header" Style="{StaticResource header}">
-            <Label Content="Таблица 'Клиент'" Style="{StaticResource caption}"/>
+            <Label Content="Таблица 'Клиенты'" Style="{StaticResource caption}"/>
         </StackPanel>
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
             <StackPanel x:Name="SearchStack" >

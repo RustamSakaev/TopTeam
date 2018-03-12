@@ -39,7 +39,7 @@ namespace Salon
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            ChangePass(textBox.Text,textBox1.Text);
+            ChangePass(OldPassBox.Text,NewPassBox.Text);
         }
 
         public void ChangePass(string oldP,string newP)

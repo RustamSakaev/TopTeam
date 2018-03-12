@@ -115,8 +115,8 @@
     <Compile Include="GroupServiceForm.xaml.cs">
       <DependentUpon>GroupServiceForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Kabinet.xaml.cs">
-      <DependentUpon>Kabinet.xaml</DependentUpon>
+    <Compile Include="KabinetForm.xaml.cs">
+      <DependentUpon>KabinetForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="KindServiceForm.xaml.cs">
       <DependentUpon>KindServiceForm.xaml</DependentUpon>
@@ -240,7 +240,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Kabinet.xaml">
+    <Page Include="KabinetForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

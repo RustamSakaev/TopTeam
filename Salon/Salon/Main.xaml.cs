@@ -98,7 +98,14 @@ namespace Salon
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
-            
+            WorkerForm formWorker = new WorkerForm();
+            formWorker.ShowDialog();
+        }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            ScheduleForm formSchedule = new ScheduleForm();
+            formSchedule.ShowDialog();
         }
     }
 }

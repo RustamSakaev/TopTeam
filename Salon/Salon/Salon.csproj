@@ -136,6 +136,9 @@
     <Compile Include="ProvidingServiceForm.xaml.cs">
       <DependentUpon>ProvidingServiceForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ScheduleForm.xaml.cs">
+      <DependentUpon>ScheduleForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ServiceForm.xaml.cs">
       <DependentUpon>ServiceForm.xaml</DependentUpon>
     </Compile>
@@ -262,6 +265,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ProvidingServiceForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScheduleForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

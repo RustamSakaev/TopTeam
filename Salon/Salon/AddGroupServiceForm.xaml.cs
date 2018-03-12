@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace Salon
 {
     /// <summary>
-    /// Логика взаимодействия для AddGroupServiceForm.xaml
+    /// Interaction logic for AddGroupServiceForm.xaml
     /// </summary>
     public partial class AddGroupServiceForm : Window
     {

@@ -59,6 +59,9 @@
     <Compile Include="AddEditMasterPage.xaml.cs">
       <DependentUpon>AddEditMasterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddGroupServiceForm.xaml.cs">
+      <DependentUpon>AddGroupServiceForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddKindServiceForm.xaml.cs">
       <DependentUpon>AddKindServiceForm.xaml</DependentUpon>
     </Compile>

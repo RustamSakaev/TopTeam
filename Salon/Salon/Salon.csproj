@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Salon.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -165,6 +168,9 @@
     </Compile>
     <Compile Include="VisitForm.xaml.cs">
       <DependentUpon>VisitForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerActionForm.xaml.cs">
+      <DependentUpon>WorkerActionForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="WorkerForm.xaml.cs">
       <DependentUpon>WorkerForm.xaml</DependentUpon>
@@ -316,6 +322,10 @@
     <Page Include="VisitForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorkerActionForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="WorkerForm.xaml">
       <SubType>Designer</SubType>

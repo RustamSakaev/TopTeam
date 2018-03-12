@@ -10,7 +10,7 @@ namespace Salon
             return DBCore.GetData($@"
                 SELECT 
                     ID_Worker as id,
-                    CONCAT_WS(' ', Surname, Name, Patronymic) as ФИО,
+                    Surname as ФИО,
                     Surname as Фамилия, 
                     Name as Имя, 
                     Patronymic as Отчество,

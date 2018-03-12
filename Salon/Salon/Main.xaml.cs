@@ -26,7 +26,7 @@ namespace Salon
         {
             InitializeComponent();
 
-            DBCore.Init("DESKTOP-D3KKSHS\\SQLEXPRESS");
+            DBCore.Init(@"DESKTOP-KTDJ5PD\SQLEXPRESS");
 
             var result = DBBill.GetBills();
         }
@@ -204,7 +204,8 @@ namespace Salon
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
-            
+            WorkerForm formWorker = new WorkerForm();
+            formWorker.ShowDialog();
         }
 
         private void MenuItem_Click_4(object sender, RoutedEventArgs e)

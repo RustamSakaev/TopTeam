@@ -12,10 +12,7 @@ namespace Salon.Extensions
 
         public static bool Validate(this DatePicker dp, bool isRequired)
         {
-            //не компилируется в таком варианте у многих
-            //return !(isRequired && dp.SelectedDate is null);
-
-            return !(isRequired && dp.SelectedDate == null);
+            return !(isRequired && dp.SelectedDate is null);
         }
 
         public static bool Validate(this ComboBox cb, bool isRequired)

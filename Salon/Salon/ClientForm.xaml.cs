@@ -17,23 +17,13 @@ namespace Salon
 
         private DataTable CurrentFormData
         {
-            //не компилируется в таком варианте у многих
-            //get => _currentFormData;
-            //set { _currentFormData = value; ClientGrid.DataContext = _currentFormData.DefaultView;}
-
-            
-            get { return _currentFormData; }
+            get => _currentFormData;
             set { _currentFormData = value; ClientGrid.DataContext = _currentFormData.DefaultView; }
         }
 
         private string CurrentFilter
         {
-            //не компилируется в таком варианте у многих
-            //get => _currentFilter;
-            //set { _currentFilter = value; DisplayDataWithFilter();}
-
-
-            get { return _currentFilter; }
+            get => _currentFilter;
             set { _currentFilter = value; DisplayDataWithFilter(); }
         }
 
@@ -71,7 +61,7 @@ namespace Salon
             var idx = ((DataView)ClientGrid.DataContext).Table.Columns.IndexOf("id");
             var id = ((DataRowView)ClientGrid.SelectedItem)?.Row[idx].ToString();
 
-            if (id == null) return;
+            if (id is null) return;
 
             var form = new ClientActionForm(new Action(() => { CurrentFormData = DBClient.GetClients(); }), FormState.Edit, id);
             form.ShowDialog();

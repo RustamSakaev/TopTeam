@@ -27,7 +27,7 @@
             <Button x:Name="DeleteButton"  Content="Удалить"/>
         </StackPanel>
         <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="GroupServiceGrid"></DataGrid>
+            <DataGrid x:Name="StatusGrid"></DataGrid>
         </StackPanel>
     </DockPanel>
 </Window>

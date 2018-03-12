@@ -15,7 +15,6 @@ namespace Salon
 
         private DataTable CurrentFormData
         {
-
             get { return _currentFormData; }
             set { _currentFormData = value; PaymentMethodGrid.DataContext = _currentFormData; }
         }
@@ -41,10 +40,7 @@ namespace Salon
             var idx = ((DataTable) PaymentMethodGrid.DataContext).Columns.IndexOf("id");
             var id = ((DataRowView) PaymentMethodGrid.SelectedItem)?.Row[idx].ToString();
 
-            //не компилируется в таком варианте у многих
-            //if (id is null) return;
-
-            if (id == null) return;
+            if (id is null) return;
 
             var form = new PaymentMethodActionForm(new Action(() => { CurrentFormData = DBPaymentMethod.GetPaymentMethods(); }), FormState.Edit, id);
             form.ShowDialog();

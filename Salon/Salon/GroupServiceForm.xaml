@@ -11,16 +11,15 @@
     </Window.Resources>
     <DockPanel>
         <StackPanel x:Name="Header" Style="{StaticResource header}">
-            <Label Content="Таблица 'ГруппаУслуг'" Style="{StaticResource caption}"/>
+            <Label Content="Таблица 'Группа услуг'" Style="{StaticResource caption}"/>
         </StackPanel>
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
             <StackPanel x:Name="SearchStack" >
                 <Label Content="Поиск:" Style="{StaticResource signature}"/>
                 <WrapPanel>
-                    <TextBox x:Name="SearchBox" Width="300"/>
+                    <TextBox x:Name="SearchBox" Width="400"/>
                 </WrapPanel>
             </StackPanel>
-
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="AddButton" Content="Добавить"/>
@@ -31,4 +30,5 @@
             <DataGrid x:Name="StatusGrid"></DataGrid>
         </StackPanel>
     </DockPanel>
+</Window>
 </Window>

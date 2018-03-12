@@ -1,16 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Salon.Extensions;
 
 namespace Salon
@@ -20,33 +11,50 @@ namespace Salon
     /// </summary>
     public partial class PaymentMethodActionForm : Window
     {
-        private Action callback;
+        private readonly DataTable _currentDataItem;
+        private readonly FormState _state;
+        private readonly Action _callback;
 
-        public PaymentMethodActionForm(Action cb, FormState state)
+        public PaymentMethodActionForm(Action cb, FormState state, string editId = null)
         {
             InitializeComponent();
 
-            callback = cb;
-
+            _callback = cb;
+            _state = state;
             switch (state)
             {
                 case FormState.Edit:
-                    this.Title = "Редактирование способа оплаты";
+                    HeaderInner.Content = "Редактирование способа оплаты";
+                    _currentDataItem = DBPaymentMethod.GetPaymentMethod(editId);
+                    NameBox.Text = _currentDataItem.Rows[0]["Способ оплаты"].ToString();
                     break;
                 case FormState.Add:
-                    this.Title = "Добавление способа оплаты";
+                    HeaderInner.Content = "Добавление способа оплаты";
                     break;
             }
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
-            callback();
+            if (!NameBox.Validate(true)) return;
+
+            switch (_state)
+            {
+                case FormState.Edit:
+                    DBPaymentMethod.EditPaymentMethod(_currentDataItem.Rows[0]["id"].ToString(), NameBox.Text);
+                    break;
+                case FormState.Add:
+                    DBPaymentMethod.AddPaymentMethod(NameBox.Text);
+                    break;
+            }
+
+            _callback();
+            this.Close();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }

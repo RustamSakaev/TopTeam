@@ -88,6 +88,7 @@
     </Compile>
     <Compile Include="Database\DBBankCard.cs" />
     <Compile Include="Database\DBBill.cs" />
+    <Compile Include="Database\DBStatus.cs" />
     <Compile Include="Database\DBWorker.cs" />
     <Compile Include="Database\DBClient.cs" />
     <Compile Include="Database\DBCore.cs" />
@@ -146,6 +147,9 @@
     </Compile>
     <Compile Include="ServiceForm.xaml.cs">
       <DependentUpon>ServiceForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StatusActionForm.xaml.cs">
+      <DependentUpon>StatusActionForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="StatusForm.xaml.cs">
       <DependentUpon>StatusForm.xaml</DependentUpon>
@@ -282,6 +286,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ServiceForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StatusActionForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

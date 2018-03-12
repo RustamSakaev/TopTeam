@@ -26,25 +26,10 @@
                     <WrapPanel DockPanel.Dock="Top">
                         <StackPanel Margin="5 0 5 0">
                             <Label Style="{StaticResource signature}">ФИО:</Label>
-                            <TextBox x:Name="FioBox" Width="200"></TextBox>
-                        </StackPanel>
-                        <StackPanel Margin="5 0 5 0">
-                            <Label Style="{StaticResource signature}">Должность:</Label>
-                            <ComboBox x:Name="PostCmbBox"  Width="150">
-                                <ComboBoxItem IsSelected="True">
-                                    <StackPanel>
-                                        <TextBlock>cats.jpg</TextBlock>
-                                    </StackPanel>
-                                </ComboBoxItem>
-                                <StackPanel>
-                                    <TextBlock>windowcat.jpg</TextBlock>
-                                </StackPanel>
-                                <StackPanel>
-                                    <TextBlock>234.jpg</TextBlock>
-                                </StackPanel>
-                            </ComboBox>
-                        </StackPanel>
-                        <CheckBox x:Name="KrasavaChkBox" IsChecked="False" Content="Красава" />
+                            <TextBox x:Name="FullName" Width="200"></TextBox>
+                        </StackPanel>                        
+                        <CheckBox x:Name="MaleGenderChkBox" IsChecked="False" Content="М" />
+                        <CheckBox x:Name="FemaleGenderChkBox" IsChecked="False" Content="Ж" />
                     </WrapPanel>
                     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button x:Name="ClearButton" Width="80">Очистить</Button>

@@ -65,6 +65,12 @@
     <Compile Include="AddKindServiceForm.xaml.cs">
       <DependentUpon>AddKindServiceForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddServiceForm.xaml.cs">
+      <DependentUpon>AddServiceForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddTariffForm.xaml.cs">
+      <DependentUpon>AddTariffForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BankCardActionForm.xaml.cs">
       <DependentUpon>BankCardActionForm.xaml</DependentUpon>
     </Compile>
@@ -90,6 +96,12 @@
     </Compile>
     <Compile Include="EditKindServiceForm.xaml.cs">
       <DependentUpon>EditKindServiceForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditServiceForm.xaml.cs">
+      <DependentUpon>EditServiceForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditTariffForm.xaml.cs">
+      <DependentUpon>EditTariffForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditTypeServiceForm.xaml.cs">
       <DependentUpon>EditTypeServiceForm.xaml</DependentUpon>
@@ -157,6 +169,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddServiceForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTariffForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddTypeServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,6 +218,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditKindServiceForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditServiceForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditTariffForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

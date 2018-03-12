@@ -20,7 +20,7 @@
         <WrapPanel>
             <StackPanel>
                 <Label Content="Наименование"  Style="{StaticResource signature}"></Label>
-                <TextBox x:Name="FioBox" Width="200"></TextBox>
+                <TextBox x:Name="NameBox" Width="200"></TextBox>
             </StackPanel>
         </WrapPanel>
     </DockPanel>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows;
@@ -31,18 +32,29 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var form = new PaymentMethodActionForm(() => { CurrentFormData = DBPaymentMethod.GetPaymentMethods();}, FormState.Add);
+            var form = new PaymentMethodActionForm(new Action(() => { CurrentFormData = DBPaymentMethod.GetPaymentMethods();}), FormState.Add);
             form.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
+            var idx = ((DataTable) PaymentMethodGrid.DataContext).Columns.IndexOf("id");
+            var id = ((DataRowView) PaymentMethodGrid.SelectedItem).Row[idx].ToString();
 
+            var form = new PaymentMethodActionForm(new Action(() => { CurrentFormData = DBPaymentMethod.GetPaymentMethods(); }), FormState.Edit, id);
+            form.ShowDialog();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            var idx = ((DataTable) PaymentMethodGrid.DataContext).Columns.IndexOf("id");
 
+            foreach (DataRowView selectedItem in PaymentMethodGrid.SelectedItems)
+            {
+                DBPaymentMethod.DeletePaymentMethod(selectedItem.Row[idx].ToString());
+            }
+
+            CurrentFormData = DBPaymentMethod.GetPaymentMethods();
         }
 
         private void PaymentMethodGrid_AutoGeneratingColumn(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)

@@ -30,7 +30,7 @@ namespace Salon
                     SurnameBox.Text = _currentDataItem.Rows[0]["Фамилия"].ToString();
                     NameBox.Text = _currentDataItem.Rows[0]["Имя"].ToString();
                     PatronymicBox.Text = _currentDataItem.Rows[0]["Отчество"].ToString();
-                    DBirthDatePicker.DisplayDate = DateTime.Parse(_currentDataItem.Rows[0]["Дата рождения"].ToString());
+                    DBirthDatePicker.SelectedDate = DateTime.Parse(_currentDataItem.Rows[0]["Дата рождения"].ToString());
                     PhoneBox.Text = _currentDataItem.Rows[0]["Телефон"].ToString();
                     GenderCmbBox.SelectedIndex = _currentDataItem.Rows[0]["Пол"].ToString() == "Мужской" ? 0 : 1;
                     DiscountBox.Text = _currentDataItem.Rows[0]["Скидка"].ToString();

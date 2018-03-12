@@ -17,7 +17,7 @@
         <MenuItem Header="Справочники" >
             <MenuItem Header="Работа с сотрудниками">
                 <MenuItem Header="Список сотрудников" Click="MenuItem_Click_3"></MenuItem>
-                <MenuItem Header="График работы" Click="MenuItem_Click_4"></MenuItem>
+                <MenuItem Header="График работы" Click="MenuItem_Click_5"></MenuItem>
                 <MenuItem Header="Расчеты с сотрудниками"></MenuItem>
                 <MenuItem Header="Оказываемые услуги"></MenuItem>
                 <MenuItem Header="Выбор профиля сотрудника"></MenuItem>
@@ -28,7 +28,7 @@
                 <MenuItem Header="Счет" Click="MenuItem_Click"></MenuItem>
                 <MenuItem Header="Посещение" Click="Visit_Click"></MenuItem>
                 <MenuItem Header="Оказание услуг" Click="ProvidingService_Click"></MenuItem>
-                <MenuItem Header="Подарочные карты"></MenuItem>
+                <MenuItem Header="Подарочные карты" Click="MenuItem_Click_4"></MenuItem>
             </MenuItem>
             <MenuItem Header="Работа с клиентами">
                 <MenuItem Header="Список клиентов" Click="Client_Click"></MenuItem>
@@ -49,7 +49,12 @@
                 <MenuItem Header="Тип мастера"></MenuItem>              
             </MenuItem>
         </MenuItem>        
-        <MenuItem Header="Отчеты" ></MenuItem>
+        <MenuItem Header="Отчеты" >
+            <MenuItem Header="Данные по сотрудникам" Click="EmployeeData_Click"></MenuItem>
+            <MenuItem Header="Доходы по сотруднику" Click="EmployeeProfit_Click"></MenuItem>
+            <MenuItem Header="Количество обслуженных клиентов по сотруднику" Click="EmployeeClient_Click"></MenuItem>
+            <MenuItem Header="Отчет по видам услуг" Click="TypeService_Click"></MenuItem>
+        </MenuItem>
         <MenuItem Header="Прототип" Click="Prototype_Click"></MenuItem>
     </Menu>
 </Window>

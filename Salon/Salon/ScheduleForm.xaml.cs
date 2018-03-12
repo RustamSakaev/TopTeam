@@ -25,9 +25,31 @@ namespace Salon
             InitializeComponent();
         }
         DataTable _workers;
+        DataTable _typesMasters;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             _workers = DBWorker.GetWorkers();
+            _typesMasters = DBWorker.GetTypesOfMasters();
+            workerCmbBox.DataContext = _workers.DefaultView;
+            typeMasterCmbBox.DataContext = _typesMasters.DefaultView;
+            if (_workers.Rows.Count > 0)
+            {
+                workerCmbBox.SelectedIndex = 0;
+            }
+            if (_typesMasters.Rows.Count > 0)
+            {
+                typeMasterCmbBox.SelectedIndex = 0;
+            }
+        }
+
+        private void ComboBox_LayoutUpdated(object sender, EventArgs e)
+        {
+
+        }
+
+        private void workerChkBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

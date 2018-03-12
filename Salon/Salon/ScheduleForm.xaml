@@ -13,9 +13,9 @@
         <WrapPanel Width="180">
             <StackPanel Width="181" Height="412">
                 <Label Content="Мастер" Margin="0,0,0,0" Height="22"/>
-                <ComboBox Margin="0,0,-20,0" Width="120" HorizontalAlignment="Left"/>
+                <ComboBox x:Name="workerCmbBox" Margin="0" Width="120" ItemsSource="{Binding}" DisplayMemberPath="Фамилия" SelectedValuePath="id" HorizontalAlignment="Left" LayoutUpdated="ComboBox_LayoutUpdated" SelectionChanged="workerChkBox_SelectionChanged" Height="20"/>
                 <Label Content="Тип мастера" Margin="0,0,22,0"/>
-                <ComboBox Margin="0" HorizontalAlignment="Left" Width="120"/>
+                <ComboBox x:Name="typeMasterCmbBox" Margin="0" ItemsSource="{Binding}" DisplayMemberPath="Name" SelectedValuePath="ID" HorizontalAlignment="Left" Width="120" Height="20"/>
                 <Calendar HorizontalAlignment="Left" Width="176"/>
                 <TextBox Height="23" Margin="0" TextWrapping="Wrap" Text="От"/>
                 <TextBox Height="23" Margin="0" TextWrapping="Wrap" Text="До"/>

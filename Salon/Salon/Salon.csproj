@@ -90,7 +90,9 @@
     <Compile Include="Database\DBBill.cs" />
     <Compile Include="Database\DBClient.cs" />
     <Compile Include="Database\DBCore.cs" />
+    <Compile Include="Database\DBGiftCard.cs" />
     <Compile Include="Database\DBPaymentMethod.cs" />
+    <Compile Include="Database\DBWorker.cs" />
     <Compile Include="EditGroupServiceForm.xaml.cs">
       <DependentUpon>EditGroupServiceForm.xaml</DependentUpon>
     </Compile>
@@ -112,11 +114,17 @@
       <DependentUpon>ClientForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="GiftCardActionForm.xaml.cs">
+      <DependentUpon>GiftCardActionForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiftCardForm.xaml.cs">
+      <DependentUpon>GiftCardForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GroupServiceForm.xaml.cs">
       <DependentUpon>GroupServiceForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="KabinetForm.xaml.cs">
-      <DependentUpon>KabinetForm.xaml</DependentUpon>
+    <Compile Include="Kabinet.xaml.cs">
+      <DependentUpon>Kabinet.xaml</DependentUpon>
     </Compile>
     <Compile Include="KindServiceForm.xaml.cs">
       <DependentUpon>KindServiceForm.xaml</DependentUpon>
@@ -135,9 +143,6 @@
     </Compile>
     <Compile Include="ProvidingServiceForm.xaml.cs">
       <DependentUpon>ProvidingServiceForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ScheduleForm.xaml.cs">
-      <DependentUpon>ScheduleForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="ServiceForm.xaml.cs">
       <DependentUpon>ServiceForm.xaml</DependentUpon>
@@ -236,11 +241,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GiftCardActionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiftCardForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GroupServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="KabinetForm.xaml">
+    <Page Include="Kabinet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -265,10 +278,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ProvidingServiceForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ScheduleForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

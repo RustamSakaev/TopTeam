@@ -7,18 +7,18 @@ using System.Windows.Controls;
 namespace Salon
 {
     /// <summary>
-    /// Interaction logic for BankCardForm.xaml
+    /// Interaction logic for GiftCardForm.xaml
     /// </summary>
-    public partial class BankCardForm : Window
+    public partial class GiftCardForm : Window
     {
-        private readonly string[] _hiddenFields = { "id" };
+        private readonly string[] _hiddenFields = { "id", "clientid", "workerid" };
         private DataTable _currentFormData = new DataTable();
         private string _currentFilter = "";
 
         private DataTable CurrentFormData
         {
             get { return _currentFormData; }
-            set { _currentFormData = value; BankCardGrid.DataContext = _currentFormData; }
+            set { _currentFormData = value; GiftCardGrid.DataContext = _currentFormData; }
         }
 
         private string CurrentFilter
@@ -30,19 +30,19 @@ namespace Salon
         private void DisplayDataWithFilter()
         {
             var displayData = _currentFormData.DefaultView;
-            displayData.RowFilter = $"ФИО LIKE '%{_currentFilter}%'";
+            displayData.RowFilter = $"Клиент LIKE '%{_currentFilter}%' OR Сотрудник LIKE '%{_currentFilter}%'";
 
-            BankCardGrid.DataContext = displayData;
+            GiftCardGrid.DataContext = displayData;
         }
 
-        public BankCardForm(string cliendId = null)
+        public GiftCardForm()
         {
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            CurrentFormData = DBBankCard.GetBankCards();
+            CurrentFormData = DBGiftCard.GetGiftCards();
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -52,44 +52,44 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var form = new BankCardActionForm(new Action(() => { CurrentFormData = DBBankCard.GetBankCards(); }), FormState.Add);
+            var form = new GiftCardActionForm(new Action(() => { CurrentFormData = DBGiftCard.GetGiftCards(); }), FormState.Add);
             form.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            var idx = ((DataView)BankCardGrid.DataContext).Table.Columns.IndexOf("id");
+            var idx = ((DataView)GiftCardGrid.DataContext).Table.Columns.IndexOf("id");
 
             if (idx == -1) return;
 
-            var id = ((DataRowView)BankCardGrid.SelectedItem)?.Row[idx].ToString();
+            var id = ((DataRowView)GiftCardGrid.SelectedItem)?.Row[idx].ToString();
 
             if (id is null) return;
 
-            var form = new BankCardActionForm(new Action(() => { CurrentFormData = DBBankCard.GetBankCards(); }), FormState.Edit, id);
+            var form = new GiftCardActionForm(new Action(() => { CurrentFormData = DBGiftCard.GetGiftCards(); }), FormState.Edit, id);
             form.ShowDialog();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var idx = ((DataView)BankCardGrid.DataContext).Table.Columns.IndexOf("id");
+            var idx = ((DataView)GiftCardGrid.DataContext).Table.Columns.IndexOf("id");
 
-            foreach (DataRowView selectedItem in BankCardGrid.SelectedItems)
+            foreach (DataRowView selectedItem in GiftCardGrid.SelectedItems)
             {
-                DBBankCard.DeleteBankCard(selectedItem.Row[idx].ToString());
+                DBGiftCard.DeleteGiftCard(selectedItem.Row[idx].ToString());
             }
 
-            CurrentFormData = DBBankCard.GetBankCards();
+            CurrentFormData = DBGiftCard.GetGiftCards();
         }
 
-        private void BankCardGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        private void GiftCardGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             if (!_hiddenFields?.Contains(e.PropertyName) == true) return;
 
             e.Cancel = true;
         }
 
-        private void BankCardGrid_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void GiftCardGrid_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             DisplayDataWithFilter();
         }

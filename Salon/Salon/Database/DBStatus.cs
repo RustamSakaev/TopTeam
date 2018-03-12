@@ -1,39 +1,38 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
 
 namespace Salon
 {
-    internal static class DBPaymentMethod
+    internal static class DBStatus
     {
-        public static DataTable GetPaymentMethods()
+        public static DataTable GetStatuses()
         {
             return DBCore.GetData($@"
                 SELECT 
-                    ID_PaymentMethod as id,
-                    Name as [Способ оплаты] 
-                FROM PaymentMethod;"
+                    ID_Status as id,
+                    Name as [Статус посещения] 
+                FROM Status;"
             );
         }
 
-        public static DataTable GetPaymentMethod(string id)
+        public static DataTable GetStatus(string id)
         {
             return DBCore.GetData($@"
                 SELECT 
-                    ID_PaymentMethod as id,
-                    Name as [Способ оплаты]
-                FROM PaymentMethod
-                WHERE ID_PaymentMethod = {id};"
+                    ID_Status as id,
+                    Name as [Статус посещения] 
+                FROM Status
+                WHERE ID_Status = {id};"
             );
         }
-            
-        public static void DeletePaymentMethod(string id)
+
+        public static void DeleteStatus(string id)
         {
             var command = new SqlCommand
             {
                 CommandText = $@"
-                    DELETE FROM PaymentMethod
-                    WHERE ID_PaymentMethod = @id;"
+                    DELETE FROM Status
+                    WHERE ID_Status = @id;"
             };
 
             command.Parameters.AddWithValue("@id", id);
@@ -41,14 +40,14 @@ namespace Salon
             DBCore.ExecuteCommand(command);
         }
 
-        public static void EditPaymentMethod(string id, string name)
+        public static void EditStatus(string id, string name)
         {
             var command = new SqlCommand
             {
                 CommandText = $@"
-                    UPDATE PaymentMethod
+                    UPDATE Status
                     SET Name = @name
-                    WHERE ID_PaymentMethod = @id;"
+                    WHERE ID_Status = @id;"
             };
 
             command.Parameters.AddWithValue("@id", id);
@@ -57,12 +56,12 @@ namespace Salon
             DBCore.ExecuteCommand(command);
         }
 
-        public static void AddPaymentMethod(string name)
+        public static void AddStatus(string name)
         {
             var command = new SqlCommand
             {
                 CommandText = $@"
-                    INSERT INTO PaymentMethod (Name)
+                    INSERT INTO Status (Name)
                     VALUES (@name);"
             };
 

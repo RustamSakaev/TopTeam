@@ -27,8 +27,6 @@ namespace Salon
             InitializeComponent();
 
             DBCore.Init(@"DESKTOP-KTDJ5PD\SQLEXPRESS");
-
-            var result = DBBill.GetBills();
         }
 
         private void Prototype_Click(object sender, RoutedEventArgs e)
@@ -220,10 +218,20 @@ namespace Salon
             formSchedule.ShowDialog();
         }
 
-        private void MenuItem_Click_5(object sender, RoutedEventArgs e)
+        private void Visits_Click_5(object sender, RoutedEventArgs e)
         {
             var form = new VisitForm();
             form.ShowDialog();
+        }
+
+        private void KindService_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GroupService_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

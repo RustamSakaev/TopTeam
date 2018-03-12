@@ -1,0 +1,34 @@
+﻿<Window x:Class="Salon.KindService"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Salon"
+        mc:Ignorable="d"
+        Title="Вид услуги" Height="300" Width="500">
+    <Window.Resources>
+        <ResourceDictionary Source="Styles/BasicStyles.xaml" />
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel x:Name="Header" Style="{StaticResource header}">
+            <Label Content="Таблица 'ВидУслуги'" Style="{StaticResource caption}"/>
+        </StackPanel>
+        <StackPanel x:Name="Search" Style="{StaticResource search}" >
+            <StackPanel x:Name="SearchStack" >
+                <Label Content="Поиск:" Style="{StaticResource signature}"/>
+                <WrapPanel>
+                    <TextBox x:Name="SearchBox" Width="300"/>
+                </WrapPanel>
+            </StackPanel>
+
+        </StackPanel>
+        <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
+            <Button x:Name="AddButton" Content="Добавить"/>
+            <Button x:Name="EditButton" Content="Редактировать"/>
+            <Button x:Name="DeleteButton"  Content="Удалить"/>
+        </StackPanel>
+        <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
+            <DataGrid x:Name="StatusGrid"></DataGrid>
+        </StackPanel>
+    </DockPanel>
+</Window>

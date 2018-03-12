@@ -5,13 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Kabinet" Height="300" Width="300">
-    <Grid>
-        <TextBox x:Name="NewPassBox" HorizontalAlignment="Left" Height="23" Margin="42,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="OldPassBox" HorizontalAlignment="Left" Height="23" Margin="42,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="OkButton" Content="Изменить" HorizontalAlignment="Left" Margin="42,152,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <Label x:Name="label" Content="New Pass" HorizontalAlignment="Left" Margin="42,33,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Old Pass" HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
-
-    </Grid>
+        Title="Kabinet" Height="226.459" Width="300">
+    <Window.Resources>
+        <ResourceDictionary Source="Styles/BasicStyles.xaml" />
+    </Window.Resources>
+    <DockPanel Margin="0,0,0,-1">
+        <StackPanel DockPanel.Dock="Top"  Height="50"></StackPanel>
+        <StackPanel DockPanel.Dock="Top" Height="147" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel>
+                    <Label x:Name="label" Content="New Pass" Style="{StaticResource signature}"/>
+                    <TextBox x:Name="NewPassBox" Width="100"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label x:Name="label1" Content="Old Pass" Style="{StaticResource signature}"/>
+                    <TextBox x:Name="OldPassBox" Width="100"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="OkButton" Content="Изменить"  Width="120" Click="button_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
 </Window>

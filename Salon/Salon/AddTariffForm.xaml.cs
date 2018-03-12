@@ -23,5 +23,15 @@ namespace Salon
         {
             InitializeComponent();
         }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OKButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

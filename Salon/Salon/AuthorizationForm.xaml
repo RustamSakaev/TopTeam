@@ -5,16 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Авторизация" Height="276.773" Width="430.402" ResizeMode="CanMinimize">
+        Title="Авторизация" Height="161.273" Width="269.902" ResizeMode="NoResize" WindowStyle="None">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
-    <Grid>
-        <Button x:Name="LoginButton" Content="Войти" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="81" Click="button_Click" Height="26" TabIndex="3" RenderTransformOrigin="0.98,2.906" Margin="218,0,0,92"/>
-        <Button x:Name="RegistrButton" Content="Регистрация" HorizontalAlignment="Left" Margin="118,129,0,0" VerticalAlignment="Top" Width="81" Click="button1_Click" TabIndex="4"/>
-        <TextBox x:Name="LoginBox" HorizontalAlignment="Left" Height="23" Margin="67,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="1"/>
-        <TextBox x:Name="PassBox" HorizontalAlignment="Left" Height="Auto" Margin="218,74,0,151" TextWrapping="Wrap" Width="120" TabIndex="2"/>
-        <Label x:Name="LoginLable" Content="Логин" HorizontalAlignment="Left" Margin="67,0,0,169" Width="53" Height="26" VerticalAlignment="Bottom"/>
-        <Label x:Name="PassLable" Content="Пароль" HorizontalAlignment="Left" Margin="219,53,0,0" VerticalAlignment="Top" Height="26" Width="61" RenderTransformOrigin="-2,0.5"/>
-    </Grid>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top"  Height="25"></StackPanel>
+        <StackPanel DockPanel.Dock="Top" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel>
+                    <Label x:Name="LoginLable" Content="Логин" Style="{StaticResource signature}"/>
+                    <TextBox x:Name="LoginBox" Width="120" />
+                </StackPanel>
+                <StackPanel>
+                    <Label x:Name="PassLable" Content="Пароль" Style="{StaticResource signature}"/>
+                    <TextBox x:Name="PassBox" Width="120"   />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="LoginButton" Content="Войти" Width="80" Click="button_Click"/>
+                <Button x:Name="RegistrButton" Content="Регистрация" Width="80" Click="button1_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+    </DockPanel>
+
+
+
 </Window>

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Windows;
-using System.Windows.Controls;
 using Salon.Extensions;
 
 namespace Salon

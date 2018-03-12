@@ -42,8 +42,6 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var form = new WorkerActionForm(new Action(() => { CurrentFormData = DBClient.GetClients(); }), FormState.Add);
-            form.ShowDialog();
         }
     }
 }

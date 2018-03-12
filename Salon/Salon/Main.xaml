@@ -23,10 +23,9 @@
                 <MenuItem Header="Выбор профиля сотрудника"></MenuItem>
             </MenuItem>
             <MenuItem Header="Посещение и оплата">
-                <MenuItem Header="Посещение"></MenuItem>
+                <MenuItem Header="Посещение" Click="Visits_Click_5"></MenuItem>
                 <MenuItem Header="Оказание услуг"></MenuItem>
                 <MenuItem Header="Счет" Click="MenuItem_Click"></MenuItem>
-                <MenuItem Header="Посещение" Click="Visit_Click"></MenuItem>
                 <MenuItem Header="Оказание услуг" Click="ProvidingService_Click"></MenuItem>
                 <MenuItem Header="Подарочные карты" Click="MenuItem_Click_4"></MenuItem>
             </MenuItem>

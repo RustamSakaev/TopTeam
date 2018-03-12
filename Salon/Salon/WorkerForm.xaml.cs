@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Salon
 {
@@ -42,6 +43,37 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+
+        private void ExportButton_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application ObjExcel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbook ObjWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet ObjWorkSheet;
+            //Книга.
+            ObjWorkBook = ObjExcel.Workbooks.Add(System.Reflection.Missing.Value);
+            //Таблица.
+            ObjWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ObjWorkBook.Sheets[1];
+
+            //Запись
+            // column headings
+            for (var i = 0; i < _currentFormData.Columns.Count; i++)
+            {
+                ObjWorkSheet.Cells[1, i + 1] = _currentFormData.Columns[i].ColumnName;
+            }
+
+            for (var i = 0; i < _currentFormData.Rows.Count; i++)
+            {
+                // to do: format datetime values before printing
+                for (var j = 0; j < _currentFormData.Columns.Count; j++)
+                {
+                    ObjWorkSheet.Cells[i + 2, j + 1] = _currentFormData.Rows[i][j];
+                }
+            }
+
+            ObjExcel.Visible = true;
+            ObjExcel.UserControl = true;
         }
     }
 }

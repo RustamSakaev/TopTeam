@@ -26,6 +26,7 @@
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
             <Button x:Name="EditButton" Content="Редактировать"/>
             <Button x:Name="DeleteButton"  Content="Удалить"/>
+            <Button x:Name="ExportButton" Content="Экспорт в Excel" Click="ExportButton_Click"/>
         </StackPanel>
         <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
             <DataGrid x:Name="WorkersGrid" Height="323" ItemsSource="{Binding}" Background="#FF484C65"></DataGrid>

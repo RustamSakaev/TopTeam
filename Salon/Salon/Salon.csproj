@@ -68,6 +68,9 @@
     <Compile Include="Database\DBBill.cs" />
     <Compile Include="Database\DBCore.cs" />
     <Compile Include="Database\DBPaymentMethod.cs" />
+    <Compile Include="EditGroupServiceForm.xaml.cs">
+      <DependentUpon>EditGroupServiceForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Enums\FormState.cs" />
     <Compile Include="Enums\FormOpenAs.cs" />
     <Compile Include="ClientForm.xaml.cs">
@@ -144,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BillForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditGroupServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

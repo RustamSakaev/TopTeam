@@ -20,7 +20,7 @@
                 <WrapPanel Height="62">
                     <WrapPanel Height="32" Width="229">
                         <Label Content="С:  "/>
-                        <DatePicker Margin="0" Width="109"/>
+                        <DatePicker x:Name="fromDateDatePicker" Margin="0" Width="109"/>
                         <TextBox x:Name="sHTB" Height="24" Margin="0" TextWrapping="Wrap" Text="13" Width="30"/>
                         <TextBlock TextWrapping="Wrap" Text="ч."/>
                         <TextBox x:Name="sMTB" Height="24" Margin="0" TextWrapping="Wrap" Text="00" Width="30"/>
@@ -28,7 +28,7 @@
                     </WrapPanel>
                     <WrapPanel Height="28" Width="226">
                         <Label Content="До:"/>
-                        <DatePicker Margin="0" Width="107"/>
+                        <DatePicker x:Name="beforeDateDatePicker" Margin="0" Width="107"/>
                         <TextBox x:Name="dHTB" Height="24" Margin="0" TextWrapping="Wrap" Text="13" Width="29"/>
                         <TextBlock TextWrapping="Wrap" Text="ч."/>
                         <TextBox x:Name="dMTB" Height="24" Margin="0" TextWrapping="Wrap" Text="30" Width="30"/>

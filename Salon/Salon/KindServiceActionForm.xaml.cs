@@ -17,26 +17,30 @@ using System.Data.SqlClient;
 namespace Salon
 {
     /// <summary>
-    /// Логика взаимодействия для ServiceForm.xaml
+    /// Логика взаимодействия для KindServiceActionForm.xaml
     /// </summary>
-    public partial class ServiceForm : Window
+    public partial class KindServiceActionForm : Window
     {
-
-        public ServiceForm()
+        private readonly FormState _state;
+        public KindServiceActionForm(FormState state)
         {
             InitializeComponent();
+            _state = state;
+            switch (state)
+            {
+                case FormState.Edit:
+                    HeaderLabel.Content = "Редактирование вида услуги";
+                    break;
+                case FormState.Add:
+                    HeaderLabel.Content = "Добавление вида услуги";
+                    break;
+            }
         }
+
         public string Connection()
         {
-
             string conn = @"Data Source=LENOVO-PC;Initial Catalog=Salon;Integrated Security=True";
             return conn;
-        }
-        public void OnLoad(object sender, RoutedEventArgs e)
-        {
-            string str = "select Service.name as [Наименование], TypeService.Name as [Тип услуги], KindService.Name as [Вид услуги] from Service inner join KindService on Service.KindService_ID = KindService.ID_KindService inner join TypeService on Service.TypeService_ID = TypeService.ID_TypeService";
-            DataTable dt = DataTool(str);
-            ServiceGrid.ItemsSource = dt.DefaultView;
         }
         public DataTable DataTool(string query)
         {
@@ -65,18 +69,6 @@ namespace Salon
                 MessageBox.Show(ex.Message);
                 return dt;
             }
-        }
-
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            ServiceActionForm serv = new ServiceActionForm(FormState.Add);
-            serv.ShowDialog();
-        }
-
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            ServiceActionForm serv = new ServiceActionForm(FormState.Edit);
-            serv.ShowDialog();
         }
     }
 }

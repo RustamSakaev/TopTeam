@@ -25,7 +25,7 @@ namespace Salon
 
         private DataTable CurrentFormData
         {
-            get { return _currentFormData; }
+            get => _currentFormData;
             set { _currentFormData = value; WorkersGrid.DataContext = _currentFormData.DefaultView; }
         }
         public WorkerForm()

@@ -15,26 +15,21 @@ using System.Windows.Shapes;
 namespace Salon
 {
     /// <summary>
-    /// Логика взаимодействия для TypeServiceForm.xaml
+    /// Логика взаимодействия для AddKindServiceForm.xaml
     /// </summary>
-    public partial class TypeServiceForm : Window
+    public partial class AddKindServiceForm : Window
     {
-        public TypeServiceForm()
+        public AddKindServiceForm()
         {
             InitializeComponent();
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void OKButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void AddButton_Click_1(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

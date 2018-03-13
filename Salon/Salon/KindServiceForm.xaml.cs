@@ -26,14 +26,7 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            KindServiceActionForm kindserv = new KindServiceActionForm(FormState.Add);
-            kindserv.ShowDialog();
-        }
 
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            KindServiceActionForm kindserv = new KindServiceActionForm(FormState.Edit);
-            kindserv.ShowDialog();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
 
 namespace Salon
@@ -30,34 +29,6 @@ namespace Salon
                     Name as Name
                 FROM MasterType"
             );
-        }
-        public static DataTable GetSchedule()
-        {
-            return DBCore.GetData($@"
-                SELECT Worker.Name AS Мастер
-                    ,Date AS Дата
-                    ,TStart AS С
-                    ,TEnd AS По
-                FROM Schedule, Worker WHERE Worker.ID_Worker = Schedule.Worker_ID"
-            );
-        }
-        public static void AddScedule(string workerID, string date, string tstart, string tend, string busy = "1")
-        {
-            var command = new SqlCommand
-            {
-                CommandText = $@"
-                    INSERT INTO Schedule (Worker_ID, Date, TStart, TEnd, Busy)
-                    VALUES (@worker_ID, @date, @tStart, @tEnd, @busy);"
-            };
-
-            command.Parameters.AddWithValue("@worker_ID", workerID);
-            command.Parameters.AddWithValue("@date", date);
-            command.Parameters.AddWithValue("@tStart", tstart);
-            command.Parameters.AddWithValue("@tEnd", tend);
-            command.Parameters.AddWithValue("@busy", busy);
-            Console.WriteLine(command.ToString());
-
-            DBCore.ExecuteCommand(command);
         }
     }
 }

@@ -80,7 +80,7 @@ namespace Salon
 
             var id = ((DataRowView)VisitGrid.SelectedItem)?.Row[idx].ToString();
 
-            if (id is null) return;
+            if (id == null) return;
 
             var form = new VisitActionForm(new Action(() => { CurrentFormData = DBVisit.GetVisits(); ; }), FormState.Edit, id);
             form.ShowDialog();

@@ -17,29 +17,30 @@ using System.Data.SqlClient;
 namespace Salon
 {
     /// <summary>
-    /// Логика взаимодействия для AddServiceForm.xaml
+    /// Логика взаимодействия для KindServiceActionForm.xaml
     /// </summary>
-    public partial class AddServiceForm : Window
+    public partial class KindServiceActionForm : Window
     {
-        public AddServiceForm()
+        private readonly FormState _state;
+        public KindServiceActionForm(FormState state)
         {
             InitializeComponent();
+            _state = state;
+            switch (state)
+            {
+                case FormState.Edit:
+                    HeaderLabel.Content = "Редактирование вида услуги";
+                    break;
+                case FormState.Add:
+                    HeaderLabel.Content = "Добавление вида услуги";
+                    break;
+            }
         }
+
         public string Connection()
         {
-
             string conn = @"Data Source=LENOVO-PC;Initial Catalog=Salon;Integrated Security=True";
             return conn;
-        }
-        public void OnLoad(object sender, RoutedEventArgs e)
-        {
-            //комбобоксы
-            //string str = "select * from TypeService";
-            //DataTable dt = DataTool(str);
-            //TypeService_IDCmbBox.DataContext = dt.DefaultView;
-            //TypeService_IDCmbBox.DisplayMemberPath = "Name";
-            //TypeService_IDCmbBox.SelectedValuePath = "ID_TypeService";
-            //TypeService_IDCmbBox.SelectedIndex = 1;
         }
         public DataTable DataTool(string query)
         {

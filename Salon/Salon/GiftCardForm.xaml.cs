@@ -64,7 +64,7 @@ namespace Salon
 
             var id = ((DataRowView)GiftCardGrid.SelectedItem)?.Row[idx].ToString();
 
-            if (id is null) return;
+            if (id == null) return;
 
             var form = new GiftCardActionForm(new Action(() => { CurrentFormData = DBGiftCard.GetGiftCards(); }), FormState.Edit, id);
             form.ShowDialog();

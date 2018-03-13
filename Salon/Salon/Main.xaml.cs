@@ -233,11 +233,5 @@ namespace Salon
         {
 
         }
-
-        private void MenuItem_Click_6(object sender, RoutedEventArgs e)
-        {
-            var form = new BillForm();
-            form.ShowDialog();
-        }
     }
 }

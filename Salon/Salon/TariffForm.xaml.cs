@@ -34,17 +34,5 @@ namespace Salon
             SearchStack.Visibility = Visibility.Visible;
             FullSearchGroup.Visibility = Visibility.Collapsed;
         }
-
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            TariffActionForm tar = new TariffActionForm(FormState.Add);
-            tar.ShowDialog();
-        }
-
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            TariffActionForm tar = new TariffActionForm(FormState.Edit);
-            tar.ShowDialog();
-        }
     }
 }

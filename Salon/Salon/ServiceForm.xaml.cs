@@ -21,7 +21,6 @@ namespace Salon
     /// </summary>
     public partial class ServiceForm : Window
     {
-
         public ServiceForm()
         {
             InitializeComponent();
@@ -69,14 +68,8 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            ServiceActionForm serv = new ServiceActionForm(FormState.Add);
-            serv.ShowDialog();
-        }
-
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            ServiceActionForm serv = new ServiceActionForm(FormState.Edit);
-            serv.ShowDialog();
+            AddServiceForm add_service = new AddServiceForm();
+            add_service.ShowDialog();
         }
     }
 }

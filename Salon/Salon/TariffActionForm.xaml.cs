@@ -70,5 +70,15 @@ namespace Salon
                 return dt;
             }
         }
+
+        private void OKButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

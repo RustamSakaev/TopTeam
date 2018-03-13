@@ -83,6 +83,7 @@
     <Compile Include="Database\DBBankCard.cs" />
     <Compile Include="Database\DBBill.cs" />
     <Compile Include="Database\DBStatus.cs" />
+    <Compile Include="Database\DBUser.cs" />
     <Compile Include="Database\DBVisit.cs" />
     <Compile Include="Database\DBWorker.cs" />
     <Compile Include="Database\DBClient.cs" />

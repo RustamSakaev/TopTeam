@@ -53,7 +53,7 @@ namespace Salon
 
             var id = ((DataRowView)StatusGrid.SelectedItem)?.Row[idx].ToString();
 
-            if (id is null) return;
+            if (id == null) return;
 
             var form = new StatusActionForm(new Action(() => { CurrentFormData = DBStatus.GetStatuses(); ; }), FormState.Edit, id);
             form.ShowDialog();

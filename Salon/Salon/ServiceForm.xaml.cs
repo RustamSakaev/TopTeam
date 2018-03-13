@@ -71,5 +71,11 @@ namespace Salon
             AddServiceForm add_service = new AddServiceForm();
             add_service.ShowDialog();
         }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            EditServiceForm ed = new EditServiceForm();
+            ed.ShowDialog();
+        }
     }
 }

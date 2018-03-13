@@ -23,5 +23,17 @@ namespace Salon
         {
             InitializeComponent();
         }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddGroupServiceForm add = new AddGroupServiceForm();
+            add.ShowDialog();
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            EditGroupServiceForm ed = new EditGroupServiceForm();
+            ed.ShowDialog();
+        }
     }
 }

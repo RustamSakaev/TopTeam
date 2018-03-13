@@ -26,7 +26,14 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            AddKindServiceForm add = new AddKindServiceForm();
+            add.ShowDialog();
+        }
 
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            EditKindServiceForm ed = new EditKindServiceForm();
+            ed.ShowDialog();
         }
     }
 }

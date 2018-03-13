@@ -31,12 +31,14 @@ namespace Salon
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-
+            EditTypeServiceForm ed = new EditTypeServiceForm();
+            ed.ShowDialog();
         }
 
         private void AddButton_Click_1(object sender, RoutedEventArgs e)
         {
-
+            AddTypeServiceForm add = new AddTypeServiceForm();
+            add.ShowDialog();
         }
     }
 }

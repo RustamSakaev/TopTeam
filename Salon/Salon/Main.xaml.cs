@@ -26,7 +26,7 @@ namespace Salon
         {
             InitializeComponent();
 
-            DBCore.Init(@"DESKTOP-KTDJ5PD\SQLEXPRESS");
+            DBCore.Init(@"LENOVO-PC");
         }
 
         private void Prototype_Click(object sender, RoutedEventArgs e)
@@ -83,7 +83,8 @@ namespace Salon
 
         private void SpisokUslug_Click(object sender, RoutedEventArgs e)
         {
-          
+            ServiceForm serv = new ServiceForm();
+            serv.ShowDialog();
         }
 
         private void GruppiUslug_Click(object sender, RoutedEventArgs e)
@@ -226,12 +227,20 @@ namespace Salon
 
         private void KindService_Click(object sender, RoutedEventArgs e)
         {
-
+            KindService kind = new KindService();
+            kind.ShowDialog();
         }
 
         private void GroupService_Click(object sender, RoutedEventArgs e)
         {
+            GroupServiceForm gr = new GroupServiceForm();
+            gr.ShowDialog();
+        }
 
+        private void TypeServiceForm_Click(object sender, RoutedEventArgs e)
+        {
+            TypeServiceForm type = new TypeServiceForm();
+            type.ShowDialog();
         }
     }
 }

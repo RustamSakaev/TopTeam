@@ -62,11 +62,11 @@
     <Compile Include="AddEditMasterPage.xaml.cs">
       <DependentUpon>AddEditMasterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddTypeMaster.xaml.cs">
-      <DependentUpon>AddTypeMaster.xaml</DependentUpon>
+    <Compile Include="AddEditTypeMaster.xaml.cs">
+      <DependentUpon>AddEditTypeMaster.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddTypeMasterService1.xaml.cs">
-      <DependentUpon>AddTypeMasterService1.xaml</DependentUpon>
+    <Compile Include="AddEditTypeMasterService.xaml.cs">
+      <DependentUpon>AddEditTypeMasterService.xaml</DependentUpon>
     </Compile>
     <Compile Include="BankCardActionForm.xaml.cs">
       <DependentUpon>BankCardActionForm.xaml</DependentUpon>
@@ -186,11 +186,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddTypeMaster.xaml">
+    <Page Include="AddEditTypeMaster.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AddTypeMasterService1.xaml">
+    <Page Include="AddEditTypeMasterService.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -62,18 +62,6 @@
     <Compile Include="AddEditMasterPage.xaml.cs">
       <DependentUpon>AddEditMasterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddGroupServiceForm.xaml.cs">
-      <DependentUpon>AddGroupServiceForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AddKindServiceForm.xaml.cs">
-      <DependentUpon>AddKindServiceForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AddServiceForm.xaml.cs">
-      <DependentUpon>AddServiceForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AddTariffForm.xaml.cs">
-      <DependentUpon>AddTariffForm.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AddTypeMaster.xaml.cs">
       <DependentUpon>AddTypeMaster.xaml</DependentUpon>
     </Compile>
@@ -85,9 +73,6 @@
     </Compile>
     <Compile Include="BankCardForm.xaml.cs">
       <DependentUpon>BankCardForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AddTypeServiceForm.xaml.cs">
-      <DependentUpon>AddTypeServiceForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="BillForm.xaml.cs">
       <DependentUpon>BillForm.xaml</DependentUpon>
@@ -104,23 +89,8 @@
     <Compile Include="Database\DBCore.cs" />
     <Compile Include="Database\DBGiftCard.cs" />
     <Compile Include="Database\DBPaymentMethod.cs" />
-    <Compile Include="EditGroupServiceForm.xaml.cs">
-      <DependentUpon>EditGroupServiceForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="EditKindServiceForm.xaml.cs">
-      <DependentUpon>EditKindServiceForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="EditServiceForm.xaml.cs">
-      <DependentUpon>EditServiceForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="EditTariffForm.xaml.cs">
-      <DependentUpon>EditTariffForm.xaml</DependentUpon>
-    </Compile>
     <Compile Include="EditTypeMaster.xaml.cs">
       <DependentUpon>EditTypeMaster.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="EditTypeServiceForm.xaml.cs">
-      <DependentUpon>EditTypeServiceForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\FormState.cs" />
     <Compile Include="Enums\FormOpenAs.cs" />
@@ -134,11 +104,17 @@
     <Compile Include="GiftCardForm.xaml.cs">
       <DependentUpon>GiftCardForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GroupServiceActionForm.xaml.cs">
+      <DependentUpon>GroupServiceActionForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GroupServiceForm.xaml.cs">
       <DependentUpon>GroupServiceForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Kabinet.xaml.cs">
       <DependentUpon>Kabinet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KindServiceActionForm.xaml.cs">
+      <DependentUpon>KindServiceActionForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="KindServiceForm.xaml.cs">
       <DependentUpon>KindServiceForm.xaml</DependentUpon>
@@ -164,6 +140,9 @@
     <Compile Include="ScheduleForm.xaml.cs">
       <DependentUpon>ScheduleForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ServiceActionForm.xaml.cs">
+      <DependentUpon>ServiceActionForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ServiceForm.xaml.cs">
       <DependentUpon>ServiceForm.xaml</DependentUpon>
     </Compile>
@@ -173,11 +152,17 @@
     <Compile Include="StatusForm.xaml.cs">
       <DependentUpon>StatusForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TariffActionForm.xaml.cs">
+      <DependentUpon>TariffActionForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TariffForm.xaml.cs">
       <DependentUpon>TariffForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="TypeMasterForm.xaml.cs">
       <DependentUpon>TypeMasterForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TypeServiceActionForm.xaml.cs">
+      <DependentUpon>TypeServiceActionForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="TypeServiceForm.xaml.cs">
       <DependentUpon>TypeServiceForm.xaml</DependentUpon>
@@ -201,22 +186,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddGroupServiceForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AddKindServiceForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AddServiceForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AddTariffForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="AddTypeMaster.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -224,10 +193,6 @@
     <Page Include="AddTypeMasterService1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="AddTypeServiceForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AuthorizationForm.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -261,29 +226,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditGroupServiceForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="EditKindServiceForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="EditServiceForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="EditTariffForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="EditTypeMaster.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="EditTypeServiceForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GiftCardActionForm.xaml">
       <SubType>Designer</SubType>
@@ -293,11 +238,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GroupServiceActionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GroupServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Kabinet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KindServiceActionForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -333,6 +286,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ServiceActionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ServiceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -349,6 +306,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TariffActionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TariffForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -356,6 +317,10 @@
     <Page Include="TypeMasterForm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TypeServiceActionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TypeServiceForm.xaml">
       <SubType>Designer</SubType>
@@ -425,7 +390,7 @@
     <COMReference Include="Microsoft.Office.Interop.Excel">
       <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>1</VersionMajor>
-      <VersionMinor>8</VersionMinor>
+      <VersionMinor>6</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>

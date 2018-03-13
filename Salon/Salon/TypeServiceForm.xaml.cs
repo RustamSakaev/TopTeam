@@ -26,19 +26,19 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-
+            TypeServiceActionForm typeserv = new TypeServiceActionForm(FormState.Add);
+            typeserv.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            EditTypeServiceForm ed = new EditTypeServiceForm();
-            ed.ShowDialog();
+            TypeServiceActionForm typeserv = new TypeServiceActionForm(FormState.Edit);
+            typeserv.ShowDialog();
         }
 
         private void AddButton_Click_1(object sender, RoutedEventArgs e)
         {
-            AddTypeServiceForm add = new AddTypeServiceForm();
-            add.ShowDialog();
+
         }
     }
 }

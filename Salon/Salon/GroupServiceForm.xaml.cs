@@ -26,14 +26,14 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            AddGroupServiceForm add = new AddGroupServiceForm();
-            add.ShowDialog();
+            GroupServiceActionForm grserv = new GroupServiceActionForm(FormState.Add);
+            grserv.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            EditGroupServiceForm ed = new EditGroupServiceForm();
-            ed.ShowDialog();
+            GroupServiceActionForm grserv = new GroupServiceActionForm(FormState.Edit);
+            grserv.ShowDialog();
         }
     }
 }

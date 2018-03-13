@@ -37,14 +37,14 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            AddTariffForm add = new AddTariffForm();
-            add.ShowDialog();
+            TariffActionForm tar = new TariffActionForm(FormState.Add);
+            tar.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            EditTariffForm ed = new EditTariffForm();
-            ed.ShowDialog();
+            TariffActionForm tar = new TariffActionForm(FormState.Edit);
+            tar.ShowDialog();
         }
     }
 }

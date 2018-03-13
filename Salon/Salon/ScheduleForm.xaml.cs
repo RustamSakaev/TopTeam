@@ -31,7 +31,7 @@ namespace Salon
 
         private DataTable CurrentFormData
         {
-            get => _currentFormData;
+            get { return _currentFormData; }
             set { _currentFormData = value; ScheduleGrid.DataContext = _currentFormData.DefaultView; }
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)

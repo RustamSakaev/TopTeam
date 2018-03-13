@@ -55,6 +55,21 @@ namespace Salon
             _connection.ConnectionString = builder.ConnectionString;
             _connection.Open();
         }
+        public static void InitLogPass(string server, string login,string pass)
+        {
+            _connection = new SqlConnection();
+
+            var builder = new SqlConnectionStringBuilder
+            {
+                DataSource = server,
+                InitialCatalog = "Salon",
+                UserID = login,
+                Password = pass,
+            };
+
+            _connection.ConnectionString = builder.ConnectionString;
+            _connection.Open();
+        }
         public static void Destroy()
         {
             _connection.Close();

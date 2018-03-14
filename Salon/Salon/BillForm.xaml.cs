@@ -49,6 +49,20 @@ namespace Salon
             CurrentFilter = SearchBox.Text;
         }
 
+        private void MoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            var idx = ((DataView)BillGrid.DataContext).Table.Columns.IndexOf("id");
+
+            if (idx == -1) return;
+
+            var id = ((DataRowView)BillGrid.SelectedItem)?.Row[idx].ToString();
+
+            if (id == null) return;
+
+            var form = new BillActionForm(id);
+            form.ShowDialog();
+        }
+
         private void PaidButton_Click(object sender, RoutedEventArgs e)
         {
             var idx = ((DataView) BillGrid.DataContext).Table.Columns.IndexOf("id");
@@ -84,5 +98,7 @@ namespace Salon
         {
             DisplayDataWithFilter();
         }
+
+
     }
 }

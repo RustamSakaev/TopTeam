@@ -10,26 +10,28 @@
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
     <DockPanel>
-        <WrapPanel Width="180">
-            <StackPanel Width="181" Height="412">
+        <WrapPanel Width="232">
+            <StackPanel Width="231" Height="412">
                 <Label Content="Мастер" Margin="0,0,0,0" Height="22"/>
                 <ComboBox x:Name="workerCmbBox" Margin="0" Width="171" ItemsSource="{Binding}" DisplayMemberPath="Фамилия" SelectedValuePath="id" HorizontalAlignment="Left" LayoutUpdated="ComboBox_LayoutUpdated" SelectionChanged="workerChkBox_SelectionChanged" Height="20"/>
                 <Label Content="Тип мастера" Margin="0,0,22,0"/>
                 <ComboBox x:Name="typeMasterCmbBox" Margin="0" ItemsSource="{Binding}" DisplayMemberPath="Name" SelectedValuePath="ID" HorizontalAlignment="Left" Width="171" Height="20"/>
                 <Calendar x:Name="datePicker" HorizontalAlignment="Left" Width="176"/>
                 <WrapPanel Height="62">
-                    <WrapPanel Height="32" Width="179">
+                    <WrapPanel Height="32" Width="229">
                         <Label Content="С:  "/>
-                        <TextBox x:Name="sHTB" Height="24" Margin="0" TextWrapping="Wrap" Text="13" Width="64"/>
+                        <DatePicker x:Name="fromDateDatePicker" Margin="0" Width="109"/>
+                        <TextBox x:Name="sHTB" Height="24" Margin="0" TextWrapping="Wrap" Text="13" Width="30"/>
                         <TextBlock TextWrapping="Wrap" Text="ч."/>
-                        <TextBox x:Name="sMTB" Height="23" Margin="0" TextWrapping="Wrap" Text="00" Width="52"/>
+                        <TextBox x:Name="sMTB" Height="24" Margin="0" TextWrapping="Wrap" Text="00" Width="30"/>
                         <TextBlock TextWrapping="Wrap" Text="м."/>
                     </WrapPanel>
-                    <WrapPanel Height="28" Width="181">
+                    <WrapPanel Height="28" Width="226">
                         <Label Content="До:"/>
-                        <TextBox x:Name="dHTB" Height="24" Margin="0" TextWrapping="Wrap" Text="13" Width="64"/>
+                        <DatePicker x:Name="beforeDateDatePicker" Margin="0" Width="107"/>
+                        <TextBox x:Name="dHTB" Height="24" Margin="0" TextWrapping="Wrap" Text="13" Width="29"/>
                         <TextBlock TextWrapping="Wrap" Text="ч."/>
-                        <TextBox x:Name="dMTB" Height="24" Margin="0" TextWrapping="Wrap" Text="30" Width="52"/>
+                        <TextBox x:Name="dMTB" Height="24" Margin="0" TextWrapping="Wrap" Text="30" Width="30"/>
                         <TextBlock TextWrapping="Wrap" Text="м."/>
                     </WrapPanel>
                 </WrapPanel>
@@ -37,7 +39,7 @@
                 <Button Content="Закрыть" Margin="0" Click="Button_Click_1"/>
             </StackPanel>
         </WrapPanel>
-        <WrapPanel Height="406" VerticalAlignment="Top" Width="371" HorizontalAlignment="Left">
+        <WrapPanel Height="406" VerticalAlignment="Top" Width="303" HorizontalAlignment="Left">
             <DataGrid x:Name="ScheduleGrid" Height="380" Margin="0" Width="354" ItemsSource="{Binding}" Background="#FF484C65"/>
         </WrapPanel>
     </DockPanel>

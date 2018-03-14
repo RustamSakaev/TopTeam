@@ -17,9 +17,9 @@ namespace Salon
     /// <summary>
     /// Логика взаимодействия для AddTypeMasterService1.xaml
     /// </summary>
-    public partial class AddTypeMasterService1 : Window
+    public partial class AddEditTypeMasterService : Window
     {
-        public AddTypeMasterService1()
+        public AddEditTypeMasterService()
         {
             InitializeComponent();
         }

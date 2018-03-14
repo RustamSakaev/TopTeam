@@ -26,7 +26,7 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            AddTypeMaster addm = new AddTypeMaster();
+            AddEditTypeMaster addm = new AddEditTypeMaster();
             addm.ShowDialog();
         }
 

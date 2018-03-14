@@ -78,11 +78,10 @@ namespace Salon
             ServiceActionForm serv = new ServiceActionForm(FormState.Edit);
             serv.ShowDialog();
         }
-
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            EditServiceForm ed = new EditServiceForm();
-            ed.ShowDialog();
-        }
+        //private void EditButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    EditServiceForm ed = new EditServiceForm();
+        //    ed.ShowDialog();
+        //}
     }
 }

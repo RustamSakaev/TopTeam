@@ -82,7 +82,7 @@ namespace Salon
 
             if (id == null) return;
 
-            var form = new VisitActionForm(new Action(() => { CurrentFormData = DBVisit.GetVisits(); ; }), FormState.Edit, id);
+            var form = new VisitActionForm(new Action(() => { CurrentFormData = DBVisit.GetVisits(); }), FormState.Edit, id);
             form.ShowDialog();
         }
 

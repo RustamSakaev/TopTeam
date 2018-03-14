@@ -1,31 +1,30 @@
-﻿<Window x:Class="Salon.Authorization"
+﻿<Window x:Class="Salon.Kabinet"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Авторизация" Height="161.273" Width="269.902" ResizeMode="NoResize" WindowStyle="None">
+        Title="Личный кабинет" Height="183.529" Width="300">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="Top"  Height="25"></StackPanel>
-        <StackPanel DockPanel.Dock="Top" >
+        <StackPanel DockPanel.Dock="Top">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <StackPanel>
-                    <Label x:Name="LoginLable" Content="Логин" Style="{StaticResource signature}"/>
-                    <TextBox x:Name="LoginBox" Width="120" />
+                    <Label x:Name="label" Content="Новый пароль"/>
+                    <TextBox x:Name="NewPassBox" Width="120"/>
                 </StackPanel>
                 <StackPanel>
-                    <Label x:Name="PassLable" Content="Пароль" Style="{StaticResource signature}"/>
-                    <TextBox x:Name="PassBox" Width="120"   />
+                    <Label x:Name="label1" Content="Старый пароль"/>
+                    <TextBox x:Name="OldPassBox" Width="120"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="LoginButton" Content="Войти" Width="80" Click="button_Click"/>
-                <Button x:Name="RegistrButton" Content="Регистрация" Width="80" Click="button1_Click"/>
+                    <Button x:Name="OkButton" Content="Изменить" Width="75" Click="button_Click"/>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
     </DockPanel>
 </Window>

@@ -41,5 +41,24 @@ namespace Salon
 
             DBCore.ExecuteCommand(command);
         }
+        public static List<string> GetRoles(string userName)
+        {
+            List<string> user = new List<string>();
+            List<string> db = new List<string>();
+            string str = "use Task3 EXEC sp_helpuser '" + userName + "'";
+            DataTable dt = DBCore.GetData(str);
+            foreach (DataRow dr in dt.Rows)
+            {
+                user.Add(dr["RoleName"].ToString());
+            }
+            string str1 = "use Task3 EXEC sp_helprole";
+            DataTable dt1 = DBCore.GetData(str1);
+            foreach (DataRow dr in dt1.Rows)
+            {
+                db.Add(dr["RoleName"].ToString());
+            }
+            List<string> NoUserRole = db.Except(user).ToList();
+            return NoUserRole;
+        }
     }
 }

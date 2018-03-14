@@ -27,17 +27,11 @@ namespace Salon
         {
             InitializeComponent();
         }
-        public string Connection()
-        {
-            /*DATA SOURCE менять самому*/
-            string con = @"Data Source=DESKTOP-H5176PR;Initial Catalog=Task3;Integrated Security=True";
-            return con;
-        }
 
         public void OnLoad(object sender, RoutedEventArgs e)
         {
-            string str = "use Task3 select name from sys.database_principals where [type] <> 'r' and [name] not in ( 'dbo', 'sys', 'INFORMATION_SCHEMA') order by name";
-            DataTable dt = ZaprosList(str);
+            string str = "select name from sys.database_principals where [type] <> 'r' and [name] not in ( 'dbo', 'sys', 'INFORMATION_SCHEMA') order by name";
+            DataTable dt = DBCore.GetData(str);
             foreach (DataRow dr in dt.Rows)
             {
                 UserslistBox.Items.Add(dr["name"].ToString());
@@ -49,40 +43,12 @@ namespace Salon
             RoleslistBox.Items.Clear();
             if (UserslistBox.Items.Count != 0)
             {
-                string str = "use Task3 EXEC sp_helpuser '"+ UserslistBox.SelectedValue+"'";
-                DataTable dt = ZaprosList(str);
+                string str = "EXEC sp_helpuser '"+ UserslistBox.SelectedValue+"'";
+                DataTable dt = DBCore.GetData(str);
                 foreach (DataRow dr in dt.Rows)
                 {
                     RoleslistBox.Items.Add(dr["RoleName"].ToString());
                 }
-            }
-        }
-        public DataTable ZaprosList(string zapros)
-        {
-            string connectionStr = Connection();
-            SqlConnection con = null;
-            SqlCommand com = null;
-            DataTable dt = new DataTable();
-            try
-            {
-                con = new SqlConnection(connectionStr);
-                con.Open();
-                if (con != null)
-                {
-                    com = con.CreateCommand();
-                    com.CommandText = zapros;
-                    SqlDataAdapter adap = new SqlDataAdapter(com);
-                    SqlCommandBuilder bild = new SqlCommandBuilder(adap);
-                    adap.Fill(dt);
-                    return dt;
-                }
-                else
-                { return dt; }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return dt;
             }
         }
 
@@ -94,82 +60,24 @@ namespace Salon
         }
         public void ShowRole()
         {
-                AllRoleslistBox.Items.Clear();
-                List<string> user = new List<string>();
-                List<string> db = new List<string>();
-                string str = "use Task3 EXEC sp_helpuser '" + UserslistBox.SelectedValue + "'";
-                DataTable dt = ZaprosList(str);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    user.Add(dr["RoleName"].ToString());
-                }
-                string str1 = "use Task3 EXEC sp_helprole";
-                DataTable dt1 = ZaprosList(str1);
-                foreach (DataRow dr in dt1.Rows)
-                {
-                    db.Add(dr["RoleName"].ToString());
-                }
-                List<string> NoUserRole = db.Except(user).ToList();
-                foreach (var no in NoUserRole)
-                {
-                    AllRoleslistBox.Items.Add(no.ToString());
-                }           
+            AllRoleslistBox.Items.Clear();
+            List<string> NoUserRole = DBUser.GetRoles(UserslistBox.SelectedValue.ToString());
+            foreach (var no in NoUserRole)
+            {
+                AllRoleslistBox.Items.Add(no.ToString());
+            }          
         }
 
         public void AddRole(string user, string role)
         {
-            string connectionStr = Connection();
-            SqlConnection con = null;
-            SqlCommand com = null;
-            try
-            {
-                con = new SqlConnection(connectionStr);
-                con.Open();
-                string sql = "use [Task3] EXEC sp_addrolemember '" + role + "', '" + user + "'; ";
-                if (con != null)
-                {
-                    com = con.CreateCommand();
-                    com.CommandText = sql;
-                    com.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (con != null)
-                    con.Close();
-            }
+            string sql = "EXEC sp_addrolemember '" + role + "', '" + user + "'; ";
+            DBCore.ExecuteSql(sql);
         }
 
         public void DelRole(string user, string role)
         {
-            string connectionStr = Connection();
-            SqlConnection con = null;
-            SqlCommand com = null;
-            try
-            {
-                con = new SqlConnection(connectionStr);
-                con.Open();
-                string sql = "use [Task3] EXEC sp_droprolemember '" + role + "', '" + user + "'; ";
-                if (con != null)
-                {
-                    com = con.CreateCommand();
-                    com.CommandText = sql;
-                    com.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (con != null)
-                    con.Close();
-            }
+            string sql = "EXEC sp_droprolemember '" + role + "', '" + user + "'; ";
+            DBCore.ExecuteSql(sql);
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
@@ -181,8 +89,8 @@ namespace Salon
             RoleslistBox.Items.Clear();
             if (UserslistBox.Items.Count != 0)
             {
-                string str = "use Task3 EXEC sp_helpuser '" + UserslistBox.SelectedValue + "'";
-                DataTable dt = ZaprosList(str);
+                string str = "EXEC sp_helpuser '" + UserslistBox.SelectedValue + "'";
+                DataTable dt = DBCore.GetData(str);
                 foreach (DataRow dr in dt.Rows)
                 {
                     RoleslistBox.Items.Add(dr["RoleName"].ToString());
@@ -201,8 +109,8 @@ namespace Salon
             RoleslistBox.Items.Clear();
             if (UserslistBox.Items.Count != 0)
             {
-                string str = "use Task3 EXEC sp_helpuser '" + UserslistBox.SelectedValue + "'";
-                DataTable dt = ZaprosList(str);
+                string str = "EXEC sp_helpuser '" + UserslistBox.SelectedValue + "'";
+                DataTable dt = DBCore.GetData(str);
                 foreach (DataRow dr in dt.Rows)
                 {
                     RoleslistBox.Items.Add(dr["RoleName"].ToString());

@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
         Title="Главная" Height="445.81" Width="593.296" ResizeMode="CanMinimize" Closing="Window_Closing">
+    <Window.Resources>
+        <ResourceDictionary Source="Styles/BasicStyles.xaml" />
+    </Window.Resources>
     <Menu Height="25" VerticalAlignment="Top">
         <MenuItem Header="Администрированиe">            
             <MenuItem Header="Смена пароля" ></MenuItem>

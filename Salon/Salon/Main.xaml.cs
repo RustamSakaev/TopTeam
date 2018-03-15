@@ -15,7 +15,7 @@ namespace Salon
         {
             InitializeComponent();
 
-            DBCore.Init(@"DESKTOP-D3KKSHS\SQLEXPRESS");
+            DBCore.Init(@"ADMIN\SQLEXPRESS");
         }
 
         private void Prototype_Click(object sender, RoutedEventArgs e)

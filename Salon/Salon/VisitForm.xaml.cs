@@ -54,17 +54,7 @@ namespace Salon
             CurrentFormData = DBVisit.GetVisits();
         }
 
-        private void FullSearchButton_Click(object sender, RoutedEventArgs e)
-        {
-            SearchStack.Visibility = Visibility.Collapsed;
-            FullSearchGroup.Visibility = Visibility.Visible;
-        }
-
-        private void Close_Click(object sender, RoutedEventArgs e)
-        {
-            SearchStack.Visibility = Visibility.Visible;
-            FullSearchGroup.Visibility = Visibility.Collapsed;
-        }
+        
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {

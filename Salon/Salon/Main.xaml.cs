@@ -58,11 +58,7 @@ namespace Salon
             ProvidingServiceForm services = new ProvidingServiceForm();
             services.ShowDialog();
         }
-        private void Status_Click(object sender, RoutedEventArgs e)
-        {
-            StatusForm status = new StatusForm();
-            status.ShowDialog();
-        }
+       
 
         private void Tariff_Click(object sender, RoutedEventArgs e)
         {

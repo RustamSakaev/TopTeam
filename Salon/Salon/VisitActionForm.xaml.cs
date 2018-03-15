@@ -16,6 +16,24 @@ namespace Salon
         private readonly FormState _state;
         private readonly Action _callback;
 
+        private void Status_Click(object sender, RoutedEventArgs e)
+        {
+            StatusForm status = new StatusForm();
+            status.ShowDialog();
+        }
+
+        private void Worker_Click(object sender, RoutedEventArgs e)
+        {
+            WorkerForm worker = new WorkerForm();
+            worker.ShowDialog();
+        }
+
+        private void Client_Click(object sender, RoutedEventArgs e)
+        {
+            ClientForm client = new ClientForm();
+            client.ShowDialog();
+        }
+
         public VisitActionForm(Action cb, FormState state, string editId = null)
         {
             InitializeComponent();

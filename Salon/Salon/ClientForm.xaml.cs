@@ -47,7 +47,7 @@ namespace Salon
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CurrentFilter = SearchBox.Text;
+           // CurrentFilter = SearchBox.Text;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)

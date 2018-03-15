@@ -37,6 +37,12 @@ namespace Salon
             }
         }
 
+        private void ServiceForm_Click(object sender, RoutedEventArgs e)
+        {
+            ServiceForm service = new ServiceForm();
+            service.ShowDialog();
+        }
+
         public string Connection()
         {
             string conn = @"Data Source=LENOVO-PC;Initial Catalog=Salon;Integrated Security=True";

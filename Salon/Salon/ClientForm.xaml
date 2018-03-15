@@ -48,7 +48,7 @@
             <Button x:Name="DeleteButton" Content="Удалить" VerticalAlignment="Bottom" Click="DeleteButton_Click"/>
         </StackPanel>
         <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="ClientGrid" ItemsSource="{Binding}" IsReadOnly="True" ColumnWidth="*" AutoGeneratingColumn="ClientGrid_AutoGeneratingColumn" DataContextChanged="ClientGrid_DataContextChanged" />
+            <DataGrid x:Name="ClientGrid" ItemsSource="{Binding}" IsReadOnly="True" ColumnWidth="*" AutoGeneratingColumn="ClientGrid_AutoGeneratingColumn" DataContextChanged="ClientGrid_DataContextChanged" MouseDoubleClick="ClientGrid_MouseDoubleClick" />
         </StackPanel>
     </DockPanel>
 </Window>

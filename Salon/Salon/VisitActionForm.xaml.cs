@@ -2,7 +2,6 @@
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
 using Salon.Extensions;
 
 namespace Salon
@@ -16,24 +15,6 @@ namespace Salon
         private readonly FormState _state;
         private readonly Action _callback;
 
-        private void StatusForm_Click(object sender, RoutedEventArgs e)
-        {
-            StatusForm status = new StatusForm();
-            status.ShowDialog();
-        }
-
-        private void WorkerForm_Click(object sender, RoutedEventArgs e)
-        {
-            WorkerForm worker = new WorkerForm();
-            worker.ShowDialog();
-        }
-
-        private void ClientForm_Click(object sender, RoutedEventArgs e)
-        {
-            ClientForm client = new ClientForm();
-            client.ShowDialog();
-        }
-
         public VisitActionForm(Action cb, FormState state, string editId = null)
         {
             InitializeComponent();
@@ -46,21 +27,16 @@ namespace Salon
                     HeaderInner.Content = "Редактирование посещения";
                     _currentDataItem = DBVisit.GetVisit(editId);
 
-                    ClientCmbBox.ItemsSource = DBClient.GetClients().DefaultView;
-                    ClientCmbBox.DisplayMemberPath = "ФИО";
-                    ClientCmbBox.SelectedValuePath = "id";
+                    UpdateClients();
+                    UpdateWorkers();
+                    UpdateStatuses();
+
                     ClientCmbBox.SelectedValue = _currentDataItem.Rows[0]["clientid"].ToString();
                     ClientCmbBox.IsReadOnly = true;
 
-                    WorkerCmbBox.ItemsSource = DBWorker.GetWorkers().DefaultView;
-                    WorkerCmbBox.DisplayMemberPath = "ФИО";
-                    WorkerCmbBox.SelectedValuePath = "id";
                     WorkerCmbBox.SelectedValue = _currentDataItem.Rows[0]["workerid"].ToString();
                     WorkerCmbBox.IsReadOnly = true;
 
-                    StatusCmbBox.ItemsSource = DBStatus.GetStatuses().DefaultView;
-                    StatusCmbBox.DisplayMemberPath = "Статус посещения";
-                    StatusCmbBox.SelectedValuePath = "id";
                     StatusCmbBox.SelectedValue = _currentDataItem.Rows[0]["statusid"].ToString();
                     StatusCmbBox.IsReadOnly = true;
 
@@ -73,17 +49,9 @@ namespace Salon
                     break;
                 case FormState.Add:
                     HeaderInner.Content = "Добавление посещения";
-                    ClientCmbBox.ItemsSource = DBClient.GetClients().DefaultView;
-                    ClientCmbBox.DisplayMemberPath = "ФИО";
-                    ClientCmbBox.SelectedValuePath = "id";
-
-                    WorkerCmbBox.ItemsSource = DBWorker.GetWorkers().DefaultView;
-                    WorkerCmbBox.DisplayMemberPath = "ФИО";
-                    WorkerCmbBox.SelectedValuePath = "id";
-
-                    StatusCmbBox.ItemsSource = DBStatus.GetStatuses().DefaultView;
-                    StatusCmbBox.DisplayMemberPath = "Статус посещения";
-                    StatusCmbBox.SelectedValuePath = "id";
+                    UpdateClients();
+                    UpdateWorkers();
+                    UpdateStatuses();
                     break;
             }
         }
@@ -130,5 +98,100 @@ namespace Salon
         {
             this.Close();
         }
+
+
+        private void StatusForm_Click(object sender, RoutedEventArgs e)
+        {
+            var status = new StatusForm(SetStatus, UpdateStatuses, FormOpenAs.Secondary);
+            status.ShowDialog();
+        }
+
+        private void SetStatus(string id)
+        {
+            StatusCmbBox.SelectedValue = id;
+        }
+
+        private void UpdateStatuses()
+        {
+            var selectedStatus = StatusCmbBox.SelectedValue;
+
+            StatusCmbBox.ItemsSource = DBStatus.GetStatuses().DefaultView;
+            StatusCmbBox.DisplayMemberPath = "Статус посещения";
+            StatusCmbBox.SelectedValuePath = "id";
+
+            if (selectedStatus == null) return;
+
+            try
+            {
+                StatusCmbBox.SelectedValue = selectedStatus;
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+        }
+
+        private void WorkerForm_Click(object sender, RoutedEventArgs e)
+        {
+            var worker = new WorkerForm(SetWorker, UpdateWorkers, FormOpenAs.Secondary);
+            worker.ShowDialog();
+        }
+
+        private void SetWorker(string id)
+        {
+            WorkerCmbBox.SelectedValue = id;
+        }
+
+        private void UpdateWorkers()
+        {
+            var selectedWorker = WorkerCmbBox.SelectedValue;
+
+            WorkerCmbBox.ItemsSource = DBWorker.GetWorkers().DefaultView;
+            WorkerCmbBox.DisplayMemberPath = "ФИО";
+            WorkerCmbBox.SelectedValuePath = "id";
+
+            if (selectedWorker == null) return;
+
+            try
+            {
+                WorkerCmbBox.SelectedValue = selectedWorker;
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+        }
+
+        private void ClientForm_Click(object sender, RoutedEventArgs e)
+        {
+            var client = new ClientForm(SetClient, UpdateStatuses, FormOpenAs.Secondary);
+            client.ShowDialog();
+        }
+
+        private void SetClient(string id)
+        {
+            ClientCmbBox.SelectedValue = id;
+        }
+
+        private void UpdateClients()
+        {
+            var selectedClient = ClientCmbBox.SelectedValue;
+
+            ClientCmbBox.ItemsSource = DBClient.GetClients().DefaultView;
+            ClientCmbBox.DisplayMemberPath = "ФИО";
+            ClientCmbBox.SelectedValuePath = "id";
+
+            if (selectedClient == null) return;
+
+            try
+            {
+                ClientCmbBox.SelectedValue = selectedClient;
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+        }
+
     }
 }

@@ -16,6 +16,9 @@ namespace Salon
         private readonly string[] _hiddenFields = { "id", "ФИО" };
         private readonly List<Filter> _currentFilters = new List<Filter>();
         private DataTable _currentFormData = new DataTable();
+        private readonly FormOpenAs _openAs;
+        private readonly Action<string> _callback;
+        private readonly Action _onUpdate;
 
         private DataTable CurrentFormData
         {
@@ -54,9 +57,13 @@ namespace Salon
             ClientGrid.DataContext = displayData;
         }
 
-        public ClientForm()
+        public ClientForm(Action<string> cb = null, Action onUpdate = null, FormOpenAs openAs = FormOpenAs.Default)
         {
             InitializeComponent();
+
+            _callback = cb;
+            _onUpdate = onUpdate;
+            _openAs = openAs;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -115,7 +122,11 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var form = new ClientActionForm(new Action(() => { CurrentFormData = DBClient.GetClients(); }), FormState.Add);
+            var form = new ClientActionForm(() => 
+            {
+                CurrentFormData = DBClient.GetClients();
+                _onUpdate();
+            }, FormState.Add);
             form.ShowDialog();
         }
 
@@ -129,7 +140,11 @@ namespace Salon
 
             if (id == null) return;
 
-            var form = new ClientActionForm(new Action(() => { CurrentFormData = DBClient.GetClients(); }), FormState.Edit, id);
+            var form = new ClientActionForm(() => 
+            {
+                CurrentFormData = DBClient.GetClients();
+                _onUpdate();
+            }, FormState.Edit, id);
             form.ShowDialog();
         }
 
@@ -143,6 +158,7 @@ namespace Salon
             }
 
             CurrentFormData = DBClient.GetClients();
+            _onUpdate();
         }
 
         private void ClientGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -163,6 +179,21 @@ namespace Salon
             GenderCmbBox.SelectedItem = "Все";
             StartDatePicker.SelectedDate = null;
             EndDatePicker.SelectedDate = null;
+        }
+
+        private void ClientGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (_openAs == FormOpenAs.Secondary)
+            {
+                var idx = ((DataView)ClientGrid.DataContext).Table.Columns.IndexOf("id");
+                if (idx == -1) return;
+
+                var id = ((DataRowView)ClientGrid.SelectedItem)?.Row[idx].ToString();
+                if (id == null) return;
+
+                _callback(id);
+                this.Close();
+            }
         }
     }
 }

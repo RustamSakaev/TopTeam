@@ -13,8 +13,7 @@
         <StackPanel x:Name="Header" Style="{StaticResource header}">
             <Label Content="Таблица 'Посещения'" Style="{StaticResource caption}"/>
         </StackPanel>
-        <StackPanel x:Name="Search" Style="{StaticResource search}" >
-            <StackPanel x:Name="SearchStack" >
+        <StackPanel x:Name="Search" Style="{StaticResource search}" >            
                 <Label Content="Фильтр:" Style="{StaticResource signature}"/>
                 <WrapPanel>
                     <DockPanel>
@@ -44,8 +43,7 @@
                             <Button x:Name="ClearButton" Width="80">Очистить</Button>                           
                         </StackPanel>
                     </DockPanel>                                  
-                </WrapPanel>
-            </StackPanel>           
+                </WrapPanel>                       
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>

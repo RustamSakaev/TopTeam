@@ -29,7 +29,7 @@
             <Button x:Name="ExportButton" Content="Экспорт в Excel" Click="ExportButton_Click"/>
         </StackPanel>
         <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="WorkersGrid" Height="323" ItemsSource="{Binding}" Background="#FF484C65"></DataGrid>
+            <DataGrid x:Name="WorkersGrid" Height="323" ItemsSource="{Binding}" Background="#FF484C65" MouseDoubleClick="WorkersGrid_MouseDoubleClick"></DataGrid>
         </StackPanel>
     </DockPanel>
 </Window>

@@ -102,7 +102,7 @@
     <Compile Include="ClientForm.xaml.cs">
       <DependentUpon>ClientForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Misc\Extensions.cs" />
     <Compile Include="GiftCardActionForm.xaml.cs">
       <DependentUpon>GiftCardActionForm.xaml</DependentUpon>
     </Compile>
@@ -133,6 +133,7 @@
     <Compile Include="MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Misc\Filter.cs" />
     <Compile Include="PaymentMethodForm.xaml.cs">
       <DependentUpon>PaymentMethodForm.xaml</DependentUpon>
     </Compile>

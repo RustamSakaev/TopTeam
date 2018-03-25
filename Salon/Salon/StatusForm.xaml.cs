@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Salon
 {
@@ -22,6 +13,9 @@ namespace Salon
     {
         private readonly string[] _hiddenFields = { "id" };
         private DataTable _currentFormData = new DataTable();
+        private readonly FormOpenAs _openAs;
+        private readonly Action<string> _callback;
+        private readonly Action _onUpdate;
 
         private DataTable CurrentFormData
         {
@@ -29,9 +23,13 @@ namespace Salon
             set { _currentFormData = value; StatusGrid.DataContext = _currentFormData; }
         }
 
-        public StatusForm()
+        public StatusForm(Action<string> cb = null, Action onUpdate = null, FormOpenAs openAs = FormOpenAs.Default)
         {
             InitializeComponent();
+
+            _callback = cb;
+            _onUpdate = onUpdate;
+            _openAs = openAs;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -41,21 +39,27 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var form = new StatusActionForm(new Action(() => { CurrentFormData = DBStatus.GetStatuses(); }), FormState.Add);
+            var form = new StatusActionForm(() =>
+            {
+                CurrentFormData = DBStatus.GetStatuses();
+                _onUpdate();
+            }, FormState.Add);
             form.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             var idx = ((DataTable)StatusGrid.DataContext).Columns.IndexOf("id");
-
             if (idx == -1) return;
 
             var id = ((DataRowView)StatusGrid.SelectedItem)?.Row[idx].ToString();
-
             if (id == null) return;
 
-            var form = new StatusActionForm(new Action(() => { CurrentFormData = DBStatus.GetStatuses(); ; }), FormState.Edit, id);
+            var form = new StatusActionForm(() =>
+            {
+                CurrentFormData = DBStatus.GetStatuses();
+                _onUpdate();
+            }, FormState.Edit, id);
             form.ShowDialog();
         }
 
@@ -69,6 +73,7 @@ namespace Salon
             }
 
             CurrentFormData = DBStatus.GetStatuses();
+            _onUpdate();
         }
 
         private void StatusGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -76,6 +81,21 @@ namespace Salon
             if (!_hiddenFields?.Contains(e.PropertyName) == true) return;
 
             e.Cancel = true;
+        }
+
+        private void StatusGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (_openAs == FormOpenAs.Secondary)
+            {
+                var idx = ((DataTable)StatusGrid.DataContext).Columns.IndexOf("id");
+                if (idx == -1) return;
+
+                var id = ((DataRowView)StatusGrid.SelectedItem)?.Row[idx].ToString();
+                if (id == null) return;
+
+                _callback(id);
+                this.Close();
+            }
         }
     }
 }

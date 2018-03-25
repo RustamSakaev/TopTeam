@@ -30,7 +30,7 @@
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
-                    <Button x:Name="Service_IDFormButton" Content="..." Style="{StaticResource threeDots}"></Button>
+                    <Button x:Name="ServiceFormButton" Content="..." Style="{StaticResource threeDots}"></Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel>

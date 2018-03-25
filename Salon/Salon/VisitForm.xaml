@@ -13,44 +13,37 @@
         <StackPanel x:Name="Header" Style="{StaticResource header}">
             <Label Content="Таблица 'Посещения'" Style="{StaticResource caption}"/>
         </StackPanel>
-        <StackPanel x:Name="Search" Style="{StaticResource search}" >
-            <StackPanel x:Name="SearchStack" >
-                <Label Content="Поиск:" Style="{StaticResource signature}"/>
+        <StackPanel x:Name="Search" Style="{StaticResource search}" >            
+                <Label Content="Фильтр:" Style="{StaticResource signature}" Margin="0"/>
                 <WrapPanel>
-                    <TextBox x:Name="SearchBox" Width="435"/>
-                    <Button x:Name="FullSearchButton"  Content="Расширенный поиск" Click="FullSearchButton_Click" Width="130" Height="28"/>
-                </WrapPanel>
-            </StackPanel>
-            <StackPanel x:Name="FullSearchGroup" Visibility="Collapsed">
-                <DockPanel>
-                    <WrapPanel DockPanel.Dock="Top">
-                        <StackPanel Margin="5 0 5 0">
-                            <Label Style="{StaticResource signature}">Клиент:</Label>
-                            <ComboBox x:Name="ClientCmbBox"  Width="150">
+                    <DockPanel>
+                        <WrapPanel DockPanel.Dock="Top">
+                            <StackPanel Margin="5 0 5 0">
+                                <Label Style="{StaticResource signature}">Клиент:</Label>
+                                <ComboBox x:Name="ClientCmbBox"  Width="150" SelectionChanged="ClientCmbBox_SelectionChanged">
 
-                            </ComboBox>
-                        </StackPanel>
-                        <StackPanel Margin="5 0 5 0">
-                            <Label Style="{StaticResource signature}">Сотрудник:</Label>
-                            <ComboBox x:Name="WorkerCmbBox"  Width="150">
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Margin="5 0 5 0">
+                                <Label Style="{StaticResource signature}">Сотрудник:</Label>
+                                <ComboBox x:Name="WorkerCmbBox"  Width="150" SelectionChanged="WorkerCmbBox_SelectionChanged">
 
-                            </ComboBox>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Margin="5 0 5 0">
+                                <Label Style="{StaticResource signature}">Дата от:</Label>
+                                <DatePicker x:Name="StartDatePicker" SelectedDateChanged="StartDatePicker_SelectedDateChanged"></DatePicker>
+                            </StackPanel>
+                            <StackPanel Margin="5 0 5 0">
+                                <Label Style="{StaticResource signature}">Дата по:</Label>
+                                <DatePicker x:Name="EndDatePicker" SelectedDateChanged="EndDatePicker_SelectedDateChanged"></DatePicker>
+                            </StackPanel>
+                        </WrapPanel>
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button x:Name="ClearButton" Width="80" Click="ClearButton_Click">Очистить</Button>                           
                         </StackPanel>
-                        <StackPanel Margin="5 0 5 0">
-                            <Label Style="{StaticResource signature}">Дата от:</Label>
-                            <DatePicker x:Name="StartDatePicker"></DatePicker>
-                        </StackPanel>
-                        <StackPanel Margin="5 0 5 0">
-                            <Label Style="{StaticResource signature}">Дата по:</Label>
-                            <DatePicker x:Name="EndDatePicker"></DatePicker>
-                        </StackPanel>
-                    </WrapPanel>
-                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button x:Name="ClearButton" Width="80">Очистить</Button>
-                        <Button x:Name="CloseButton" Width="80" Click="Close_Click">Закрыть</Button>
-                    </StackPanel>
-                </DockPanel>
-            </StackPanel>
+                    </DockPanel>                                  
+                </WrapPanel>                       
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>

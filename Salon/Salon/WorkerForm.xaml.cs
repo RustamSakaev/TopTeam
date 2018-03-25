@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Salon
 {
@@ -22,23 +10,28 @@ namespace Salon
     public partial class WorkerForm : Window
     {
         private DataTable _currentFormData = new DataTable();
+        private readonly FormOpenAs _openAs;
+        private readonly Action<string> _callback;
+        private readonly Action _onUpdate;
 
         private DataTable CurrentFormData
         {
             get { return _currentFormData; }
             set { _currentFormData = value; WorkersGrid.DataContext = _currentFormData.DefaultView; }
         }
-        public WorkerForm()
+
+        public WorkerForm(Action<string> cb = null, Action onUpdate = null, FormOpenAs openAs = FormOpenAs.Default)
         {
             InitializeComponent();
+
+            _callback = cb;
+            _onUpdate = onUpdate;
+            _openAs = openAs;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             CurrentFormData = DBWorker.GetWorkers();
-
-
-
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -72,6 +65,21 @@ namespace Salon
             }
             ObjExcel.Visible = true;
             ObjExcel.UserControl = true;
+        }
+
+        private void WorkersGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (_openAs == FormOpenAs.Secondary)
+            {
+                var idx = ((DataView)WorkersGrid.DataContext).Table.Columns.IndexOf("id");
+                if (idx == -1) return;
+
+                var id = ((DataRowView)WorkersGrid.SelectedItem)?.Row[idx].ToString();
+                if (id == null) return;
+
+                _callback(id);
+                this.Close();
+            }
         }
     }
 }

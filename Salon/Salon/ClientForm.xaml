@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Salon"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Клиенты" Height="341.917" Width="658.917" Loaded="Window_Loaded">
+        Title="Клиенты" Height="356.958" Width="758.959" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -15,10 +15,32 @@
             <Label Content="Таблица 'Клиенты'" Style="{StaticResource caption}"/>
         </StackPanel>
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
-            <StackPanel x:Name="SearchStack" >
-                <Label Content="Поиск:" Style="{StaticResource signature}"/>
-                <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged"/>
-            </StackPanel>
+            <Label Content="Фильтр:" Style="{StaticResource signature}" Margin="0"/>
+            <WrapPanel>
+                <DockPanel Height="96">
+                    <WrapPanel DockPanel.Dock="Top">
+                        <StackPanel Margin="5 0 5 0">
+                            <Label Style="{StaticResource signature}" Content="ФИО:"/>
+                            <TextBox x:Name="FioBox" Width="300" TextChanged="FioBox_TextChanged"/>
+                        </StackPanel>
+                        <StackPanel Margin="5 0 5 0">
+                            <Label Style="{StaticResource signature}" Content="Пол:"/>
+                            <ComboBox x:Name="GenderCmbBox"  Width="150" SelectionChanged="GenderCmbBox_SelectionChanged"/>
+                        </StackPanel>
+                        <StackPanel Margin="5 0 5 0">
+                            <Label Style="{StaticResource signature}" Content="Дата рождения от:"/>
+                            <DatePicker x:Name="StartDatePicker" SelectedDateChanged="StartDatePicker_SelectedDateChanged"/>
+                        </StackPanel>
+                        <StackPanel Margin="5 0 5 0">
+                            <Label Style="{StaticResource signature}" Content="Дата рождения по:"/>
+                            <DatePicker x:Name="EndDatePicker" SelectedDateChanged="EndDatePicker_SelectedDateChanged"/>
+                        </StackPanel>
+                    </WrapPanel>
+                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button x:Name="ClearButton" Width="80" Content="Очистить" Click="ClearButton_Click"/>
+                    </StackPanel>
+                </DockPanel>
+            </WrapPanel>
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click" />
@@ -26,7 +48,7 @@
             <Button x:Name="DeleteButton" Content="Удалить" VerticalAlignment="Bottom" Click="DeleteButton_Click"/>
         </StackPanel>
         <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="ClientGrid" ItemsSource="{Binding}" IsReadOnly="True" ColumnWidth="*" AutoGeneratingColumn="ClientGrid_AutoGeneratingColumn" DataContextChanged="ClientGrid_DataContextChanged" />
+            <DataGrid x:Name="ClientGrid" ItemsSource="{Binding}" IsReadOnly="True" ColumnWidth="*" AutoGeneratingColumn="ClientGrid_AutoGeneratingColumn" DataContextChanged="ClientGrid_DataContextChanged" MouseDoubleClick="ClientGrid_MouseDoubleClick" />
         </StackPanel>
     </DockPanel>
 </Window>

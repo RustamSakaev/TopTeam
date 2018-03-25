@@ -11,19 +11,11 @@
     </Window.Resources>
     <DockPanel>
         <StackPanel x:Name="Header" Style="{StaticResource header}">
-            <Label Content="Таблица 'Группа услуг'" Style="{StaticResource caption}"/>
-        </StackPanel>
-        <StackPanel x:Name="Search" Style="{StaticResource search}" >
-            <StackPanel x:Name="SearchStack" >
-                <Label Content="Поиск:" Style="{StaticResource signature}"/>
-                <WrapPanel>
-                    <TextBox x:Name="SearchBox" Width="400"/>
-                </WrapPanel>
-            </StackPanel>
+            <Label Content="Таблица 'Группа услуги'" Style="{StaticResource caption}"/>
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
-            <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
-            <Button x:Name="EditButton" Content="Редактировать" Click="EditButton_Click"/>
+            <Button x:Name="AddButton" Content="Добавить..." Click="AddButton_Click"/>
+            <Button x:Name="EditButton" Content="Редактировать..." Click="EditButton_Click"/>
             <Button x:Name="DeleteButton"  Content="Удалить"/>
         </StackPanel>
         <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >

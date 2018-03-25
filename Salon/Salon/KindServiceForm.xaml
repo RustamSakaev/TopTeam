@@ -5,26 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Вид услуги" Height="300" Width="500">
+        Title="Вид услуги" Height="300" Width="400">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
     <DockPanel>
         <StackPanel x:Name="Header" Style="{StaticResource header}">
-            <Label Content="Таблица 'ВидУслуги'" Style="{StaticResource caption}"/>
+            <Label Content="Таблица 'Вид услуги'" Style="{StaticResource caption}"/>
         </StackPanel>
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
             <StackPanel x:Name="SearchStack" >
-                <Label Content="Поиск:" Style="{StaticResource signature}"/>
-                <WrapPanel>
-                    <TextBox x:Name="SearchBox" Width="300"/>
-                </WrapPanel>
+                <Label Content="Фильтр:" Style="{StaticResource signature}"/>
+                <DockPanel Margin="0 5 0 0">
+                    <WrapPanel DockPanel.Dock="Top">
+                        <StackPanel Margin="0 0 0 0">
+                            <Label Style="{StaticResource signature}">Наименование:</Label>
+                            <TextBox x:Name="NameBox" Width="190"></TextBox>
+                        </StackPanel>
+                        <StackPanel>
+                            <Label Style="{StaticResource signature}">Тип услуги:</Label>
+                            <ComboBox x:Name="TypeServiceCmbBox"  Width="183">
+                            </ComboBox>
+                        </StackPanel>
+                    </WrapPanel>
+                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button x:Name="ClearButton" Width="80">Очистить</Button>
+                    </StackPanel>
+                </DockPanel>
             </StackPanel>
 
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
-            <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
-            <Button x:Name="EditButton" Content="Редактировать" Click="EditButton_Click"/>
+            <Button x:Name="AddButton" Content="Добавить..." Click="AddButton_Click"/>
+            <Button x:Name="EditButton" Content="Редактировать..." Click="EditButton_Click"/>
             <Button x:Name="DeleteButton"  Content="Удалить"/>
         </StackPanel>
         <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Тарифы на услуги" Height="300" Width="648">
+        Title="Тарифы на услуги" Height="300" Width="620">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -16,9 +16,9 @@
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
             <StackPanel x:Name="SearchStack" >
                 <Label Content="Фильтр:" Style="{StaticResource signature}"/>
-                <DockPanel>
+                <DockPanel Margin="0 5 0 0">
                     <WrapPanel DockPanel.Dock="Top">
-                        <StackPanel Margin="5 0 5 0">
+                        <StackPanel Margin="0 0 5 0">
                             <Label Style="{StaticResource signature}">Услуга:</Label>
                             <ComboBox x:Name="ServiceCmbBox"  Width="150">
                             </ComboBox>
@@ -27,11 +27,11 @@
                             <Label Style="{StaticResource signature}">Цена:</Label>
                             <TextBox x:Name="PriceBox" Width="200"></TextBox>
                         </StackPanel>
-                        <StackPanel Margin="5 0 5 0">
+                        <StackPanel Margin="5 0 0 0">
                             <Label Style="{StaticResource signature}">Дата от:</Label>
                             <DatePicker x:Name="StartDatePicker"></DatePicker>
                         </StackPanel>
-                        <StackPanel Margin="5 0 5 0">
+                        <StackPanel Margin="5 0 0 0">
                             <Label Style="{StaticResource signature}">Дата по:</Label>
                             <DatePicker x:Name="EndDatePicker"></DatePicker>
                         </StackPanel>

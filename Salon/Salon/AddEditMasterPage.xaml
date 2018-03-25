@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Образец формы добавления/редактирования" Height="378.521" Width="697.916" >
+        Title="Образец формы добавления/редактирования"  MinWidth="800" MinHeight="500" Height="500" Width="800" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -13,42 +13,44 @@
         <StackPanel x:Name="Header" Style="{StaticResource header}">
             <Label Content="Добавление клиента" Style="{StaticResource caption}"/>
         </StackPanel>
-        <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource bottom}">
-            <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
-            <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
-        </StackPanel>
-        <WrapPanel>
+        <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
+            <StackPanel Style="{StaticResource buttonsPanel}">
+                <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+                <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+            </StackPanel>
+        </DockPanel>
+        <WrapPanel DockPanel.Dock="Top">
             <StackPanel>
-                <Label Content="ФИО"  Style="{StaticResource signature}"></Label>
+                <Label Content="ФИО"  ></Label>
                 <TextBox x:Name="FioBox" Width="200"></TextBox>
             </StackPanel>
             <StackPanel>
-                <Label Content="Дата рождения" Style="{StaticResource signature}"></Label>
+                <Label Content="Дата рождения" ></Label>
                 <DatePicker x:Name="BirthDatePicker"/>
             </StackPanel>
             <StackPanel>
-                <Label Content="Серия"  Style="{StaticResource signature}"></Label>
+                <Label Content="Серия"  ></Label>
                 <TextBox x:Name="SeriesBox" Width="100"></TextBox>
             </StackPanel>
             <StackPanel>
-                <Label Content="Номер"  Style="{StaticResource signature}"></Label>
+                <Label Content="Номер"  ></Label>
                 <TextBox x:Name="NumberBox" Width="100"></TextBox>
             </StackPanel>
             <StackPanel>
-                <Label Content="Кем выдан"  Style="{StaticResource signature}"></Label>
+                <Label Content="Кем выдан"  ></Label>
                 <TextBox x:Name="WhoGiveBox" Width="450"></TextBox>
             </StackPanel>
             <StackPanel>
-                <Label Content="Дата выдачи"  Style="{StaticResource signature}"></Label>
+                <Label Content="Дата выдачи"  ></Label>
                 <DatePicker x:Name="GivingDatePicker"/>
             </StackPanel>
             <StackPanel>
-                <Label Content="Адрес регистрации"  Style="{StaticResource signature}"></Label>
+                <Label Content="Адрес регистрации"  ></Label>
                 <TextBox x:Name="RegistrationBox" Width="400"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
-                    <Label Content="Должность"  Style="{StaticResource signature}"></Label>
+                    <Label Content="Должность"  ></Label>
                     <ComboBox x:Name="PostCmbBox" Width="150">
                         <ComboBoxItem IsSelected="True">
                             <StackPanel Orientation="Horizontal">
@@ -69,7 +71,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
-                    <Label Content="Отдел"  Style="{StaticResource signature}"></Label>
+                    <Label Content="Отдел"  ></Label>
                     <ComboBox x:Name="DeptCmbBox" Width="150">
                         <ComboBoxItem IsSelected="True">
                             <StackPanel Orientation="Horizontal">
@@ -98,5 +100,13 @@
                 </StackPanel>
             </StackPanel>
         </WrapPanel>
+        <DockPanel DockPanel.Dock="Bottom">
+            <Label  DockPanel.Dock="Top">Пример отображения связи многое ко многим</Label>
+            <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" Width="38" >
+                <Button x:Name="AddButton" Content="+" Width="28"/>
+                <Button x:Name="DeleteButton" Content="-" Width="28"/>
+            </StackPanel>
+            <DataGrid x:Name="dg"></DataGrid>
+        </DockPanel>
     </DockPanel>
 </Window>

@@ -22,6 +22,32 @@ namespace Salon
         public AddEditMasterPage()
         {
             InitializeComponent();
+            InitializeComponent();
+            List<Phone> phonesList = new List<Phone>
+            {
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone {Title="Nexus 5X", Company="Google", Price=29990 }
+            };
+            dg.ItemsSource = phonesList;
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)

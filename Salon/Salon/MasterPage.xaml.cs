@@ -33,6 +33,24 @@ public partial class MasterPage : Window
             {
                 new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
                 new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
+                new Phone { Title="iPhone 6S", Company="Apple", Price=54990 },
+                new Phone {Title="Lumia 950", Company="Microsoft", Price=39990 },
                 new Phone {Title="Nexus 5X", Company="Google", Price=29990 }
             };
             ClientGrid.ItemsSource = phonesList;
@@ -40,13 +58,13 @@ public partial class MasterPage : Window
 
         private void FullSearchButton_Click(object sender, RoutedEventArgs e)
         {
-            SearchStack.Visibility = Visibility.Collapsed;
+            //SearchStack.Visibility = Visibility.Collapsed;
             FullSearchGroup.Visibility = Visibility.Visible;
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            SearchStack.Visibility = Visibility.Visible;
+            //SearchStack.Visibility = Visibility.Visible;
             FullSearchGroup.Visibility = Visibility.Collapsed;
         }
 

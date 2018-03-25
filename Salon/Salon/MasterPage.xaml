@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Salon"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Образец" Height="354.667" Width="490.667" >
+        Title="Образец" MinWidth="800" MinHeight="500" Height="500" Width="800" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -14,23 +14,21 @@
         <StackPanel x:Name="Header" Style="{StaticResource header}">
             <Label Content="Таблица 'Клиенты'" Style="{StaticResource caption}"/>
         </StackPanel>
+        <StackPanel x:Name="HeaderSearch"  Style="{StaticResource header}">
+            <Label Content="Фильтр:" Style="{StaticResource caption}"/>
+        </StackPanel>
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
-            <StackPanel x:Name="SearchStack" >
-                <Label Content="Поиск:" Style="{StaticResource signature}"/>
-                <WrapPanel>
-                    <TextBox x:Name="SearchBox" Width="300"/>
-                    <Button x:Name="FullSearchButton"  Content="Расширенный поиск" Click="FullSearchButton_Click"/>
-                </WrapPanel>
-            </StackPanel>
-            <StackPanel x:Name="FullSearchGroup" Visibility="Collapsed">
-                <DockPanel>
-                    <WrapPanel DockPanel.Dock="Top">
+            <DockPanel x:Name="FullSearchGroup">
+                <StackPanel Style="{StaticResource buttonsPanel}" VerticalAlignment="Center">
+                    <Button x:Name="ClearButton" Width="auto">Очистить</Button>
+                </StackPanel>
+                <WrapPanel DockPanel.Dock="Top">
                         <StackPanel Margin="5 0 5 0">
-                            <Label Style="{StaticResource signature}">ФИО:</Label>
-                            <TextBox x:Name="FioBox" Width="200"></TextBox>
+                            <Label >ФИО:</Label>
+                            <TextBox x:Name="FioBox2" Width="200" Style="{StaticResource searchTextBox}"></TextBox>
                         </StackPanel>
                         <StackPanel Margin="5 0 5 0">
-                            <Label Style="{StaticResource signature}">Должность:</Label>
+                            <Label >Должность:</Label>
                             <ComboBox x:Name="PostCmbBox"  Width="150">
                                 <ComboBoxItem IsSelected="True">
                                     <StackPanel>
@@ -47,20 +45,14 @@
                         </StackPanel>
                         <CheckBox x:Name="KrasavaChkBox" IsChecked="False" Content="Красава" />
                     </WrapPanel>
-                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button x:Name="ClearButton" Width="80">Очистить</Button>
-                        <Button x:Name="CloseButton" Width="80" Click="Close_Click">Закрыть</Button>
-                    </StackPanel>
-                </DockPanel>
-            </StackPanel>
+                
+            </DockPanel>
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
             <Button x:Name="EditButton" Content="Редактировать"/>
-            <Button x:Name="DeleteButton"  Content="Удалить"/>
+            <Button x:Name="DeleteButton"  Content="Удалить" Style="{StaticResource buttonDelete}"/>
         </StackPanel>
-        <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="ClientGrid"></DataGrid>
-        </StackPanel>
+        <DataGrid x:Name="ClientGrid"></DataGrid>
     </DockPanel>
 </Window>

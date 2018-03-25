@@ -4,22 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Группа услуг" Height="300" Width="500">
+        Title="Группа услуги" Height="300" Width="400">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
     <DockPanel>
         <StackPanel x:Name="Header" Style="{StaticResource header}">
-            <Label Content="Таблица 'Группа услуги'" Style="{StaticResource caption}"/>
+            <Label Content="Таблица 'Групп услуги'" Style="{StaticResource caption}"/>
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
-            <Button x:Name="AddButton" Content="Добавить..." Click="AddButton_Click"/>
-            <Button x:Name="EditButton" Content="Редактировать..." Click="EditButton_Click"/>
-            <Button x:Name="DeleteButton"  Content="Удалить"/>
+            <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
+            <Button x:Name="EditButton" Content="Редактировать"/>
+            <Button x:Name="DeleteButton"  Content="Удалить" Style="{StaticResource buttonDelete}"/>
         </StackPanel>
-        <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="GroupServiceGrid"></DataGrid>
-        </StackPanel>
+        <DataGrid x:Name="ServiceGrid"></DataGrid>
     </DockPanel>
 </Window>

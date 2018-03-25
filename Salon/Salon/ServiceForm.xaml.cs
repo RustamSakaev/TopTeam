@@ -34,9 +34,9 @@ namespace Salon
         }
         public void OnLoad(object sender, RoutedEventArgs e)
         {
-            //string str = "select Service.name as [Наименование], TypeService.Name as [Тип услуги], KindService.Name as [Вид услуги] from Service inner join KindService on Service.KindService_ID = KindService.ID_KindService inner join TypeService on Service.TypeService_ID = TypeService.ID_TypeService";
-           // DataTable dt = DataTool(str);
-            //ServiceGrid.ItemsSource = dt.DefaultView;
+            string str = "select Service.name as [Наименование], TypeService.Name as [Тип услуги], KindService.Name as [Вид услуги] from Service inner join KindService on Service.KindService_ID = KindService.ID_KindService inner join TypeService on Service.TypeService_ID = TypeService.ID_TypeService";
+            DataTable dt = DataTool(str);
+            ServiceGrid.ItemsSource = dt.DefaultView;
         }
         public DataTable DataTool(string query)
         {

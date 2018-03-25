@@ -4,52 +4,50 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Тарифы на услуги" Height="300" Width="620">
+        Title="Тарифы" Height="300" Width="800">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
     <DockPanel>
         <StackPanel x:Name="Header" Style="{StaticResource header}">
-            <Label Content="Таблица 'Тарифы на услуги'" Style="{StaticResource caption}"/>
+            <Label Content="Таблица 'Тарифы'" Style="{StaticResource caption}"/>
+        </StackPanel>
+        <StackPanel x:Name="HeaderSearch"  Style="{StaticResource header}">
+            <Label Content="Фильтр:" Style="{StaticResource caption}"/>
         </StackPanel>
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
-            <StackPanel x:Name="SearchStack" >
-                <Label Content="Фильтр:" Style="{StaticResource signature}"/>
-                <DockPanel Margin="0 5 0 0">
-                    <WrapPanel DockPanel.Dock="Top">
-                        <StackPanel Margin="0 0 5 0">
-                            <Label Style="{StaticResource signature}">Услуга:</Label>
-                            <ComboBox x:Name="ServiceCmbBox"  Width="150">
-                            </ComboBox>
-                        </StackPanel>
-                        <StackPanel Margin="5 0 5 0">
-                            <Label Style="{StaticResource signature}">Цена:</Label>
-                            <TextBox x:Name="PriceBox" Width="200"></TextBox>
-                        </StackPanel>
-                        <StackPanel Margin="5 0 0 0">
-                            <Label Style="{StaticResource signature}">Дата от:</Label>
-                            <DatePicker x:Name="StartDatePicker"></DatePicker>
-                        </StackPanel>
-                        <StackPanel Margin="5 0 0 0">
-                            <Label Style="{StaticResource signature}">Дата по:</Label>
-                            <DatePicker x:Name="EndDatePicker"></DatePicker>
-                        </StackPanel>
-                    </WrapPanel>
-                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button x:Name="ClearButton" Width="80">Очистить</Button>                       
+            <DockPanel x:Name="FullSearchGroup">
+                <StackPanel Style="{StaticResource buttonsPanel}" VerticalAlignment="Center">
+                    <Button x:Name="ClearButton" Width="auto">Очистить</Button>
+                </StackPanel>
+                <WrapPanel DockPanel.Dock="Top">
+                    <StackPanel Margin="5 0 5 0">
+                        <Label >Услуга:</Label>
+                        <ComboBox x:Name="TypeServiceCmbBox"  Width="150">
+                        </ComboBox>
                     </StackPanel>
-                </DockPanel>
-            </StackPanel>
-           
+                    <StackPanel Margin="5 0 5 0">
+                        <Label>Цена:</Label>
+                        <TextBox x:Name="PriceBox" Width="200"></TextBox>
+                    </StackPanel>
+                    <StackPanel Margin="5 0 0 0">
+                        <Label>Дата от:</Label>
+                        <DatePicker x:Name="StartDatePicker"></DatePicker>
+                    </StackPanel>
+                    <StackPanel Margin="5 0 0 0">
+                        <Label>Дата по:</Label>
+                        <DatePicker x:Name="EndDatePicker"></DatePicker>
+                    </StackPanel>
+                </WrapPanel>
+            </DockPanel>
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
-            <Button x:Name="EditButton" Content="Редактировать" Click="EditButton_Click"/>
-            <Button x:Name="DeleteButton"  Content="Удалить"/>
+            <Button x:Name="EditButton" Content="Редактировать"/>
+            <Button x:Name="DeleteButton"  Content="Удалить" Style="{StaticResource buttonDelete}"/>
         </StackPanel>
-        <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="TariffGrid"></DataGrid>
-        </StackPanel>
+        <DataGrid x:Name="ServiceGrid"></DataGrid>
     </DockPanel>
 </Window>

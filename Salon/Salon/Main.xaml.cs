@@ -72,11 +72,7 @@ namespace Salon
             serv.ShowDialog();
         }
 
-        private void GruppiUslug_Click(object sender, RoutedEventArgs e)
-        {
-         
-        }
-               
+           
         private void EmployeeData_Click(object sender, RoutedEventArgs e)
         {
             string connectionStr = @"Data Source=MARGOSHA;Initial Catalog=Salon;Integrated Security=True";
@@ -210,24 +206,9 @@ namespace Salon
             form.ShowDialog();
         }
 
-        private void KindService_Click(object sender, RoutedEventArgs e)
-        {
-            KindService kind = new KindService();
-            kind.ShowDialog();
-        }
-
-        private void GroupService_Click(object sender, RoutedEventArgs e)
-        {
-            GroupServiceForm gr = new GroupServiceForm();
-            gr.ShowDialog();
-        }
-
-        private void TypeServiceForm_Click(object sender, RoutedEventArgs e)
-        {
-            TypeServiceForm type = new TypeServiceForm();
-            type.ShowDialog();
-        }
-
+      
+    
+     
         private void MenuItem_Click_6(object sender, RoutedEventArgs e)
         {
             var form = new BillForm();

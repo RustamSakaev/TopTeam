@@ -29,10 +29,10 @@ namespace Salon
             switch (state)
             {
                 case FormState.Edit:
-                    HeaderLabel.Content = "Редактирование услуги";
+                    HeaderLabel.Content = "Редактирование тарифа";
                     break;
                 case FormState.Add:
-                    HeaderLabel.Content = "Добавление услуги";
+                    HeaderLabel.Content = "Добавление тарифа";
                     break;
             }
         }

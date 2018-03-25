@@ -1,11 +1,12 @@
 ﻿<Window x:Class="Salon.TypeServiceForm"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Тип услуги" Height="300" Width="510">
+        Title="Тип услуги" Height="400" Width="750">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -13,40 +14,37 @@
         <StackPanel x:Name="Header" Style="{StaticResource header}">
             <Label Content="Таблица 'Тип услуги'" Style="{StaticResource caption}"/>
         </StackPanel>
+        <StackPanel x:Name="HeaderSearch"  Style="{StaticResource header}">
+            <Label Content="Фильтр:" Style="{StaticResource caption}"/>
+        </StackPanel>
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
-            <StackPanel x:Name="SearchStack" >
-                <Label Content="Фильтр:" Style="{StaticResource signature}"/>
-                <DockPanel Margin="0 5 0 0">
-                    <WrapPanel DockPanel.Dock="Top">
-                        <StackPanel Margin="0 0 5 0">
-                            <Label Style="{StaticResource signature}">Наименование:</Label>
-                            <TextBox x:Name="NameBox" Width="155"></TextBox>
-                        </StackPanel>
-                        <StackPanel Margin="0 0 5 0">
-                            <Label Style="{StaticResource signature}">Группа услуги:</Label>
-                            <ComboBox x:Name="GroupServiceCmbBox"  Width="150">
-                            </ComboBox>
-                        </StackPanel>
-                        <StackPanel>
-                            <Label Style="{StaticResource signature}">Вид услуги:</Label>
-                            <ComboBox x:Name="KindServiceCmbBox"  Width="157">
-                            </ComboBox>
-                        </StackPanel>
-                    </WrapPanel>
-                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button x:Name="ClearButton" Width="80">Очистить</Button>
+            <DockPanel x:Name="FullSearchGroup">
+                <StackPanel Style="{StaticResource buttonsPanel}" VerticalAlignment="Center">
+                    <Button x:Name="ClearButton" Width="auto">Очистить</Button>
+                </StackPanel>
+                <WrapPanel DockPanel.Dock="Top">
+                    <StackPanel Margin="5 0 5 0">
+                        <Label >Наименование:</Label>
+                        <TextBox x:Name="NameBox" Width="200" Style="{StaticResource searchTextBox}"></TextBox>
                     </StackPanel>
-                </DockPanel>
-            </StackPanel>
-
+                    <StackPanel Margin="5 0 5 0">
+                        <Label >Группа услуги:</Label>
+                        <ComboBox x:Name="TypeServiceCmbBox"  Width="150">
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Margin="5 0 5 0">
+                        <Label >Вид услуги:</Label>
+                        <ComboBox x:Name="KindServiceCmbBox"  Width="150">
+                        </ComboBox>
+                    </StackPanel>
+                </WrapPanel>
+            </DockPanel>
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
-            <Button x:Name="AddButton" Content="Добавить..." Click="AddButton_Click"/>
-            <Button x:Name="EditButton" Content="Редактировать..." Click="EditButton_Click"/>
-            <Button x:Name="DeleteButton"  Content="Удалить"/>
+            <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
+            <Button x:Name="EditButton" Content="Редактировать"/>
+            <Button x:Name="DeleteButton"  Content="Удалить" Style="{StaticResource buttonDelete}"/>
         </StackPanel>
-        <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-            <DataGrid x:Name="TypeServiceGrid"></DataGrid>
-        </StackPanel>
+        <DataGrid x:Name="ServiceGrid"></DataGrid>
     </DockPanel>
 </Window>

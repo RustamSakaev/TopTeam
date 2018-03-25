@@ -5,23 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="" Height="300" Width="300">
+        Title="" Height="270" Width="800" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
     <DockPanel>
         <StackPanel x:Name="Header" Style="{StaticResource header}">
-            <Label Content="Добавление типа услуги"  Name="HeaderLabel" Style="{StaticResource caption}"/>
+            <Label Name="HeaderLabel" Content="Добавление типа услуги" Style="{StaticResource caption}"/>
         </StackPanel>
-        <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource bottom}">
-            <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
-            <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
-        </StackPanel>
-        <WrapPanel>
+        <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
+            <StackPanel Style="{StaticResource buttonsPanel}">
+                <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+                <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+            </StackPanel>
+        </DockPanel>
+        <WrapPanel DockPanel.Dock="Top">
             <StackPanel>
-                <Label Content="Наименование"  Style="{StaticResource signature}"></Label>
+                <Label Content="Наименование"  ></Label>
                 <TextBox x:Name="NameBox" Width="200"></TextBox>
             </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Label Content="Группа услуги"  ></Label>
+                    <ComboBox x:Name="GroupServiceCmbBox" Width="150">
+                        <ComboBoxItem IsSelected="True">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Администратор</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel>
+                    <Button x:Name="GroupServiceFormButton" Content="..." Style="{StaticResource threeDots}"></Button>
+                </StackPanel>
+            </StackPanel>
         </WrapPanel>
+        <DockPanel DockPanel.Dock="Bottom">
+            <Label  DockPanel.Dock="Top">Виды услуг</Label>
+            <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" Width="38" >
+                <Button x:Name="AddButton" Content="+" Width="28"/>
+                <Button x:Name="DeleteButton" Content="-" Width="28"/>
+            </StackPanel>
+            <DataGrid x:Name="dg"></DataGrid>
+        </DockPanel>
     </DockPanel>
 </Window>

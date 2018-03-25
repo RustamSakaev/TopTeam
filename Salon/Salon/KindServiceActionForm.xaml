@@ -5,23 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="" Height="300" Width="300">
+        Title="" Height="270" Width="400" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
     <DockPanel>
         <StackPanel x:Name="Header" Style="{StaticResource header}">
-            <Label Content="Добавление вида услуги"  Name="HeaderLabel" Style="{StaticResource caption}"/>
+            <Label Name="HeaderLabel" Content="Добавление вида услуги" Style="{StaticResource caption}"/>
         </StackPanel>
-        <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource bottom}">
-            <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
-            <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
-        </StackPanel>
-        <WrapPanel>
+        <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
+            <StackPanel Style="{StaticResource buttonsPanel}">
+                <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+                <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+            </StackPanel>
+        </DockPanel>
+        <WrapPanel DockPanel.Dock="Top">
             <StackPanel>
-                <Label Content="Наименование"  Style="{StaticResource signature}"></Label>
+                <Label Content="Наименование"  ></Label>
                 <TextBox x:Name="NameBox" Width="200"></TextBox>
             </StackPanel>
         </WrapPanel>
+        <DockPanel DockPanel.Dock="Bottom">
+            <Label  DockPanel.Dock="Top">Типы услуг</Label>
+            <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" Width="38" >
+                <Button x:Name="AddButton" Content="+" Width="28"/>
+                <Button x:Name="DeleteButton" Content="-" Width="28"/>
+            </StackPanel>
+            <DataGrid x:Name="dg"></DataGrid>
+        </DockPanel>
     </DockPanel>
 </Window>

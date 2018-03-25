@@ -79,5 +79,23 @@ namespace Salon
         {
 
         }
+
+        private void TypeServiceFormButton_Click(object sender, RoutedEventArgs e)
+        {
+            TypeServiceForm type = new TypeServiceForm();
+            type.ShowDialog();
+        }
+
+        private void KindServiceFormButton_Click(object sender, RoutedEventArgs e)
+        {
+            KindService kind = new KindService();
+            kind.ShowDialog();
+        }
+
+        private void GroupServiceFormButton_Click(object sender, RoutedEventArgs e)
+        {
+            GroupServiceForm group = new GroupServiceForm();
+            group.ShowDialog();
+        }
     }
 }

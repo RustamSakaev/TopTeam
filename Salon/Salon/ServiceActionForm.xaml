@@ -5,54 +5,90 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="ServiceActionForm" Height="300" Width="300">
+        Title="" Height="350" Width="300">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
     <DockPanel>
         <StackPanel x:Name="Header" Style="{StaticResource header}">
-            <Label Content="Добавление услуги" Name ="HeaderLabel" Style="{StaticResource caption}"/>
+            <Label Content="Добавление услуги" Style="{StaticResource caption}"/>
         </StackPanel>
-        <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource bottom}">
-            <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
-            <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
-        </StackPanel>
-        <WrapPanel>
+        <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
+            <StackPanel Style="{StaticResource buttonsPanel}">
+                <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+                <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+            </StackPanel>
+        </DockPanel>
+        <WrapPanel DockPanel.Dock="Top">
             <StackPanel>
-                <Label Content="Наименование"  Style="{StaticResource signature}"></Label>
-                <TextBox x:Name="NameBox" Width="188"></TextBox>
+                <Label Content="Наименование"  ></Label>
+                <TextBox x:Name="NameBox" Width="200"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
-                    <Label Content="Тип услуги"  Style="{StaticResource signature}"></Label>
-                    <ComboBox x:Name="TypeService_IDCmbBox" Width="150">
+                    <Label Content="Тип услуги"  ></Label>
+                    <ComboBox x:Name="TypeServiceCmbBox" Width="150">
                         <ComboBoxItem IsSelected="True">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock>Эпиляция</TextBlock>
+                                <TextBlock>...</TextBlock>
                             </StackPanel>
                         </ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
-                    <Button x:Name="TypeService_IDFormButton" Content="..." Style="{StaticResource threeDots}"></Button>
+                    <Button x:Name="TypeServiceFormButton" Content="..." Style="{StaticResource threeDots}" Click="TypeServiceFormButton_Click"></Button>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Label Content="Вид услуги"  ></Label>
+                    <ComboBox x:Name="KindServiceCmbBox" Width="150">
+                        <ComboBoxItem IsSelected="True">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>...</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel>
+                    <Button x:Name="KindServiceFormButton" Content="..." Style="{StaticResource threeDots}" RenderTransformOrigin="0.5,0.5" Click="KindServiceFormButton_Click">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="1.955"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                    </Button>
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
-                    <Label Content="Вид услуги"  Style="{StaticResource signature}"></Label>
-                    <ComboBox x:Name="KindService_IDCmbBox" Width="150">
+                    <Label Content="Группа услуги"  ></Label>
+                    <ComboBox x:Name="GroupServiceCmbBox" Width="150">
                         <ComboBoxItem IsSelected="True">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock>Косметология</TextBlock>
+                                <TextBlock>...</TextBlock>
                             </StackPanel>
                         </ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
-                    <Button x:Name="KindService_IDFormButton" Content="..." Style="{StaticResource threeDots}"></Button>
+                    <Button x:Name="GroupServiceFormButton" Content="..." Style="{StaticResource threeDots}" RenderTransformOrigin="0.5,0.5" Click="GroupServiceFormButton_Click">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="1.955"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                    </Button>
                 </StackPanel>
             </StackPanel>
         </WrapPanel>
+      
     </DockPanel>
 </Window>

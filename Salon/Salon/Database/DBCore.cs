@@ -48,27 +48,30 @@ namespace Salon
             var builder = new SqlConnectionStringBuilder
             {
                 DataSource = server,
-                InitialCatalog = "Salon",
+                InitialCatalog = "Task3",
                 IntegratedSecurity = true,
             };
 
             _connection.ConnectionString = builder.ConnectionString;
             _connection.Open();
         }
-        public static void InitLogPass(string server, string login,string pass)
+        public static bool InitLogPass(string server, string login,string pass)
         {
             _connection = new SqlConnection();
-
             var builder = new SqlConnectionStringBuilder
             {
                 DataSource = server,
-                InitialCatalog = "Salon",
+                InitialCatalog = "Task3",
                 UserID = login,
                 Password = pass,
             };
 
             _connection.ConnectionString = builder.ConnectionString;
             _connection.Open();
+            if (_connection.State == ConnectionState.Open)
+                return true;
+            else
+                return false;
         }
         public static void Destroy()
         {

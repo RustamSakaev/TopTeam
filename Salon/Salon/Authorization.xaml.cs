@@ -22,16 +22,21 @@ namespace Salon
     /// </summary>
     public partial class Authorization : Window
     {
-
+        Users users;
         public Authorization()
         {
             InitializeComponent();           
         }
-        private string server;
-        
+        private string server= "DESKTOP-H5176PR";
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            DBUser.Connection(server, LoginBox.Text, PassBox.Text);
+            var IsLog = DBUser.Connection(server, LoginBox.Text, PassBox.Text);
+            if (IsLog == true)
+            {
+                users = new Users();
+                users.Show();
+            }
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)

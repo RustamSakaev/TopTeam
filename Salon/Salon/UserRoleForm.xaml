@@ -13,11 +13,11 @@
         <StackPanel Name="First" DockPanel.Dock="Top"  Height="276" Visibility="Visible">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <StackPanel>
-                    <Label x:Name="label" Content="Пользователи" Style="{StaticResource signature}"/>
+                    <Label x:Name="label" Content="Пользователи"/>
                     <ListBox x:Name="UserslistBox" Height="245" Width="138" Loaded="OnLoad" SelectionChanged="listBox_SelectionChanged"/>
                 </StackPanel>
                 <StackPanel Canvas.Left="173" Canvas.Top="16">
-                    <Label x:Name="label1" Content="Роли пользователя" Style="{StaticResource signature}"/>
+                    <Label x:Name="label1" Content="Роли пользователя"/>
                     <ListBox x:Name="RoleslistBox" Height="245" Width="138" SelectionMode="Extended"/>
                 </StackPanel>
                 <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" Width="119" Margin="0,12,0,0" >
@@ -29,7 +29,7 @@
         <StackPanel Name="Second" DockPanel.Dock="Top"  Height="276" Visibility="Collapsed">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <StackPanel>
-                        <Label Content="Роли:" Style="{StaticResource signature}" />
+                        <Label Content="Роли:" />
                         <ListBox x:Name="AllRoleslistBox" Height="270" Width="246" SelectionMode="Extended"/>
                     </StackPanel>
                     <StackPanel x:Name="ButtonsPanel1"  Style="{StaticResource buttonsPanel}" Width="119" Height="249" Margin="0,-15,0,0">

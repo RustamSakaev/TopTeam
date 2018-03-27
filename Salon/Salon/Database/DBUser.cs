@@ -14,30 +14,23 @@ namespace Salon
         {
             var command = new SqlCommand
             {
-                CommandText = $@"USE master
-                    create login @login with password = '@pass', check_policy = off;
-                    USE[Task3]
-                    create user @login from login @login
-                    exec sp_addrolemember 'db_datareader', '@login'"
+                CommandText = $@"USE master create login "+login+" with password = '"+pass+"', check_policy = off; USE[Task3] create user "+login+" from login "+login+" exec sp_addrolemember 'db_datareader', '"+login+"';"
             };       
-            command.Parameters.AddWithValue("@login", login);
-            command.Parameters.AddWithValue("@pass", pass);
+            /*command.Parameters.AddWithValue("@loginn", login);
+            command.Parameters.AddWithValue("@pass", pass);*/
             DBCore.ExecuteCommand(command);
         }
-        public static void Connection(string server, string login, string pass)
+        public static bool Connection(string server, string login, string pass)
         {
-            DBCore.InitLogPass(server,login, pass);
+            bool IsLog=DBCore.InitLogPass(server,login, pass);
+            return IsLog;
         }
         public static void ChangePass(string user, string newpass, string oldpass)
         {
             var command = new SqlCommand
             {
-                CommandText = $@"ALTER LOGIN @login WITH PASSWORD = '@newpass' OLD_PASSWORD = '@oldpass'"
+                CommandText = $@"ALTER LOGIN "+user+" WITH PASSWORD = '"+newpass+"' OLD_PASSWORD = '"+oldpass+"'"
             };
-
-            command.Parameters.AddWithValue("@login", user);
-            command.Parameters.AddWithValue("@newpass", newpass);
-            command.Parameters.AddWithValue("@oldpass", oldpass);
 
             DBCore.ExecuteCommand(command);
         }

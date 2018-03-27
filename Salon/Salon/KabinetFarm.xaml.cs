@@ -34,6 +34,7 @@ namespace Salon
         private void button_Click(object sender, RoutedEventArgs e)
         {
             DBUser.ChangePass(userName, NewPassBox.Text, OldPassBox.Text);
+            this.Close();
         }
     }
 }

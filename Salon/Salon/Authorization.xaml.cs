@@ -22,7 +22,6 @@ namespace Salon
     /// </summary>
     public partial class Authorization : Window
     {
-        Users users;
         public Authorization()
         {
             InitializeComponent();           
@@ -34,14 +33,26 @@ namespace Salon
             var IsLog = DBUser.Connection(server, LoginBox.Text, PassBox.Text);
             if (IsLog == true)
             {
-                users = new Users();
-                users.Show();
+                NewForm();
             }
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+            DBCore.Init(server);
             DBUser.CreateUser(LoginBox.Text, PassBox.Text);
+            var IsLog = DBUser.Connection(server, LoginBox.Text, PassBox.Text);
+            if (IsLog == true)
+            {
+                NewForm();
+            }
+        }
+        private void NewForm()
+        {
+            this.Hide();
+            Users users = new Users();
+            users.Show();
+            users.Closed += (x, y) => { this.Show(); PassBox.Text = ""; };
         }
     }
 }

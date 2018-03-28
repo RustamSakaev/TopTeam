@@ -79,5 +79,11 @@ namespace Salon
         {
 
         }
+
+        private void GroupServiceFormButton_Click(object sender, RoutedEventArgs e)
+        {
+            GroupServiceForm group_service = new GroupServiceForm();
+            group_service.ShowDialog();
+        }
     }
 }

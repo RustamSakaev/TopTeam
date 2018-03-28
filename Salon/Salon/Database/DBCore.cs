@@ -48,7 +48,7 @@ namespace Salon
             var builder = new SqlConnectionStringBuilder
             {
                 DataSource = server,
-                InitialCatalog = "Task3",
+                InitialCatalog = "Salon",
                 IntegratedSecurity = true,
             };
 
@@ -61,7 +61,7 @@ namespace Salon
             var builder = new SqlConnectionStringBuilder
             {
                 DataSource = server,
-                InitialCatalog = "Task3",
+                InitialCatalog = "Salon",
                 UserID = login,
                 Password = pass,
             };

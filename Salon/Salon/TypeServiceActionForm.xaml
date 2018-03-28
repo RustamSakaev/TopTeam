@@ -36,7 +36,7 @@
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
-                    <Button x:Name="GroupServiceFormButton" Content="..." Style="{StaticResource threeDots}"></Button>
+                    <Button x:Name="GroupServiceFormButton" Content="..." Style="{StaticResource threeDots}" Click="GroupServiceFormButton_Click"></Button>
                 </StackPanel>
             </StackPanel>
         </WrapPanel>

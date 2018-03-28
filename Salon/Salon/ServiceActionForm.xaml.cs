@@ -92,10 +92,6 @@ namespace Salon
             kind.ShowDialog();
         }
 
-        private void GroupServiceFormButton_Click(object sender, RoutedEventArgs e)
-        {
-            GroupServiceForm group = new GroupServiceForm();
-            group.ShowDialog();
-        }
+       
     }
 }

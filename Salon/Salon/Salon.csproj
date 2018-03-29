@@ -89,6 +89,7 @@
     <Compile Include="Database\DBProvidingService.cs" />
     <Compile Include="Database\DBService.cs" />
     <Compile Include="Database\DBStatus.cs" />
+    <Compile Include="Database\DBTariff.cs" />
     <Compile Include="Database\DBTypeService.cs" />
     <Compile Include="Database\DBUser.cs" />
     <Compile Include="Database\DBVisit.cs" />

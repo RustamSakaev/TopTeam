@@ -5,28 +5,28 @@ namespace Salon.Database
 {
     class DBGroupService
     {
-        public static DataTable GetServices()
+        public static DataTable GetGroupServices()
         {
             return DBCore.GetData($@"
                 SELECT 
                     GroupService.ID_GroupService as id,
-                    GroupService.Name as Наименование, 
+                    GroupService.Name as Наименование 
                 FROM GroupService;"
             );
         }
 
-        public static DataTable GetService(string id)
+        public static DataTable GetGroupService(string id)
         {
             return DBCore.GetData($@"
                SELECT 
                     GroupService.ID_GroupService as id,
-                    GroupService.Name as Наименование, 
+                    GroupService.Name as Наименование 
                 FROM GroupService
                 WHERE GroupService.ID_GroupService = {id};"
             );
         }
 
-        public static void DeleteService(string id)
+        public static void DeleteGroupService(string id)
         {
             var command = new SqlCommand
             {
@@ -40,7 +40,7 @@ namespace Salon.Database
             DBCore.ExecuteCommand(command);
         }
 
-        public static void EditService(string id, string name)
+        public static void EditGroupService(string id, string name)
         {
             var command = new SqlCommand
             {
@@ -57,7 +57,7 @@ namespace Salon.Database
             DBCore.ExecuteCommand(command);
         }
 
-        public static void AddService(string name)
+        public static void AddGroupService(string name)
         {
             var command = new SqlCommand
             {

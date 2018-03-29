@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
+using Salon.Database;
 
 namespace Salon
 {
@@ -22,7 +23,9 @@ namespace Salon
     public partial class TypeServiceActionForm : Window
     {
         private readonly FormState _state;
-        public TypeServiceActionForm(FormState state)
+        private readonly DataTable _currentDataItem;
+        private readonly DataTable _CurGroupServiceDataItem;
+        public TypeServiceActionForm(FormState state,string type_id=null, string group_id=null)
         {
             InitializeComponent();
             _state = state;
@@ -30,9 +33,21 @@ namespace Salon
             {
                 case FormState.Edit:
                     HeaderLabel.Content = "Редактирование типа услуги";
+                    _currentDataItem = DBTypeService.GetTypeService(type_id);
+                    NameBox.Text = _currentDataItem.Rows[0]["Наименование"].ToString();
+                    _CurGroupServiceDataItem = DBGroupService.GetGroupService(group_id);
+                    foreach (DataRow type in DBGroupService.GetGroupServices().Rows)
+                    {
+                        GroupServiceCmbBox.Items.Add(type["Наименование"]);
+                    }
+                    GroupServiceCmbBox.SelectedValue = _CurGroupServiceDataItem.Rows[0]["Наименование"].ToString();
                     break;
                 case FormState.Add:
                     HeaderLabel.Content = "Добавление типа услуги";
+                    foreach (DataRow type in DBGroupService.GetGroupServices().Rows)
+                    {
+                        GroupServiceCmbBox.Items.Add(type["Наименование"]);
+                    }
                     break;
             }
         }

@@ -11,6 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
+using System.Data.SqlClient;
+using Salon.Misc;
+using Salon.Database;
 
 namespace Salon
 {
@@ -19,9 +23,15 @@ namespace Salon
     /// </summary>
     public partial class TypeServiceForm : Window
     {
+        private DataTable _currentFormData = new DataTable();
         public TypeServiceForm()
         {
             InitializeComponent();
+        }
+        private DataTable CurrentFormData
+        {
+            get { return _currentFormData; }
+            set { _currentFormData = value; TypeServiceGrid.ItemsSource = _currentFormData.DefaultView; }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -32,13 +42,32 @@ namespace Salon
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            TypeServiceActionForm typeserv = new TypeServiceActionForm(FormState.Edit);
+            var typeidx = ((DataView)TypeServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+
+            if (typeidx == -1) return;
+
+            var typeid = ((DataRowView)TypeServiceGrid.SelectedItem)?.Row[typeidx].ToString();
+
+            if (typeid == null) return;
+
+            var groupidx = ((DataView)TypeServiceGrid.ItemsSource).Table.Columns.IndexOf("group_id");
+
+            if (groupidx == -1) return;
+
+            var groupid = ((DataRowView)TypeServiceGrid.SelectedItem)?.Row[groupidx].ToString();
+
+            if (groupid == null) return;
+
+
+            TypeServiceActionForm typeserv = new TypeServiceActionForm(FormState.Edit,typeid, groupid);
             typeserv.ShowDialog();
         }
 
-        private void AddButton_Click_1(object sender, RoutedEventArgs e)
+        
+        public void OnLoad(object sender, RoutedEventArgs e)
         {
-
+            CurrentFormData = DBTypeService.GetTypeServices();
         }
+
     }
 }

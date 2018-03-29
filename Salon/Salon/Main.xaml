@@ -9,8 +9,8 @@
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
-    <StackPanel>
-        <Menu Height="25" VerticalAlignment="Top">
+    <DockPanel>
+        <Menu>
             <MenuItem Header="Администрированиe">
                 <MenuItem Header="Смена пароля" ></MenuItem>
                 <MenuItem Header="Изменение роли пользователя" >
@@ -22,8 +22,8 @@
                 <MenuItem Header="Работа с сотрудниками" HorizontalAlignment="Left" Width="214">
                     <MenuItem Header="Список сотрудников" Click="MenuItem_Click_3"/>
                     <MenuItem Header="График работы" Click="MenuItem_Click_5"/>
-                    <MenuItem Header="Расчеты с сотрудниками" Click="MenuItem_Click_6"/>                    
-                   <!-- <MenuItem Header="Выбор профиля сотрудника"/> 
+                    <MenuItem Header="Расчеты с сотрудниками" Click="MenuItem_Click_6"/>
+                    <!-- <MenuItem Header="Выбор профиля сотрудника"/> 
                     <MenuItem Header="Услуги, предоставляемые мастерами"/> 
                     <MenuItem Header="Мастера салона" Click="MenuItem_Click_3"/> -->
                 </MenuItem>
@@ -55,8 +55,5 @@
             </MenuItem>
             <MenuItem Header="Прототип" Click="Prototype_Click"></MenuItem>
         </Menu>
-        <StackPanel >
-            
-        </StackPanel>
-    </StackPanel>
+    </DockPanel>
 </Window>

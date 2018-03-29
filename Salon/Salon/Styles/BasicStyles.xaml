@@ -127,4 +127,11 @@
         <Setter Property="Background" Value="#2b3043"/>
         <Setter Property="Foreground" Value="#d9dfeb"/>
     </Style>
+
+    <Style TargetType="Menu">
+        <Setter Property="DockPanel.Dock" Value="Top" />
+        <Setter Property="Background" Value="#2b3043" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="Foreground" Value="#d9dfeb" />
+    </Style>
 </ResourceDictionary>

@@ -37,6 +37,9 @@ namespace Salon
         public void OnLoad(object sender, RoutedEventArgs e)
         { 
             CurrentFormData = DBService.GetServices();
+            ServiceGrid.Columns[5].Visibility = Visibility.Hidden;
+            ServiceGrid.Columns[6].Visibility = Visibility.Hidden;
+            ServiceGrid.Columns[0].Visibility = Visibility.Hidden;
         }
         
         private void AddButton_Click(object sender, RoutedEventArgs e)

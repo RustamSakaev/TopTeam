@@ -34,6 +34,7 @@ namespace Salon
                     HeaderLabel.Content = "Редактирование тарифа";
                     _currentDataItem = DBTariff.GetTariff(id);
                     PriceBox.Text = _currentDataItem.Rows[0]["Стоимость"].ToString();
+                    StartDatePicker.SelectedDate = Convert.ToDateTime(_currentDataItem.Rows[0]["Дата начала"]);
                     _CurServiceDataItem = DBService.GetService(serv_id);
                     foreach (DataRow serv in DBService.GetServices().Rows)
                     {

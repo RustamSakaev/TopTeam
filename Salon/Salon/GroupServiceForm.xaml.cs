@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Salon.Database;
+using System.Data;
 
 namespace Salon
 {
@@ -19,11 +21,16 @@ namespace Salon
     /// </summary>
     public partial class GroupServiceForm : Window
     {
+        private DataTable _currentFormData = new DataTable();
         public GroupServiceForm()
         {
             InitializeComponent();
         }
-
+        private DataTable CurrentFormData
+        {
+            get { return _currentFormData; }
+            set { _currentFormData = value; GroupServiceGrid.ItemsSource = _currentFormData.DefaultView; }
+        }
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             GroupServiceActionForm grserv = new GroupServiceActionForm(FormState.Add);
@@ -32,8 +39,20 @@ namespace Salon
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            GroupServiceActionForm grserv = new GroupServiceActionForm(FormState.Edit);
+            var groupidx = ((DataView)GroupServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+
+            if (groupidx == -1) return;
+
+            var groupid = ((DataRowView)GroupServiceGrid.SelectedItem)?.Row[groupidx].ToString();
+
+            if (groupid == null) return;
+            GroupServiceActionForm grserv = new GroupServiceActionForm(FormState.Edit, groupid);
             grserv.ShowDialog();
+        }
+        public void OnLoad(object sender, RoutedEventArgs e)
+        {
+            CurrentFormData = DBGroupService.GetGroupServices();
+            GroupServiceGrid.Columns[0].Visibility = Visibility.Hidden;
         }
     }
 }

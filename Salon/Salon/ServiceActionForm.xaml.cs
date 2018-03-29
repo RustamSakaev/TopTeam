@@ -66,40 +66,7 @@ namespace Salon
                     break;
             }
         }
-        public string Connection()
-        {
-            string conn = @"Data Source=LENOVO-PC;Initial Catalog=Salon;Integrated Security=True";
-            return conn;
-        }
-        public DataTable DataTool(string query)
-        {
-            string connStr = Connection();
-            SqlConnection conn = null;
-            SqlCommand comm = null;
-            DataTable dt = new DataTable();
-            try
-            {
-                conn = new SqlConnection(connStr);
-                conn.Open();
-                if (conn != null)
-                {
-                    comm = conn.CreateCommand();
-                    comm.CommandText = query;
-                    SqlDataAdapter adapter = new SqlDataAdapter(comm);
-                    SqlCommandBuilder bild = new SqlCommandBuilder(adapter);
-                    adapter.Fill(dt);
-                    return dt;
-                }
-                else
-                { return dt; }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return dt;
-            }
-        }
-
+      
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
 

@@ -54,6 +54,7 @@ namespace Salon
         public void OnLoad(object sender, RoutedEventArgs e)
         {
             CurrentFormData = DBKindService.GetKindServices();
+            KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;
         }
     }
 }

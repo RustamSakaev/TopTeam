@@ -67,6 +67,8 @@ namespace Salon
         public void OnLoad(object sender, RoutedEventArgs e)
         {
             CurrentFormData = DBTypeService.GetTypeServices();
+            TypeServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+            TypeServiceGrid.Columns[3].Visibility = Visibility.Hidden;
         }
 
     }

@@ -18,26 +18,26 @@
         </StackPanel>
         <WrapPanel>
             <StackPanel>
-                <Label Content="Дата"  Style="{StaticResource signature}"></Label>
+                <Label Content="Дата"></Label>
                 <TextBox x:Name="DateBox" Width="200"></TextBox>
             </StackPanel>
             <StackPanel>
-                <Label Content="Номер"  Style="{StaticResource signature}"></Label>
+                <Label Content="Номер"></Label>
                 <TextBox x:Name="NumberBox" Width="200"></TextBox>
             </StackPanel>
             <StackPanel>
-                <Label Content="Сумма"  Style="{StaticResource signature}"></Label>
+                <Label Content="Сумма"></Label>
                 <TextBox x:Name="BillAmountBox" Width="200"></TextBox>
             </StackPanel>
             <StackPanel>
                 <CheckBox x:Name="PaidChb" Content="Оплачено"/>
             </StackPanel>
             <StackPanel>
-                <Label Content="Способ оплаты"  Style="{StaticResource signature}"></Label>
+                <Label Content="Способ оплаты"></Label>
                 <TextBox x:Name="PaymentMethodBox" Width="200"></TextBox>
             </StackPanel>
             <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
-                <Label Content="Оказанные услуги"  Style="{StaticResource signature}"></Label>
+                <Label Content="Оказанные услуги"></Label>
                 <DataGrid x:Name="ServicesGrid" ItemsSource="{Binding}" IsReadOnly="True" ColumnWidth="*" AutoGeneratingColumn="ServicesGrid_AutoGeneratingColumn" Width="635" />
             </StackPanel>
         </WrapPanel>

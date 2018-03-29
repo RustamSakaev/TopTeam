@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Посещения" Height="402" Width="604" Loaded="Window_Loaded">
+        Title="Посещения" Height="402" Width="609" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -14,34 +14,34 @@
             <Label Content="Таблица 'Посещения'" Style="{StaticResource caption}"/>
         </StackPanel>
         <StackPanel x:Name="Search" Style="{StaticResource search}" >            
-                <Label Content="Фильтр:" Style="{StaticResource signature}" Margin="0"/>
+                <Label Content="Фильтр:"  Margin="0"/>
                 <WrapPanel>
                     <DockPanel>
                         <WrapPanel DockPanel.Dock="Top">
                             <StackPanel Margin="5 0 5 0">
-                                <Label Style="{StaticResource signature}">Клиент:</Label>
+                                <Label>Клиент:</Label>
                                 <ComboBox x:Name="ClientCmbBox"  Width="150" SelectionChanged="ClientCmbBox_SelectionChanged">
 
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel Margin="5 0 5 0">
-                                <Label Style="{StaticResource signature}">Сотрудник:</Label>
+                                <Label>Сотрудник:</Label>
                                 <ComboBox x:Name="WorkerCmbBox"  Width="150" SelectionChanged="WorkerCmbBox_SelectionChanged">
 
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel Margin="5 0 5 0">
-                                <Label Style="{StaticResource signature}">Дата от:</Label>
+                                <Label>Дата от:</Label>
                                 <DatePicker x:Name="StartDatePicker" SelectedDateChanged="StartDatePicker_SelectedDateChanged"></DatePicker>
                             </StackPanel>
                             <StackPanel Margin="5 0 5 0">
-                                <Label Style="{StaticResource signature}">Дата по:</Label>
+                                <Label>Дата по:</Label>
                                 <DatePicker x:Name="EndDatePicker" SelectedDateChanged="EndDatePicker_SelectedDateChanged"></DatePicker>
                             </StackPanel>
                         </WrapPanel>
                         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button x:Name="ClearButton" Width="80" Click="ClearButton_Click">Очистить</Button>                           
-                        </StackPanel>
+                        <Button x:Name="ClearButton" Width="80" Click="ClearButton_Click" Content="Очистить"/>
+                    </StackPanel>
                     </DockPanel>                                  
                 </WrapPanel>                       
         </StackPanel>

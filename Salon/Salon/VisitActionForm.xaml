@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Посещение" Height="267" Width="756.086" >
+        Title="Посещение" Height="297" Width="729" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -20,17 +20,17 @@
         <WrapPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
-                    <Label Content="Клиент"  Style="{StaticResource signature}"></Label>
+                    <Label Content="Клиент"></Label>
                     <ComboBox x:Name="ClientCmbBox" Width="305" ItemsSource="{Binding ComboItems}">
                     </ComboBox>
-                </StackPanel>                
+                </StackPanel>
                 <StackPanel>
                     <Button x:Name="ClientFormButton" Content="..." Style="{StaticResource threeDots}" Click="ClientForm_Click"></Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
-                    <Label Content="Сотрудник"  Style="{StaticResource signature}"></Label>
+                    <Label Content="Сотрудник"></Label>
                     <ComboBox x:Name="WorkerCmbBox" Width="305" ItemsSource="{Binding ComboItems}">
                     </ComboBox>
                 </StackPanel>
@@ -39,26 +39,26 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel>
-                <Label Content="Дата посещения"  Style="{StaticResource signature}"></Label>
+                <Label Content="Дата посещения"></Label>
                 <DatePicker x:Name="DateDatePicker"/>
             </StackPanel>
             <StackPanel>
-                <Label Content="Начальное время"  Style="{StaticResource signature}"></Label>
+                <Label Content="Начальное время"></Label>
                 <TextBox x:Name="TimeSBox" Width="200"></TextBox>
             </StackPanel>
             <StackPanel>
-                <Label Content="Конечное время"  Style="{StaticResource signature}"></Label>
+                <Label Content="Конечное время"></Label>
                 <TextBox x:Name="TimeEBox" Width="200"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
-                    <Label Content="Статус"  Style="{StaticResource signature}"></Label>
+                    <Label Content="Статус"></Label>
                     <ComboBox x:Name="StatusCmbBox" Width="305" ItemsSource="{Binding ComboItems}">
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
                     <Button x:Name="StatusFormButton" Content="..." Style="{StaticResource threeDots}" Click="StatusForm_Click"/>
-                </StackPanel>        
+                </StackPanel>
             </StackPanel>
         </WrapPanel>
     </DockPanel>

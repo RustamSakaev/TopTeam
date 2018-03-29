@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Банковская карта" Height="217" Width="323.883" >
+        Title="Банковская карта" Height="242" Width="323.941" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -19,12 +19,12 @@
         </StackPanel>
         <WrapPanel>
             <StackPanel>
-                <Label Content="Клиент"  Style="{StaticResource signature}"></Label>
+                <Label Content="Клиент"></Label>
                 <ComboBox x:Name="ClientCmbBox" Width="305" ItemsSource="{Binding ComboItems}">
                 </ComboBox>
             </StackPanel>
             <StackPanel>
-                <Label Content="Номер"  Style="{StaticResource signature}"></Label>
+                <Label Content="Номер"></Label>
                 <TextBox x:Name="NumberBox" Height="26" Width="705" ></TextBox>
             </StackPanel>
         </WrapPanel>

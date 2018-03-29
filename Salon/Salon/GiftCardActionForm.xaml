@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Банковская карта" Height="307" Width="328.992" >
+        Title="Банковская карта" Height="347" Width="328.998" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -19,24 +19,24 @@
         </StackPanel>
         <WrapPanel>
             <StackPanel>
-                <Label Content="Номер"  Style="{StaticResource signature}"></Label>
+                <Label Content="Номер"></Label>
                 <TextBox x:Name="NumberBox" Width="305" ></TextBox>
             </StackPanel>
             <StackPanel>
-                <Label Content="Дата выдачи"  Style="{StaticResource signature}"></Label>
+                <Label Content="Дата выдачи"></Label>
                 <DatePicker x:Name="GivingDatePicker" Width="145"/>
             </StackPanel>
             <StackPanel>
-                <Label Content="Номинал"  Style="{StaticResource signature}"></Label>
+                <Label Content="Номинал"></Label>
                 <TextBox x:Name="NominalBox"  Width="145" ></TextBox>
             </StackPanel>
             <StackPanel>
-                <Label Content="Клиент"  Style="{StaticResource signature}"></Label>
+                <Label Content="Клиент"></Label>
                 <ComboBox x:Name="ClientCmbBox" Width="305" ItemsSource="{Binding ComboItems}">
                 </ComboBox>
             </StackPanel>
             <StackPanel>
-                <Label Content="Сотрудник"  Style="{StaticResource signature}"></Label>
+                <Label Content="Сотрудник"></Label>
                 <ComboBox x:Name="WorkerCmbBox" Width="305" ItemsSource="{Binding ComboItems}">
                 </ComboBox>
             </StackPanel>

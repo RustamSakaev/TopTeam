@@ -43,11 +43,11 @@ namespace Salon
         }
         public static void Init(string server)
         {
-            _connection = new SqlConnection();
-
+           // server = @"ADMIN\SQLEXPRESS";
+            _connection = new SqlConnection();           
             var builder = new SqlConnectionStringBuilder
             {
-                DataSource = server,
+                DataSource = server,        
                 InitialCatalog = "Salon",
                 IntegratedSecurity = true,
             };

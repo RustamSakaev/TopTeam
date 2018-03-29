@@ -53,6 +53,16 @@ namespace Salon
                     break;
                 case FormState.Add:
                     HeaderLabel.Content = "Добавление услуги";
+                   
+                    foreach (DataRow type in DBTypeService.GetTypeServices().Rows)
+                    {
+                        TypeServiceCmbBox.Items.Add(type["Наименование"]);
+                    }
+                   
+                    foreach (DataRow kind in DBKindService.GetKindServices().Rows)
+                    {
+                        KindServiceCmbBox.Items.Add(kind["Наименование"]);
+                    }
                     break;
             }
         }

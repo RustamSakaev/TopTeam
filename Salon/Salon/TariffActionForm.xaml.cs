@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
-
+using Salon.Database;
 namespace Salon
 {
     /// <summary>
@@ -22,7 +22,9 @@ namespace Salon
     public partial class TariffActionForm : Window
     {
         private readonly FormState _state;
-        public TariffActionForm(FormState state)
+        private readonly DataTable _currentDataItem;
+        private readonly DataTable _CurServiceDataItem;
+        public TariffActionForm(FormState state, string id=null, string serv_id=null)
         {
             InitializeComponent();
             _state = state;
@@ -30,9 +32,21 @@ namespace Salon
             {
                 case FormState.Edit:
                     HeaderLabel.Content = "Редактирование тарифа";
+                    _currentDataItem = DBTariff.GetTariff(id);
+                    PriceBox.Text = _currentDataItem.Rows[0]["Стоимость"].ToString();
+                    _CurServiceDataItem = DBService.GetService(serv_id);
+                    foreach (DataRow serv in DBService.GetServices().Rows)
+                    {
+                        ServiceCmbBox.Items.Add(serv["Наименование"]);
+                    }
+                    ServiceCmbBox.SelectedValue = _CurServiceDataItem.Rows[0]["Наименование"].ToString();
                     break;
                 case FormState.Add:
                     HeaderLabel.Content = "Добавление тарифа";
+                    foreach (DataRow serv in DBService.GetServices().Rows)
+                    {
+                        ServiceCmbBox.Items.Add(serv["Наименование"]);
+                    }
                     break;
             }
         }

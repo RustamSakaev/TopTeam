@@ -22,7 +22,7 @@
         <WrapPanel DockPanel.Dock="Top">
             <StackPanel Margin="5 0 5 0">
                 <Label >Услуга:</Label>
-                <ComboBox x:Name="TypeServiceCmbBox"  Width="150">
+                <ComboBox x:Name="ServiceCmbBox"  Width="150">
                 </ComboBox>
             </StackPanel>
             <StackPanel Margin="5 0 5 0">

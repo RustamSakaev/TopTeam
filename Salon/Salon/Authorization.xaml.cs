@@ -26,7 +26,7 @@ namespace Salon
         {
             InitializeComponent();           
         }
-        private string server= "DESKTOP-H5176PR";
+        private string server=@"ADMIN\SQLEXPRESS";
 
         private void button_Click(object sender, RoutedEventArgs e)
         {

@@ -5,54 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Главная" Height="445.81" Width="593.296" ResizeMode="CanMinimize" Closing="Window_Closing">
+        Title="Главная" Height="445.81" Width="593.296" ResizeMode="CanMinimize" Closing="Window_Closing" Background="#484c65">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
-    <Menu Height="25" VerticalAlignment="Top">
-        <MenuItem Header="Администрированиe">
-            <MenuItem Header="Смена пароля" ></MenuItem>
-            <MenuItem Header="Изменение роли полльзователя" >
+    <StackPanel>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Администрированиe">
+                <MenuItem Header="Смена пароля" ></MenuItem>
+                <MenuItem Header="Изменение роли полльзователя" >
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Выход" ></MenuItem>
             </MenuItem>
-            <Separator />
-            <MenuItem Header="Выход" ></MenuItem>
-        </MenuItem>
-        <MenuItem Header="Справочники" >
-            <MenuItem Header="Работа с сотрудниками" HorizontalAlignment="Left" Width="214">
-                <MenuItem Header="Список сотрудников" Click="MenuItem_Click_3"/>
-                <MenuItem Header="График работы" Click="MenuItem_Click_5"/>
-                <MenuItem Header="Расчеты с сотрудниками" Click="MenuItem_Click_6"/>
-                <MenuItem Header="Оказываемые услуги"/>
-                <MenuItem Header="Выбор профиля сотрудника"/>
-                <MenuItem Header="Услуги, предоставляемые мастерами" Width="192"/>
-                <MenuItem Header="Мастера салона" Click="MenuItem_Click_3"/>
+            <MenuItem Header="Справочники" >
+                <MenuItem Header="Работа с сотрудниками" HorizontalAlignment="Left" Width="214">
+                    <MenuItem Header="Список сотрудников" Click="MenuItem_Click_3"/>
+                    <MenuItem Header="График работы" Click="MenuItem_Click_5"/>
+                    <MenuItem Header="Расчеты с сотрудниками" Click="MenuItem_Click_6"/>
+                    <MenuItem Header="Оказываемые услуги"/>
+                    <MenuItem Header="Выбор профиля сотрудника"/>
+                    <MenuItem Header="Услуги, предоставляемые мастерами" Width="192"/>
+                    <MenuItem Header="Мастера салона" Click="MenuItem_Click_3"/>
+                </MenuItem>
+                <MenuItem Header="Посещение и оплата">
+                    <MenuItem Header="Посещение" Click="Visits_Click_5"/>
+                    <MenuItem Header="Оказание услуг"/>
+                    <MenuItem Header="Счет" Click="MenuItem_Click"/>
+                    <MenuItem Header="Оказание услуг" Click="ProvidingService_Click"/>
+                    <MenuItem Header="Подарочные карты" Click="MenuItem_Click_4"/>
+                </MenuItem>
+                <MenuItem Header="Работа с клиентами">
+                    <MenuItem Header="Список клиентов" Click="Client_Click"/>
+                    <MenuItem Header="Банковские карты" Click="MenuItem_Click_2"/>
+                </MenuItem>
+                <MenuItem Header="Работа с услугами">
+                    <MenuItem x:Name="spisokUslug" Header="Список услуг" Click="SpisokUslug_Click"/>
+                    <MenuItem Header="Тарифы" Click="Tariff_Click"/>
+                </MenuItem>
+                <MenuItem Header="Прочие">
+                    <MenuItem Header="Способ оплаты" Click="MenuItem_Click_1"/>
+                    <MenuItem Header="Тип мастера"/>
+                </MenuItem>
             </MenuItem>
-            <MenuItem Header="Посещение и оплата">
-                <MenuItem Header="Посещение" Click="Visits_Click_5"/>
-                <MenuItem Header="Оказание услуг"/>
-                <MenuItem Header="Счет" Click="MenuItem_Click"/>
-                <MenuItem Header="Оказание услуг" Click="ProvidingService_Click"/>
-                <MenuItem Header="Подарочные карты" Click="MenuItem_Click_4"/>
+            <MenuItem Header="Отчеты" >
+                <MenuItem Header="Данные по сотрудникам" Click="EmployeeData_Click"></MenuItem>
+                <MenuItem Header="Доходы по сотруднику" Click="EmployeeProfit_Click"></MenuItem>
+                <MenuItem Header="Количество обслуженных клиентов по сотруднику" Click="EmployeeClient_Click"></MenuItem>
+                <MenuItem Header="Отчет по видам услуг" Click="TypeService_Click"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Работа с клиентами">
-                <MenuItem Header="Список клиентов" Click="Client_Click"/>
-                <MenuItem Header="Банковские карты" Click="MenuItem_Click_2"/>
-            </MenuItem>
-            <MenuItem Header="Работа с услугами">
-                <MenuItem x:Name="spisokUslug" Header="Список услуг" Click="SpisokUslug_Click"/>
-                <MenuItem Header="Тарифы" Click="Tariff_Click"/>
-            </MenuItem>
-            <MenuItem Header="Прочие">
-                <MenuItem Header="Способ оплаты" Click="MenuItem_Click_1"/>
-                <MenuItem Header="Тип мастера"/>
-            </MenuItem>
-        </MenuItem>
-        <MenuItem Header="Отчеты" >
-            <MenuItem Header="Данные по сотрудникам" Click="EmployeeData_Click"></MenuItem>
-            <MenuItem Header="Доходы по сотруднику" Click="EmployeeProfit_Click"></MenuItem>
-            <MenuItem Header="Количество обслуженных клиентов по сотруднику" Click="EmployeeClient_Click"></MenuItem>
-            <MenuItem Header="Отчет по видам услуг" Click="TypeService_Click"></MenuItem>
-        </MenuItem>
-        <MenuItem Header="Прототип" Click="Prototype_Click"></MenuItem>
-    </Menu>
+            <MenuItem Header="Прототип" Click="Prototype_Click"></MenuItem>
+        </Menu>
+        <StackPanel >
+            
+        </StackPanel>
+    </StackPanel>
 </Window>

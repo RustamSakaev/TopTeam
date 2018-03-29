@@ -56,12 +56,34 @@ namespace Salon
 
             if (servid == null) return;
 
+            var dateidx = ((DataView)TariffGrid.ItemsSource).Table.Columns.IndexOf("Дата начала");
+
+            if (dateidx == -1) return;
+
+            var dateid = ((DataRowView)TariffGrid.SelectedItem)?.Row[servidx].ToString();
+
+            if (dateid == null) return;
+
+            var costidx = ((DataView)TariffGrid.ItemsSource).Table.Columns.IndexOf("Стоимость");
+
+            if (costidx == -1) return;
+
+            var costid = ((DataRowView)TariffGrid.SelectedItem)?.Row[servidx].ToString();
+
+            if (costid == null) return;
+
             TariffActionForm tar = new TariffActionForm(FormState.Edit,tariffid,servid);
             tar.ShowDialog();
         }
         public void OnLoad(object sender, RoutedEventArgs e)
         {
             CurrentFormData = DBTariff.GetTariffs();
+            foreach (DataRow type in DBService.GetServices().Rows)
+            {
+                ServiceCmbBox.Items.Add(type["Наименование"]);
+            }
+            TariffGrid.Columns[0].Visibility = Visibility.Hidden;
+            TariffGrid.Columns[4].Visibility = Visibility.Hidden;
         }
     }
 }

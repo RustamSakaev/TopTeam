@@ -11,6 +11,7 @@ namespace Salon.Database
                 SELECT 
                     TypeService.ID_TypeService as id,
                     TypeService.Name as Наименование, 
+                    GroupService.Name as [Группа услуги],
                     TypeService.GroupService_ID as [group_id]
                 FROM TypeService inner join GroupService on TypeService.GroupService_ID = GroupService.ID_GroupService;"
             );

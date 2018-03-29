@@ -11,7 +11,7 @@ namespace Salon.Database
                 SELECT 
                     Tariff.ID_Tariff as id,
                     Service.Name as Услуга,
-                    Tariff.StartDate as [Дата начала],
+                    FORMAT(StartDate, 'dd/MM/yyyy', 'en-us')  as [Дата начала],
                     Tariff.Cost as Стоимость,
                     Tariff.Service_ID as serv_id
                 FROM Tariff inner join Service on Tariff.Service_ID = Service.ID_Service;"

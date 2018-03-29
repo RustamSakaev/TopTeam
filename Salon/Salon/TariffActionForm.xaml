@@ -33,10 +33,7 @@
                 <Label>Дата от:</Label>
                 <DatePicker x:Name="StartDatePicker"></DatePicker>
             </StackPanel>
-            <StackPanel Margin="5 0 0 0">
-                <Label>Дата по:</Label>
-                <DatePicker x:Name="EndDatePicker"></DatePicker>
-            </StackPanel>
+            <StackPanel Margin="5 0 0 0"/>
         </WrapPanel>
     </DockPanel>
 </Window>

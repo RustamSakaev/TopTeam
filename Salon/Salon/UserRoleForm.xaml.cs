@@ -30,6 +30,7 @@ namespace Salon
 
         public void OnLoad(object sender, RoutedEventArgs e)
         {
+            DBCore.Init(@"DESKTOP-H5176PR\MSSQLSERVER01");
             string str = "select name from sys.database_principals where [type] <> 'r' and [name] not in ( 'dbo', 'sys', 'INFORMATION_SCHEMA') order by name";
             DataTable dt = DBCore.GetData(str);
             foreach (DataRow dr in dt.Rows)

@@ -15,24 +15,24 @@
             <Label Content="Таблица 'Клиенты'" Style="{StaticResource caption}"/>
         </StackPanel>
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
-            <Label Content="Фильтр:" Style="{StaticResource signature}" Margin="0"/>
+            <Label Content="Фильтр:"  Margin="0"/>
             <WrapPanel>
                 <DockPanel Height="96">
                     <WrapPanel DockPanel.Dock="Top">
                         <StackPanel Margin="5 0 5 0">
-                            <Label Style="{StaticResource signature}" Content="ФИО:"/>
+                            <Label  Content="ФИО:"/>
                             <TextBox x:Name="FioBox" Width="300" TextChanged="FioBox_TextChanged"/>
                         </StackPanel>
                         <StackPanel Margin="5 0 5 0">
-                            <Label Style="{StaticResource signature}" Content="Пол:"/>
+                            <Label  Content="Пол:"/>
                             <ComboBox x:Name="GenderCmbBox"  Width="150" SelectionChanged="GenderCmbBox_SelectionChanged"/>
                         </StackPanel>
                         <StackPanel Margin="5 0 5 0">
-                            <Label Style="{StaticResource signature}" Content="Дата рождения от:"/>
+                            <Label  Content="Дата рождения от:"/>
                             <DatePicker x:Name="StartDatePicker" SelectedDateChanged="StartDatePicker_SelectedDateChanged"/>
                         </StackPanel>
                         <StackPanel Margin="5 0 5 0">
-                            <Label Style="{StaticResource signature}" Content="Дата рождения по:"/>
+                            <Label Content="Дата рождения по:"/>
                             <DatePicker x:Name="EndDatePicker" SelectedDateChanged="EndDatePicker_SelectedDateChanged"/>
                         </StackPanel>
                     </WrapPanel>

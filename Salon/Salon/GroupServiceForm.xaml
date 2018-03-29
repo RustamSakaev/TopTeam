@@ -12,7 +12,7 @@
     </Window.Resources>
     <DockPanel>
         <StackPanel x:Name="Header" Style="{StaticResource header}">
-            <Label Content="Таблица 'Групп услуги'" Style="{StaticResource caption}"/>
+            <Label Content="Таблица 'Группы услуги'" Style="{StaticResource caption}"/>
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>

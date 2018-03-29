@@ -85,8 +85,11 @@
     </Compile>
     <Compile Include="Database\DBBankCard.cs" />
     <Compile Include="Database\DBBill.cs" />
+    <Compile Include="Database\DBGroupService.cs" />
     <Compile Include="Database\DBProvidingService.cs" />
+    <Compile Include="Database\DBService.cs" />
     <Compile Include="Database\DBStatus.cs" />
+    <Compile Include="Database\DBTypeService.cs" />
     <Compile Include="Database\DBUser.cs" />
     <Compile Include="Database\DBVisit.cs" />
     <Compile Include="Database\DBWorker.cs" />
@@ -94,6 +97,7 @@
     <Compile Include="Database\DBCore.cs" />
     <Compile Include="Database\DBGiftCard.cs" />
     <Compile Include="Database\DBPaymentMethod.cs" />
+    <Compile Include="Database\DBKindService.cs" />
     <Compile Include="EditTypeMaster.xaml.cs">
       <DependentUpon>EditTypeMaster.xaml</DependentUpon>
     </Compile>

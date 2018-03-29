@@ -171,6 +171,12 @@
     <Compile Include="TypeMasterForm.xaml.cs">
       <DependentUpon>TypeMasterForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TypeMasterServiceForm.xaml.cs">
+      <DependentUpon>TypeMasterServiceForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TypeMasterWorkerForm.xaml.cs">
+      <DependentUpon>TypeMasterWorkerForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TypeServiceActionForm.xaml.cs">
       <DependentUpon>TypeServiceActionForm.xaml</DependentUpon>
     </Compile>
@@ -191,6 +197,9 @@
     </Compile>
     <Compile Include="WorkerForm.xaml.cs">
       <DependentUpon>WorkerForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Worker_ServiceForm.xaml.cs">
+      <DependentUpon>Worker_ServiceForm.xaml</DependentUpon>
     </Compile>
     <Page Include="AddEditMasterPage.xaml">
       <SubType>Designer</SubType>
@@ -332,6 +341,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="TypeMasterServiceForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TypeMasterWorkerForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="TypeServiceActionForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -359,6 +376,10 @@
     <Page Include="WorkerForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Worker_ServiceForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

@@ -1,20 +1,26 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salon", "Salon\Salon.csproj", "{FBA88DFE-0F63-4F3A-97EF-964504F3D6CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{FBA88DFE-0F63-4F3A-97EF-964504F3D6CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FBA88DFE-0F63-4F3A-97EF-964504F3D6CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBA88DFE-0F63-4F3A-97EF-964504F3D6CF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FBA88DFE-0F63-4F3A-97EF-964504F3D6CF}.Debug|x86.Build.0 = Debug|Any CPU
 		{FBA88DFE-0F63-4F3A-97EF-964504F3D6CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBA88DFE-0F63-4F3A-97EF-964504F3D6CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBA88DFE-0F63-4F3A-97EF-964504F3D6CF}.Release|x86.ActiveCfg = Release|Any CPU
+		{FBA88DFE-0F63-4F3A-97EF-964504F3D6CF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

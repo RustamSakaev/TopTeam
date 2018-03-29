@@ -22,7 +22,7 @@
         <WrapPanel DockPanel.Dock="Top">
             <StackPanel Margin="5 0 5 0">
                 <Label >Услуга:</Label>
-                <ComboBox x:Name="TypeServiceCmbBox"  Width="150">
+                <ComboBox x:Name="ServiceCmbBox"  Width="150">
                 </ComboBox>
             </StackPanel>
             <StackPanel Margin="5 0 5 0">
@@ -33,10 +33,7 @@
                 <Label>Дата от:</Label>
                 <DatePicker x:Name="StartDatePicker"></DatePicker>
             </StackPanel>
-            <StackPanel Margin="5 0 0 0">
-                <Label>Дата по:</Label>
-                <DatePicker x:Name="EndDatePicker"></DatePicker>
-            </StackPanel>
+            <StackPanel Margin="5 0 0 0"/>
         </WrapPanel>
     </DockPanel>
 </Window>

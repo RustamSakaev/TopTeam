@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Авторизация" Height="161.273" Width="269.902" ResizeMode="NoResize" WindowStyle="None">
+        Title="Авторизация" Height="161.273" Width="269.902" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>

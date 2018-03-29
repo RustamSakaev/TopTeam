@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="" Height="350" Width="300">
+        Title="" Height="330" Width="300">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -28,11 +28,7 @@
                 <StackPanel>
                     <Label Content="Тип услуги"  ></Label>
                     <ComboBox x:Name="TypeServiceCmbBox" Width="150">
-                        <ComboBoxItem IsSelected="True">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>...</TextBlock>
-                            </StackPanel>
-                        </ComboBoxItem>
+                       
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
@@ -43,11 +39,7 @@
                 <StackPanel>
                     <Label Content="Вид услуги"  ></Label>
                     <ComboBox x:Name="KindServiceCmbBox" Width="150">
-                        <ComboBoxItem IsSelected="True">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>...</TextBlock>
-                            </StackPanel>
-                        </ComboBoxItem>
+                       
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
@@ -65,28 +57,8 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <StackPanel>
-                    <Label Content="Группа услуги"  ></Label>
-                    <ComboBox x:Name="GroupServiceCmbBox" Width="150">
-                        <ComboBoxItem IsSelected="True">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>...</TextBlock>
-                            </StackPanel>
-                        </ComboBoxItem>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel>
-                    <Button x:Name="GroupServiceFormButton" Content="..." Style="{StaticResource threeDots}" RenderTransformOrigin="0.5,0.5" Click="GroupServiceFormButton_Click">
-                        <Button.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="1.955"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Button.RenderTransform>
-                    </Button>
-                </StackPanel>
+                <StackPanel/>
+                <StackPanel/>
             </StackPanel>
         </WrapPanel>
       

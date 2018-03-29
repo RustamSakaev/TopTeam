@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
+using Salon.Database;
 namespace Salon
 {
     /// <summary>
@@ -21,7 +22,8 @@ namespace Salon
     public partial class GroupServiceActionForm : Window
     {
         private readonly FormState _state;
-        public GroupServiceActionForm(FormState state)
+        private readonly DataTable _currentDataItem;
+        public GroupServiceActionForm(FormState state, string group_id=null)
         {
             InitializeComponent();
             _state = state;
@@ -29,46 +31,15 @@ namespace Salon
             {
                 case FormState.Edit:
                     HeaderLabel.Content = "Редактирование группы услуг";
+                    _currentDataItem = DBGroupService.GetGroupService(group_id);
+                    NameBox.Text = _currentDataItem.Rows[0]["Наименование"].ToString();
                     break;
                 case FormState.Add:
                     HeaderLabel.Content = "Добавление группы услуг";
                     break;
             }
         }
-        public string Connection()
-        {
-            string conn = @"Data Source=LENOVO-PC;Initial Catalog=Salon;Integrated Security=True";
-            return conn;
-        }
-        public DataTable DataTool(string query)
-        {
-            string connStr = Connection();
-            SqlConnection conn = null;
-            SqlCommand comm = null;
-            DataTable dt = new DataTable();
-            try
-            {
-                conn = new SqlConnection(connStr);
-                conn.Open();
-                if (conn != null)
-                {
-                    comm = conn.CreateCommand();
-                    comm.CommandText = query;
-                    SqlDataAdapter adapter = new SqlDataAdapter(comm);
-                    SqlCommandBuilder bild = new SqlCommandBuilder(adapter);
-                    adapter.Fill(dt);
-                    return dt;
-                }
-                else
-                { return dt; }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return dt;
-            }
-        }
-
+       
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
 

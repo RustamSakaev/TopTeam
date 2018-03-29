@@ -26,8 +26,8 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            AddTypeMasterService1 add = new AddTypeMasterService1();
-            add.ShowDialog();
+            //AddTypeMasterService1 add = new AddTypeMasterService1();
+            //add.ShowDialog();
         }
     }
 }

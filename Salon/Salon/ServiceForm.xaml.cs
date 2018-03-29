@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
+using Salon.Misc;
+using Salon.Database;
 
 namespace Salon
 {
@@ -21,52 +23,25 @@ namespace Salon
     /// </summary>
     public partial class ServiceForm : Window
     {
-
+        private DataTable _currentFormData = new DataTable();
         public ServiceForm()
         {
             InitializeComponent();
         }
-        public string Connection()
+        private DataTable CurrentFormData
         {
-
-            string conn = @"Data Source=LENOVO-PC;Initial Catalog=Salon;Integrated Security=True";
-            return conn;
+            get { return _currentFormData; }
+            set { _currentFormData = value; ServiceGrid.ItemsSource = _currentFormData.DefaultView; }
         }
+       
         public void OnLoad(object sender, RoutedEventArgs e)
-        {
-            string str = "select Service.name as [Наименование], TypeService.Name as [Тип услуги], KindService.Name as [Вид услуги] from Service inner join KindService on Service.KindService_ID = KindService.ID_KindService inner join TypeService on Service.TypeService_ID = TypeService.ID_TypeService";
-            DataTable dt = DataTool(str);
-            ServiceGrid.ItemsSource = dt.DefaultView;
+        { 
+            CurrentFormData = DBService.GetServices();
+            ServiceGrid.Columns[5].Visibility = Visibility.Hidden;
+            ServiceGrid.Columns[6].Visibility = Visibility.Hidden;
+            ServiceGrid.Columns[0].Visibility = Visibility.Hidden;
         }
-        public DataTable DataTool(string query)
-        {
-            string connStr = Connection();
-            SqlConnection conn = null;
-            SqlCommand comm = null;
-            DataTable dt = new DataTable();
-            try
-            {
-                conn = new SqlConnection(connStr);
-                conn.Open();
-                if (conn != null)
-                {
-                    comm = conn.CreateCommand();
-                    comm.CommandText = query;
-                    SqlDataAdapter adapter = new SqlDataAdapter(comm);
-                    SqlCommandBuilder bild = new SqlCommandBuilder(adapter);
-                    adapter.Fill(dt);
-                    return dt;
-                }
-                else
-                { return dt; }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return dt;
-            }
-        }
-
+        
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             ServiceActionForm serv = new ServiceActionForm(FormState.Add);
@@ -75,13 +50,34 @@ namespace Salon
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            ServiceActionForm serv = new ServiceActionForm(FormState.Edit);
-            serv.ShowDialog();
+            var servidx = ((DataView)ServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+
+            if (servidx == -1) return;
+
+            var servid = ((DataRowView)ServiceGrid.SelectedItem)?.Row[servidx].ToString();
+
+            if (servid == null) return;
+
+            var typeidx = ((DataView)ServiceGrid.ItemsSource).Table.Columns.IndexOf("type_id");
+
+            if (typeidx == -1) return;
+
+            var typeid = ((DataRowView)ServiceGrid.SelectedItem)?.Row[typeidx].ToString();
+
+            if (typeid == null) return;
+
+            var kindidx = ((DataView)ServiceGrid.ItemsSource).Table.Columns.IndexOf("kind_id");
+
+            if (kindidx == -1) return;
+
+            var kindid = ((DataRowView)ServiceGrid.SelectedItem)?.Row[kindidx].ToString();
+
+            if (kindid == null) return;
+
+            ServiceActionForm serv_edit = new ServiceActionForm(FormState.Edit, servid, typeid, kindid);
+            serv_edit.ShowDialog();
         }
-        //private void EditButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    EditServiceForm ed = new EditServiceForm();
-        //    ed.ShowDialog();
-        //}
+
+      
     }
 }

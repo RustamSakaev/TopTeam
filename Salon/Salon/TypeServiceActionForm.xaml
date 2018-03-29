@@ -28,15 +28,10 @@
                 <StackPanel>
                     <Label Content="Группа услуги"  ></Label>
                     <ComboBox x:Name="GroupServiceCmbBox" Width="150">
-                        <ComboBoxItem IsSelected="True">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>Администратор</TextBlock>
-                            </StackPanel>
-                        </ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
-                    <Button x:Name="GroupServiceFormButton" Content="..." Style="{StaticResource threeDots}"></Button>
+                    <Button x:Name="GroupServiceFormButton" Content="..." Style="{StaticResource threeDots}" Click="GroupServiceFormButton_Click"></Button>
                 </StackPanel>
             </StackPanel>
         </WrapPanel>

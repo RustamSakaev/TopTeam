@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Авторизация" Height="161.273" Width="269.902" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Авторизация" Height="161.273" Width="337.177" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -15,16 +15,16 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <StackPanel>
                     <Label x:Name="LoginLable" Content="Логин"/>
-                    <TextBox x:Name="LoginBox" Width="120" />
+                    <TextBox x:Name="LoginBox" Width="150" />
                 </StackPanel>
                 <StackPanel>
                     <Label x:Name="PassLable" Content="Пароль"/>
-                    <TextBox x:Name="PassBox" Width="120"   />
+                    <TextBox x:Name="PassBox" Width="150"   />
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="LoginButton" Content="Войти" Width="80" Click="button_Click"/>
-                <Button x:Name="RegistrButton" Content="Регистрация" Width="80" Click="button1_Click"/>
+                <Button x:Name="LoginButton" Content="Вход" Width="150" Click="button_Click"/>
+                <Button x:Name="RegistrButton" Content="Регистрация" Width="150" Click="button1_Click"/>
             </StackPanel>
         </StackPanel>
     </DockPanel>

@@ -13,7 +13,7 @@
         <Menu Height="25" VerticalAlignment="Top">
             <MenuItem Header="Администрированиe">
                 <MenuItem Header="Смена пароля" ></MenuItem>
-                <MenuItem Header="Изменение роли полльзователя" >
+                <MenuItem Header="Изменение роли пользователя" >
                 </MenuItem>
                 <Separator />
                 <MenuItem Header="Выход" ></MenuItem>
@@ -22,11 +22,10 @@
                 <MenuItem Header="Работа с сотрудниками" HorizontalAlignment="Left" Width="214">
                     <MenuItem Header="Список сотрудников" Click="MenuItem_Click_3"/>
                     <MenuItem Header="График работы" Click="MenuItem_Click_5"/>
-                    <MenuItem Header="Расчеты с сотрудниками" Click="MenuItem_Click_6"/>
-                    <MenuItem Header="Оказываемые услуги"/>
-                    <MenuItem Header="Выбор профиля сотрудника"/>
-                    <MenuItem Header="Услуги, предоставляемые мастерами" Width="192"/>
-                    <MenuItem Header="Мастера салона" Click="MenuItem_Click_3"/>
+                    <MenuItem Header="Расчеты с сотрудниками" Click="MenuItem_Click_6"/>                    
+                   <!-- <MenuItem Header="Выбор профиля сотрудника"/> 
+                    <MenuItem Header="Услуги, предоставляемые мастерами"/> 
+                    <MenuItem Header="Мастера салона" Click="MenuItem_Click_3"/> -->
                 </MenuItem>
                 <MenuItem Header="Посещение и оплата">
                     <MenuItem Header="Посещение" Click="Visits_Click_5"/>
@@ -44,7 +43,7 @@
                     <MenuItem Header="Тарифы" Click="Tariff_Click"/>
                 </MenuItem>
                 <MenuItem Header="Прочие">
-                    <MenuItem Header="Способ оплаты" Click="MenuItem_Click_1"/>
+                    <!--<MenuItem Header="Способ оплаты" Click="MenuItem_Click_1"/> -->
                     <MenuItem Header="Тип мастера"/>
                 </MenuItem>
             </MenuItem>

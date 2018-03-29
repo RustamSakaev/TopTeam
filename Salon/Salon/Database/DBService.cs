@@ -9,11 +9,13 @@ namespace Salon.Database
         {
             return DBCore.GetData($@"
                 SELECT 
-                    ID_Service,
-                    Name as Наименование, 
+                    ID_Service as id,
+                    Service.Name as Наименование, 
                     TypeService.Name as [Тип услуги], 
                     KindService.Name as [Вид услуги],
-                    GroupService.Name as [Группа услуги]
+                    GroupService.Name as [Группа услуги],
+                    Service.TypeService_ID as type_id,
+                    Service.KindService_ID as kind_id
                 FROM Service inner join TypeService on Service.TypeService_ID = TypeService.ID_TypeService
                 inner join KindService on Service.KindService_ID = KindService.ID_KindService
                 inner join GroupService on TypeService.GroupService_ID = GroupService.ID_GroupService;"
@@ -24,8 +26,8 @@ namespace Salon.Database
         {
             return DBCore.GetData($@"
                 SELECT 
-                    ID_Service,
-                    Name as Наименование, 
+                    ID_Service as id,
+                    Service.Name as Наименование, 
                     TypeService.Name as [Тип услуги], 
                     KindService.Name as [Вид услуги],
                     GroupService.Name as [Группа услуги]

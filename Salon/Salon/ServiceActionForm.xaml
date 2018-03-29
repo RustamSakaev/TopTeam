@@ -28,11 +28,7 @@
                 <StackPanel>
                     <Label Content="Тип услуги"  ></Label>
                     <ComboBox x:Name="TypeServiceCmbBox" Width="150">
-                        <ComboBoxItem IsSelected="True">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>...</TextBlock>
-                            </StackPanel>
-                        </ComboBoxItem>
+                       
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
@@ -43,11 +39,7 @@
                 <StackPanel>
                     <Label Content="Вид услуги"  ></Label>
                     <ComboBox x:Name="KindServiceCmbBox" Width="150">
-                        <ComboBoxItem IsSelected="True">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>...</TextBlock>
-                            </StackPanel>
-                        </ComboBoxItem>
+                       
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>

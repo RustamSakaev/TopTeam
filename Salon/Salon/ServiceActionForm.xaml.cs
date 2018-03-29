@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
+using Salon.Database;
 
 namespace Salon
 {
@@ -22,7 +23,10 @@ namespace Salon
     public partial class ServiceActionForm : Window
     {
         private readonly FormState _state;
-        public ServiceActionForm(FormState state)
+        private readonly DataTable _currentDataItem;
+        private readonly DataTable _CurTypeServiceDataItem;
+        private readonly DataTable _CurKindServiceDataItem;
+        public ServiceActionForm(FormState state, string serv_id=null, string type_id=null, string kind_id=null)
         {
             InitializeComponent();
             _state = state;
@@ -30,6 +34,22 @@ namespace Salon
             {
                 case FormState.Edit:
                     HeaderLabel.Content = "Редактирование услуги";
+                    _currentDataItem = DBService.GetService(serv_id);
+                    NameBox.Text = _currentDataItem.Rows[0]["Наименование"].ToString();
+                    _CurTypeServiceDataItem = DBTypeService.GetTypeService(type_id);
+
+                    foreach (DataRow type in DBTypeService.GetTypeServices().Rows)
+                    {
+                        TypeServiceCmbBox.Items.Add(type["Наименование"]);
+                    }
+                    TypeServiceCmbBox.SelectedValue = _CurTypeServiceDataItem.Rows[0]["Наименование"].ToString();
+
+                    _CurKindServiceDataItem = DBKindService.GetKindService(kind_id);
+                    foreach (DataRow kind in DBKindService.GetKindServices().Rows)
+                    {
+                        KindServiceCmbBox.Items.Add(kind["Наименование"]);
+                    }
+                    KindServiceCmbBox.SelectedValue = _CurKindServiceDataItem.Rows[0]["Наименование"].ToString();
                     break;
                 case FormState.Add:
                     HeaderLabel.Content = "Добавление услуги";

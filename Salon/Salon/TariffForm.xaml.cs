@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Salon.Database;
 using System.Data;
+using Salon.Misc;
 
 namespace Salon
 {
@@ -21,21 +22,26 @@ namespace Salon
     /// </summary>
     public partial class TariffForm : Window
     {
-        public TariffForm()
+        private DataTable currentData = new DataTable();
+        private readonly List<Filter> Filter = new List<Filter>();
+        private readonly Action<string> Back;
+        public TariffForm(Action<string> b = null)
         {
             InitializeComponent();
+            Back = b;
         }
 
-        private DataTable _currentFormData = new DataTable();
-        private DataTable CurrentFormData
+        private DataTable CurrentData
         {
-            get { return _currentFormData; }
-            set { _currentFormData = value; TariffGrid.ItemsSource = _currentFormData.DefaultView; }
+            get { return currentData; }
+            set { currentData = value; TariffGrid.ItemsSource = currentData.DefaultView;
+            TariffGrid.Columns[0].Visibility = Visibility.Hidden;
+            }
         }
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            TariffActionForm tar = new TariffActionForm(FormState.Add);
-            tar.ShowDialog();
+            var form = new TariffActionForm(() => { CurrentData = DBTariff.GetTariffs(); }, FormState.Add);
+            form.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
@@ -48,42 +54,30 @@ namespace Salon
 
             if (tariffid == null) return;
 
-            var servidx = ((DataView)TariffGrid.ItemsSource).Table.Columns.IndexOf("serv_id");
-
-            if (servidx == -1) return;
-
-            var servid = ((DataRowView)TariffGrid.SelectedItem)?.Row[servidx].ToString();
-
-            if (servid == null) return;
-
-            var dateidx = ((DataView)TariffGrid.ItemsSource).Table.Columns.IndexOf("Дата начала");
-
-            if (dateidx == -1) return;
-
-            var dateid = ((DataRowView)TariffGrid.SelectedItem)?.Row[servidx].ToString();
-
-            if (dateid == null) return;
-
-            var costidx = ((DataView)TariffGrid.ItemsSource).Table.Columns.IndexOf("Стоимость");
-
-            if (costidx == -1) return;
-
-            var costid = ((DataRowView)TariffGrid.SelectedItem)?.Row[servidx].ToString();
-
-            if (costid == null) return;
-
-            TariffActionForm tar = new TariffActionForm(FormState.Edit,tariffid,servid);
-            tar.ShowDialog();
+            var form = new TariffActionForm(() => { CurrentData = DBTariff.GetTariffs(); }, FormState.Add);
+            form.ShowDialog();
         }
         public void OnLoad(object sender, RoutedEventArgs e)
         {
-            CurrentFormData = DBTariff.GetTariffs();
+            CurrentData = DBTariff.GetTariffs();
+            ServiceCmbBox.Items.Add("Все");
             foreach (DataRow type in DBService.GetServices().Rows)
             {
                 ServiceCmbBox.Items.Add(type["Наименование"]);
             }
+            ServiceCmbBox.SelectedValue = "Все";
             TariffGrid.Columns[0].Visibility = Visibility.Hidden;
             TariffGrid.Columns[4].Visibility = Visibility.Hidden;
+        }
+
+        private void StartDatePicker_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        private void EndDatePicker_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
         }
     }
 }

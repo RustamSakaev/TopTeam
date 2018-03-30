@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 using Salon.Database;
+using Salon.Extensions;
 namespace Salon
 {
     /// <summary>
@@ -22,17 +23,19 @@ namespace Salon
     public partial class GroupServiceActionForm : Window
     {
         private readonly FormState _state;
-        private readonly DataTable _currentDataItem;
-        public GroupServiceActionForm(FormState state, string group_id=null)
+        private readonly DataTable currentData;
+        private readonly Action Back;
+        public GroupServiceActionForm(Action b, FormState state, string group_id=null)
         {
             InitializeComponent();
+            Back = b;
             _state = state;
             switch (state)
             {
                 case FormState.Edit:
                     HeaderLabel.Content = "Редактирование группы услуг";
-                    _currentDataItem = DBGroupService.GetGroupService(group_id);
-                    NameBox.Text = _currentDataItem.Rows[0]["Наименование"].ToString();
+                    currentData = DBGroupService.GetGroupService(group_id);
+                    NameBox.Text = currentData.Rows[0]["Наименование"].ToString();
                     break;
                 case FormState.Add:
                     HeaderLabel.Content = "Добавление группы услуг";
@@ -42,12 +45,32 @@ namespace Salon
        
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!NameBox.Validate(true))
+            {
+                return;
+            }
+            switch (_state)
+            {
+                case FormState.Edit:
+                    DBGroupService.EditGroupService(
+                        currentData.Rows[0]["id"].ToString(),
+                        NameBox.Text
+                    );
+                    break;
+                case FormState.Add:
+                    DBGroupService.AddGroupService(
+                        NameBox.Text
+                    );
+                    break;
+            }
 
+            Back();
+            this.Close();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }

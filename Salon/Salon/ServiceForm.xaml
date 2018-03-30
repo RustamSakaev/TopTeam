@@ -20,7 +20,7 @@
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
             <DockPanel x:Name="FullSearchGroup">
                 <StackPanel Style="{StaticResource buttonsPanel}" VerticalAlignment="Center">
-                    <Button x:Name="ClearButton" Width="auto">Очистить</Button>
+                    <Button x:Name="ClearButton" Width="auto" Click="ClearButton_Click">Очистить</Button>
                 </StackPanel>
                 <WrapPanel DockPanel.Dock="Top">
                     <StackPanel Margin="5 0 5 0">

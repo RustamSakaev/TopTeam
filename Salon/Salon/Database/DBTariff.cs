@@ -65,7 +65,7 @@ namespace Salon.Database
             DBCore.ExecuteCommand(command);
         }
 
-        public static void AddTariff(string name, string serv, string startdate, string cost)
+        public static void AddTariff(string serv, string startdate, string cost)
         {
             var command = new SqlCommand
             {

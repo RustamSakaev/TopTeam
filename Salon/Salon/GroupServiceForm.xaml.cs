@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Salon.Database;
 using System.Data;
+using Salon.Misc;
 
 namespace Salon
 {
@@ -21,38 +22,58 @@ namespace Salon
     /// </summary>
     public partial class GroupServiceForm : Window
     {
-        private DataTable _currentFormData = new DataTable();
-        public GroupServiceForm()
+        private DataTable currentData = new DataTable();
+        private readonly List<Filter> Filter = new List<Filter>();
+        private readonly Action<string> Back;
+        public GroupServiceForm(Action<string> b = null)
         {
             InitializeComponent();
+            Back = b;
         }
-        private DataTable CurrentFormData
+        private DataTable CurrentData
         {
-            get { return _currentFormData; }
-            set { _currentFormData = value; GroupServiceGrid.ItemsSource = _currentFormData.DefaultView; }
+            get { return currentData; }
+            set { currentData = value; GroupServiceGrid.ItemsSource = currentData.DefaultView;
+            GroupServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+            }
         }
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            GroupServiceActionForm grserv = new GroupServiceActionForm(FormState.Add);
-            grserv.ShowDialog();
+            var form = new GroupServiceActionForm(() => { CurrentData = DBGroupService.GetGroupServices(); }, FormState.Add);
+            form.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            var groupidx = ((DataView)GroupServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+            var group_col = ((DataView)GroupServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+            if (group_col == -1) return;
 
-            if (groupidx == -1) return;
-
-            var groupid = ((DataRowView)GroupServiceGrid.SelectedItem)?.Row[groupidx].ToString();
-
+            var groupid = ((DataRowView)GroupServiceGrid.SelectedItem)?.Row[group_col].ToString();
             if (groupid == null) return;
-            GroupServiceActionForm grserv = new GroupServiceActionForm(FormState.Edit, groupid);
-            grserv.ShowDialog();
+           
+            var form = new GroupServiceActionForm(() => { CurrentData = DBGroupService.GetGroupServices(); }, FormState.Edit, groupid);
+            form.ShowDialog();
         }
         public void OnLoad(object sender, RoutedEventArgs e)
         {
-            CurrentFormData = DBGroupService.GetGroupServices();
+            CurrentData = DBGroupService.GetGroupServices();
             GroupServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+        }
+        private void CurFilter(string key, string column, string exp)
+        {
+            var filterIdx = Filter.FindIndex(filter => filter.InnerKey.Equals(key));
+            var newFilter = new Filter(key, column, exp);
+            if (filterIdx == -1) Filter.Add(newFilter);
+            else Filter[filterIdx] = newFilter;
+            DataFilter();
+        }
+
+        private void DataFilter()
+        {
+            var displayData = currentData.DefaultView;
+            var filters = string.Join(" AND ", Filter.Select(filter => $"{filter.Key} {filter.Expression}"));
+            displayData.RowFilter = filters;
+            GroupServiceGrid.ItemsSource = displayData;
         }
     }
 }

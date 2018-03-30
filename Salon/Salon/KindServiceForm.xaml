@@ -25,11 +25,11 @@
                 <WrapPanel DockPanel.Dock="Top">
                     <StackPanel Margin="5 0 5 0">
                         <Label >Наименование:</Label>
-                        <TextBox x:Name="NameBox" Width="200" Style="{StaticResource searchTextBox}"></TextBox>
+                        <TextBox x:Name="NameBox" Width="200" Style="{StaticResource searchTextBox}" TextChanged="NameBox_TextChanged"></TextBox>
                     </StackPanel>
                     <StackPanel Margin="5 0 5 0">
                         <Label >Тип услуги:</Label>
-                        <ComboBox x:Name="TypeServiceCmbBox"  Width="150">
+                        <ComboBox x:Name="TypeServiceCmbBox"  Width="150" SelectionChanged="TypeServiceCmbBox_SelectionChanged">
                         </ComboBox>
                     </StackPanel>
                   

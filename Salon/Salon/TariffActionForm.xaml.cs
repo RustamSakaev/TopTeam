@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 using Salon.Database;
+using Salon.Extensions;
 namespace Salon
 {
     /// <summary>
@@ -22,25 +23,25 @@ namespace Salon
     public partial class TariffActionForm : Window
     {
         private readonly FormState _state;
-        private readonly DataTable _currentDataItem;
-        private readonly DataTable _CurServiceDataItem;
-        public TariffActionForm(FormState state, string id=null, string serv_id=null)
+        private readonly DataTable currentData;
+        private readonly Action Back;
+        public TariffActionForm(Action b, FormState state, string id=null, string serv_id=null)
         {
             InitializeComponent();
+            Back = b;
             _state = state;
             switch (state)
             {
                 case FormState.Edit:
                     HeaderLabel.Content = "Редактирование тарифа";
-                    _currentDataItem = DBTariff.GetTariff(id);
-                    PriceBox.Text = _currentDataItem.Rows[0]["Стоимость"].ToString();
-                    StartDatePicker.SelectedDate = Convert.ToDateTime(_currentDataItem.Rows[0]["Дата начала"]);
-                    _CurServiceDataItem = DBService.GetService(serv_id);
+                    currentData = DBTariff.GetTariff(id);
+                    PriceBox.Text = currentData.Rows[0]["Стоимость"].ToString();
+                    StartDatePicker.SelectedDate = Convert.ToDateTime(currentData.Rows[0]["Дата начала"]);
                     foreach (DataRow serv in DBService.GetServices().Rows)
                     {
                         ServiceCmbBox.Items.Add(serv["Наименование"]);
                     }
-                    ServiceCmbBox.SelectedValue = _CurServiceDataItem.Rows[0]["Наименование"].ToString();
+                    ServiceCmbBox.SelectedValue = currentData.Rows[0]["Услуга"].ToString();
                     break;
                 case FormState.Add:
                     HeaderLabel.Content = "Добавление тарифа";
@@ -58,48 +59,38 @@ namespace Salon
             service.ShowDialog();
         }
 
-        public string Connection()
-        {
-            string conn = @"Data Source=LENOVO-PC;Initial Catalog=Salon;Integrated Security=True";
-            return conn;
-        }
-        public DataTable DataTool(string query)
-        {
-            string connStr = Connection();
-            SqlConnection conn = null;
-            SqlCommand comm = null;
-            DataTable dt = new DataTable();
-            try
-            {
-                conn = new SqlConnection(connStr);
-                conn.Open();
-                if (conn != null)
-                {
-                    comm = conn.CreateCommand();
-                    comm.CommandText = query;
-                    SqlDataAdapter adapter = new SqlDataAdapter(comm);
-                    SqlCommandBuilder bild = new SqlCommandBuilder(adapter);
-                    adapter.Fill(dt);
-                    return dt;
-                }
-                else
-                { return dt; }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return dt;
-            }
-        }
-
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!PriceBox.Validate(true))
+            {
+                return;
+            }
+            switch (_state)
+            {
+                case FormState.Edit:
+                    DBTariff.EditTariff(
+                        currentData.Rows[0]["id"].ToString(),
+                        ServiceCmbBox.SelectedValue.ToString(),
+                        StartDatePicker.SelectedDate.ToString(),
+                        PriceBox.Text
+                    );
+                    break;
+                case FormState.Add:
+                    DBTariff.AddTariff(
+                        ServiceCmbBox.SelectedValue.ToString(),
+                        StartDatePicker.SelectedDate.ToString(),
+                        PriceBox.Text
+                    );
+                    break;
+            }
 
+            Back();
+            this.Close();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }

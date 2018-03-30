@@ -34,11 +34,11 @@
                     </StackPanel>
                     <StackPanel Margin="5 0 0 0">
                         <Label>Дата от:</Label>
-                        <DatePicker x:Name="StartDatePicker"></DatePicker>
+                        <DatePicker x:Name="StartDatePicker" DataContextChanged="StartDatePicker_DataContextChanged"></DatePicker>
                     </StackPanel>
                     <StackPanel Margin="5 0 0 0">
                         <Label>Дата по:</Label>
-                        <DatePicker x:Name="EndDatePicker"></DatePicker>
+                        <DatePicker x:Name="EndDatePicker" DataContextChanged="EndDatePicker_DataContextChanged"></DatePicker>
                     </StackPanel>
                 </WrapPanel>
             </DockPanel>

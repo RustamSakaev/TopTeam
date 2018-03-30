@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 using Salon.Database;
+using Salon.Extensions;
 
 namespace Salon
 {
@@ -23,18 +24,19 @@ namespace Salon
     public partial class KindServiceActionForm : Window
     {
         private readonly FormState _state;
-        private readonly DataTable _currentDataItem;
-        
-        public KindServiceActionForm(FormState state, string kind_id=null)
+        private readonly DataTable currentData;
+        private readonly Action Back;
+        public KindServiceActionForm(Action b, FormState state, string kind_id = null)
         {
             InitializeComponent();
+            Back = b;
             _state = state;
             switch (state)
             {
                 case FormState.Edit:
                     HeaderLabel.Content = "Редактирование вида услуги";
-                    _currentDataItem = DBKindService.GetKindService(kind_id);
-                    NameBox.Text = _currentDataItem.Rows[0]["Наименование"].ToString();
+                    currentData = DBKindService.GetKindService(kind_id);
+                    NameBox.Text = currentData.Rows[0]["Наименование"].ToString();
                     break;
                 case FormState.Add:
                     HeaderLabel.Content = "Добавление вида услуги";
@@ -45,12 +47,32 @@ namespace Salon
      
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!NameBox.Validate(true))
+            {
+                return;
+            }
+            switch (_state)
+            {
+                case FormState.Edit:
+                    DBKindService.EditKindService(
+                        currentData.Rows[0]["id"].ToString(),
+                        NameBox.Text
+                    );
+                    break;
+                case FormState.Add:
+                    DBKindService.AddKindService(
+                        NameBox.Text
+                    );
+                    break;
+            }
 
+            Back();
+            this.Close();
         }
     }
 }

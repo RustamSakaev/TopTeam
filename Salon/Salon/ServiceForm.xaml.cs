@@ -115,5 +115,12 @@ namespace Salon
             var filterValue = selectedService != "Все" ? selectedService : string.Empty;
             CurFilter("Service", "[Вид услуги]", $"LIKE '%{filterValue}%'");
         }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            NameBox.Clear();
+            TypeServiceCmbBox.SelectedValue = "Все";
+            KindServiceCmbBox.SelectedValue = "Все";
+        }
     }
 }

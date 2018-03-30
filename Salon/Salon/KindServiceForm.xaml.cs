@@ -16,6 +16,7 @@ using System.Data.SqlClient;
 using Salon.Misc;
 using Salon.Database;
 
+
 namespace Salon
 {
     /// <summary>
@@ -23,44 +24,75 @@ namespace Salon
     /// </summary>
     public partial class KindService : Window
     {
-        private DataTable _currentFormData = new DataTable();
-        public KindService()
+        private DataTable currentData = new DataTable();
+        private readonly List<Filter> Filter = new List<Filter>();
+        private readonly Action<string> Back;
+        public KindService(Action<string> b = null)
         {
             InitializeComponent();
+            Back = b;
         }
-        private DataTable CurrentFormData
+        private DataTable CurrentData
         {
-            get { return _currentFormData; }
-            set { _currentFormData = value; KindServiceGrid.ItemsSource = _currentFormData.DefaultView; }
+            get { return currentData; }
+            set { currentData = value; KindServiceGrid.ItemsSource = currentData.DefaultView;
+            KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+            }
         }
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            KindServiceActionForm kindserv = new KindServiceActionForm(FormState.Add);
-            kindserv.ShowDialog();
+            var form = new KindServiceActionForm(() => { CurrentData = DBKindService.GetKindServices(); }, FormState.Add);
+            form.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            var kindidx = ((DataView)KindServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+            var kind_col = ((DataView)KindServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+            if (kind_col == -1) return;
 
-            if (kindidx == -1) return;
-
-            var kindid = ((DataRowView)KindServiceGrid.SelectedItem)?.Row[kindidx].ToString();
-
+            var kindid = ((DataRowView)KindServiceGrid.SelectedItem)?.Row[kind_col].ToString();
             if (kindid == null) return;
-            KindServiceActionForm kindserv = new KindServiceActionForm(FormState.Edit,kindid);
-            kindserv.ShowDialog();
+            var form = new KindServiceActionForm(() => { CurrentData = DBKindService.GetKindServices(); }, FormState.Edit, kindid);
+            form.ShowDialog();
         }
         public void OnLoad(object sender, RoutedEventArgs e)
         {
-            CurrentFormData = DBKindService.GetKindServices();
+            CurrentData = DBKindService.GetKindServices();
             KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+            TypeServiceCmbBox.Items.Add("Все");
             foreach (DataRow type in DBTypeService.GetTypeServices().Rows)
             {
                 TypeServiceCmbBox.Items.Add(type["Наименование"]);
             }
+            TypeServiceCmbBox.SelectedValue = "Все";
 
-           
+
+        }
+        private void CurFilter(string key, string column, string exp)
+        {
+            var filterIdx = Filter.FindIndex(filter => filter.InnerKey.Equals(key));
+            var newFilter = new Filter(key, column, exp);
+            if (filterIdx == -1) Filter.Add(newFilter);
+            else Filter[filterIdx] = newFilter;
+            DataFilter();
+        }
+
+        private void DataFilter()
+        {
+            var displayData = currentData.DefaultView;
+            var filters = string.Join(" AND ", Filter.Select(filter => $"{filter.Key} {filter.Expression}"));
+            displayData.RowFilter = filters;
+            KindServiceGrid.ItemsSource = displayData;
+        }
+
+        private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CurFilter("KindService", "Наименование", $"LIKE '%{NameBox.Text}%'");
+        }
+
+        private void TypeServiceCmbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

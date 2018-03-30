@@ -24,28 +24,42 @@ namespace Salon
     public partial class ServiceForm : Window
     {
         private DataTable _currentFormData = new DataTable();
-        public ServiceForm()
-        {
-            InitializeComponent();
-        }
+        private readonly Action<string> _callback;
+        private readonly FormOpenAs _openAs;
         private DataTable CurrentFormData
         {
             get { return _currentFormData; }
             set { _currentFormData = value; ServiceGrid.ItemsSource = _currentFormData.DefaultView; }
         }
-       
-        public void OnLoad(object sender, RoutedEventArgs e)
+        public ServiceForm(Action<string> cb = null, FormOpenAs openAs = FormOpenAs.Default)
+        {
+            InitializeComponent();
+            _callback = cb;
+            _openAs = openAs;
+        }
+        public void OnLoad( object sender, RoutedEventArgs e)
         { 
             CurrentFormData = DBService.GetServices();
             ServiceGrid.Columns[5].Visibility = Visibility.Hidden;
             ServiceGrid.Columns[6].Visibility = Visibility.Hidden;
             ServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+            foreach (DataRow type in DBTypeService.GetTypeServices().Rows)
+            {
+                TypeServiceCmbBox.Items.Add(type["Наименование"]);
+            }
+            foreach (DataRow kind in DBKindService.GetKindServices().Rows)
+            {
+                KindServiceCmbBox.Items.Add(kind["Наименование"]);
+            }
         }
         
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            ServiceActionForm serv = new ServiceActionForm(FormState.Add);
-            serv.ShowDialog();
+            var form = new ServiceActionForm(() =>
+            {
+               CurrentFormData = DBService.GetServices();
+            }, FormState.Add);
+            form.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
@@ -74,8 +88,13 @@ namespace Salon
 
             if (kindid == null) return;
 
-            ServiceActionForm serv_edit = new ServiceActionForm(FormState.Edit, servid, typeid, kindid);
-            serv_edit.ShowDialog();
+            var form = new ServiceActionForm(() =>
+            {
+                CurrentFormData = DBService.GetServices();
+            }, FormState.Edit, servid, typeid, kindid);
+            form.ShowDialog();
+
+           
         }
 
       

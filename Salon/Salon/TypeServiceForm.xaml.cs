@@ -69,6 +69,15 @@ namespace Salon
             CurrentFormData = DBTypeService.GetTypeServices();
             TypeServiceGrid.Columns[0].Visibility = Visibility.Hidden;
             TypeServiceGrid.Columns[3].Visibility = Visibility.Hidden;
+            foreach (DataRow type in DBKindService.GetKindServices().Rows)
+            {
+                KindServiceCmbBox.Items.Add(type["Наименование"]);
+            }
+
+            foreach (DataRow kind in DBGroupService.GetGroupServices().Rows)
+            {
+                GroupServiceCmbBox.Items.Add(kind["Наименование"]);
+            }
         }
 
     }

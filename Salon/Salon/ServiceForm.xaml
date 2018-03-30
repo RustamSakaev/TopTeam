@@ -37,11 +37,7 @@
                         <ComboBox x:Name="KindServiceCmbBox"  Width="150">
                         </ComboBox>
                     </StackPanel>
-                    <StackPanel Margin="5 0 5 0">
-                        <Label >Группа услуги:</Label>
-                        <ComboBox x:Name="GroupServiceCmbBox"  Width="150">
-                        </ComboBox>
-                    </StackPanel>
+                    <StackPanel Margin="5 0 5 0"/>
                 </WrapPanel>
             </DockPanel>
         </StackPanel>

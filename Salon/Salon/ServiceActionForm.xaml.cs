@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 using Salon.Database;
+using Salon.Extensions;
 
 namespace Salon
 {
@@ -24,11 +25,11 @@ namespace Salon
     {
         private readonly FormState _state;
         private readonly DataTable _currentDataItem;
-        private readonly DataTable _CurTypeServiceDataItem;
-        private readonly DataTable _CurKindServiceDataItem;
-        public ServiceActionForm(FormState state, string serv_id=null, string type_id=null, string kind_id=null)
+        private readonly Action _callback;
+        public ServiceActionForm(Action cb, FormState state, string serv_id=null, string type_id=null, string kind_id=null)
         {
             InitializeComponent();
+            _callback = cb;
             _state = state;
             switch (state)
             {
@@ -36,45 +37,63 @@ namespace Salon
                     HeaderLabel.Content = "Редактирование услуги";
                     _currentDataItem = DBService.GetService(serv_id);
                     NameBox.Text = _currentDataItem.Rows[0]["Наименование"].ToString();
-                    _CurTypeServiceDataItem = DBTypeService.GetTypeService(type_id);
+                  
+                    TypeServiceCmbBox.ItemsSource = DBTypeService.GetTypeServices().DefaultView;
+                    TypeServiceCmbBox.DisplayMemberPath = "Наименование";
+                    TypeServiceCmbBox.SelectedValuePath = "id";
+                    TypeServiceCmbBox.SelectedValue = _currentDataItem.Rows[0]["type_id"].ToString();
 
-                    foreach (DataRow type in DBTypeService.GetTypeServices().Rows)
-                    {
-                        TypeServiceCmbBox.Items.Add(type["Наименование"]);
-                    }
-                    TypeServiceCmbBox.SelectedValue = _CurTypeServiceDataItem.Rows[0]["Наименование"].ToString();
-
-                    _CurKindServiceDataItem = DBKindService.GetKindService(kind_id);
-                    foreach (DataRow kind in DBKindService.GetKindServices().Rows)
-                    {
-                        KindServiceCmbBox.Items.Add(kind["Наименование"]);
-                    }
-                    KindServiceCmbBox.SelectedValue = _CurKindServiceDataItem.Rows[0]["Наименование"].ToString();
+                    KindServiceCmbBox.ItemsSource = DBKindService.GetKindServices().DefaultView;
+                    KindServiceCmbBox.DisplayMemberPath = "Наименование";
+                    KindServiceCmbBox.SelectedValuePath = "id";
+                    KindServiceCmbBox.SelectedValue = _currentDataItem.Rows[0]["kind_id"].ToString();
                     break;
                 case FormState.Add:
                     HeaderLabel.Content = "Добавление услуги";
-                   
-                    foreach (DataRow type in DBTypeService.GetTypeServices().Rows)
-                    {
-                        TypeServiceCmbBox.Items.Add(type["Наименование"]);
-                    }
-                   
-                    foreach (DataRow kind in DBKindService.GetKindServices().Rows)
-                    {
-                        KindServiceCmbBox.Items.Add(kind["Наименование"]);
-                    }
+
+                    TypeServiceCmbBox.ItemsSource = DBTypeService.GetTypeServices().DefaultView;
+                    TypeServiceCmbBox.DisplayMemberPath = "Наименование";
+                    TypeServiceCmbBox.SelectedValuePath = "id";
+
+                    KindServiceCmbBox.ItemsSource = DBKindService.GetKindServices().DefaultView;
+                    KindServiceCmbBox.DisplayMemberPath = "Наименование";
+                    KindServiceCmbBox.SelectedValuePath = "id";
                     break;
             }
         }
       
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!NameBox.Validate(true))
+            {
+                return;
+            }
+            switch (_state)
+            {
+                case FormState.Edit:
+                    DBService.EditService(
+                        _currentDataItem.Rows[0]["id"].ToString(),
+                        NameBox.Text,
+                        TypeServiceCmbBox.SelectedValue.ToString(),
+                        KindServiceCmbBox.SelectedValue.ToString()
+                    );
+                    break;
+                case FormState.Add:
+                    DBService.AddService(
+                        NameBox.Text,
+                        TypeServiceCmbBox.SelectedValue.ToString(),
+                        KindServiceCmbBox.SelectedValue.ToString()
+                    );
+                    break;
+            }
 
+            _callback();
+            this.Close();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void TypeServiceFormButton_Click(object sender, RoutedEventArgs e)

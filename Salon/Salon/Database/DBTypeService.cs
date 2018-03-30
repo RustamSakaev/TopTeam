@@ -23,7 +23,8 @@ namespace Salon.Database
                 SELECT 
                     TypeService.ID_TypeService as id,
                     TypeService.Name as Наименование, 
-                    TypeService.GroupService_ID as [Группа услуги]
+                    GroupService.Name as [Группа услуги],
+                    TypeService.GroupService_ID as [group_id]
                 FROM TypeService inner join GroupService on TypeService.GroupService_ID = GroupService.ID_GroupService
                 WHERE TypeService.ID_TypeService = {id};"
             );
@@ -55,7 +56,7 @@ namespace Salon.Database
 
             command.Parameters.AddWithValue("@id", id);
             command.Parameters.AddWithValue("@name", name);
-            command.Parameters.AddWithValue("@type_service", group_service);
+            command.Parameters.AddWithValue("@group_service", group_service);
 
             DBCore.ExecuteCommand(command);
         }

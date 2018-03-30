@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 using Salon.Database;
+using Salon.Extensions;
 
 namespace Salon
 {
@@ -23,76 +24,63 @@ namespace Salon
     public partial class TypeServiceActionForm : Window
     {
         private readonly FormState _state;
-        private readonly DataTable _currentDataItem;
-        private readonly DataTable _CurGroupServiceDataItem;
-        public TypeServiceActionForm(FormState state,string type_id=null, string group_id=null)
+        private readonly DataTable currentData;
+        private readonly Action Back;
+        public TypeServiceActionForm(Action b, FormState state,string type_id=null)
         {
             InitializeComponent();
+            Back = b;
             _state = state;
             switch (state)
             {
                 case FormState.Edit:
                     HeaderLabel.Content = "Редактирование типа услуги";
-                    _currentDataItem = DBTypeService.GetTypeService(type_id);
-                    NameBox.Text = _currentDataItem.Rows[0]["Наименование"].ToString();
-                    _CurGroupServiceDataItem = DBGroupService.GetGroupService(group_id);
-                    foreach (DataRow type in DBGroupService.GetGroupServices().Rows)
-                    {
-                        GroupServiceCmbBox.Items.Add(type["Наименование"]);
-                    }
-                    GroupServiceCmbBox.SelectedValue = _CurGroupServiceDataItem.Rows[0]["Наименование"].ToString();
+                    currentData = DBTypeService.GetTypeService(type_id);
+                    NameBox.Text = currentData.Rows[0]["Наименование"].ToString();
+                    GroupServiceCmbBox.ItemsSource = DBGroupService.GetGroupServices().DefaultView;
+                    GroupServiceCmbBox.DisplayMemberPath = "Наименование";
+                    GroupServiceCmbBox.SelectedValuePath = "id";
+                    GroupServiceCmbBox.SelectedValue = currentData.Rows[0]["group_id"].ToString();
                     break;
                 case FormState.Add:
                     HeaderLabel.Content = "Добавление типа услуги";
-                    foreach (DataRow type in DBGroupService.GetGroupServices().Rows)
-                    {
-                        GroupServiceCmbBox.Items.Add(type["Наименование"]);
-                    }
+                    GroupServiceCmbBox.ItemsSource = DBGroupService.GetGroupServices().DefaultView;
+                    GroupServiceCmbBox.DisplayMemberPath = "Наименование";
+                    GroupServiceCmbBox.SelectedValuePath = "id";
                     break;
             }
         }
-        public string Connection()
-        {
-            string conn = @"Data Source=LENOVO-PC;Initial Catalog=Salon;Integrated Security=True";
-            return conn;
-        }
-        public DataTable DataTool(string query)
-        {
-            string connStr = Connection();
-            SqlConnection conn = null;
-            SqlCommand comm = null;
-            DataTable dt = new DataTable();
-            try
-            {
-                conn = new SqlConnection(connStr);
-                conn.Open();
-                if (conn != null)
-                {
-                    comm = conn.CreateCommand();
-                    comm.CommandText = query;
-                    SqlDataAdapter adapter = new SqlDataAdapter(comm);
-                    SqlCommandBuilder bild = new SqlCommandBuilder(adapter);
-                    adapter.Fill(dt);
-                    return dt;
-                }
-                else
-                { return dt; }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return dt;
-            }
-        }
-
+       
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!NameBox.Validate(true))
+            {
+                return;
+            }
+            switch (_state)
+            {
+                case FormState.Edit:
+                    DBTypeService.EditTypeService(
+                        currentData.Rows[0]["id"].ToString(),
+                        NameBox.Text,
+                        GroupServiceCmbBox.SelectedValue.ToString()
+                    );
+                    break;
+                case FormState.Add:
+                    DBTypeService.AddTypeService(
+                        NameBox.Text,
+                        GroupServiceCmbBox.SelectedValue.ToString()
+                    );
+                    break;
+            }
 
+            Back();
+            this.Close();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void GroupServiceFormButton_Click(object sender, RoutedEventArgs e)

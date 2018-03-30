@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:Salon"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Услуги" Height="300" Width="900">
+        Title="Услуги" Height="300" Width="900" Loaded="OnLoad">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
-    <DockPanel Loaded="OnLoad" HorizontalAlignment="Right" Margin="0,0,0.333,-0.333" Width="893">
+    <DockPanel  HorizontalAlignment="Right" Margin="0,0,0.333,-0.333" Width="893">
         <StackPanel x:Name="Header" Style="{StaticResource header}">
             <Label Content="Таблица 'Услуги'" Style="{StaticResource caption}"/>
         </StackPanel>
@@ -25,16 +25,16 @@
                 <WrapPanel DockPanel.Dock="Top">
                     <StackPanel Margin="5 0 5 0">
                         <Label >Наименование:</Label>
-                        <TextBox x:Name="NameBox" Width="200" Style="{StaticResource searchTextBox}"></TextBox>
+                        <TextBox x:Name="NameBox" Width="200" Style="{StaticResource searchTextBox}" TextChanged="NameBox_TextChanged"></TextBox>
                     </StackPanel>
                     <StackPanel Margin="5 0 5 0">
                         <Label >Тип услуги:</Label>
-                        <ComboBox x:Name="TypeServiceCmbBox"  Width="150">
+                        <ComboBox x:Name="TypeServiceCmbBox"  Width="150" SelectionChanged="TypeServiceCmbBox_SelectionChanged">
                         </ComboBox>
                     </StackPanel>
                     <StackPanel Margin="5 0 5 0">
                         <Label >Вид услуги:</Label>
-                        <ComboBox x:Name="KindServiceCmbBox"  Width="150">
+                        <ComboBox x:Name="KindServiceCmbBox"  Width="150" SelectionChanged="KindServiceCmbBox_SelectionChanged">
                         </ComboBox>
                     </StackPanel>
                     <StackPanel Margin="5 0 5 0"/>
@@ -44,7 +44,7 @@
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
             <Button x:Name="EditButton" Content="Редактировать" Click="EditButton_Click"/>
-            <Button x:Name="DeleteButton"  Content="Удалить" Style="{StaticResource buttonDelete}"/>
+            <Button x:Name="DeleteButton"  Content="Удалить" Style="{StaticResource buttonDelete}" Click="DeleteButton_Click"/>
         </StackPanel>
         <DataGrid x:Name="ServiceGrid" IsReadOnly="True" SelectionMode="Extended"></DataGrid>
     </DockPanel>

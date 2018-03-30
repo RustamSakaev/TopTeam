@@ -23,62 +23,81 @@ namespace Salon
     /// </summary>
     public partial class TypeServiceForm : Window
     {
-        private DataTable _currentFormData = new DataTable();
-        public TypeServiceForm()
+        private DataTable currentData = new DataTable();
+        private readonly List<Filter> Filter = new List<Filter>();
+        private readonly Action<string> Back;
+        public TypeServiceForm(Action<string> b = null)
         {
             InitializeComponent();
+            Back = b;
         }
-        private DataTable CurrentFormData
+        private DataTable CurrentData
         {
-            get { return _currentFormData; }
-            set { _currentFormData = value; TypeServiceGrid.ItemsSource = _currentFormData.DefaultView; }
+            get { return currentData; }
+            set { currentData = value; TypeServiceGrid.ItemsSource = currentData.DefaultView;
+            TypeServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+            TypeServiceGrid.Columns[3].Visibility = Visibility.Hidden;
+            }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            TypeServiceActionForm typeserv = new TypeServiceActionForm(FormState.Add);
-            typeserv.ShowDialog();
+            var form = new TypeServiceActionForm(() => { CurrentData = DBTypeService.GetTypeServices(); }, FormState.Add);
+            form.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            var typeidx = ((DataView)TypeServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+            var type_col = ((DataView)TypeServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+            if (type_col == -1) return;
 
-            if (typeidx == -1) return;
-
-            var typeid = ((DataRowView)TypeServiceGrid.SelectedItem)?.Row[typeidx].ToString();
-
+            var typeid = ((DataRowView)TypeServiceGrid.SelectedItem)?.Row[type_col].ToString();
             if (typeid == null) return;
 
-            var groupidx = ((DataView)TypeServiceGrid.ItemsSource).Table.Columns.IndexOf("group_id");
-
-            if (groupidx == -1) return;
-
-            var groupid = ((DataRowView)TypeServiceGrid.SelectedItem)?.Row[groupidx].ToString();
-
-            if (groupid == null) return;
-
-
-            TypeServiceActionForm typeserv = new TypeServiceActionForm(FormState.Edit,typeid, groupid);
-            typeserv.ShowDialog();
+            var form = new TypeServiceActionForm(() => { CurrentData = DBTypeService.GetTypeServices(); }, FormState.Edit, typeid);
+            form.ShowDialog();
         }
 
         
         public void OnLoad(object sender, RoutedEventArgs e)
         {
-            CurrentFormData = DBTypeService.GetTypeServices();
+            CurrentData = DBTypeService.GetTypeServices();
             TypeServiceGrid.Columns[0].Visibility = Visibility.Hidden;
             TypeServiceGrid.Columns[3].Visibility = Visibility.Hidden;
-            foreach (DataRow type in DBKindService.GetKindServices().Rows)
-            {
-                KindServiceCmbBox.Items.Add(type["Наименование"]);
-            }
-
+            GroupServiceCmbBox.Items.Add("Все");
+            GroupServiceCmbBox.SelectedItem = "Все";
             foreach (DataRow kind in DBGroupService.GetGroupServices().Rows)
             {
                 GroupServiceCmbBox.Items.Add(kind["Наименование"]);
             }
         }
+        private void CurFilter(string key, string column, string exp)
+        {
+            var filterIdx = Filter.FindIndex(filter => filter.InnerKey.Equals(key));
+            var newFilter = new Filter(key, column, exp);
+            if (filterIdx == -1) Filter.Add(newFilter);
+            else Filter[filterIdx] = newFilter;
+            DataFilter();
+        }
 
+        private void DataFilter()
+        {
+            var displayData = currentData.DefaultView;
+            var filters = string.Join(" AND ", Filter.Select(filter => $"{filter.Key} {filter.Expression}"));
+            displayData.RowFilter = filters;
+            TypeServiceGrid.ItemsSource = displayData;
+        }
+
+        private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CurFilter("TypeService", "Наименование", $"LIKE '%{NameBox.Text}%'");
+        }
+
+        private void GroupServiceCmbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedService = e.AddedItems[0].ToString();
+            var filterValue = selectedService != "Все" ? selectedService : string.Empty;
+            CurFilter("Service", "[Группа услуги]", $"LIKE '%{filterValue}%'");
+        }
     }
 }

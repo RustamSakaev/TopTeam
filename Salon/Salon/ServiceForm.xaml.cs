@@ -23,30 +23,34 @@ namespace Salon
     /// </summary>
     public partial class ServiceForm : Window
     {
-        private DataTable _currentFormData = new DataTable();
-        private readonly Action<string> _callback;
-        private readonly FormOpenAs _openAs;
-        private DataTable CurrentFormData
+        private DataTable currentData = new DataTable();
+        private readonly List<Filter> Filter = new List<Filter>();
+        private readonly Action<string> Back;
+        private DataTable CurrentData
         {
-            get { return _currentFormData; }
-            set { _currentFormData = value; ServiceGrid.ItemsSource = _currentFormData.DefaultView; }
+            get { return currentData; }
+            set { currentData = value; ServiceGrid.ItemsSource = currentData.DefaultView;
+                ServiceGrid.Columns[5].Visibility = Visibility.Hidden;
+                ServiceGrid.Columns[6].Visibility = Visibility.Hidden;
+                ServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+            }
         }
-        public ServiceForm(Action<string> cb = null, FormOpenAs openAs = FormOpenAs.Default)
+        public ServiceForm(Action<string> b = null)
         {
             InitializeComponent();
-            _callback = cb;
-            _openAs = openAs;
+            Back = b;
         }
         public void OnLoad( object sender, RoutedEventArgs e)
         { 
-            CurrentFormData = DBService.GetServices();
-            ServiceGrid.Columns[5].Visibility = Visibility.Hidden;
-            ServiceGrid.Columns[6].Visibility = Visibility.Hidden;
-            ServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+            CurrentData = DBService.GetServices();
+            TypeServiceCmbBox.Items.Add("Все");
+            TypeServiceCmbBox.SelectedItem = "Все";
             foreach (DataRow type in DBTypeService.GetTypeServices().Rows)
             {
                 TypeServiceCmbBox.Items.Add(type["Наименование"]);
             }
+            KindServiceCmbBox.Items.Add("Все");
+            KindServiceCmbBox.SelectedItem = "Все";
             foreach (DataRow kind in DBKindService.GetKindServices().Rows)
             {
                 KindServiceCmbBox.Items.Add(kind["Наименование"]);
@@ -55,48 +59,61 @@ namespace Salon
         
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var form = new ServiceActionForm(() =>
-            {
-               CurrentFormData = DBService.GetServices();
-            }, FormState.Add);
+            var form = new ServiceActionForm(() => {CurrentData = DBService.GetServices();}, FormState.Add);
             form.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            var servidx = ((DataView)ServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+            var serv_col = ((DataView)ServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+            if (serv_col == -1) return;
 
-            if (servidx == -1) return;
-
-            var servid = ((DataRowView)ServiceGrid.SelectedItem)?.Row[servidx].ToString();
-
+            var servid = ((DataRowView)ServiceGrid.SelectedItem)?.Row[serv_col].ToString();
             if (servid == null) return;
 
-            var typeidx = ((DataView)ServiceGrid.ItemsSource).Table.Columns.IndexOf("type_id");
-
-            if (typeidx == -1) return;
-
-            var typeid = ((DataRowView)ServiceGrid.SelectedItem)?.Row[typeidx].ToString();
-
-            if (typeid == null) return;
-
-            var kindidx = ((DataView)ServiceGrid.ItemsSource).Table.Columns.IndexOf("kind_id");
-
-            if (kindidx == -1) return;
-
-            var kindid = ((DataRowView)ServiceGrid.SelectedItem)?.Row[kindidx].ToString();
-
-            if (kindid == null) return;
-
-            var form = new ServiceActionForm(() =>
-            {
-                CurrentFormData = DBService.GetServices();
-            }, FormState.Edit, servid, typeid, kindid);
+            var form = new ServiceActionForm(() =>{CurrentData = DBService.GetServices();}, FormState.Edit, servid);
             form.ShowDialog();
-
-           
         }
 
-      
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CurFilter("Name", "Наименование", $"LIKE '%{NameBox.Text}%'");
+        }
+
+        private void TypeServiceCmbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedService = e.AddedItems[0].ToString();
+            var filterValue = selectedService != "Все" ? selectedService : string.Empty;
+            CurFilter("Service", "[Тип услуги]", $"LIKE '%{filterValue}%'");
+        }
+
+        private void CurFilter(string key, string column, string exp)
+        {
+            var filterIdx = Filter.FindIndex(filter => filter.InnerKey.Equals(key));
+            var newFilter = new Filter(key, column, exp);
+            if (filterIdx == -1) Filter.Add(newFilter);
+            else Filter[filterIdx] = newFilter;
+            DataFilter();
+        }
+
+        private void DataFilter()
+        {
+            var displayData = currentData.DefaultView;
+            var filters = string.Join(" AND ", Filter.Select(filter => $"{filter.Key} {filter.Expression}"));
+            displayData.RowFilter = filters;
+            ServiceGrid.ItemsSource = displayData;
+        }
+
+        private void KindServiceCmbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedService = e.AddedItems[0].ToString();
+            var filterValue = selectedService != "Все" ? selectedService : string.Empty;
+            CurFilter("Service", "[Вид услуги]", $"LIKE '%{filterValue}%'");
+        }
     }
 }

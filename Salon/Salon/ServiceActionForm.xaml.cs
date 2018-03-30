@@ -24,29 +24,29 @@ namespace Salon
     public partial class ServiceActionForm : Window
     {
         private readonly FormState _state;
-        private readonly DataTable _currentDataItem;
-        private readonly Action _callback;
-        public ServiceActionForm(Action cb, FormState state, string serv_id=null, string type_id=null, string kind_id=null)
+        private readonly DataTable currentData;
+        private readonly Action Back;
+        public ServiceActionForm(Action b, FormState state, string serv_id=null)
         {
             InitializeComponent();
-            _callback = cb;
+            Back = b;
             _state = state;
             switch (state)
             {
                 case FormState.Edit:
                     HeaderLabel.Content = "Редактирование услуги";
-                    _currentDataItem = DBService.GetService(serv_id);
-                    NameBox.Text = _currentDataItem.Rows[0]["Наименование"].ToString();
+                    currentData = DBService.GetService(serv_id);
+                    NameBox.Text = currentData.Rows[0]["Наименование"].ToString();
                   
                     TypeServiceCmbBox.ItemsSource = DBTypeService.GetTypeServices().DefaultView;
                     TypeServiceCmbBox.DisplayMemberPath = "Наименование";
                     TypeServiceCmbBox.SelectedValuePath = "id";
-                    TypeServiceCmbBox.SelectedValue = _currentDataItem.Rows[0]["type_id"].ToString();
+                    TypeServiceCmbBox.SelectedValue = currentData.Rows[0]["type_id"].ToString();
 
                     KindServiceCmbBox.ItemsSource = DBKindService.GetKindServices().DefaultView;
                     KindServiceCmbBox.DisplayMemberPath = "Наименование";
                     KindServiceCmbBox.SelectedValuePath = "id";
-                    KindServiceCmbBox.SelectedValue = _currentDataItem.Rows[0]["kind_id"].ToString();
+                    KindServiceCmbBox.SelectedValue = currentData.Rows[0]["kind_id"].ToString();
                     break;
                 case FormState.Add:
                     HeaderLabel.Content = "Добавление услуги";
@@ -72,7 +72,7 @@ namespace Salon
             {
                 case FormState.Edit:
                     DBService.EditService(
-                        _currentDataItem.Rows[0]["id"].ToString(),
+                        currentData.Rows[0]["id"].ToString(),
                         NameBox.Text,
                         TypeServiceCmbBox.SelectedValue.ToString(),
                         KindServiceCmbBox.SelectedValue.ToString()
@@ -87,7 +87,7 @@ namespace Salon
                     break;
             }
 
-            _callback();
+            Back();
             this.Close();
         }
 

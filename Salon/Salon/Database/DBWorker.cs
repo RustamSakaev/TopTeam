@@ -59,5 +59,24 @@ namespace Salon
 
             DBCore.ExecuteCommand(command);
         }
+        public static void AddWorker(string surname, string name, string patronymic, string dbirth, string login, string gender, string exp)
+        {
+            var command = new SqlCommand
+            {
+                CommandText = $@"
+                    INSERT INTO Worker (Surname, Name, Patronymic, DBirth, Login, Gender, Exp)
+                    VALUES (@surname, @name, @patronymic, @dbirth, @login, @gender, @exp);"
+            };
+
+            command.Parameters.AddWithValue("@surname", surname);
+            command.Parameters.AddWithValue("@name", name);
+            command.Parameters.AddWithValue("@patronymic", patronymic);
+            command.Parameters.AddWithValue("@dbirth", dbirth);
+            command.Parameters.AddWithValue("@login", login);
+            command.Parameters.AddWithValue("@gender", gender);
+            command.Parameters.AddWithValue("@exp", exp);
+
+            DBCore.ExecuteCommand(command);
+        }
     }
 }

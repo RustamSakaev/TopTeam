@@ -23,5 +23,6 @@ namespace Salon
         {
             InitializeComponent();
         }
+        //ТТААААААК КРЧ ПРИ ДОБАВЛЕНИИ МОЖЕТЕ ИСПОЛЬЗОВАТЬ ФОРМУ AddUserForm.xaml 
     }
 }

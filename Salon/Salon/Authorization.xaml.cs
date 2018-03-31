@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
 
 namespace Salon
 {
@@ -33,26 +34,29 @@ namespace Salon
             var IsLog = DBUser.Connection(server, LoginBox.Text, PassBox.Text);
             if (IsLog == true)
             {
-                NewForm();
+                LogIn();
             }
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             DBCore.Init(server);
-            DBUser.CreateUser(LoginBox.Text, PassBox.Text);
-            var IsLog = DBUser.Connection(server, LoginBox.Text, PassBox.Text);
-            if (IsLog == true)
-            {
-                NewForm();
-            }
+            AddUser();
         }
-        private void NewForm()
+        private void AddUser()
         {
             this.Hide();
-            Users users = new Users();
+            AddUserForm users = new AddUserForm();
             users.Show();
+            users.Title = "Регистрация";
             users.Closed += (x, y) => { this.Show(); PassBox.Text = ""; };
+        }
+        private void LogIn()
+        {
+            this.Hide();
+            Main main = new Main();
+            main.Show();
+            main.Closed += (x, y) => { this.Show(); PassBox.Text = ""; };
         }
     }
 }

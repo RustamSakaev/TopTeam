@@ -1,0 +1,64 @@
+﻿<Window x:Class="Salon.AddUserForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Salon"
+        mc:Ignorable="d"
+        Title="Добавление сотрудника" Height="276.962" Width="646.323" ResizeMode="NoResize" >
+    <Window.Resources>
+        <ResourceDictionary Source="Styles/BasicStyles.xaml" />
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel x:Name="Header" Style="{StaticResource header}">
+            <Label x:Name="HeaderInner" Style="{StaticResource caption}"/>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource bottom}">
+            <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+            <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+        </StackPanel>
+        <WrapPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="500">
+                <StackPanel>
+                    <Label Content="Логин"></Label>
+                    <TextBox x:Name="LoginBox" Width="200"></TextBox>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Пароль"></Label>
+                    <TextBox x:Name="PassBox" Width="200"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Фамилия"></Label>
+                <TextBox x:Name="SurnameBox" Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Имя"></Label>
+                <TextBox x:Name="NameBox" Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Отчество"></Label>
+                <TextBox x:Name="PatronymicBox" Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Дата рождения"></Label>
+                <DatePicker x:Name="DBirthDatePicker"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Стаж"></Label>
+                <TextBox x:Name="ExpBox" Width="150"></TextBox>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Пол"></Label>
+                <ComboBox x:Name="GenderCmbBox" Width="150">
+                    <ComboBoxItem IsSelected="True">
+                        Мужской
+                    </ComboBoxItem>
+                    <ComboBoxItem IsSelected="False">
+                        Женский
+                    </ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </WrapPanel>
+    </DockPanel>
+</Window>

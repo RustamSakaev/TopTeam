@@ -33,5 +33,7 @@ PaidChkBox
 ClientGrid
 BillGrid
 
-PS
-У каждой создаваемой формы укажите свойство CanResize в значение CanMinimize, чтобы нельзя было расширить форму.
+Наименование событий
+название компонента+_событие (Click, Changed)
+CancelButton_Click
+DeleteButton_Click

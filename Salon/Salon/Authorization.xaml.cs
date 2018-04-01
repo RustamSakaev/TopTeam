@@ -46,7 +46,7 @@ namespace Salon
         private void AddUser()
         {
             this.Hide();
-            AddUserForm users = new AddUserForm();
+            RegistrationForm users = new RegistrationForm();
             users.Show();
             users.Title = "Регистрация";
             users.Closed += (x, y) => { this.Show(); PassBox.Text = ""; };

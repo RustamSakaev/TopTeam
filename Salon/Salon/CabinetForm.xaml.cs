@@ -31,10 +31,44 @@ namespace Salon
             set { userName = value; }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            DBUser.ChangePass(userName, NewPassBox.Text, OldPassBox.Text);
-            this.Close();
+            if (OldPassBox.Password == "" || NewPassBox.Password == "" || ConfirmPassBox.Password == "")
+                MessageBox.Show("Заполните все поля!");
+            {
+                //должна быть проверка на текущий пароль
+                if (OldPassBox.Password != "")
+                {
+                    MessageBox.Show("Текущий пароль неверен!");
+                    OldPassBox.Clear();
+                    NewPassBox.Clear();
+                    ConfirmPassBox.Clear();
+                }
+                else
+                {
+                    if (NewPassBox.Password == OldPassBox.Password)
+                    {
+                        MessageBox.Show("Новый и старый пароли не должны совпадать!");
+                        NewPassBox.Clear();
+                        ConfirmPassBox.Clear();
+                    }
+                    else
+                    {
+                        if (NewPassBox.Password != ConfirmPassBox.Password)
+                        {
+                            MessageBox.Show("Введенные пароли не совпадают!");
+                            NewPassBox.Clear();
+                            ConfirmPassBox.Clear();
+                        }
+                        else
+                        {
+                            DBUser.ChangePass(userName, NewPassBox.Password, OldPassBox.Password);
+                            MessageBox.Show("Пароль успешно изменен!");
+                            this.Close();
+                        }
+                    }
+                }
+            }         
         }
     }
 }

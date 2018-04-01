@@ -5,25 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Личный кабинет" Height="183.529" Width="300">
+        Title="Личный кабинет" Height="255.293" Width="300">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="Top"  Height="25"></StackPanel>
         <StackPanel DockPanel.Dock="Top">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <StackPanel>
-                    <Label x:Name="label1" Content="Старый пароль"/>
-                    <TextBox x:Name="OldPassBox" Width="120"/>                   
+                    <Label x:Name="OldPassLabel" Margin="0 0 0 0" Content="Текущий пароль"/>
+                    <PasswordBox x:Name="OldPassBox"/>                   
                 </StackPanel>
                 <StackPanel>
-                    <Label x:Name="label" Content="Новый пароль"/>
-                    <TextBox x:Name="NewPassBox" Width="120"/>
+                    <Label x:Name="NewPassLabel" Margin="0 0 0 0" Content="Новый пароль"/>
+                    <PasswordBox x:Name="NewPassBox"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label x:Name="ConfirmPassLabel" Margin="0 0 0 0" Content="Повторите пароль"/>
+                    <PasswordBox x:Name="ConfirmPassBox"/>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button x:Name="OkButton" Content="Изменить" Width="75" Click="button_Click"/>
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="OkButton" Content="Изменить" Width="75" Click="OkButton_Click"/>
                 </StackPanel>
             </StackPanel>
     </DockPanel>

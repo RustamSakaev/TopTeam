@@ -13,7 +13,9 @@
     <Style TargetType="PasswordBox">
         <Setter Property="Width" Value="120"/>
         <Setter Property="Height" Value="25"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>  
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Control.Background" Value="#646e87"/>
+        <Setter Property="Control.BorderBrush" Value="#646e87"/>
     </Style>
     
     <Style x:Key="header" TargetType="StackPanel">

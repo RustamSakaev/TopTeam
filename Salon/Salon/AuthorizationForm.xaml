@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Авторизация" Height="161.273" Width="337.177" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Авторизация" Height="126.273" Width="337.177" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
     <DockPanel>
-        <StackPanel DockPanel.Dock="Top"  Height="25"></StackPanel>
+       
         <StackPanel DockPanel.Dock="Top" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <StackPanel>

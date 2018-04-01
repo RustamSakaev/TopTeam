@@ -68,8 +68,8 @@
     <Compile Include="AddEditTypeMasterService.xaml.cs">
       <DependentUpon>AddEditTypeMasterService.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddUserForm.xaml.cs">
-      <DependentUpon>AddUserForm.xaml</DependentUpon>
+    <Compile Include="RegistrationForm.xaml.cs">
+      <DependentUpon>RegistrationForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="BankCardActionForm.xaml.cs">
       <DependentUpon>BankCardActionForm.xaml</DependentUpon>
@@ -217,7 +217,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AddUserForm.xaml">
+    <Page Include="RegistrationForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

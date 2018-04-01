@@ -29,16 +29,22 @@ namespace Salon
         }
         private string server = @"DESKTOP-H5176PR\MSSQLSERVER01";
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             var IsLog = DBUser.Connection(server, LoginBox.Text, PassBox.Text);
             if (IsLog == true)
             {
                 LogIn();
             }
+            else
+            {
+                MessageBox.Show("Неправильный логин или пароль!");
+                LoginBox.Clear();
+                PassBox.Clear();
+            }
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void RegistrationButton_Click(object sender, RoutedEventArgs e)
         {
             DBCore.Init(server);
             AddUser();
@@ -46,17 +52,19 @@ namespace Salon
         private void AddUser()
         {
             this.Hide();
+            LoginBox.Clear();
+            PassBox.Clear();
             RegistrationForm users = new RegistrationForm();
-            users.Show();
-            users.Title = "Регистрация";
-            users.Closed += (x, y) => { this.Show(); PassBox.Text = ""; };
+            users.Show();            
+            users.Closed += (x, y) => { this.Show();};
         }
         private void LogIn()
         {
             this.Hide();
+            PassBox.Clear();
             Main main = new Main();
             main.Show();
-            main.Closed += (x, y) => { this.Show(); PassBox.Text = ""; };
+            main.Closed += (x, y) => { this.Show();};
         }
     }
 }

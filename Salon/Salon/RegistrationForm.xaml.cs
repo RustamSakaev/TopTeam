@@ -19,9 +19,9 @@ namespace Salon
     /// <summary>
     /// Логика взаимодействия для AddUserForm.xaml
     /// </summary>
-    public partial class AddUserForm : Window
+    public partial class RegistrationForm : Window
     {
-        public AddUserForm()
+        public RegistrationForm()
         {
             InitializeComponent();
         }
@@ -30,11 +30,13 @@ namespace Salon
         {
             if (!SurnameBox.Validate(true) || !NameBox.Validate(true) || !PatronymicBox.Validate(true) ||
                 !DBirthDatePicker.Validate(true) || !ExpBox.Validate(true) || !GenderCmbBox.Validate(true) ||
-                !LoginBox.Validate(true) || !PassBox.Validate(true))
+                !LoginBox.Validate(true))
                 return;
             else
             {
-                DBUser.CreateUser(LoginBox.Text, PassBox.Text);
+                // должна быть проверка на пользователя с таким же логином
+
+                DBUser.CreateUser(LoginBox.Text, PassBox.Password);
                 DBWorker.AddWorker(SurnameBox.Text, 
                     NameBox.Text, 
                     PatronymicBox.Text, 
@@ -42,7 +44,7 @@ namespace Salon
                     LoginBox.Text, 
                     ((ComboBoxItem)GenderCmbBox.SelectedValue).Content.ToString() == "Мужской" ? "1" : "0", 
                     ExpBox.Text);
-                MessageBox.Show("Пользователь создан");
+                MessageBox.Show("Пользователь успешно создан!");
                 this.Close();
             }         
         }

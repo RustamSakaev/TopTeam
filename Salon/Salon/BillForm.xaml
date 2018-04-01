@@ -16,7 +16,7 @@
         </StackPanel>
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
             <StackPanel x:Name="SearchStack" >
-                <Label Content="Поиск:"/>
+                <Label Content="Фильтр:"/>
                 <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged"/>
             </StackPanel>
         </StackPanel>

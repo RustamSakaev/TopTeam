@@ -35,10 +35,11 @@ namespace Salon
                 !DBirthDatePicker.Validate(true) || !ExpBox.Validate(true) || !GenderCmbBox.Validate(true) ||
                 !LoginBox.Validate(true) || PassBox.Password == "" || !LoginBox.Validate(true) || !exp.IsMatch(ExpBox.Text)
                 || !FSL.IsMatch(NameBox.Text) || !FSL.IsMatch(SurnameBox.Text) || !FSL.IsMatch(PatronymicBox.Text))
-                return;
+                MessageBox.Show("Заполните правильно все поля!");
+            //return;
             else
             {
-                bool add=DBUser.CreateUser(LoginBox.Text, PassBox.Password);
+                bool add = DBUser.CreateUser(LoginBox.Text, PassBox.Password);
                 if (add)
                 {
                     DBWorker.AddWorker(SurnameBox.Text.Trim(),

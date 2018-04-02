@@ -215,5 +215,29 @@ namespace Salon
             var form = new BillForm();
             form.ShowDialog();
         }
+
+        private void CabinetForm_Click(object sender, RoutedEventArgs e)
+        {
+            Kabinet kabinet = new Kabinet();
+            kabinet.ShowDialog();                
+        }
+
+        private void UserRoleForm_Click(object sender, RoutedEventArgs e)
+        {
+            Users userroles = new Users();
+            userroles.ShowDialog();
+        }
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {            
+            Authorization auth = (Authorization)Application.Current.Windows[0];
+            this.Hide();
+            auth.Visibility = Visibility.Visible;
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
     }
 }

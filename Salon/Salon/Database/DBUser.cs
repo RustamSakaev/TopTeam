@@ -25,7 +25,7 @@ namespace Salon
             }
             else
             {
-                MessageBox.Show("Пользователь с таки логином уже есть");
+                MessageBox.Show("Пользователь с таким логином уже существует!");
                 return false;
             }
         }
@@ -67,6 +67,7 @@ namespace Salon
         {
             return DBCore.GetData($@"SELECT suser_id('"+login+"');");
         }
+
         public static bool GetOldPass(string login,string pass)
         {
             DBCore.Init(@"DESKTOP-H5176PR\MSSQLSERVER01");

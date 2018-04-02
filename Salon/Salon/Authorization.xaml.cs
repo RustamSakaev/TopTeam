@@ -31,7 +31,7 @@ namespace Salon
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            var IsLog = DBUser.Connection(server, LoginBox.Text.Trim(), PassBox.Text.Trim());
+            var IsLog = DBUser.Connection(server, LoginBox.Text.Trim(), PassBox.Password.Trim());
             if (IsLog == true)
             {
                 LogIn();

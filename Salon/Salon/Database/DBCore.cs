@@ -43,7 +43,6 @@ namespace Salon
         }
         public static void Init(string server)
         {
-           // server = @"ADMIN\SQLEXPRESS";
             _connection = new SqlConnection();           
             var builder = new SqlConnectionStringBuilder
             {
@@ -57,21 +56,25 @@ namespace Salon
         }
         public static bool InitLogPass(string server, string login,string pass)
         {
-            _connection = new SqlConnection();
-            var builder = new SqlConnectionStringBuilder
+            bool rValue = true;
+            try
+           {
+                _connection = new SqlConnection();
+                var builder = new SqlConnectionStringBuilder
+                {
+                    DataSource = server,
+                    InitialCatalog = "Salon",
+                    UserID = login,
+                    Password = pass,
+                };
+                _connection.ConnectionString = builder.ConnectionString;
+                _connection.Open();
+            }
+            catch
             {
-                DataSource = server,
-                InitialCatalog = "Salon",
-                UserID = login,
-                Password = pass,
-            };
-
-            _connection.ConnectionString = builder.ConnectionString;
-            _connection.Open();
-            if (_connection.State == ConnectionState.Open)
-                return true;
-            else
-                return false;
+                rValue = false;
+            }
+            return rValue;
         }
         public static void Destroy()
         {

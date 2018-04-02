@@ -31,7 +31,7 @@ namespace Salon
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            var IsLog = DBUser.Connection(server, LoginBox.Text, PassBox.Text);
+            var IsLog = DBUser.Connection(server, LoginBox.Text.Trim(), PassBox.Text.Trim());
             if (IsLog == true)
             {
                 LogIn();
@@ -39,7 +39,6 @@ namespace Salon
             else
             {
                 MessageBox.Show("Неправильный логин или пароль!");
-                LoginBox.Clear();
                 PassBox.Clear();
             }
         }
@@ -62,9 +61,16 @@ namespace Salon
         {
             this.Hide();
             PassBox.Clear();
-            Main main = new Main();
+            Kabinet main = new Kabinet();
+            main.UserName = LoginBox.Text.Trim();
             main.Show();
             main.Closed += (x, y) => { this.Show();};
+        }
+
+        private void FormClosed(object sender, EventArgs e)
+        {
+            DBCore.Destroy();
+            this.Close();
         }
     }
 }

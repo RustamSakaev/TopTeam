@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Salon.Extensions;
+using System.Text.RegularExpressions;
 
 namespace Salon
 {
@@ -28,24 +29,28 @@ namespace Salon
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
+            Regex exp = new Regex(@"^\d{2}(\.[0,5])?$");
+            Regex FSL = new Regex(@"^[А-Я][a-я]+$");
             if (!SurnameBox.Validate(true) || !NameBox.Validate(true) || !PatronymicBox.Validate(true) ||
                 !DBirthDatePicker.Validate(true) || !ExpBox.Validate(true) || !GenderCmbBox.Validate(true) ||
-                !LoginBox.Validate(true))
+                !LoginBox.Validate(true) || PassBox.Password == "" || !LoginBox.Validate(true) || !exp.IsMatch(ExpBox.Text)
+                || !FSL.IsMatch(NameBox.Text) || !FSL.IsMatch(SurnameBox.Text) || !FSL.IsMatch(PatronymicBox.Text))
                 return;
             else
             {
-                // должна быть проверка на пользователя с таким же логином
-
-                DBUser.CreateUser(LoginBox.Text, PassBox.Password);
-                DBWorker.AddWorker(SurnameBox.Text, 
-                    NameBox.Text, 
-                    PatronymicBox.Text, 
-                    DBirthDatePicker.DisplayDate.ToString(), 
-                    LoginBox.Text, 
-                    ((ComboBoxItem)GenderCmbBox.SelectedValue).Content.ToString() == "Мужской" ? "1" : "0", 
-                    ExpBox.Text);
-                MessageBox.Show("Пользователь успешно создан!");
-                this.Close();
+                bool add=DBUser.CreateUser(LoginBox.Text, PassBox.Password);
+                if (add)
+                {
+                    DBWorker.AddWorker(SurnameBox.Text.Trim(),
+                        NameBox.Text.Trim(),
+                        PatronymicBox.Text.Trim(),
+                        DBirthDatePicker.DisplayDate.ToString(),
+                        LoginBox.Text.Trim(),
+                        ((ComboBoxItem)GenderCmbBox.SelectedValue).Content.ToString() == "Мужской" ? "1" : "0",
+                        ExpBox.Text.Trim());
+                    MessageBox.Show("Пользователь успешно создан!");
+                    this.Close();
+                }
             }         
         }
         private void CancelButton_Click(object sender, RoutedEventArgs e)

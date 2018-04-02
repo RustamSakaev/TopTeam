@@ -75,5 +75,16 @@ namespace Salon
             displayData.RowFilter = filters;
             GroupServiceGrid.ItemsSource = displayData;
         }
+
+        private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CurFilter("GroupService", "Наименование", $"LIKE '%{NameBox.Text}%'");
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            NameBox.Clear();
+        }
+
     }
 }

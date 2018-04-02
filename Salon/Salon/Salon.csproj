@@ -68,6 +68,7 @@
     <Compile Include="AddEditTypeMasterService.xaml.cs">
       <DependentUpon>AddEditTypeMasterService.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Database\DBTypeService_KindService.cs" />
     <Compile Include="RegistrationForm.xaml.cs">
       <DependentUpon>RegistrationForm.xaml</DependentUpon>
     </Compile>

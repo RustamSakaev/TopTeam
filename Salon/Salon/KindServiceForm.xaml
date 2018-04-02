@@ -20,21 +20,17 @@
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
             <DockPanel x:Name="FullSearchGroup">
                 <StackPanel Style="{StaticResource buttonsPanel}" VerticalAlignment="Center">
-                    <Button x:Name="ClearButton" Width="auto">Очистить</Button>
+                    <Button x:Name="ClearButton" Width="auto" Click="ClearButton_Click">Очистить</Button>
                 </StackPanel>
                 <WrapPanel DockPanel.Dock="Top">
                     <StackPanel Margin="5 0 5 0">
                         <Label >Наименование:</Label>
                         <TextBox x:Name="NameBox" Width="200" Style="{StaticResource searchTextBox}" TextChanged="NameBox_TextChanged"></TextBox>
                     </StackPanel>
-                    <StackPanel Margin="5 0 5 0">
-                        <Label >Тип услуги:</Label>
-                        <ComboBox x:Name="TypeServiceCmbBox"  Width="150" SelectionChanged="TypeServiceCmbBox_SelectionChanged">
-                        </ComboBox>
-                    </StackPanel>
-                  
-                   
-                  
+                    <StackPanel Margin="5 0 5 0"/>
+
+
+
                 </WrapPanel>
             </DockPanel>
         </StackPanel>
@@ -43,6 +39,6 @@
             <Button x:Name="EditButton" Content="Редактировать" Click="EditButton_Click"/>
             <Button x:Name="DeleteButton"  Content="Удалить" Style="{StaticResource buttonDelete}"/>
         </StackPanel>
-        <DataGrid x:Name="KindServiceGrid"></DataGrid>
+        <DataGrid x:Name="KindServiceGrid" MouseDoubleClick="KindServiceGrid_MouseDoubleClick"></DataGrid>
     </DockPanel>
 </Window>

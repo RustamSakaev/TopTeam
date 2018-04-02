@@ -26,11 +26,13 @@ namespace Salon
     {
         private DataTable currentData = new DataTable();
         private readonly List<Filter> Filter = new List<Filter>();
-        private readonly Action<string> Back;
-        public KindService(Action<string> b = null)
+        private readonly Action Back;
+        private string type_ID;
+        public KindService(Action b=null, string type_id = null)
         {
             InitializeComponent();
             Back = b;
+            type_ID = type_id;
         }
         private DataTable CurrentData
         {
@@ -59,12 +61,7 @@ namespace Salon
         {
             CurrentData = DBKindService.GetKindServices();
             KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;
-            TypeServiceCmbBox.Items.Add("Все");
-            foreach (DataRow type in DBTypeService.GetTypeServices().Rows)
-            {
-                TypeServiceCmbBox.Items.Add(type["Наименование"]);
-            }
-            TypeServiceCmbBox.SelectedValue = "Все";
+           
 
 
         }
@@ -93,6 +90,23 @@ namespace Salon
         private void TypeServiceCmbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            NameBox.Clear();
+        }
+
+        private void KindServiceGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var kind_col = ((DataView)KindServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+            if (kind_col == -1) return;
+
+            var kindid = ((DataRowView)KindServiceGrid.SelectedItem)?.Row[kind_col].ToString();
+            if (kindid == null) return;
+            DBTypeService_KindService.AddTypeKind(type_ID, kindid);
+            Back();
+            this.Close();
         }
     }
 }

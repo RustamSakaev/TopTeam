@@ -22,8 +22,7 @@
             <MenuItem Header="Справочники" >
                 <MenuItem Header="Работа с сотрудниками" HorizontalAlignment="Left" Width="214">
                     <MenuItem Header="Список сотрудников" Click="MenuItem_Click_3"/>
-                    <MenuItem Header="График работы" Click="MenuItem_Click_5"/>
-                    <MenuItem Header="Расчеты с сотрудниками" Click="MenuItem_Click_6"/>
+                    <MenuItem Header="График работы" Click="MenuItem_Click_5"/>                    
                     <!-- <MenuItem Header="Выбор профиля сотрудника"/> 
                     <MenuItem Header="Услуги, предоставляемые мастерами"/> 
                     <MenuItem Header="Мастера салона" Click="MenuItem_Click_3"/> -->

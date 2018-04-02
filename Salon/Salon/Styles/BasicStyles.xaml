@@ -3,6 +3,59 @@
                     xmlns:local="clr-namespace:Salon"
                     x:Class="Directory">
 
+    <Style TargetType="Button">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Foreground" Value="#d9dfeb"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="2"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Height="{TemplateBinding Height}"
+                            Width="{TemplateBinding Width}">
+
+                        <Border.Background>
+                            <SolidColorBrush x:Name="Background" Color="#61718b" />
+                        </Border.Background>
+                        <ContentControl Margin="{TemplateBinding Padding}"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Content="{TemplateBinding Content}" />
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="Background"
+                                                        Storyboard.TargetProperty="Color" To="#3A445A" 
+                                                        Duration="0:0:0.25" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState Name="Normal">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="Background"
+                                                        Storyboard.TargetProperty="Color" To="#61718b" />
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="Background"
+                                                        Storyboard.TargetProperty="Color" To="#1C212B" 
+                                                        Duration="0:0:0"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
     <Style TargetType="DockPanel">
         <Setter Property="LastChildFill" Value="False" />
         <Setter Property="Control.FontFamily" Value="Segoe WP" />
@@ -44,6 +97,7 @@
         <Setter Property="Control.Foreground" Value="#000"/>
         <Setter Property="BorderThickness" Value="0"/>
     </Style>
+    
     <Style BasedOn="{StaticResource entryField}" TargetType="DatePicker">
         <Setter Property="SelectedDateFormat" Value="Short"/>
         <Setter Property="Control.BorderThickness" Value="0 0 0 2"/>
@@ -83,13 +137,6 @@
     <Style  TargetType="Label">
         <Setter Property="Foreground" Value="#a5b0c6" />
         <Setter Property="Margin" Value="0,0,0,-10"/>
-    </Style>
-
-    <Style TargetType="Button">
-        <Setter Property="Margin" Value="5"/>
-        <Setter Property="Padding" Value="5"/>
-        <Setter Property="Background" Value="#61718b"/>
-        <Setter Property="Foreground" Value="#d9dfeb"/>        
     </Style>
 
     <Style x:Key="buttonOkAndCancel" BasedOn="{StaticResource {x:Type Button}}" TargetType="Button">
@@ -142,4 +189,17 @@
         <Setter Property="Height" Value="25" />
         <Setter Property="Foreground" Value="#d9dfeb" />
     </Style>
+
+    <Style  TargetType="MenuItem">
+        <Setter Property="Background" Value="#2b3043" />
+        <Setter Property="Foreground" Value="#d9dfeb"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style  TargetType="Separator">
+        <Setter Property="Background" Value="#2b3043" />
+        <Setter Property="Foreground" Value="#d9dfeb"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
 </ResourceDictionary>

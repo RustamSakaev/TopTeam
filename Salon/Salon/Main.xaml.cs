@@ -16,7 +16,7 @@ namespace Salon
             InitializeComponent();
 
             // DBCore.Init(@"LENOVO-PC");
-            DBCore.Init(@"ADMIN\SQLEXPRESS");
+            DBCore.Init(@"LENOVO-PC");
         }
 
         private void Prototype_Click(object sender, RoutedEventArgs e)

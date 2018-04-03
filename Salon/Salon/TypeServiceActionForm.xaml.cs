@@ -35,11 +35,13 @@ namespace Salon
             get { return currentData; }
             set
             {
-                curData = value; TypeService_KindServiceGrid.ItemsSource = curData.DefaultView;
-               
+                curData = value;
+                //TypeService_KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+                TypeService_KindServiceGrid.ItemsSource = curData.DefaultView;
+
             }
         }
-        public TypeServiceActionForm(Action b, FormState state,string type_id=null)
+        public TypeServiceActionForm(Action b=null, FormState state=FormState.View,string type_id=null)
         {
             InitializeComponent();
             Back = b;
@@ -56,9 +58,9 @@ namespace Salon
                     GroupServiceCmbBox.DisplayMemberPath = "Наименование";
                     GroupServiceCmbBox.SelectedValuePath = "id";
                     GroupServiceCmbBox.SelectedValue = currentData.Rows[0]["group_id"].ToString();
-                    MNcurrentData = DBTypeService_KindService.GetKinds(type_id);
+                    MNcurrentData = DBTypeService_KindService.GetKinds_(type_id);
                     TypeService_KindServiceGrid.ItemsSource = MNcurrentData.DefaultView;
-                    //TypeService_KindServiceGrid.Columns[1].Visibility = Visibility.Hidden;
+                    
                     break;
                 case FormState.Add:
                     HeaderLabel.Content = "Добавление типа услуги";
@@ -67,6 +69,10 @@ namespace Salon
                     GroupServiceCmbBox.DisplayMemberPath = "Наименование";
                     GroupServiceCmbBox.SelectedValuePath = "id";
                     TypeService_KindServiceGrid.Visibility = Visibility.Hidden;
+                    AddButton.Visibility = Visibility.Hidden;
+                    DeleteButton.Visibility = Visibility.Hidden;
+                    TypeService_KindServiceGrid.Visibility = Visibility.Hidden;
+                    KindLabel.Visibility = Visibility.Hidden;
                     break;
                 
 
@@ -116,13 +122,18 @@ namespace Salon
         {
             if(form_state_add)
             {
-
-            }else
+               
+            }
+            else
             {
-                var form = new KindService(() => { CurrentData = DBTypeService_KindService.GetKinds(type_ID); },type_ID);
+                var form = new KindService(() => { CurrentData = DBTypeService_KindService.GetKinds(type_ID);  },type_ID);
                 form.ShowDialog();
             }
             
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

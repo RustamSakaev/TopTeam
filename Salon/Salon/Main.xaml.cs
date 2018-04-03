@@ -15,7 +15,6 @@ namespace Salon
         {
             InitializeComponent();
 
-            // DBCore.Init(@"LENOVO-PC");
             DBCore.Init(@"LENOVO-PC");
         }
 

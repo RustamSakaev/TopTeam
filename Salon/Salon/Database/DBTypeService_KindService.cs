@@ -34,21 +34,33 @@ namespace Salon.Database
         {
             return DBCore.GetData($@"
                 SELECT 
-                    KindService.Name as [Вид услуги],
-                    TypeService_KindService.KindService_ID as kind_id
+                    TypeService_KindService.KindService_ID as kind_id,
+                    KindService.Name as [Вид услуги]
+                    
                 FROM TypeService_KindService inner join TypeService on TypeService_KindService.TypeService_ID = TypeService.ID_TypeService
                 inner join KindService on TypeService_KindService.KindService_ID = KindService.ID_KindService
                 WHERE TypeService_KindService.TypeService_ID = {type_id};"
             );
         }
-
+        public static DataTable GetKinds_(string type_id)
+        {
+            return DBCore.GetData($@"
+                SELECT 
+                    
+                    KindService.Name as [Вид услуги]
+                    
+                FROM TypeService_KindService inner join TypeService on TypeService_KindService.TypeService_ID = TypeService.ID_TypeService
+                inner join KindService on TypeService_KindService.KindService_ID = KindService.ID_KindService
+                WHERE TypeService_KindService.TypeService_ID = {type_id};"
+            );
+        }
         public static void DeleteType(string id)
         {
             var command = new SqlCommand
             {
                 CommandText = $@"
                     DELETE FROM TypeService_KindService
-                    WHERE TypeService_KindService.KindService_ID = @id;"
+                    WHERE TypeService_KindService.TypeService_ID = @id;"
             };
 
             command.Parameters.AddWithValue("@id", id);
@@ -61,7 +73,7 @@ namespace Salon.Database
             {
                 CommandText = $@"
                     DELETE FROM TypeService_KindService
-                    WHERE TypeService_KindService.TypeService_ID = @id;"
+                    WHERE TypeService_KindService.KindService_ID = @id;"
             };
 
             command.Parameters.AddWithValue("@id", id);

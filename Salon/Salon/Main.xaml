@@ -13,36 +13,36 @@
         <Menu>
             <MenuItem Header="Администрированиe">
                 <MenuItem Header="Смена пароля" Click="CabinetForm_Click"></MenuItem>
-                <MenuItem Header="Изменение роли пользователя" Click="UserRoleForm_Click" ></MenuItem>
+                <MenuItem Header="Изменение роли пользователя" x:Name="ChangeUserItem" Click="UserRoleForm_Click" ></MenuItem>
                 <Separator />
                 <MenuItem Header="Сменить пользователя" Click="LogOut_Click"></MenuItem>
                 <Separator />
                 <MenuItem Header="Выход" Click="Exit_Click"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Справочники" >
-                <MenuItem Header="Работа с сотрудниками" HorizontalAlignment="Left" Width="214">
+            <MenuItem Header="Справочники" x:Name="Items">
+                <MenuItem Header="Работа с сотрудниками" x:Name="WorkersItem" HorizontalAlignment="Left" Width="214">
                     <MenuItem Header="Список сотрудников" Click="MenuItem_Click_3"/>
                     <MenuItem Header="График работы" Click="MenuItem_Click_5"/>                    
                     <!-- <MenuItem Header="Выбор профиля сотрудника"/> 
                     <MenuItem Header="Услуги, предоставляемые мастерами"/> 
                     <MenuItem Header="Мастера салона" Click="MenuItem_Click_3"/> -->
                 </MenuItem>
-                <MenuItem Header="Посещение и оплата">
+                <MenuItem Header="Посещение и оплата" x:Name="VisitsItem">
                     <MenuItem Header="Посещение" Click="Visits_Click_5"/>
                     <MenuItem Header="Оказание услуг"/>
                     <MenuItem Header="Счет" Click="MenuItem_Click"/>
                     <MenuItem Header="Оказание услуг" Click="ProvidingService_Click"/>
                     <MenuItem Header="Подарочные карты" Click="MenuItem_Click_4"/>
                 </MenuItem>
-                <MenuItem Header="Работа с клиентами">
+                <MenuItem Header="Работа с клиентами" x:Name="ClientsItem">
                     <MenuItem Header="Список клиентов" Click="Client_Click"/>
                     <MenuItem Header="Банковские карты" Click="MenuItem_Click_2"/>
                 </MenuItem>
-                <MenuItem Header="Работа с услугами">
+                <MenuItem Header="Работа с услугами" x:Name="ServicesItem">
                     <MenuItem x:Name="spisokUslug" Header="Список услуг" Click="SpisokUslug_Click"/>
                     <MenuItem Header="Тарифы" Click="Tariff_Click"/>
                 </MenuItem>
-                <MenuItem Header="Прочие">
+                <MenuItem Header="Прочие" x:Name="OthersItem">
                     <!--<MenuItem Header="Способ оплаты" Click="MenuItem_Click_1"/> -->
                     <MenuItem Header="Тип мастера"/>
                 </MenuItem>

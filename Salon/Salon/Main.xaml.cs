@@ -15,8 +15,28 @@ namespace Salon
         {
             InitializeComponent();
 
-            // DBCore.Init(@"LENOVO-PC");
-            DBCore.Init(@"LENOVO-PC");
+            // DBCore.Init(@"LENOVO-PC"); //просто раскомментируй свою строку а не заменяй чужую
+            DBCore.Init(@"ADMIN\SQLEXPRESS");
+
+
+
+            //проверка роли залогиненного пользователя
+            string role = "master";
+            if (role=="master")
+            {
+                ChangeUserItem.Visibility = Visibility.Collapsed; //пусть пока все это будет
+                //WorkersItem.IsEnabled = false;
+                //VisitsItem.IsEnabled = false;
+                //ClientsItem.IsEnabled = false;
+                //ServicesItem.IsEnabled = false;
+                //OthersItem.IsEnabled = false;
+                Items.Visibility = Visibility.Collapsed; //блочит доступ ко всем справочникам
+            }
+            else
+            {
+                Items.Visibility = Visibility.Visible;
+            }
+            
         }
 
         private void Prototype_Click(object sender, RoutedEventArgs e)

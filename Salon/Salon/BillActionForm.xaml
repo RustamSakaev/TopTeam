@@ -32,10 +32,7 @@
             <StackPanel>
                 <CheckBox x:Name="PaidChb" Content="Оплачено"/>
             </StackPanel>
-            <StackPanel>
-                <Label Content="Способ оплаты"></Label>
-                <TextBox x:Name="PaymentMethodBox" Width="200"></TextBox>
-            </StackPanel>
+            <StackPanel/>
             <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >
                 <Label Content="Оказанные услуги"></Label>
                 <DataGrid x:Name="ServicesGrid" ItemsSource="{Binding}" IsReadOnly="True" ColumnWidth="*" AutoGeneratingColumn="ServicesGrid_AutoGeneratingColumn" Width="635" />

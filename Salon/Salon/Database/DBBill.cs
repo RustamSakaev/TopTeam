@@ -14,11 +14,8 @@ namespace Salon
                     Bill.Date as Дата,
                     Bill.Number as Номер,
                     Bill.BillAmount as Сумма,
-                    Bill.Paid as Заплачено,
-                    PaymentMethod.Name as [Способ оплаты]
+                    Bill.Paid as Заплачено
                 FROM Bill
-                INNER JOIN PaymentMethod 
-                    ON PaymentMethod.ID_PaymentMethod = Bill.PaymentMethod_ID
                 INNER JOIN Visit
                     ON Visit.ID_Visit = Bill.Visit_ID
                 INNER JOIN Client
@@ -37,15 +34,11 @@ namespace Salon
                     Bill.Number as Номер,
                     Bill.BillAmount as Сумма,
                     Bill.Paid as Оплачено,
-                    Bill.PaymentMethod_ID as paymentmethodid,
-                    PaymentMethod.Name as [Способ оплаты],
                     Bill.GiftCard_ID as giftcardid,
                     GiftCard.Number as [Номер подарочной карты],
                     Bill.BankCard_ID as bankcardid,
                     BankCard.Number as [Номер банковской карты]
                 FROM Bill
-                INNER JOIN PaymentMethod
-                    ON PaymentMethod.ID_PaymentMethod = Bill.PaymentMethod_ID
                 LEFT JOIN GiftCard
                     ON GiftCard.ID_GiftCard = Bill.GiftCard_ID
                 LEFT JOIN BankCard

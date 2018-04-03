@@ -23,7 +23,6 @@ namespace Salon
             NumberBox.Text = currentDataItem.Rows[0]["Номер"].ToString();
             BillAmountBox.Text = currentDataItem.Rows[0]["Сумма"].ToString();
             PaidChb.IsChecked = bool.Parse(currentDataItem.Rows[0]["Оплачено"].ToString());
-            PaymentMethodBox.Text = currentDataItem.Rows[0]["Способ оплаты"].ToString();
 
             ServicesGrid.DataContext = currentDetailedDataItem;
         }

@@ -36,7 +36,7 @@ namespace Salon
             {
                 Items.Visibility = Visibility.Visible;
             }
-            
+
         }
 
         private void Prototype_Click(object sender, RoutedEventArgs e)
@@ -55,13 +55,6 @@ namespace Salon
             var form = new BillForm();
             form.ShowDialog();
         }
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            var form = new PaymentMethodForm();
-            form.ShowDialog();
-        }
-
         private void Client_Click(object sender, RoutedEventArgs e)
         {
             ClientForm client = new ClientForm();

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Авторизация" Height="142.273" Width="337.177" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Авторизация" Height="142.273" Width="337.177" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closed="FormClosed">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -19,7 +19,7 @@
                 </StackPanel>
                 <StackPanel>
                     <Label x:Name="PassLable" Content="Пароль"/>
-                    <TextBox x:Name="PassBox" Width="150"   />
+                    <PasswordBox  Margin="0 5 0 0" Height="28" x:Name="PassBox" Width="150"   />
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

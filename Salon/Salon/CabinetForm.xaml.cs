@@ -36,10 +36,9 @@ namespace Salon
             if (OldPassBox.Password == "" || NewPassBox.Password == "" || ConfirmPassBox.Password == "")
                 MessageBox.Show("Заполните все поля!");
             {
-                //должна быть проверка на текущий пароль
-                if (OldPassBox.Password != "")
+                if (DBUser.GetOldPass(userName, OldPassBox.Password)==false)
                 {
-                    MessageBox.Show("Текущий пароль неверен!");
+                    MessageBox.Show("Текущий пароль введен неверно!");
                     OldPassBox.Clear();
                     NewPassBox.Clear();
                     ConfirmPassBox.Clear();

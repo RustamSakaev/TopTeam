@@ -38,10 +38,10 @@
         <DockPanel DockPanel.Dock="Bottom">
             <Label  DockPanel.Dock="Top">Виды услуг</Label>
             <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" Width="38" >
-                <Button x:Name="AddButton" Content="+" Width="28"/>
+                <Button x:Name="AddButton" Content="+" Width="28" Click="AddButton_Click"/>
                 <Button x:Name="DeleteButton" Content="-" Width="28"/>
             </StackPanel>
-            <DataGrid x:Name="dg"></DataGrid>
+            <DataGrid x:Name="TypeService_KindServiceGrid"></DataGrid>
         </DockPanel>
     </DockPanel>
 </Window>

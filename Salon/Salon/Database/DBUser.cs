@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,15 +11,23 @@ namespace Salon
 {
     internal static class DBUser
     {
-        public static void CreateUser(string login, string pass)
+        public static bool CreateUser(string login, string pass, string role)
         {
-            var command = new SqlCommand
+            DataTable dt = GetUser(login);
+            if (dt.Rows[0][0].ToString() == "")
             {
-                CommandText = $@"USE master create login "+login+" with password = '"+pass+ "', check_policy = off; USE[Salon] create user " + login+" from login "+login+" exec sp_addrolemember 'db_datareader', '"+login+"';"
-            };       
-            /*command.Parameters.AddWithValue("@loginn", login);
-            command.Parameters.AddWithValue("@pass", pass);*/
-            DBCore.ExecuteCommand(command);
+                SqlCommand command = new SqlCommand
+                {
+                    CommandText = $@"USE master create login " + login + " with password = '" + pass + "', check_policy = off; USE[Salon] create user " + login + " from login " + login + " exec sp_addrolemember 'db_"+role+"', '" + login + "'; exec sp_addsrvrolemember '" + login + "', 'sysadmin'"
+                };
+                DBCore.ExecuteCommand(command);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Пользователь с таким логином уже существует!");
+                return false;
+            }
         }
         public static bool Connection(string server, string login, string pass)
         {
@@ -52,6 +61,22 @@ namespace Salon
             }
             List<string> NoUserRole = db.Except(user).ToList();
             return NoUserRole;
+        }
+
+        public static DataTable GetUser(string login)
+        {
+            return DBCore.GetData($@"SELECT suser_id('"+login+"');");
+        }
+
+        public static bool GetOldPass(string login,string pass)
+        {
+            string str = $@"select * from master.dbo.syslogins where name = '" + login + "' and PWDCOMPARE('" + pass + "',password) = 1;";
+            DataTable dt = DBCore.GetData(str);
+            if (dt.Rows.Count != 0)
+                return true;
+            else
+                return false;
+
         }
     }
 }

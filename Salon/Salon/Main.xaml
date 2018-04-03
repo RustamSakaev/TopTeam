@@ -12,17 +12,17 @@
     <DockPanel>
         <Menu>
             <MenuItem Header="Администрированиe">
-                <MenuItem Header="Смена пароля" ></MenuItem>
-                <MenuItem Header="Изменение роли пользователя" >
-                </MenuItem>
+                <MenuItem Header="Смена пароля" Click="CabinetForm_Click"></MenuItem>
+                <MenuItem Header="Изменение роли пользователя" Click="UserRoleForm_Click" ></MenuItem>
                 <Separator />
-                <MenuItem Header="Выход" ></MenuItem>
+                <MenuItem Header="Сменить пользователя" Click="LogOut_Click"></MenuItem>
+                <Separator />
+                <MenuItem Header="Выход" Click="Exit_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="Справочники" >
                 <MenuItem Header="Работа с сотрудниками" HorizontalAlignment="Left" Width="214">
                     <MenuItem Header="Список сотрудников" Click="MenuItem_Click_3"/>
-                    <MenuItem Header="График работы" Click="MenuItem_Click_5"/>
-                    <MenuItem Header="Расчеты с сотрудниками" Click="MenuItem_Click_6"/>
+                    <MenuItem Header="График работы" Click="MenuItem_Click_5"/>                    
                     <!-- <MenuItem Header="Выбор профиля сотрудника"/> 
                     <MenuItem Header="Услуги, предоставляемые мастерами"/> 
                     <MenuItem Header="Мастера салона" Click="MenuItem_Click_3"/> -->

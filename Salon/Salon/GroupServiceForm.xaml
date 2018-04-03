@@ -14,6 +14,26 @@
         <StackPanel x:Name="Header" Style="{StaticResource header}">
             <Label Content="Таблица 'Группы услуги'" Style="{StaticResource caption}"/>
         </StackPanel>
+        <StackPanel x:Name="HeaderSearch"  Style="{StaticResource header}">
+            <Label Content="Фильтр:" Style="{StaticResource caption}"/>
+        </StackPanel>
+        <StackPanel x:Name="Search" Style="{StaticResource search}" >
+            <DockPanel x:Name="FullSearchGroup">
+                <StackPanel Style="{StaticResource buttonsPanel}" VerticalAlignment="Center">
+                    <Button x:Name="ClearButton" Width="auto" Click="ClearButton_Click">Очистить</Button>
+                </StackPanel>
+                <WrapPanel DockPanel.Dock="Top">
+                    <StackPanel Margin="5 0 5 0">
+                        <Label >Наименование:</Label>
+                        <TextBox x:Name="NameBox" Width="200" Style="{StaticResource searchTextBox}" TextChanged="NameBox_TextChanged"></TextBox>
+                    </StackPanel>
+                    <StackPanel Margin="5 0 5 0"/>
+
+
+
+                </WrapPanel>
+            </DockPanel>
+        </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
             <Button x:Name="EditButton" Content="Редактировать" Click="EditButton_Click"/>

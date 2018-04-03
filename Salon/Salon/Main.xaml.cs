@@ -16,7 +16,7 @@ namespace Salon
             InitializeComponent();
 
             // DBCore.Init(@"LENOVO-PC");
-            DBCore.Init(@"ADMIN\SQLEXPRESS");
+            DBCore.Init(@"LENOVO-PC");
         }
 
         private void Prototype_Click(object sender, RoutedEventArgs e)
@@ -207,13 +207,28 @@ namespace Salon
             form.ShowDialog();
         }
 
-      
-    
-     
-        private void MenuItem_Click_6(object sender, RoutedEventArgs e)
+        private void CabinetForm_Click(object sender, RoutedEventArgs e)
         {
-            var form = new BillForm();
-            form.ShowDialog();
+            Kabinet kabinet = new Kabinet();
+            kabinet.ShowDialog();                
+        }
+
+        private void UserRoleForm_Click(object sender, RoutedEventArgs e)
+        {
+            Users userroles = new Users();
+            userroles.ShowDialog();
+        }
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {            
+            Authorization auth = (Authorization)Application.Current.Windows[0];
+            this.Hide();
+            auth.Visibility = Visibility.Visible;
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }

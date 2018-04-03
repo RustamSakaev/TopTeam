@@ -11,14 +11,14 @@ namespace Salon
 {
     internal static class DBUser
     {
-        public static bool CreateUser(string login, string pass)
+        public static bool CreateUser(string login, string pass, string role)
         {
             DataTable dt = GetUser(login);
             if (dt.Rows[0][0].ToString() == "")
             {
                 SqlCommand command = new SqlCommand
                 {
-                    CommandText = $@"USE master create login " + login + " with password = '" + pass + "', check_policy = off; USE[Salon] create user " + login + " from login " + login + " exec sp_addrolemember 'db_datareader', '" + login + "'; exec sp_addrolemember 'db_datawriter','" + login + "';"
+                    CommandText = $@"USE master create login " + login + " with password = '" + pass + "', check_policy = off; USE[Salon] create user " + login + " from login " + login + " exec sp_addrolemember 'db_"+role+"', '" + login + "'; exec sp_addsrvrolemember '" + login + "', 'sysadmin'"
                 };
                 DBCore.ExecuteCommand(command);
                 return true;
@@ -70,7 +70,6 @@ namespace Salon
 
         public static bool GetOldPass(string login,string pass)
         {
-            DBCore.Init(@"DESKTOP-H5176PR\MSSQLSERVER01");
             string str = $@"select * from master.dbo.syslogins where name = '" + login + "' and PWDCOMPARE('" + pass + "',password) = 1;";
             DataTable dt = DBCore.GetData(str);
             if (dt.Rows.Count != 0)

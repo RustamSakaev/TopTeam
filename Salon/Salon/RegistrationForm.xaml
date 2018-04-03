@@ -18,7 +18,7 @@
             <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
         </StackPanel>
         <WrapPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="500">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                 <StackPanel>
                     <Label Content="Логин"></Label>
                     <TextBox x:Name="LoginBox" Width="200"></TextBox>
@@ -26,6 +26,17 @@
                 <StackPanel>
                     <Label Content="Пароль"></Label>
                     <PasswordBox Height="28" Margin="0 5 0 0" x:Name="PassBox" Width="200"></PasswordBox>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Роль"></Label>
+                    <ComboBox x:Name="RoleCmbBox" Width="150">
+                        <ComboBoxItem IsSelected="True">
+                            Мастер
+                        </ComboBoxItem>
+                        <ComboBoxItem IsSelected="False">
+                            Администратор
+                        </ComboBoxItem>
+                    </ComboBox>
                 </StackPanel>
             </StackPanel>
             <StackPanel>

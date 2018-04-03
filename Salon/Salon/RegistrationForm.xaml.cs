@@ -33,7 +33,7 @@ namespace Salon
             Regex FSL = new Regex(@"^[А-Я][a-я]+$");
             if (!SurnameBox.Validate(true) || !NameBox.Validate(true) || !PatronymicBox.Validate(true) ||
                 !DBirthDatePicker.Validate(true) || !ExpBox.Validate(true) || !GenderCmbBox.Validate(true) ||
-                !LoginBox.Validate(true) || PassBox.Password == "" || !LoginBox.Validate(true) || !exp.IsMatch(ExpBox.Text)
+                !LoginBox.Validate(true) || PassBox.Password == "" || !RoleCmbBox.Validate(true) || !exp.IsMatch(ExpBox.Text)
                 || !FSL.IsMatch(NameBox.Text) || !FSL.IsMatch(SurnameBox.Text) || !FSL.IsMatch(PatronymicBox.Text))
                 MessageBox.Show("Заполните правильно все поля!");
             //return;

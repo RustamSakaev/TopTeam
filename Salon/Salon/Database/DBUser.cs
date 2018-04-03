@@ -43,24 +43,30 @@ namespace Salon
 
             DBCore.ExecuteCommand(command);
         }
-        public static List<string> GetRoles(string userName)
+        public static string GetRoles(string userName)
         {
+            string role="";
             List<string> user = new List<string>();
-            List<string> db = new List<string>();
+            //List<string> db = new List<string>();
             string str = "use Salon EXEC sp_helpuser '" + userName + "'";
             DataTable dt = DBCore.GetData(str);
             foreach (DataRow dr in dt.Rows)
             {
                 user.Add(dr["RoleName"].ToString());
             }
-            string str1 = "use Salon EXEC sp_helprole";
-            DataTable dt1 = DBCore.GetData(str1);
-            foreach (DataRow dr in dt1.Rows)
-            {
-                db.Add(dr["RoleName"].ToString());
-            }
-            List<string> NoUserRole = db.Except(user).ToList();
-            return NoUserRole;
+            if (user.Contains("db_master"))
+                role = "Master";
+            if (user.Contains("db_admin"))
+                role = "Admin";
+            return role;
+            //string str1 = "use Salon EXEC sp_helprole";
+            //DataTable dt1 = DBCore.GetData(str1);
+            //foreach (DataRow dr in dt1.Rows)
+            //{
+            //    db.Add(dr["RoleName"].ToString());
+            //}
+            //List<string> NoUserRole = db.Except(user).ToList();
+            //return NoUserRole;
         }
 
         public static DataTable GetUser(string login)
@@ -77,6 +83,21 @@ namespace Salon
             else
                 return false;
 
+        }
+
+        public static DataTable GetUsers()
+        {
+            return DBCore.GetData($@"
+                SELECT 
+                    ID_Worker as id,
+                    CONCAT_WS(' ', Surname, Name, Patronymic) as ФИО,
+                    Surname as Фамилия, 
+                    Name as Имя, 
+                    Patronymic as Отчество,
+                    (CASE WHEN Gender <> 0 THEN 'Мужской' ELSE 'Женский' END) as Пол,
+                    Login as Логин
+                FROM Worker;"
+            );
         }
     }
 }

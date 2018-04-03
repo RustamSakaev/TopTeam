@@ -15,30 +15,40 @@ namespace Salon
         {
             InitializeComponent();
 
-            // DBCore.Init(@"LENOVO-PC"); 
-            DBCore.Init(@"ADMIN\SQLEXPRESS");//просто раскомментируй свою строку а не заменяй чужую
+            //DBCore.Init(@"LENOVO-PC"); 
+            //DBCore.Init(@"ADMIN\SQLEXPRESS");//просто раскомментируй свою строку а не заменяй чужую
 
 
 
             //проверка роли залогиненного пользователя
-            string role = "master";
-            if (role=="master")
+            if (userRole == "Master")
             {
-                ChangeUserItem.Visibility = Visibility.Collapsed; //пусть пока все это будет
+               // ChangeUserItem.Visibility = Visibility.Collapsed; //пусть пока все это будет
                 //WorkersItem.IsEnabled = false;
                 //VisitsItem.IsEnabled = false;
                 //ClientsItem.IsEnabled = false;
                 //ServicesItem.IsEnabled = false;
                 //OthersItem.IsEnabled = false;
-                Items.Visibility = Visibility.Collapsed; //блочит доступ ко всем справочникам
+               // Items.Visibility = Visibility.Collapsed; //блочит доступ ко всем справочникам
             }
             else
             {
-                Items.Visibility = Visibility.Visible;
+              //  Items.Visibility = Visibility.Visible;
             }
             
         }
-
+        private string userRole;
+        public string UserRole
+        {
+            get { return userRole; }
+            set { userRole = value; }
+        }
+        private string userName;
+        public string UserName
+        {
+            get { return userName; }
+            set { userName = value; }
+        }
         private void Prototype_Click(object sender, RoutedEventArgs e)
         {
             MasterPage master = new MasterPage();

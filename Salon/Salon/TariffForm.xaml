@@ -25,28 +25,25 @@
                 <WrapPanel DockPanel.Dock="Top">
                     <StackPanel Margin="5 0 5 0">
                         <Label >Услуга:</Label>
-                        <ComboBox x:Name="ServiceCmbBox"  Width="150">
+                        <ComboBox x:Name="ServiceCmbBox"  Width="150" SelectionChanged="ServiceCmbBox_SelectionChanged">
                         </ComboBox>
                     </StackPanel>
                     <StackPanel Margin="5 0 5 0">
                         <Label>Цена:</Label>
-                        <TextBox x:Name="PriceBox" Width="200"></TextBox>
+                        <TextBox x:Name="PriceBox" Width="200" TextChanged="PriceBox_TextChanged"></TextBox>
                     </StackPanel>
                     <StackPanel Margin="5 0 0 0">
                         <Label>Дата от:</Label>
-                        <DatePicker x:Name="StartDatePicker" DataContextChanged="StartDatePicker_DataContextChanged"></DatePicker>
+                        <DatePicker x:Name="StartDatePicker" SelectedDateChanged="StartDatePicker_SelectedDateChanged"></DatePicker>
                     </StackPanel>
-                    <StackPanel Margin="5 0 0 0">
-                        <Label>Дата по:</Label>
-                        <DatePicker x:Name="EndDatePicker" DataContextChanged="EndDatePicker_DataContextChanged"></DatePicker>
-                    </StackPanel>
+                    <StackPanel Margin="5 0 0 0"/>
                 </WrapPanel>
             </DockPanel>
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
             <Button x:Name="EditButton" Content="Редактировать" Click="EditButton_Click"/>
-            <Button x:Name="DeleteButton"  Content="Удалить" Style="{StaticResource buttonDelete}"/>
+            <Button x:Name="DeleteButton"  Content="Удалить" Style="{StaticResource buttonDelete}" Click="DeleteButton_Click"/>
         </StackPanel>
         <DataGrid x:Name="TariffGrid"></DataGrid>
     </DockPanel>

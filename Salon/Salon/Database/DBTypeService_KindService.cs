@@ -23,8 +23,8 @@ namespace Salon.Database
         {
             return DBCore.GetData($@"
                 SELECT 
-                    TypeService.Name as [Тип услуги],
-                    TypeService_KindService.TypeService_ID as type_id
+                    TypeService_KindService.TypeService_ID as type_id,
+                    TypeService.Name as [Тип услуги]
                 FROM TypeService_KindService inner join TypeService on TypeService_KindService.TypeService_ID = TypeService.ID_TypeService
                 inner join KindService on TypeService_KindService.KindService_ID = KindService.ID_KindService
                 WHERE TypeService_KindService.KindService_ID = {kind_id};"

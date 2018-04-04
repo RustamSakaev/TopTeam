@@ -108,5 +108,23 @@ namespace Salon
             Back();
             this.Close();
         }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var kind_col = ((DataView)KindServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+            if (kind_col == -1) return;
+            var kindid = ((DataRowView)KindServiceGrid.SelectedItem)?.Row[kind_col].ToString();
+            if (kindid == null) return;
+            try
+            {
+                DBKindService.DeleteKindService(kindid);
+                MessageBox.Show("Объект успешно удален!");
+                CurrentData = DBKindService.GetKindServices();
+                KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+            }catch(System.Data.SqlClient.SqlException)
+            {
+                MessageBox.Show("Невозможно удалить данный объект!");
+            }
+        }
     }
 }

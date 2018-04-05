@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Главная" Height="445.81" Width="593.296" ResizeMode="CanMinimize" Closing="Window_Closing" Background="#484c65">
+        Title="Главная" Height="445.81" Width="593.296" ResizeMode="CanMinimize" Closing="Window_Closing" Background="#484c65" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -22,7 +22,7 @@
             <MenuItem Header="Справочники" x:Name="Items">
                 <MenuItem Header="Работа с сотрудниками" x:Name="WorkersItem" HorizontalAlignment="Left" Width="214">
                     <MenuItem Header="Список сотрудников" Click="MenuItem_Click_3"/>
-                    <MenuItem Header="График работы" Click="MenuItem_Click_5"/>                    
+                    <MenuItem Header="График работы" Click="MenuItem_Click_5"/>
                     <!-- <MenuItem Header="Выбор профиля сотрудника"/> 
                     <MenuItem Header="Услуги, предоставляемые мастерами"/> 
                     <MenuItem Header="Мастера салона" Click="MenuItem_Click_3"/> -->
@@ -42,8 +42,8 @@
                     <MenuItem x:Name="spisokUslug" Header="Список услуг" Click="SpisokUslug_Click"/>
                     <MenuItem Header="Тарифы" Click="Tariff_Click"/>
                 </MenuItem>
-                <MenuItem Header="Прочие">                  
-                    <MenuItem Header="Тип мастера"/>
+                <MenuItem Header="Прочие">
+                    <MenuItem Header="Тип мастера" Click="MenuItem_Click_1"/>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Отчеты" >
@@ -54,5 +54,15 @@
             </MenuItem>
             <MenuItem Header="Прототип" Click="Prototype_Click"></MenuItem>
         </Menu>
+        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,0" Height="383" >
+            <Grid Height="382">
+                <Calendar HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <WindowsFormsHost x:Name="wfh" HorizontalAlignment="Left" Height="369" Margin="207,10,0,0" VerticalAlignment="Top" Width="370" Background="#FF404164"/>
+                <Button x:Name="masteraButton" Content="Мастера" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" Width="179" Height="26" FontSize="11" Click="masteraButton_Click"/>
+                <Button x:Name="clientiButton" Content="Клиенты" HorizontalAlignment="Left" Margin="10,254,0,0" VerticalAlignment="Top" Width="179" Height="26" FontSize="11" Click="clientiButton_Click"/>
+                <Label Content="Справочники" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="tipUslugiButton" Content="Услуги" HorizontalAlignment="Left" Margin="10,286,0,0" VerticalAlignment="Top" Width="179" Height="26" FontSize="11" Click="tipUslugiButton_Click"/>
+            </Grid>
+        </StackPanel>
     </DockPanel>
 </Window>

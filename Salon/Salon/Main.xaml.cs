@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Data;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Windows;
+using System.Windows.Forms;
 
 namespace Salon
 {
@@ -256,6 +257,50 @@ namespace Salon
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
+        }
+
+        private void masteraButton_Click(object sender, RoutedEventArgs e)
+        {
+            WorkerForm formWorker = new WorkerForm();
+            formWorker.ShowDialog();
+        }
+
+        private void tipMasteraButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void clientiButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClientForm client = new ClientForm();
+            client.ShowDialog();
+        }
+
+        private void tipUslugiButton_Click(object sender, RoutedEventArgs e)
+        {
+            ServiceForm serv = new ServiceForm();
+            serv.ShowDialog();
+        }
+
+        private void vidUslugiButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void uslugiButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataGridView dgv = new DataGridView();
+
         }
     }
 }

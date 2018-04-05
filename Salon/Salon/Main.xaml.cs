@@ -19,21 +19,19 @@ namespace Salon
            //DBCore.Init(@"ADMIN\SQLEXPRESS");//просто раскомментируй свою строку а не заменяй чужую
 
 
-
+            
             //проверка роли залогиненного пользователя
             if (userRole == "Master")
             {
-               // ChangeUserItem.Visibility = Visibility.Collapsed; //пусть пока все это будет
-                //WorkersItem.IsEnabled = false;
-                //VisitsItem.IsEnabled = false;
-                //ClientsItem.IsEnabled = false;
-                //ServicesItem.IsEnabled = false;
-                //OthersItem.IsEnabled = false;
-               // Items.Visibility = Visibility.Collapsed; //блочит доступ ко всем справочникам
+                ChangeUserItem.Visibility = Visibility.Collapsed;
+                Items.Visibility = Visibility.Collapsed;
+                WorkersExportItem.Visibility = Visibility.Collapsed;
             }
             else
             {
-              //  Items.Visibility = Visibility.Visible;
+                Items.Visibility = Visibility.Visible;
+                ChangeUserItem.Visibility = Visibility.Visible;
+                WorkersExportItem.Visibility = Visibility.Visible;
             }
 
         }
@@ -105,7 +103,7 @@ namespace Salon
            
         private void EmployeeData_Click(object sender, RoutedEventArgs e)
         {
-            string connectionStr = @"Data Source=MARGOSHA;Initial Catalog=Salon;Integrated Security=True";
+            string connectionStr = @"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=Salon;Integrated Security=True";
             SqlConnection con = null;
             SqlCommand com = null;
             try
@@ -157,7 +155,7 @@ namespace Salon
 
         private void TypeService_Click(object sender, RoutedEventArgs e)
         {
-            string connectionStr = @"Data Source=MARGOSHA;Initial Catalog=Salon;Integrated Security=True";
+            string connectionStr = @"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=Salon;Integrated Security=True";
             SqlConnection con = null;
             SqlCommand com = null;
             try

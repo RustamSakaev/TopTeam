@@ -27,28 +27,27 @@
                     <MenuItem Header="Услуги, предоставляемые мастерами"/> 
                     <MenuItem Header="Мастера салона" Click="MenuItem_Click_3"/> -->
                 </MenuItem>
-                <MenuItem Header="Посещение и оплата" x:Name="VisitsItem">
+                <MenuItem Header="Посещение и оплата">
                     <MenuItem Header="Посещение" Click="Visits_Click_5"/>
                     <MenuItem Header="Оказание услуг"/>
                     <MenuItem Header="Счет" Click="MenuItem_Click"/>
                     <MenuItem Header="Оказание услуг" Click="ProvidingService_Click"/>
                     <MenuItem Header="Подарочные карты" Click="MenuItem_Click_4"/>
                 </MenuItem>
-                <MenuItem Header="Работа с клиентами" x:Name="ClientsItem">
+                <MenuItem Header="Работа с клиентами">
                     <MenuItem Header="Список клиентов" Click="Client_Click"/>
                     <MenuItem Header="Банковские карты" Click="MenuItem_Click_2"/>
                 </MenuItem>
-                <MenuItem Header="Работа с услугами" x:Name="ServicesItem">
+                <MenuItem Header="Работа с услугами">
                     <MenuItem x:Name="spisokUslug" Header="Список услуг" Click="SpisokUslug_Click"/>
                     <MenuItem Header="Тарифы" Click="Tariff_Click"/>
                 </MenuItem>
-                <MenuItem Header="Прочие" x:Name="OthersItem">
-                    <!--<MenuItem Header="Способ оплаты" Click="MenuItem_Click_1"/> -->
+                <MenuItem Header="Прочие">                  
                     <MenuItem Header="Тип мастера"/>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Отчеты" >
-                <MenuItem Header="Данные по сотрудникам" Click="EmployeeData_Click"></MenuItem>
+                <MenuItem Header="Данные по сотрудникам" x:Name="WorkersExportItem" Click="EmployeeData_Click"></MenuItem>
                 <MenuItem Header="Доходы по сотруднику" Click="EmployeeProfit_Click"></MenuItem>
                 <MenuItem Header="Количество обслуженных клиентов по сотруднику" Click="EmployeeClient_Click"></MenuItem>
                 <MenuItem Header="Отчет по видам услуг" Click="TypeService_Click"></MenuItem>

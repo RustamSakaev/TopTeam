@@ -16,7 +16,7 @@ namespace Salon
             InitializeComponent();
 
            // DBCore.Init(@"LENOVO-PC"); 
-           DBCore.Init(@"ADMIN\SQLEXPRESS");//просто раскомментируй свою строку а не заменяй чужую
+           //DBCore.Init(@"ADMIN\SQLEXPRESS");//просто раскомментируй свою строку а не заменяй чужую
 
 
 
@@ -48,6 +48,12 @@ namespace Salon
         {
             get { return userName; }
             set { userName = value; }
+        }
+        private int userId;
+        public int UserId
+        {
+            get { return userId; }
+            set { userId = value; }
         }
         private void Prototype_Click(object sender, RoutedEventArgs e)
         {

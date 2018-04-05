@@ -5,18 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Роли" Height="208.667" Width="276">
+        Title="Роли" Height="251.667" Width="358">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
     <DockPanel Name="Osnova" Margin="0,0,0,-1">
         <StackPanel DockPanel.Dock="Top"  Height="25"></StackPanel>
-        <StackPanel DockPanel.Dock="Top" Height="150">
+        <StackPanel DockPanel.Dock="Top" Height="195">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <StackPanel>
                     <Label x:Name="UserLabel" Content="Пользователь"/>
                     <ComboBox x:Name="UserCmbBox" Width="243" ItemsSource="{Binding ComboItems}">
                     </ComboBox>
+                </StackPanel>
+                <StackPanel Width="250">
+                    <Button x:Name="PostFormButton" Content="..." Style="{StaticResource threeDots}" Click="PostFormButton_Click"></Button>
                 </StackPanel>
                 <StackPanel>
                     <Label x:Name="RoleLabel" Content="Роль"/>

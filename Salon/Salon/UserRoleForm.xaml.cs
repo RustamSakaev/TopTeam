@@ -28,7 +28,7 @@ namespace Salon
             InitializeComponent();
             UserCmbBox.ItemsSource = DBUser.GetUsers().DefaultView;
             UserCmbBox.DisplayMemberPath = "ФИО";
-            UserCmbBox.SelectedValuePath = "Логин";
+            UserCmbBox.SelectedValuePath = "Логин";         
         }
 
         public void OnLoad(object sender, RoutedEventArgs e)
@@ -55,6 +55,14 @@ namespace Salon
             string role = RoleCmbBox.Text == "Мастер" ? "db_master" : "db_admin";
             DelRole(login);
             AddRole(login, role);
+        }
+
+        private void PostFormButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            UserRoleActionForm main = new UserRoleActionForm();
+            main.Show();
+            main.Closed += (x, y) => { this.Show(); };
         }
     }
 }

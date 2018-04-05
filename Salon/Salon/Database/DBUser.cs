@@ -91,13 +91,17 @@ namespace Salon
                 SELECT 
                     ID_Worker as id,
                     CONCAT_WS(' ', Surname, Name, Patronymic) as ФИО,
-                    Surname as Фамилия, 
-                    Name as Имя, 
-                    Patronymic as Отчество,
-                    (CASE WHEN Gender <> 0 THEN 'Мужской' ELSE 'Женский' END) as Пол,
                     Login as Логин
                 FROM Worker;"
             );
+        }
+
+        public static int GetUserId(string login)
+        {
+            string str = $@"SELECT ID_Worker FROM Worker where [Login]='"+login+"'";
+            DataTable dt = DBCore.GetData(str);
+            int id = Convert.ToInt32(dt.Rows[0][0]);
+            return id;
         }
     }
 }

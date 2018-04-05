@@ -146,14 +146,21 @@ namespace Salon
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var idx = ((DataView)VisitGrid.DataContext).Table.Columns.IndexOf("id");
-
-            foreach (DataRowView selectedItem in VisitGrid.SelectedItems)
+            try
             {
-                DBVisit.DeleteVisit(selectedItem.Row[idx].ToString());
-            }
+                var idx = ((DataView) VisitGrid.DataContext).Table.Columns.IndexOf("id");
 
-            CurrentFormData = DBVisit.GetVisits();
+                foreach (DataRowView selectedItem in VisitGrid.SelectedItems)
+                {
+                    DBVisit.DeleteVisit(selectedItem.Row[idx].ToString());
+                }
+
+                CurrentFormData = DBVisit.GetVisits();
+            }
+            catch
+            {
+                MessageBox.Show("Невозможно удалить!");
+            }
         }
 
         private void VisitGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)

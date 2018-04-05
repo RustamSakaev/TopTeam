@@ -17,8 +17,12 @@
             </StackPanel>
         </StackPanel>
         <StackPanel>
-            <DataGrid Name="UserGrid" ItemsSource="{Binding}" IsReadOnly="True" AutoGeneratingColumn="UserGrid_AutoGeneratingColumn" ColumnWidth="*" MouseDoubleClick="Row_DoubleClick">
-                
+            <DataGrid Name="UserGrid" ItemsSource="{Binding}" IsReadOnly="True" AutoGeneratingColumn="UserGrid_AutoGeneratingColumn" ColumnWidth="*">
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridRow">
+                        <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                    </Style>
+                </DataGrid.Resources>
             </DataGrid>
         </StackPanel>
     </DockPanel>

@@ -60,11 +60,17 @@ namespace Salon
             e.Cancel = true;
         }
 
-        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        public void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
             //DataGrid sender = new DataGrid;
-           // DataGridRow row = sender as DataGridRow;
-            MessageBox.Show("fuck you");
+            DataGridRow row = sender as DataGridRow;
+            DataRowView dataRowView = (DataRowView)row.Item;
+            Users main = this.Owner as Users;
+            if (main != null)
+            {
+                main.UserCmbBox.SelectedValue = dataRowView[2];
+                this.Close();
+            }
         }
     }
 }

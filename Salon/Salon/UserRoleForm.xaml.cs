@@ -56,12 +56,12 @@ namespace Salon
             DelRole(login);
             AddRole(login, role);
         }
-
         private void PostFormButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             UserRoleActionForm main = new UserRoleActionForm();
-            main.Show();
+            main.Owner = this;
+            main.ShowDialog();
             main.Closed += (x, y) => { this.Show(); };
         }
     }

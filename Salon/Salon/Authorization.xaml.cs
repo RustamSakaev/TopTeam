@@ -61,10 +61,10 @@ namespace Salon
         {
             this.Hide();
             PassBox.Clear();
-            Users main = new Users();
-            //main.UserId = DBUser.GetUserId(LoginBox.Text.Trim());
-            //main.UserRole = DBUser.GetRoles(LoginBox.Text.Trim());
-            //main.UserName = LoginBox.Text.Trim();
+            Main main = new Main();
+            main.UserId = DBUser.GetUserId(LoginBox.Text.Trim());
+            main.UserRole = DBUser.GetRoles(LoginBox.Text.Trim());
+            main.UserName = LoginBox.Text.Trim();
             main.Show();
             main.Closed += (x, y) => { this.Show();};
         }

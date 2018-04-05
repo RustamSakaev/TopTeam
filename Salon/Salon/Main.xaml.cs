@@ -19,7 +19,7 @@ namespace Salon
 
            // DBCore.Init(@"LENOVO-PC"); 
            //DBCore.Init(@"ADMIN\SQLEXPRESS");//просто раскомментируй свою строку а не заменяй чужую
-            DBCore.Init("DESKTOP-D3KKSHS\\SQLEXPRESS");
+            //DBCore.Init("DESKTOP-D3KKSHS\\SQLEXPRESS");
 
 
             
@@ -240,6 +240,7 @@ namespace Salon
         private void CabinetForm_Click(object sender, RoutedEventArgs e)
         {
             Kabinet kabinet = new Kabinet();
+            kabinet.UserName = userName;
             kabinet.ShowDialog();                
         }
 

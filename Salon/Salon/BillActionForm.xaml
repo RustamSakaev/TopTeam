@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Подробности счета" Height="267" Width="653.998" >
+        Title="Подробности счета" Height="400" Width="655" MinWidth="655" MinHeight="400" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -29,8 +29,8 @@
                 <Label Content="Сумма"></Label>
                 <TextBox x:Name="BillAmountBox" Width="200"></TextBox>
             </StackPanel>
-            <StackPanel>
-                <CheckBox x:Name="PaidChb" Content="Оплачено"/>
+            <StackPanel Height="23" Width="645">
+                <CheckBox x:Name="PaidChb" Content="Оплачено" Margin="5" Height="13"/>
             </StackPanel>
             <StackPanel/>
             <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >

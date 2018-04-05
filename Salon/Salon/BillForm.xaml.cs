@@ -106,6 +106,9 @@ namespace Salon
             DisplayDataWithFilter();
         }
 
-
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchBox.Clear();
+        }
     }
 }

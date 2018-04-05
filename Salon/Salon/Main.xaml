@@ -56,12 +56,13 @@
         </Menu>
         <StackPanel DockPanel.Dock="Top" Margin="0,0,0,0" Height="383" >
             <Grid Height="382">
-                <Calendar HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <Calendar HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" KeyDown="Calendar_KeyDown" MouseDown="Calendar_MouseDown"/>
                 <WindowsFormsHost x:Name="wfh" HorizontalAlignment="Left" Height="369" Margin="207,10,0,0" VerticalAlignment="Top" Width="370" Background="#FF404164"/>
-                <Button x:Name="masteraButton" Content="Мастера" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" Width="179" Height="26" FontSize="11" Click="masteraButton_Click"/>
-                <Button x:Name="clientiButton" Content="Клиенты" HorizontalAlignment="Left" Margin="10,254,0,0" VerticalAlignment="Top" Width="179" Height="26" FontSize="11" Click="clientiButton_Click"/>
-                <Label Content="Справочники" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top"/>
-                <Button x:Name="tipUslugiButton" Content="Услуги" HorizontalAlignment="Left" Margin="10,286,0,0" VerticalAlignment="Top" Width="179" Height="26" FontSize="11" Click="tipUslugiButton_Click"/>
+                <Button x:Name="masteraButton" Content="Мастера" HorizontalAlignment="Left" Margin="10,253,0,0" VerticalAlignment="Top" Width="179" Height="26" FontSize="11" Click="masteraButton_Click"/>
+                <Button x:Name="clientiButton" Content="Клиенты" HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top" Width="179" Height="26" FontSize="11" Click="clientiButton_Click"/>
+                <Label Content="Справочники" HorizontalAlignment="Left" Margin="10,223,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="tipUslugiButton" Content="Услуги" HorizontalAlignment="Left" Margin="10,317,0,0" VerticalAlignment="Top" Width="179" Height="26" FontSize="11" Click="tipUslugiButton_Click"/>
+                <Button Content="Ok" HorizontalAlignment="Left" Margin="114,192,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
             </Grid>
         </StackPanel>
     </DockPanel>

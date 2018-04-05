@@ -72,14 +72,21 @@ namespace Salon
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var idx = ((DataView)BankCardGrid.DataContext).Table.Columns.IndexOf("id");
-
-            foreach (DataRowView selectedItem in BankCardGrid.SelectedItems)
+            try
             {
-                DBBankCard.DeleteBankCard(selectedItem.Row[idx].ToString());
-            }
+                var idx = ((DataView)BankCardGrid.DataContext).Table.Columns.IndexOf("id");
 
-            CurrentFormData = DBBankCard.GetBankCards();
+                foreach (DataRowView selectedItem in BankCardGrid.SelectedItems)
+                {
+                    DBBankCard.DeleteBankCard(selectedItem.Row[idx].ToString());
+                }
+
+                CurrentFormData = DBBankCard.GetBankCards();
+            }
+            catch
+            {
+                MessageBox.Show("Невозможно удалить!");
+            }
         }
 
         private void BankCardGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)

@@ -77,14 +77,21 @@ namespace Salon
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var idx = ((DataView)BillGrid.DataContext).Table.Columns.IndexOf("id");
-
-            foreach (DataRowView selectedItem in BillGrid.SelectedItems)
+            try
             {
-                DBBill.DeleteBill(selectedItem.Row[idx].ToString());
-            }
+                var idx = ((DataView)BillGrid.DataContext).Table.Columns.IndexOf("id");
 
-            CurrentFormData = DBBill.GetBills();
+                foreach (DataRowView selectedItem in BillGrid.SelectedItems)
+                {
+                    DBBill.DeleteBill(selectedItem.Row[idx].ToString());
+                }
+
+                CurrentFormData = DBBill.GetBills();
+            }
+            catch
+            {
+                MessageBox.Show("Невозможно удалить!");
+            }
         }
 
         private void BillGrid_AutoGeneratingColumn(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)

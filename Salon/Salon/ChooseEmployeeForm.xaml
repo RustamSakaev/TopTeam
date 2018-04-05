@@ -20,7 +20,7 @@
         <WrapPanel Height="200" VerticalAlignment="Top">
             <StackPanel>
                 <Label Content="ФИО"></Label>
-                <ComboBox x:Name="FioCmbBox" Width="200"></ComboBox>
+                <ComboBox x:Name="FioCmbBox" Width="200"/>
                 <Label Content="С"></Label>
                 <DatePicker x:Name="FromPicker"></DatePicker>
                 <Label Content="По"></Label>

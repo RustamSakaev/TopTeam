@@ -111,7 +111,7 @@ namespace Salon
                 Excel.Application app = new Excel.Application();
                 app.Visible = false;
                 string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                app.Workbooks.Add(path.Substring(0, path.LastIndexOf('\\')) + "\\По сотрудникам.xlsx"); //создайте у себя на компе в папке,где лежит этот проект
+                app.Workbooks.Add(path.Substring(0, path.LastIndexOf('\\')) + "\\По сотрудникам.xlsx"); 
                 Excel.Workbook wb = app.Workbooks[1];
                 Excel.Worksheet ws = app.Worksheets[1];
                 con = new SqlConnection(connectionStr);
@@ -150,57 +150,22 @@ namespace Salon
         private void EmployeeClient_Click(object sender, RoutedEventArgs e)
         {
             ChooseEmployeeForm employee = new ChooseEmployeeForm(1);
+            employee.UserId = userId;
+            employee.UserRole = userRole;
             employee.ShowDialog();
         }
 
         private void TypeService_Click(object sender, RoutedEventArgs e)
         {
-            string connectionStr = @"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=Salon;Integrated Security=True";
-            SqlConnection con = null;
-            SqlCommand com = null;
-            try
-            {
-                Excel.Application app = new Excel.Application();
-                app.Visible = false;
-                string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                app.Workbooks.Add(path.Substring(0, path.LastIndexOf('\\')) + "\\По видам услуг.xlsx");
-                Excel.Workbook wb = app.Workbooks[1];
-                Excel.Worksheet ws = app.Worksheets[1];
-                con = new SqlConnection(connectionStr);
-                con.Open();
-                //ComboData name = (ComboData)FioCmbBox.SelectedItem;
-                string sql = @"SELECT Name as Наименование, COUNT(Service_ID) as Количество FROM Service, ProvidingServices
-                                WHERE Service.ID_Service = ProvidingServices.Service_ID
-                                GROUP BY Name ORDER BY COUNT(Service_ID)";
-                if (con != null)
-                {
-                    DataTable dt = new DataTable();
-                    com = con.CreateCommand();
-                    com.CommandText = sql;
-                    SqlDataAdapter adapter = new SqlDataAdapter(com);
-                    adapter.Fill(dt);
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-                        ws.Cells[i + 2, 1].Value2 = dt.Rows[i][0];
-                        ws.Cells[i + 2, 2].Value2 = dt.Rows[i][1];
-                    }
-                    app.Visible = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (con != null)
-                    con.Close();
-            }
+            ReportServiceDates rep = new ReportServiceDates();
+            rep.ShowDialog();            
         }
 
         private void EmployeeProfit_Click(object sender, RoutedEventArgs e)
         {
             ChooseEmployeeForm employee = new ChooseEmployeeForm(0);
+            employee.UserId = userId;
+            employee.UserRole = userRole;            
             employee.ShowDialog();
         }
 

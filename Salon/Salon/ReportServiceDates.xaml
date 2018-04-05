@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="ReportServiceDates" Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+        Title="Выбор дат" Height="190.426" Width="300">
+    <Window.Resources>
+        <ResourceDictionary Source="Styles/BasicStyles.xaml" />
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel x:Name="Header" Style="{StaticResource header}">
+            <Label Content="Период формирования отчета:" Style="{StaticResource caption}"/>
+        </StackPanel>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <Label Content="c:"/>
+                    <DatePicker x:Name="StartDatePicker"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="по:"/>
+                    <DatePicker x:Name="EndDatePicker"/>
+                </StackPanel>
+
+            </StackPanel>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource bottom}">
+            <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+            <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+        </StackPanel>
+    </DockPanel>
 </Window>

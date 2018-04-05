@@ -27,6 +27,25 @@ namespace Salon
     {
         int mode;
 
+        private string userRole;
+        public string UserRole
+        {
+            get { return userRole; }
+            set { userRole = value; }
+        }
+        private string userName;
+        public string UserName
+        {
+            get { return userName; }
+            set { userName = value; }
+        }
+        private int userId;
+        public int UserId
+        {
+            get { return userId; }
+            set { userId = value; }
+        }
+
         public ChooseEmployeeForm()
         {
             InitializeComponent();
@@ -36,43 +55,83 @@ namespace Salon
             { this.Title = "Количество обслуженных клиентов по сотруднику"; }
             string connectionStr = Connection();
             SqlConnection con = null;
-            SqlCommand com = null;
-            try
+            SqlCommand com = null;           
+            if (userRole=="Master")
             {
-                con = new SqlConnection(connectionStr);
-                con.Open();
-                string sql = @"SELECT ID_Worker, Surname, Name FROM Worker";
-                if (con != null)
+                try
                 {
-                    DataTable dt = new DataTable();
-                    com = con.CreateCommand();
-                    com.CommandText = sql;
-                    SqlDataAdapter adapter = new SqlDataAdapter(com);
-                    adapter.Fill(dt);
-                    List<ComboData> list = new List<ComboData>();
-                    for (int i = 0; i < dt.Rows.Count; i++)
+                    con = new SqlConnection(connectionStr);
+                    con.Open();
+                    string sql = @"SELECT ID_Worker, Surname, Name FROM Worker where ID_Worker="+userId;
+
+                    if (con != null)
                     {
-                        list.Add(new ComboData { Id = Convert.ToInt32(dt.Rows[i][0]), Value = Convert.ToString(dt.Rows[i][1]) + " " + Convert.ToString(dt.Rows[i][2]) });
+                        DataTable dt = new DataTable();
+                        com = con.CreateCommand();
+                        com.CommandText = sql;
+                        SqlDataAdapter adapter = new SqlDataAdapter(com);
+                        adapter.Fill(dt);
+                        List<ComboData> list = new List<ComboData>();
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            list.Add(new ComboData { Id = Convert.ToInt32(dt.Rows[i][0]), Value = Convert.ToString(dt.Rows[i][1]) + " " + Convert.ToString(dt.Rows[i][2]) });
+                        }
+                        FioCmbBox.DisplayMemberPath = "Value";
+                        FioCmbBox.SelectedValuePath = "Id";
+                        FioCmbBox.ItemsSource = list;
+                        FioCmbBox.IsEnabled = false;
                     }
-                    FioCmbBox.DisplayMemberPath = "Value";
-                    FioCmbBox.SelectedValuePath = "Id";
-                    FioCmbBox.ItemsSource = list;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if (con != null)
+                        con.Close();
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                try
+                {
+                    con = new SqlConnection(connectionStr);
+                    con.Open();
+                    string sql = @"SELECT ID_Worker, Surname, Name FROM Worker";
+                    if (con != null)
+                    {
+                        DataTable dt = new DataTable();
+                        com = con.CreateCommand();
+                        com.CommandText = sql;
+                        SqlDataAdapter adapter = new SqlDataAdapter(com);
+                        adapter.Fill(dt);
+                        List<ComboData> list = new List<ComboData>();
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            list.Add(new ComboData { Id = Convert.ToInt32(dt.Rows[i][0]), Value = Convert.ToString(dt.Rows[i][1]) + " " + Convert.ToString(dt.Rows[i][2]) });
+                        }
+                        FioCmbBox.DisplayMemberPath = "Value";
+                        FioCmbBox.SelectedValuePath = "Id";
+                        FioCmbBox.ItemsSource = list;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if (con != null)
+                        con.Close();
+                }
             }
-            finally
-            {
-                if (con != null)
-                    con.Close();
-            }
+            
         }
 
         public string Connection()
         {
-            string con = @"Data Source=MARGOSHA;Initial Catalog=Salon;Integrated Security=True";
+            string con = @"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=Salon;Integrated Security=True";
             return con;
         }
 
@@ -88,33 +147,69 @@ namespace Salon
             string connectionStr = Connection();
             SqlConnection con = null;
             SqlCommand com = null;
-            try
+            if (userRole == "Master")
             {
-                con = new SqlConnection(connectionStr);
-                con.Open();
-                string sql = @"SELECT ID_Worker, Surname FROM Worker";
-                if (con != null)
+                try
                 {
-                    DataTable dt = new DataTable();
-                    com = con.CreateCommand();
-                    com.CommandText = sql;
-                    SqlDataAdapter adapter = new SqlDataAdapter(com);
-                    adapter.Fill(dt);
-                    FioCmbBox.DisplayMemberPath = "Surname";
-                    FioCmbBox.SelectedValuePath= "ID_Worker";
-                    List<DataRow> list = dt.AsEnumerable().ToList();
-                    FioCmbBox.ItemsSource = list;
+                    con = new SqlConnection(connectionStr);
+                    con.Open();
+                    string sql = @"SELECT ID_Worker, Surname FROM Worker WHERE ID_Worker="+userId;
+                    if (con != null)
+                    {
+                        DataTable dt = new DataTable();
+                        com = con.CreateCommand();
+                        com.CommandText = sql;
+                        SqlDataAdapter adapter = new SqlDataAdapter(com);
+                        adapter.Fill(dt);
+                        FioCmbBox.DisplayMemberPath = "Surname";
+                        FioCmbBox.SelectedValuePath = "ID_Worker";
+                        List<DataRow> list = dt.AsEnumerable().ToList();
+                        FioCmbBox.ItemsSource = list;
+                        FioCmbBox.IsEnabled = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if (con != null)
+                        con.Close();
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                try
+                {
+                    con = new SqlConnection(connectionStr);
+                    con.Open();
+                    string sql = @"SELECT ID_Worker, Surname FROM Worker";
+                    if (con != null)
+                    {
+                        DataTable dt = new DataTable();
+                        com = con.CreateCommand();
+                        com.CommandText = sql;
+                        SqlDataAdapter adapter = new SqlDataAdapter(com);
+                        adapter.Fill(dt);
+                        FioCmbBox.DisplayMemberPath = "Surname";
+                        FioCmbBox.SelectedValuePath = "ID_Worker";
+                        List<DataRow> list = dt.AsEnumerable().ToList();
+                        FioCmbBox.ItemsSource = list;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if (con != null)
+                        con.Close();
+                }
             }
-            finally
-            {
-                if (con != null)
-                    con.Close();
-            }
+
+                
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
@@ -131,7 +226,8 @@ namespace Salon
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-
+           
+            this.Close();
         }
         
         public void EmployeeProfit()
@@ -139,97 +235,194 @@ namespace Salon
             string connectionStr = Connection();
             SqlConnection con = null;
             SqlCommand com = null;
-            try
+            if (userRole=="Master")
             {
-                Excel.Application app = new Excel.Application();
-                app.Visible = false;
-                string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                app.Workbooks.Add(path.Substring(0,path.LastIndexOf('\\'))  + "\\Доходы по сотруднику.xlsx");
-                Excel.Workbook wb = app.Workbooks[1];
-                Excel.Worksheet ws = app.Worksheets[1];
-                con = new SqlConnection(connectionStr);
-                con.Open();
-                ComboData name = (ComboData)FioCmbBox.SelectedItem;
-                string sql = @"SELECT Surname, Name, PaymentAmount, Date FROM Worker, Payment 
-                                WHERE Worker.ID_Worker = Payment.Worker_ID 
-                                AND Surname = '" +name.Value.Split(' ')[0] + @"' 
-                                AND Name = '" + name.Value.Split(' ')[1] + @"'
-                                AND Date BETWEEN '" + FromPicker.SelectedDate.Value.ToString("s") + "' AND '" + ToPicker.SelectedDate.Value.ToString("s") + "'";
-                if (con != null)
+                try
                 {
-                    DataTable dt = new DataTable();
-                    com = con.CreateCommand();
-                    com.CommandText = sql;
-                    SqlDataAdapter adapter = new SqlDataAdapter(com);
-                    adapter.Fill(dt);
-                    for(int i = 0; i < dt.Rows.Count; i++)
+                    Excel.Application app = new Excel.Application();
+                    app.Visible = false;
+                    string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                    app.Workbooks.Add(path.Substring(0, path.LastIndexOf('\\')) + "\\Доходы по сотруднику.xlsx");
+                    Excel.Workbook wb = app.Workbooks[1];
+                    Excel.Worksheet ws = app.Worksheets[1];
+                    con = new SqlConnection(connectionStr);
+                    con.Open();
+                    ComboData name = (ComboData)FioCmbBox.SelectedItem;
+                    string sql = @"SELECT Surname as Фамилия, Name as Имя, SUM(BillAmount) as Сумма FROM Worker, Bill, Visit 
+                                WHERE Visit.ID_Visit=Bill.Visit_ID AND Worker.ID_Worker=Visit.Worker_ID AND Worker.ID_Worker=" + userId +
+                                "AND Bill.Date BETWEEN '" + FromPicker.SelectedDate.Value.ToString("s") + "' AND '" + ToPicker.SelectedDate.Value.ToString("s") + "'" +
+                                "GROUP BY surname,name";
+                    if (con != null)
                     {
-                        ws.Cells[i + 2, 1].Value2 = dt.Rows[i][0];
-                        ws.Cells[i + 2, 2].Value2 = dt.Rows[i][1];
-                        ws.Cells[i + 2, 3].Value2 = dt.Rows[i][2];
-                        ws.Cells[i + 2, 4].Value2 = Convert.ToDateTime(dt.Rows[i][3]);
+                        DataTable dt = new DataTable();
+                        com = con.CreateCommand();
+                        com.CommandText = sql;
+                        SqlDataAdapter adapter = new SqlDataAdapter(com);
+                        adapter.Fill(dt);
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            ws.Cells[i + 2, 1].Value2 = dt.Rows[i][0];
+                            ws.Cells[i + 2, 2].Value2 = dt.Rows[i][1];
+                            ws.Cells[i + 2, 3].Value2 = dt.Rows[i][2];                          
+                        }
+                        ws.Cells[1, 5].Value2 = FromPicker.SelectedDate.Value.ToString() + "-" + ToPicker.SelectedDate.Value.ToString();
+                        app.Visible = true;
                     }
-                    app.Visible = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if (con != null)
+                        con.Close();
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                try
+                {
+                    Excel.Application app = new Excel.Application();
+                    app.Visible = false;
+                    string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                    app.Workbooks.Add(path.Substring(0, path.LastIndexOf('\\')) + "\\Доходы по сотруднику.xlsx");
+                    Excel.Workbook wb = app.Workbooks[1];
+                    Excel.Worksheet ws = app.Worksheets[1];
+                    con = new SqlConnection(connectionStr);
+                    con.Open();
+                    ComboData name = (ComboData)FioCmbBox.SelectedItem;
+                    string sql = @"SELECT Surname as Фамилия, Name as Имя, SUM(BillAmount) as СуммаFROM Worker, Bill, Visit 
+                                WHERE Visit.ID_Visit=Bill.Visit_ID AND Worker.ID_Worker=Visit.Worker_ID
+                                AND Surname = '" + name.Value.Split(' ')[0] + @"' 
+                                AND Name = '" + name.Value.Split(' ')[1] + @"'
+                                AND Bill.Date BETWEEN '" + FromPicker.SelectedDate.Value.ToString("s") + "' AND '" + ToPicker.SelectedDate.Value.ToString("s") + "'" +
+                                "GROUP BY surname,name";
+                    if (con != null)
+                    {
+                        DataTable dt = new DataTable();
+                        com = con.CreateCommand();
+                        com.CommandText = sql;
+                        SqlDataAdapter adapter = new SqlDataAdapter(com);
+                        adapter.Fill(dt);
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            ws.Cells[i + 2, 1].Value2 = dt.Rows[i][0];
+                            ws.Cells[i + 2, 2].Value2 = dt.Rows[i][1];
+                            ws.Cells[i + 2, 3].Value2 = dt.Rows[i][2];                           
+                        }
+                        ws.Cells[1, 5].Value2 = FromPicker.SelectedDate.Value.ToString() + "-" + ToPicker.SelectedDate.Value.ToString();
+                        app.Visible = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if (con != null)
+                        con.Close();
+                }
             }
-            finally
-            {
-                if (con != null)
-                    con.Close();
-            }
+           
         }
         public void EmployeeClient()
         {
             string connectionStr = Connection();
             SqlConnection con = null;
             SqlCommand com = null;
-            try
+            if (userRole=="Master")
             {
-                Excel.Application app = new Excel.Application();
-                app.Visible = false;
-                string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                app.Workbooks.Add(path.Substring(0, path.LastIndexOf('\\')) + "\\Количество обслуженных клиентов по сотруднику.xlsx");
-                Excel.Workbook wb = app.Workbooks[1];
-                Excel.Worksheet ws = app.Worksheets[1];
-                con = new SqlConnection(connectionStr);
-                con.Open();
-                ComboData name = (ComboData)FioCmbBox.SelectedItem;
-                string sql = @"SELECT Surname, Name, COUNT(Client_ID), Date FROM Worker, Visit
+                try
+                {
+                    Excel.Application app = new Excel.Application();
+                    app.Visible = false;
+                    string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                    app.Workbooks.Add(path.Substring(0, path.LastIndexOf('\\')) + "\\Количество обслуженных клиентов по сотруднику.xlsx");
+                    Excel.Workbook wb = app.Workbooks[1];
+                    Excel.Worksheet ws = app.Worksheets[1];
+                    con = new SqlConnection(connectionStr);
+                    con.Open();
+                    ComboData name = (ComboData)FioCmbBox.SelectedItem;
+                    string sql = @"SELECT Surname as Фамилия, Name as Имя, COUNT(Client_ID) as Количество FROM Worker, Visit
+                                WHERE Worker.ID_Worker = Visit.Worker_ID AND Worker.ID_Worker="+userId+                               
+                                "AND Date BETWEEN '" + FromPicker.SelectedDate.Value.ToString("s") + "' AND '" + ToPicker.SelectedDate.Value.ToString("s") + @"'
+                                GROUP BY Surname, Name";
+                    if (con != null)
+                    {
+                        DataTable dt = new DataTable();
+                        com = con.CreateCommand();
+                        com.CommandText = sql;
+                        SqlDataAdapter adapter = new SqlDataAdapter(com);
+                        adapter.Fill(dt);
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            ws.Cells[i + 2, 1].Value2 = dt.Rows[i][0];
+                            ws.Cells[i + 2, 2].Value2 = dt.Rows[i][1];
+                            ws.Cells[i + 2, 4].Value2 = dt.Rows[i][2];                           
+                        }
+                        ws.Cells[1, 5].Value2 = FromPicker.SelectedDate.Value.ToString() + "-" + ToPicker.SelectedDate.Value.ToString();
+                        app.Visible = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if (con != null)
+                        con.Close();
+                }
+            }
+            else
+            {
+                try
+                {
+                    Excel.Application app = new Excel.Application();
+                    app.Visible = false;
+                    string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                    app.Workbooks.Add(path.Substring(0, path.LastIndexOf('\\')) + "\\Количество обслуженных клиентов по сотруднику.xlsx");
+                    Excel.Workbook wb = app.Workbooks[1];
+                    Excel.Worksheet ws = app.Worksheets[1];
+                    con = new SqlConnection(connectionStr);
+                    con.Open();
+                    ComboData name = (ComboData)FioCmbBox.SelectedItem;
+                    string sql = @"SELECT Surname as Фамилия, Name as Имя, COUNT(Client_ID) as Количество FROM Worker, Visit
                                 WHERE Worker.ID_Worker = Visit.Worker_ID 
                                 AND Surname = '" + name.Value.Split(' ')[0] + @"' 
                                 AND Name = '" + name.Value.Split(' ')[1] + @"'
                                 AND Date BETWEEN '" + FromPicker.SelectedDate.Value.ToString("s") + "' AND '" + ToPicker.SelectedDate.Value.ToString("s") + @"'
-                                GROUP BY Date, Surname, Name";
-                if (con != null)
-                {
-                    DataTable dt = new DataTable();
-                    com = con.CreateCommand();
-                    com.CommandText = sql;
-                    SqlDataAdapter adapter = new SqlDataAdapter(com);
-                    adapter.Fill(dt);
-                    for (int i = 0; i < dt.Rows.Count; i++)
+                                GROUP BY Surname, Name";
+                    if (con != null)
                     {
-                        ws.Cells[i + 2, 1].Value2 = dt.Rows[i][0];
-                        ws.Cells[i + 2, 2].Value2 = dt.Rows[i][1];
-                        ws.Cells[i + 2, 4].Value2 = dt.Rows[i][2];
-                        ws.Cells[i + 2, 3].Value2 = Convert.ToDateTime(dt.Rows[i][3]);
+                        DataTable dt = new DataTable();
+                        com = con.CreateCommand();
+                        com.CommandText = sql;
+                        SqlDataAdapter adapter = new SqlDataAdapter(com);
+                        adapter.Fill(dt);
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            ws.Cells[i + 2, 1].Value2 = dt.Rows[i][0];
+                            ws.Cells[i + 2, 2].Value2 = dt.Rows[i][1];
+                            ws.Cells[i + 2, 4].Value2 = dt.Rows[i][2];                           
+                        }
+                        ws.Cells[1, 5].Value2 = FromPicker.SelectedDate.Value.ToString() + "-" + ToPicker.SelectedDate.Value.ToString();
+                        app.Visible = true;
                     }
-                    app.Visible = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if (con != null)
+                        con.Close();
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (con != null)
-                    con.Close();
-            }
+            
 
         }
     }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Личный кабинет" Height="254.422" Width="300">
+        Title="Личный кабинет" Height="297.988" Width="300">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -26,10 +26,10 @@
                     <PasswordBox x:Name="ConfirmPassBox"/>
                 </StackPanel>
             </StackPanel>
-            <StackPanel  Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
-                    <Button x:Name="OkButton" Content="Изменить" Width="75" Click="OkButton_Click"/>
-                <Button x:Name="CancelButton" Content="Отмена" Width="75" Click="CancelButton_Click"/>
-                </StackPanel>
+            <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource bottom}">
+                <Button x:Name="OKButton" Content="OK" Click="OkButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+                <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+            </StackPanel>            
             </StackPanel>
     </DockPanel>
 </Window>

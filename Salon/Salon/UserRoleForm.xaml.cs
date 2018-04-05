@@ -49,6 +49,11 @@ namespace Salon
             DBCore.ExecuteSql(sql);
         }
 
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             string login=UserCmbBox.SelectedValue.ToString();

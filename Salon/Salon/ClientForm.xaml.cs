@@ -100,9 +100,9 @@ namespace Salon
                 return;
             }
 
-          //  DateTime.TryParse(e.AddedItems[0].ToString(), out var selectedDate);
+            DateTime.TryParse(e.AddedItems[0].ToString(), out var selectedDate);
 
-         //   SetFilter(key, "[Дата рождения]", $">= #{selectedDate:MM/dd/yyyy}#");
+            SetFilter(key, "[Дата рождения]", $">= #{selectedDate.ToString("MM/dd/yyyy")}#");
         }
 
         private void EndDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -115,9 +115,9 @@ namespace Salon
                 return;
             }
 
-          //  DateTime.TryParse(e.AddedItems[0].ToString(), out var selectedDate);
+            DateTime.TryParse(e.AddedItems[0].ToString(), out var selectedDate);
 
-          //  SetFilter(key, "[Дата рождения]", $">= #{selectedDate:MM/dd/yyyy}#");
+            SetFilter(key, "[Дата рождения]", $">= #{selectedDate.ToString("MM/dd/yyyy")}#");
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -125,7 +125,7 @@ namespace Salon
             var form = new ClientActionForm(() => 
             {
                 CurrentFormData = DBClient.GetClients();
-                _onUpdate();
+                _onUpdate?.Invoke();
             }, FormState.Add);
             form.ShowDialog();
         }

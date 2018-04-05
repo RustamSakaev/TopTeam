@@ -19,6 +19,7 @@ namespace Salon
 
            // DBCore.Init(@"LENOVO-PC"); 
            //DBCore.Init(@"ADMIN\SQLEXPRESS");//просто раскомментируй свою строку а не заменяй чужую
+            DBCore.Init("DESKTOP-D3KKSHS\\SQLEXPRESS");
 
 
             

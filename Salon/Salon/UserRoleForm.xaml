@@ -13,17 +13,19 @@
         <StackPanel DockPanel.Dock="Top"  Height="25"></StackPanel>
         <StackPanel DockPanel.Dock="Top" Height="195">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                <StackPanel>
-                    <Label x:Name="UserLabel" Content="Пользователь"/>
-                    <ComboBox x:Name="UserCmbBox" Width="243" ItemsSource="{Binding ComboItems}">
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Width="250">
-                    <Button x:Name="PostFormButton" Content="..." Style="{StaticResource threeDots}" Click="PostFormButton_Click"></Button>
-                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <Label x:Name="UserLabel" Content="Пользователь"/>
+                        <ComboBox x:Name="UserCmbBox" Width="243" ItemsSource="{Binding ComboItems}">
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel>
+                        <Button x:Name="PostFormButton" Content="..." Style="{StaticResource threeDots}" Click="PostFormButton_Click"></Button>
+                    </StackPanel>                    
+                </StackPanel>               
                 <StackPanel>
                     <Label x:Name="RoleLabel" Content="Роль"/>
-                    <ComboBox x:Name="RoleCmbBox" Width="245" ItemsSource="{Binding ComboItems}">
+                    <ComboBox x:Name="RoleCmbBox" Width="245" Margin="-37 5 0 0" ItemsSource="{Binding ComboItems}">
                         <ComboBoxItem IsSelected="True">
                             Мастер
                         </ComboBoxItem>
@@ -34,7 +36,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="OkButton" Content="Ок" Width="75" Click="OkButton_Click"/>
+                <Button x:Name="OkButton" Content="ОK" Width="75" Click="OkButton_Click"/>
             </StackPanel>
         </StackPanel>
     </DockPanel>

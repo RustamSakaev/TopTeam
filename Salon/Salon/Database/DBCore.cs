@@ -78,6 +78,7 @@ namespace Salon
         }
         public static void Destroy()
         {
+            if (_connection!=null)
             _connection.Close();
         }
         private static SqlConnection _connection;

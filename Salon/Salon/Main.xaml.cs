@@ -111,12 +111,12 @@ namespace Salon
                 Excel.Application app = new Excel.Application();
                 app.Visible = false;
                 string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                app.Workbooks.Add(path.Substring(0, path.LastIndexOf('\\')) + "\\По сотрудникам.xlsx");
+                app.Workbooks.Add(path.Substring(0, path.LastIndexOf('\\')) + "\\По сотрудникам.xlsx"); //создайте у себя на компе в папке,где лежит этот проект
                 Excel.Workbook wb = app.Workbooks[1];
                 Excel.Worksheet ws = app.Worksheets[1];
                 con = new SqlConnection(connectionStr);
                 con.Open();
-                string sql = @"SELECT Surname, Worker.Name, DBirth, MasterType.Name FROM MasterType, Worker, Worker_MasterType
+                string sql = @"SELECT Surname as Фамилия, Worker.Name as Имя, DBirth as 'Дата рождения', MasterType.Name as 'Тип мастера' FROM MasterType, Worker, Worker_MasterType
                                 WHERE Worker.ID_Worker = Worker_MasterType.Worker_ID AND MasterType.ID_MasterType = Worker_MasterType.MasterType_ID
                                 ORDER BY MasterType.Name";
                 if (con != null)
@@ -169,7 +169,7 @@ namespace Salon
                 con = new SqlConnection(connectionStr);
                 con.Open();
                 //ComboData name = (ComboData)FioCmbBox.SelectedItem;
-                string sql = @"SELECT Name, COUNT(Service_ID) FROM Service, ProvidingServices
+                string sql = @"SELECT Name as Наименование, COUNT(Service_ID) as Количество FROM Service, ProvidingServices
                                 WHERE Service.ID_Service = ProvidingServices.Service_ID
                                 GROUP BY Name ORDER BY COUNT(Service_ID)";
                 if (con != null)

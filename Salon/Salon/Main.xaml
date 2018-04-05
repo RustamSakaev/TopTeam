@@ -47,7 +47,7 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Отчеты" >
-                <MenuItem Header="Данные по сотрудникам" x:Name="WorkersExportItem" Click="EmployeeData_Click"></MenuItem>
+                <MenuItem Header="Данные о сотрудниках" x:Name="WorkersExportItem" Click="EmployeeData_Click"></MenuItem>
                 <MenuItem Header="Доходы по сотруднику" Click="EmployeeProfit_Click"></MenuItem>
                 <MenuItem Header="Количество обслуженных клиентов по сотруднику" Click="EmployeeClient_Click"></MenuItem>
                 <MenuItem Header="Отчет по видам услуг" Click="TypeService_Click"></MenuItem>

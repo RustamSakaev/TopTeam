@@ -300,6 +300,7 @@ namespace Salon
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            ////////////РАНДОМНЕНЬКО
             DataGridView dgv = new DataGridView();
             wfh.Child = dgv;
 
@@ -502,6 +503,7 @@ namespace Salon
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            ////////////РАНДОМНЕНЬКО
             DataGridView dgv = new DataGridView();
             wfh.Child = dgv;
 

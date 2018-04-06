@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Подарочная карта" Height="350" Width="340" MinWidth="340" MinHeight="350" >
+        Title="Подарочная карта" Height="350" Width="340" MinWidth="340" MinHeight="350" Icon="hairdresser.ico" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>

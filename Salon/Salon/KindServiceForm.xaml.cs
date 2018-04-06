@@ -28,12 +28,13 @@ namespace Salon
         private readonly List<Filter> Filter = new List<Filter>();
         private readonly Action Back;
         private string type_ID;
-        TypeServiceActionForm typekind;
-        public KindService(Action b=null, string type_id = null)
+        private bool _addKindService;
+        public KindService(Action b = null, string type_id = null, bool addKindService = true)
         {
             InitializeComponent();
             Back = b;
             type_ID = type_id;
+            _addKindService = addKindService;
         }
         private DataTable CurrentData
         {
@@ -52,7 +53,6 @@ namespace Salon
         {
             var kind_col = ((DataView)KindServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
             if (kind_col == -1) return;
-
             var kindid = ((DataRowView)KindServiceGrid.SelectedItem)?.Row[kind_col].ToString();
             if (kindid == null) return;
             var form = new KindServiceActionForm(() => { CurrentData = DBKindService.GetKindServices(); }, FormState.Edit, kindid);
@@ -62,9 +62,6 @@ namespace Salon
         {
             CurrentData = DBKindService.GetKindServices();
             KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;
-           
-
-
         }
         private void CurFilter(string key, string column, string exp)
         {
@@ -88,11 +85,6 @@ namespace Salon
             CurFilter("KindService", "Наименование", $"LIKE '%{NameBox.Text}%'");
         }
 
-        private void TypeServiceCmbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-        }
-
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             NameBox.Clear();
@@ -100,13 +92,13 @@ namespace Salon
 
         private void KindServiceGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var kind_col = ((DataView)KindServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
-            if (kind_col == -1) return;
-            var kindid = ((DataRowView)KindServiceGrid.SelectedItem)?.Row[kind_col].ToString();
-            if (kindid == null) return;
-            DBTypeService_KindService.AddTypeKind(type_ID, kindid);
-            Back();
-            this.Close();
+           var kind_col = ((DataView)KindServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+           if (kind_col == -1) return;
+           var kindid = ((DataRowView)KindServiceGrid.SelectedItem)?.Row[kind_col].ToString();
+           if (kindid == null) return;
+           DBTypeService_KindService.AddTypeKind(type_ID, kindid);
+           Back();
+           this.Close();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -125,6 +117,12 @@ namespace Salon
             {
                 MessageBox.Show("Невозможно удалить данный объект!");
             }
+            Back();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Back();
         }
     }
 }

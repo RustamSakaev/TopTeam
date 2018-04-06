@@ -30,6 +30,7 @@ namespace Salon
         private readonly DataTable MNcurrentData;
         private string kind_ID;
         private bool form_state_add;
+        public bool check;
         private DataTable _MNcurrentData;
 
         private DataTable CurrentData
@@ -59,6 +60,7 @@ namespace Salon
                     TypeService_KindServiceGrid.ItemsSource = MNcurrentData.DefaultView;
                     break;
                 case FormState.Add:
+                    form_state_add = true;
                     HeaderLabel.Content = "Добавление вида услуги";
                     break;
             }
@@ -66,6 +68,7 @@ namespace Salon
 
         public void OnLoad(object sender, RoutedEventArgs e)
         {
+            check = true;
             if (kind_ID != null)
             {
                 CurrentData = DBTypeService_KindService.GetTypes(kind_ID);
@@ -76,30 +79,42 @@ namespace Salon
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!check)
+            {
+                var type_col = ((DataView)TypeService_KindServiceGrid.ItemsSource).Table.Columns.IndexOf("type_id");
+                for (int i = 0; i < TypeService_KindServiceGrid.Items.Count; i++)
+                {
+                    var typeid = ((DataRowView)TypeService_KindServiceGrid.Items[i])?.Row[type_col].ToString();
+                    DBTypeService_KindService.DeleteType(typeid);
+                }
+                DBKindService.DeleteKindService(kind_ID);
+            }
             this.Close();
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!NameBox.Validate(true))
+            if (check)
             {
-                return;
+                if (!NameBox.Validate(true))
+                {
+                    return;
+                }
+                switch (_state)
+                {
+                    case FormState.Edit:
+                        DBKindService.EditKindService(
+                            currentData.Rows[0]["id"].ToString(),
+                            NameBox.Text
+                        );
+                        break;
+                    case FormState.Add:
+                        DBKindService.AddKindService(
+                            NameBox.Text
+                        );
+                        break;
+                }
             }
-            switch (_state)
-            {
-                case FormState.Edit:
-                    DBKindService.EditKindService(
-                        currentData.Rows[0]["id"].ToString(),
-                        NameBox.Text
-                    );
-                    break;
-                case FormState.Add:
-                    DBKindService.AddKindService(
-                        NameBox.Text
-                    );
-                    break;
-            }
-
             Back();
             this.Close();
         }
@@ -108,14 +123,23 @@ namespace Salon
         {
             if (form_state_add)
             {
-
+                var type_name = NameBox.Text;
+                if (type_name == string.Empty) { MessageBox.Show("Заполните наименование!"); return; }
+                if (check)
+                {
+                    DBKindService.AddKindService(NameBox.Text);
+                }
+                var cur_id = DBKindService.GetLastKindService().Rows[0][0].ToString();
+                kind_ID = cur_id;
+                var form = new TypeServiceForm(() => { { CurrentData = DBTypeService_KindService.GetTypes(kind_ID); } }, kind_ID);
+                form.ShowDialog();
             }
             else
             {
                 var form = new TypeServiceForm(() => { CurrentData = DBTypeService_KindService.GetTypes(kind_ID); TypeService_KindServiceGrid.Columns[0].Visibility = Visibility.Hidden; }, kind_ID);
                 form.ShowDialog();
             }
-
+            check = false;
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

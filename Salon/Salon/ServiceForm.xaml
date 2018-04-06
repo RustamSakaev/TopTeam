@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:Salon"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Услуги" Height="300" Width="900" Loaded="OnLoad">
+        Title="Услуги" Height="300" Width="900" Loaded="OnLoad" Closing="Window_Closing" Icon="hairdresser.ico">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
-    <DockPanel  HorizontalAlignment="Right" Margin="0,0,0.333,-0.333" Width="893">
+    <DockPanel>
         <StackPanel x:Name="Header" Style="{StaticResource header}">
             <Label Content="Таблица 'Услуги'" Style="{StaticResource caption}"/>
         </StackPanel>

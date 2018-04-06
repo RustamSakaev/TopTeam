@@ -25,7 +25,7 @@ namespace Salon
     {
         private DataTable currentData = new DataTable();
         private readonly List<Filter> Filter = new List<Filter>();
-        private readonly Action<string> Back;
+        private readonly Action Back;
         private DataTable CurrentData
         {
             get { return currentData; }
@@ -35,7 +35,7 @@ namespace Salon
                 ServiceGrid.Columns[0].Visibility = Visibility.Hidden;
             }
         }
-        public ServiceForm(Action<string> b = null)
+        public ServiceForm(Action b = null)
         {
             InitializeComponent();
             Back = b;
@@ -95,6 +95,7 @@ namespace Salon
             {
                 MessageBox.Show("Невозможно удалить данный объект!");
             }
+            Back();
         }
 
         private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -138,6 +139,11 @@ namespace Salon
             NameBox.Clear();
             TypeServiceCmbBox.SelectedValue = "Все";
             KindServiceCmbBox.SelectedValue = "Все";
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (Back != null) { Back(); };
         }
     }
 }

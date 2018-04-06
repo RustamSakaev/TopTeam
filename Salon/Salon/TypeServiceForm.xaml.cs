@@ -52,10 +52,8 @@ namespace Salon
         {
             var type_col = ((DataView)TypeServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
             if (type_col == -1) return;
-
             var typeid = ((DataRowView)TypeServiceGrid.SelectedItem)?.Row[type_col].ToString();
             if (typeid == null) return;
-
             var form = new TypeServiceActionForm(() => { CurrentData = DBTypeService.GetTypeServices(); }, FormState.Edit, typeid);
             form.ShowDialog();
         }
@@ -136,6 +134,12 @@ namespace Salon
             {
                 MessageBox.Show("Невозможно удалить данный объект!");
             }
+            Back();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Back();
         }
     }
 }

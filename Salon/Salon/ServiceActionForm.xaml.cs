@@ -98,13 +98,13 @@ namespace Salon
 
         private void TypeServiceFormButton_Click(object sender, RoutedEventArgs e)
         {
-            TypeServiceForm type = new TypeServiceForm();
+            TypeServiceForm type = new TypeServiceForm(()=> { TypeServiceCmbBox.ItemsSource = DBTypeService.GetTypeServices().DefaultView; });
             type.ShowDialog();
         }
 
         private void KindServiceFormButton_Click(object sender, RoutedEventArgs e)
         {
-            KindService kind = new KindService();
+            KindService kind = new KindService(() => { KindServiceCmbBox.ItemsSource = DBKindService.GetKindServices().DefaultView; });
             kind.ShowDialog();
         }
 

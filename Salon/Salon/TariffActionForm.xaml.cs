@@ -37,18 +37,16 @@ namespace Salon
                     currentData = DBTariff.GetTariff(id);
                     PriceBox.Text = currentData.Rows[0]["Стоимость"].ToString();
                     StartDatePicker.SelectedDate = Convert.ToDateTime(currentData.Rows[0]["Дата начала"]);
-                    foreach (DataRow serv in DBService.GetServices().Rows)
-                    {
-                        ServiceCmbBox.Items.Add(serv["Наименование"]);
-                    }
+                    ServiceCmbBox.ItemsSource = DBService.GetServices().DefaultView;
+                    ServiceCmbBox.DisplayMemberPath = "Наименование";
+                    ServiceCmbBox.SelectedValuePath = "id";
                     ServiceCmbBox.SelectedValue = currentData.Rows[0]["Услуга"].ToString();
                     break;
                 case FormState.Add:
                     HeaderLabel.Content = "Добавление тарифа";
-                    foreach (DataRow serv in DBService.GetServices().Rows)
-                    {
-                        ServiceCmbBox.Items.Add(serv["Наименование"]);
-                    }
+                    ServiceCmbBox.ItemsSource = DBService.GetServices().DefaultView;
+                    ServiceCmbBox.DisplayMemberPath = "Наименование";
+                    ServiceCmbBox.SelectedValuePath = "id";
                     break;
             }
         }
@@ -61,36 +59,51 @@ namespace Salon
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!PriceBox.Validate(true))
+            
+            try
             {
-                return;
-            }
-            switch (_state)
-            {
-                case FormState.Edit:
-                    DBTariff.EditTariff(
-                        currentData.Rows[0]["id"].ToString(),
-                        ServiceCmbBox.SelectedValue.ToString(),
-                        StartDatePicker.SelectedDate.ToString(),
-                        PriceBox.Text
-                    );
-                    break;
-                case FormState.Add:
-                    DBTariff.AddTariff(
-                        ServiceCmbBox.SelectedValue.ToString(),
-                        StartDatePicker.SelectedDate.ToString(),
-                        PriceBox.Text
-                    );
-                    break;
-            }
+                if (!PriceBox.Validate(true) || StartDatePicker.SelectedDate == null)
+                {
+                    return;
+                }
+                switch (_state)
+                {
+                    case FormState.Edit:
+                        DBTariff.EditTariff(
+                            currentData.Rows[0]["id"].ToString(),
+                            ServiceCmbBox.SelectedValue.ToString(),
+                            StartDatePicker.SelectedDate.ToString(),
+                            Convert.ToDouble(PriceBox.Text)
+                        );
+                        break;
+                    case FormState.Add:
+                        DBTariff.AddTariff(
+                            ServiceCmbBox.SelectedValue.ToString(),
+                            StartDatePicker.SelectedDate.ToString(),
+                            Convert.ToDouble(PriceBox.Text)
+                        );
+                        break;
+                }
 
-            Back();
-            this.Close();
+                Back();
+                this.Close();
+            }
+            catch(System.FormatException)
+            {
+                MessageBox.Show("Введите правильную цену!");
+            }
+           
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void ServiceFormButton_Click(object sender, RoutedEventArgs e)
+        {
+            ServiceForm type = new ServiceForm(() => { ServiceCmbBox.ItemsSource = DBService.GetServices().DefaultView; });
+            type.ShowDialog();
         }
     }
 }

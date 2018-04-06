@@ -11,7 +11,7 @@
     </Window.Resources>
     <DockPanel>
         <StackPanel x:Name="Header" Style="{StaticResource header}">
-            <Label Content="Добавление ТипМастера" Style="{StaticResource caption}"/>
+            <Label x:Name="HeaderInner" Content="Добавление ТипМастера" Style="{StaticResource caption}"/>
         </StackPanel>
         <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource bottom}">
             <Button x:Name="OKButton" Content="OK" Style="{StaticResource buttonOkAndCancel}" Click="OKButton_Click"/>
@@ -19,8 +19,8 @@
         </StackPanel>
         <WrapPanel Margin="0,20,0,-38" Width="361">
             <StackPanel>
-                <Label Content="Наименование"  Style="{StaticResource signature}"></Label>
-                <TextBox x:Name="FioBox" Width="200"></TextBox>
+                <Label Content="Наименование"></Label>
+                <TextBox x:Name="NameBox" Width="200"></TextBox>
             </StackPanel>
             <StackPanel/>
             <StackPanel/>

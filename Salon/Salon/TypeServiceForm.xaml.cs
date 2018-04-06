@@ -108,13 +108,20 @@ namespace Salon
 
         private void TypeServiceGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var type_col = ((DataView)TypeServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
-            if (type_col == -1) return;
-            var typeid = ((DataRowView)TypeServiceGrid.SelectedItem)?.Row[type_col].ToString();
-            if (typeid == null) return;
-            DBTypeService_KindService.AddTypeKind(typeid,kind_ID);
-            Back();
-            this.Close();
+            try
+            {
+                var type_col = ((DataView)TypeServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+                if (type_col == -1) return;
+                var typeid = ((DataRowView)TypeServiceGrid.SelectedItem)?.Row[type_col].ToString();
+                if (typeid == null) return;
+                DBTypeService_KindService.AddTypeKind(typeid, kind_ID);
+                Back();
+                this.Close();
+            }catch
+            {
+                MessageBox.Show("Error");
+            }
+            
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

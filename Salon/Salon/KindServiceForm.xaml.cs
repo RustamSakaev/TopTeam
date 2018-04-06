@@ -92,13 +92,21 @@ namespace Salon
 
         private void KindServiceGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-           var kind_col = ((DataView)KindServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
-           if (kind_col == -1) return;
-           var kindid = ((DataRowView)KindServiceGrid.SelectedItem)?.Row[kind_col].ToString();
-           if (kindid == null) return;
-           DBTypeService_KindService.AddTypeKind(type_ID, kindid);
-           Back();
-           this.Close();
+            try
+            {
+                var kind_col = ((DataView)KindServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+                if (kind_col == -1) return;
+                var kindid = ((DataRowView)KindServiceGrid.SelectedItem)?.Row[kind_col].ToString();
+                if (kindid == null) return;
+                DBTypeService_KindService.AddTypeKind(type_ID, kindid);
+                Back();
+                this.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Error");
+            }
+           
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

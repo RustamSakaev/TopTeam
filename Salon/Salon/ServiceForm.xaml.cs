@@ -95,7 +95,7 @@ namespace Salon
             {
                 MessageBox.Show("Невозможно удалить данный объект!");
             }
-            Back();
+            if (Back != null) { Back(); }
         }
 
         private void NameBox_TextChanged(object sender, TextChangedEventArgs e)

@@ -54,6 +54,8 @@ namespace Salon
             Microsoft.Office.Interop.Excel.Worksheet ObjWorkSheet;
             ObjWorkBook = ObjExcel.Workbooks.Add(System.Reflection.Missing.Value);
             ObjWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ObjWorkBook.Sheets[1];
+            ObjWorkSheet.Columns.AutoFit();
+            ObjWorkSheet.Rows.AutoFit();
             for (var i = 0; i < _currentFormData.Columns.Count; i++)
             {
                 ObjWorkSheet.Cells[1, i + 1] = _currentFormData.Columns[i].ColumnName;
@@ -66,6 +68,8 @@ namespace Salon
                     ObjWorkSheet.Cells[i + 2, j + 1] = _currentFormData.Rows[i][j];
                 }
             }
+            ObjWorkSheet.Columns.AutoFit();
+            ObjWorkSheet.Rows.AutoFit();
             ObjExcel.Visible = true;
             ObjExcel.UserControl = true;
         }

@@ -29,17 +29,17 @@ namespace Salon
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
-            Regex exp = new Regex(@"^\d{2}(\.[0,5])?$");
+            Regex exp = new Regex(@"^\d{0,2}(\.[0,5])?$");
             Regex FSL = new Regex(@"^[А-Я][a-я]+$");
             if (!SurnameBox.Validate(true) || !NameBox.Validate(true) || !PatronymicBox.Validate(true) ||
                 !DBirthDatePicker.Validate(true) || !ExpBox.Validate(true) || !GenderCmbBox.Validate(true) ||
-                !LoginBox.Validate(true) || PassBox.Password == "" || !LoginBox.Validate(true) || !exp.IsMatch(ExpBox.Text)
+                !LoginBox.Validate(true) || PassBox.Password == "" || !RoleCmbBox.Validate(true) || !exp.IsMatch(ExpBox.Text)
                 || !FSL.IsMatch(NameBox.Text) || !FSL.IsMatch(SurnameBox.Text) || !FSL.IsMatch(PatronymicBox.Text))
                 MessageBox.Show("Заполните правильно все поля!");
             //return;
             else
             {
-                bool add = DBUser.CreateUser(LoginBox.Text, PassBox.Password);
+                bool add = DBUser.CreateUser(LoginBox.Text, PassBox.Password, ((ComboBoxItem)RoleCmbBox.SelectedValue).Content.ToString() == "Мастер" ? "master" : "admin");
                 if (add)
                 {
                     DBWorker.AddWorker(SurnameBox.Text.Trim(),
@@ -50,12 +50,14 @@ namespace Salon
                         ((ComboBoxItem)GenderCmbBox.SelectedValue).Content.ToString() == "Мужской" ? "1" : "0",
                         ExpBox.Text.Trim());
                     MessageBox.Show("Пользователь успешно создан!");
+                    DBCore.Destroy();
                     this.Close();
                 }
             }         
         }
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            DBCore.Destroy();
             this.Close();
         }
     }

@@ -77,7 +77,24 @@ namespace Salon
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            var serv_col = ((DataView)ServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+            if (serv_col == -1) return;
+
+            var servid = ((DataRowView)ServiceGrid.SelectedItem)?.Row[serv_col].ToString();
+            if (servid == null) return;
+            try
+            {
+                DBService.DeleteService(servid);
+                MessageBox.Show("Объект успешно удален!");
+                CurrentData = DBService.GetServices();
+                ServiceGrid.Columns[5].Visibility = Visibility.Hidden;
+                ServiceGrid.Columns[6].Visibility = Visibility.Hidden;
+                ServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+            }
+            catch(System.Data.SqlClient.SqlException)
+            {
+                MessageBox.Show("Невозможно удалить данный объект!");
+            }
         }
 
         private void NameBox_TextChanged(object sender, TextChangedEventArgs e)

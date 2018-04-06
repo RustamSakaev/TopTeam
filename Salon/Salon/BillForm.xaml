@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Salon"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Счет" Height="354.667" Width="490.667" Loaded="Window_Loaded" >
+        Title="Счет" Height="400" Width="490" Loaded="Window_Loaded" MinWidth="490" MinHeight="400" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -15,10 +15,19 @@
             <Label Content="Таблица 'Счет'" Style="{StaticResource caption}"/>
         </StackPanel>
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
-            <StackPanel x:Name="SearchStack" >
-                <Label Content="Фильтр:"/>
-                <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged"/>
-            </StackPanel>
+            <Label Content="Фильтр:" Margin="0" />
+            <WrapPanel>
+                <DockPanel>
+                    <WrapPanel DockPanel.Dock="Top" Width="480">
+                        <StackPanel x:Name="SearchStack" >
+                            <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged" Width="375"/>
+                        </StackPanel>
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button x:Name="ClearButton" Width="80" Click="ClearButton_Click" Content="Очистить" Height="26"/>
+                        </StackPanel>
+                    </WrapPanel>
+                </DockPanel>
+            </WrapPanel>
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="MoreButton" Content="Подробнее" Click="MoreButton_Click"/>

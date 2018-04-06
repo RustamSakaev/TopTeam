@@ -36,6 +36,9 @@ namespace Salon
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            RegistrationForm reg = new RegistrationForm();
+            reg.ShowDialog();
+            reg.Title = "Добавление сотрудника";
         }
 
 

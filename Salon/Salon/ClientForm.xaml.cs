@@ -102,7 +102,7 @@ namespace Salon
 
             //DateTime.TryParse(e.AddedItems[0].ToString(), out var selectedDate);
 
-            //SetFilter(key, "[Дата рождения]", $">= #{selectedDate:MM/dd/yyyy}#");
+           // SetFilter(key, "[Дата рождения]", $">= #{selectedDate.ToString("MM/dd/yyyy")}#");
         }
 
         private void EndDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -115,9 +115,9 @@ namespace Salon
                 return;
             }
 
-            //DateTime.TryParse(e.AddedItems[0].ToString(), out var selectedDate);
+          //  DateTime.TryParse(e.AddedItems[0].ToString(), out var selectedDate);
 
-            //SetFilter(key, "[Дата рождения]", $">= #{selectedDate:MM/dd/yyyy}#");
+            //SetFilter(key, "[Дата рождения]", $">= #{selectedDate.ToString("MM/dd/yyyy")}#");
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -125,7 +125,7 @@ namespace Salon
             var form = new ClientActionForm(() => 
             {
                 CurrentFormData = DBClient.GetClients();
-                _onUpdate();
+                _onUpdate?.Invoke();
             }, FormState.Add);
             form.ShowDialog();
         }
@@ -150,15 +150,22 @@ namespace Salon
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var idx = ((DataView)ClientGrid.DataContext).Table.Columns.IndexOf("id");
-
-            foreach (DataRowView selectedItem in ClientGrid.SelectedItems)
+            try
             {
-                DBClient.DeleteClient(selectedItem.Row[idx].ToString());
-            }
+                var idx = ((DataView)ClientGrid.DataContext).Table.Columns.IndexOf("id");
 
-            CurrentFormData = DBClient.GetClients();
-            _onUpdate();
+                foreach (DataRowView selectedItem in ClientGrid.SelectedItems)
+                {
+                    DBClient.DeleteClient(selectedItem.Row[idx].ToString());
+                }
+
+                CurrentFormData = DBClient.GetClients();
+                _onUpdate();
+            }
+            catch
+            {
+                MessageBox.Show("Невозможно удалить!");
+            }
         }
 
         private void ClientGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -193,6 +200,16 @@ namespace Salon
 
                 _callback(id);
                 this.Close();
+            } else if (_openAs == FormOpenAs.Default)
+            {
+                var idx = ((DataView)ClientGrid.DataContext).Table.Columns.IndexOf("ФИО");
+                if (idx == -1) return;
+
+                var fullname = ((DataRowView)ClientGrid.SelectedItem)?.Row[idx].ToString();
+                if (fullname == null) return;
+
+                var form = new BillForm(fullname);
+                form.ShowDialog();
             }
         }
     }

@@ -37,10 +37,15 @@
   <PropertyGroup>
     <StartupObject>Salon.App</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>hairdresser.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -50,9 +55,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -102,7 +109,6 @@
     <Compile Include="Database\DBClient.cs" />
     <Compile Include="Database\DBCore.cs" />
     <Compile Include="Database\DBGiftCard.cs" />
-    <Compile Include="Database\DBPaymentMethod.cs" />
     <Compile Include="Database\DBKindService.cs" />
     <Compile Include="EditTypeMaster.xaml.cs">
       <DependentUpon>EditTypeMaster.xaml</DependentUpon>
@@ -144,14 +150,11 @@
       <DependentUpon>MasterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Misc\Filter.cs" />
-    <Compile Include="PaymentMethodForm.xaml.cs">
-      <DependentUpon>PaymentMethodForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PaymentMethodActionForm.xaml.cs">
-      <DependentUpon>PaymentMethodActionForm.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ProvidingServiceForm.xaml.cs">
       <DependentUpon>ProvidingServiceForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReportServiceDates.xaml.cs">
+      <DependentUpon>ReportServiceDates.xaml</DependentUpon>
     </Compile>
     <Compile Include="ScheduleForm.xaml.cs">
       <DependentUpon>ScheduleForm.xaml</DependentUpon>
@@ -188,6 +191,9 @@
     </Compile>
     <Compile Include="TypeServiceForm.xaml.cs">
       <DependentUpon>TypeServiceForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserRoleActionForm.xaml.cs">
+      <DependentUpon>UserRoleActionForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserRoleForm.xaml.cs">
       <DependentUpon>UserRoleForm.xaml</DependentUpon>
@@ -303,15 +309,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PaymentMethodForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="PaymentMethodActionForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ProvidingServiceForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReportServiceDates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -364,6 +366,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TypeServiceForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserRoleActionForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -450,6 +456,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hairdresser.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

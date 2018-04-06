@@ -31,6 +31,11 @@ namespace Salon
             set { userName = value; }
         }
 
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             if (OldPassBox.Password == "" || NewPassBox.Password == "" || ConfirmPassBox.Password == "")

@@ -10,9 +10,10 @@ namespace Salon
     /// </summary>
     public partial class BillForm : Window
     {
-        private readonly string[] _hiddenFields = {"id"};
+        private readonly string[] _hiddenFields = { "id" };
         private DataTable _currentFormData = new DataTable();
         private string _currentFilter = "";
+        private string _currentClient = string.Empty;
 
         private DataTable CurrentFormData
         {
@@ -34,14 +35,18 @@ namespace Salon
             BillGrid.DataContext = displayData;
         }
 
-        public BillForm()
+        public BillForm(string client = null)
         {
             InitializeComponent();
+
+            if (client != null) _currentClient = client;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             CurrentFormData = DBBill.GetBills();
+
+            SearchBox.Text = _currentClient;
         }
 
         private void SearchBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -77,14 +82,21 @@ namespace Salon
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var idx = ((DataView)BillGrid.DataContext).Table.Columns.IndexOf("id");
-
-            foreach (DataRowView selectedItem in BillGrid.SelectedItems)
+            try
             {
-                DBBill.DeleteBill(selectedItem.Row[idx].ToString());
-            }
+                var idx = ((DataView)BillGrid.DataContext).Table.Columns.IndexOf("id");
 
-            CurrentFormData = DBBill.GetBills();
+                foreach (DataRowView selectedItem in BillGrid.SelectedItems)
+                {
+                    DBBill.DeleteBill(selectedItem.Row[idx].ToString());
+                }
+
+                CurrentFormData = DBBill.GetBills();
+            }
+            catch
+            {
+                MessageBox.Show("Невозможно удалить!");
+            }
         }
 
         private void BillGrid_AutoGeneratingColumn(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
@@ -99,6 +111,9 @@ namespace Salon
             DisplayDataWithFilter();
         }
 
-
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchBox.Clear();
+        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Статус посещения" Height="157" Width="323.941" >
+        Title="Статус посещения" Height="187" Width="329" MinWidth="330" MinHeight="187" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -20,7 +20,7 @@
         <WrapPanel>
             <StackPanel>
                 <Label Content="Наименование"></Label>
-                <TextBox x:Name="NameBox" Height="26" Width="305" ></TextBox>
+                <TextBox x:Name="NameBox" Height="26" Width="310" ></TextBox>
             </StackPanel>
         </WrapPanel>
     </DockPanel>

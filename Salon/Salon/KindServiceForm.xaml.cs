@@ -28,6 +28,7 @@ namespace Salon
         private readonly List<Filter> Filter = new List<Filter>();
         private readonly Action Back;
         private string type_ID;
+        TypeServiceActionForm typekind;
         public KindService(Action b=null, string type_id = null)
         {
             InitializeComponent();
@@ -101,12 +102,29 @@ namespace Salon
         {
             var kind_col = ((DataView)KindServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
             if (kind_col == -1) return;
-
             var kindid = ((DataRowView)KindServiceGrid.SelectedItem)?.Row[kind_col].ToString();
             if (kindid == null) return;
             DBTypeService_KindService.AddTypeKind(type_ID, kindid);
             Back();
             this.Close();
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var kind_col = ((DataView)KindServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+            if (kind_col == -1) return;
+            var kindid = ((DataRowView)KindServiceGrid.SelectedItem)?.Row[kind_col].ToString();
+            if (kindid == null) return;
+            try
+            {
+                DBKindService.DeleteKindService(kindid);
+                MessageBox.Show("Объект успешно удален!");
+                CurrentData = DBKindService.GetKindServices();
+                KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+            }catch(System.Data.SqlClient.SqlException)
+            {
+                MessageBox.Show("Невозможно удалить данный объект!");
+            }
         }
     }
 }

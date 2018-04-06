@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Главная" Height="445.81" Width="593.296" ResizeMode="CanMinimize" Closing="Window_Closing" Background="#484c65">
+        Title="Главная" Height="445.81" Width="593.296" ResizeMode="CanMinimize" Closing="Window_Closing" Background="#484c65" Loaded="Window_Loaded" Icon="hairdresser.ico">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -13,16 +13,16 @@
         <Menu>
             <MenuItem Header="Администрированиe">
                 <MenuItem Header="Смена пароля" Click="CabinetForm_Click"></MenuItem>
-                <MenuItem Header="Изменение роли пользователя" Click="UserRoleForm_Click" ></MenuItem>
+                <MenuItem Header="Изменение роли пользователя" x:Name="ChangeUserItem" Click="UserRoleForm_Click" ></MenuItem>
                 <Separator />
                 <MenuItem Header="Сменить пользователя" Click="LogOut_Click"></MenuItem>
                 <Separator />
                 <MenuItem Header="Выход" Click="Exit_Click"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Справочники" >
-                <MenuItem Header="Работа с сотрудниками" HorizontalAlignment="Left" Width="214">
+            <MenuItem Header="Справочники" x:Name="Items">
+                <MenuItem Header="Работа с сотрудниками" x:Name="WorkersItem" HorizontalAlignment="Left" Width="214">
                     <MenuItem Header="Список сотрудников" Click="MenuItem_Click_3"/>
-                    <MenuItem Header="График работы" Click="MenuItem_Click_5"/>                    
+                    <MenuItem Header="График работы" Click="MenuItem_Click_5"/>
                     <!-- <MenuItem Header="Выбор профиля сотрудника"/> 
                     <MenuItem Header="Услуги, предоставляемые мастерами"/> 
                     <MenuItem Header="Мастера салона" Click="MenuItem_Click_3"/> -->
@@ -43,17 +43,28 @@
                     <MenuItem Header="Тарифы" Click="Tariff_Click"/>
                 </MenuItem>
                 <MenuItem Header="Прочие">
-                    <!--<MenuItem Header="Способ оплаты" Click="MenuItem_Click_1"/> -->
-                    <MenuItem Header="Тип мастера"/>
+                    <MenuItem Header="Тип мастера" Click="MenuItem_Click_1"/>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Отчеты" >
-                <MenuItem Header="Данные по сотрудникам" Click="EmployeeData_Click"></MenuItem>
+                <MenuItem Header="Данные о сотрудниках" x:Name="WorkersExportItem" Click="EmployeeData_Click"></MenuItem>
                 <MenuItem Header="Доходы по сотруднику" Click="EmployeeProfit_Click"></MenuItem>
                 <MenuItem Header="Количество обслуженных клиентов по сотруднику" Click="EmployeeClient_Click"></MenuItem>
                 <MenuItem Header="Отчет по видам услуг" Click="TypeService_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="Прототип" Click="Prototype_Click"></MenuItem>
         </Menu>
+        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,0" Height="383" >
+            <Grid Height="382">
+                <Calendar HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" KeyDown="Calendar_KeyDown" MouseDown="Calendar_MouseDown"/>
+
+                <Button x:Name="masteraButton" Content="Мастера" HorizontalAlignment="Left" Margin="10,253,0,0" VerticalAlignment="Top" Width="179" Height="26" FontSize="11" Click="masteraButton_Click"/>
+                <Button x:Name="clientiButton" Content="Клиенты" HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top" Width="179" Height="26" FontSize="11" Click="clientiButton_Click"/>
+                <Label Content="Справочники" HorizontalAlignment="Left" Margin="10,223,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="tipUslugiButton" Content="Услуги" HorizontalAlignment="Left" Margin="10,317,0,0" VerticalAlignment="Top" Width="179" Height="26" FontSize="11" Click="tipUslugiButton_Click"/>
+                <Button Content="Ok" HorizontalAlignment="Left" Margin="114,192,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+                <WindowsFormsHost x:Name="wfh" HorizontalAlignment="Left" Height="369" Margin="207,10,0,0" VerticalAlignment="Top" Width="370" Background="#FF404164"/>
+            </Grid>
+        </StackPanel>
     </DockPanel>
 </Window>

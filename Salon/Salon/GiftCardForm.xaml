@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Salon"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Подарочные карты" Height="354.667" Width="490.667" Loaded="Window_Loaded">
+        Title="Подарочные карты" Loaded="Window_Loaded" MinWidth="495" MinHeight="400" Height="400" Width="495">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -15,10 +15,17 @@
             <Label Content="Таблица 'Подарочная карта'" Style="{StaticResource caption}"/>
         </StackPanel>
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
-            <StackPanel x:Name="SearchStack" >
-                <Label Content="Фильтр:"/>
-                <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged"/>
-            </StackPanel>
+            <Label Content="Фильтр:" Margin="0"/>
+            <WrapPanel>
+                <DockPanel Width="480">
+                    <StackPanel x:Name="SearchStack" Width="390" >
+                        <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged" Margin="5,5,5,5"/>
+                    </StackPanel>
+                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" Width="95">
+                        <Button x:Name="ClearButton" Width="80" Click="ClearButton_Click" Content="Очистить" Height="26"/>
+                    </StackPanel>
+                </DockPanel>
+            </WrapPanel>
         </StackPanel>
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>

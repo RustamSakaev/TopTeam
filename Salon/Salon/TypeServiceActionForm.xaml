@@ -9,7 +9,7 @@
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
-    <DockPanel>
+    <DockPanel Loaded="OnLoad">
         <StackPanel x:Name="Header" Style="{StaticResource header}">
             <Label Name="HeaderLabel" Content="Добавление типа услуги" Style="{StaticResource caption}"/>
         </StackPanel>
@@ -35,11 +35,11 @@
                 </StackPanel>
             </StackPanel>
         </WrapPanel>
-        <DockPanel DockPanel.Dock="Bottom">
-            <Label  DockPanel.Dock="Top">Виды услуг</Label>
+        <DockPanel DockPanel.Dock="Top">
+            <Label x:Name="KindLabel"  DockPanel.Dock="Top">Виды услуг</Label>
             <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" Width="38" >
                 <Button x:Name="AddButton" Content="+" Width="28" Click="AddButton_Click"/>
-                <Button x:Name="DeleteButton" Content="-" Width="28"/>
+                <Button x:Name="DeleteButton" Content="-" Width="28" Click="DeleteButton_Click" HorizontalAlignment="Left" Margin="5,5,0,5"/>
             </StackPanel>
             <DataGrid x:Name="TypeService_KindServiceGrid"></DataGrid>
         </DockPanel>

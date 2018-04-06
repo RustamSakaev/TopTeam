@@ -5,37 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Роли" Height="326.667" Width="427">
+        Title="Роли" Height="251.667" Width="358" Icon="hairdresser.ico">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
-    <DockPanel Name="Osnova" Height="297" VerticalAlignment="Top" Margin="0,0,0,-1">
-        <StackPanel Name="First" DockPanel.Dock="Top"  Height="276" Visibility="Visible">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+    <DockPanel Name="Osnova" Margin="0,0,0,-1">
+        <StackPanel DockPanel.Dock="Top"  Height="25"></StackPanel>
+        <StackPanel DockPanel.Dock="Top" Height="195">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <Label x:Name="UserLabel" Content="Пользователь"/>
+                        <ComboBox x:Name="UserCmbBox" Width="243" ItemsSource="{Binding ComboItems}">
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel>
+                        <Button x:Name="PostFormButton" Content="..." Style="{StaticResource threeDots}" Click="PostFormButton_Click"></Button>
+                    </StackPanel>                    
+                </StackPanel>               
                 <StackPanel>
-                    <Label x:Name="label" Content="Пользователи"/>
-                    <ListBox x:Name="UserslistBox" Height="245" Width="138" Loaded="OnLoad" SelectionChanged="listBox_SelectionChanged"/>
+                    <Label x:Name="RoleLabel" Content="Роль"/>
+                    <ComboBox x:Name="RoleCmbBox" Width="245" Margin="-37 5 0 0" ItemsSource="{Binding ComboItems}">
+                        <ComboBoxItem IsSelected="True">
+                            Мастер
+                        </ComboBoxItem>
+                        <ComboBoxItem IsSelected="False">
+                            Администратор
+                        </ComboBoxItem>
+                    </ComboBox>
                 </StackPanel>
-                <StackPanel Canvas.Left="173" Canvas.Top="16">
-                    <Label x:Name="label1" Content="Роли пользователя"/>
-                    <ListBox x:Name="RoleslistBox" Height="245" Width="138" SelectionMode="Extended"/>
-                </StackPanel>
-                <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" Width="119" Margin="0,12,0,0" >
-                    <Button x:Name="AddButton" Content="Добавить" Click="button_Click"/>
-                    <Button x:Name="DeleteButton" Content="Удалить" Click="button1_Click"/>
-                </StackPanel>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource bottom}">
+                <Button x:Name="OKButton" Content="OK" Click="OkButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
+                <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel Name="Second" DockPanel.Dock="Top"  Height="276" Visibility="Collapsed">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <StackPanel>
-                        <Label Content="Роли:" />
-                        <ListBox x:Name="AllRoleslistBox" Height="270" Width="246" SelectionMode="Extended"/>
-                    </StackPanel>
-                    <StackPanel x:Name="ButtonsPanel1"  Style="{StaticResource buttonsPanel}" Width="119" Height="249" Margin="0,-15,0,0">
-                        <Button x:Name="AddRoleButton" Content="Добавить" Click="button2_Click"/>
-                    </StackPanel>
-                </StackPanel>
-            </StackPanel>
     </DockPanel>
 </Window>

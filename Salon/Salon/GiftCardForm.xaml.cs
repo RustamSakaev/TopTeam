@@ -72,14 +72,21 @@ namespace Salon
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var idx = ((DataView)GiftCardGrid.DataContext).Table.Columns.IndexOf("id");
-
-            foreach (DataRowView selectedItem in GiftCardGrid.SelectedItems)
+            try
             {
-                DBGiftCard.DeleteGiftCard(selectedItem.Row[idx].ToString());
-            }
+                var idx = ((DataView)GiftCardGrid.DataContext).Table.Columns.IndexOf("id");
 
-            CurrentFormData = DBGiftCard.GetGiftCards();
+                foreach (DataRowView selectedItem in GiftCardGrid.SelectedItems)
+                {
+                    DBGiftCard.DeleteGiftCard(selectedItem.Row[idx].ToString());
+                }
+
+                CurrentFormData = DBGiftCard.GetGiftCards();
+            }
+            catch
+            {
+                MessageBox.Show("Невозможно удалить!");
+            }
         }
 
         private void GiftCardGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -92,6 +99,11 @@ namespace Salon
         private void GiftCardGrid_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             DisplayDataWithFilter();
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchBox.Clear();
         }
     }
 }

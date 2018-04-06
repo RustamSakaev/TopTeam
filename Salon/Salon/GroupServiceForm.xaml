@@ -37,7 +37,7 @@
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
             <Button x:Name="EditButton" Content="Редактировать" Click="EditButton_Click"/>
-            <Button x:Name="DeleteButton"  Content="Удалить" Style="{StaticResource buttonDelete}"/>
+            <Button x:Name="DeleteButton"  Content="Удалить" Style="{StaticResource buttonDelete}" Click="DeleteButton_Click"/>
         </StackPanel>
         <DataGrid x:Name="GroupServiceGrid"></DataGrid>
     </DockPanel>

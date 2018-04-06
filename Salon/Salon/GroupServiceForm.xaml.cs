@@ -86,5 +86,23 @@ namespace Salon
             NameBox.Clear();
         }
 
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var group_col = ((DataView)GroupServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+            if (group_col == -1) return;
+            var groupid = ((DataRowView)GroupServiceGrid.SelectedItem)?.Row[group_col].ToString();
+            if (groupid == null) return;
+            try
+            {
+                DBGroupService.DeleteGroupService(groupid);
+                MessageBox.Show("Объект успешно удален!");
+                CurrentData = DBGroupService.GetGroupServices();
+                GroupServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                MessageBox.Show("Невозможно удалить данный объект!");
+            }
+        }
     }
 }

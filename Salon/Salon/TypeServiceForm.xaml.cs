@@ -25,11 +25,13 @@ namespace Salon
     {
         private DataTable currentData = new DataTable();
         private readonly List<Filter> Filter = new List<Filter>();
-        private readonly Action<string> Back;
-        public TypeServiceForm(Action<string> b = null)
+        private readonly Action Back;
+        private string kind_ID;
+        public TypeServiceForm(Action b = null, string kind_id = null)
         {
             InitializeComponent();
             Back = b;
+            kind_ID = kind_id;
         }
         private DataTable CurrentData
         {
@@ -104,6 +106,36 @@ namespace Salon
         {
             NameBox.Clear();
             GroupServiceCmbBox.SelectedValue = "Все";
+        }
+
+        private void TypeServiceGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var type_col = ((DataView)TypeServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+            if (type_col == -1) return;
+            var typeid = ((DataRowView)TypeServiceGrid.SelectedItem)?.Row[type_col].ToString();
+            if (typeid == null) return;
+            DBTypeService_KindService.AddTypeKind(typeid,kind_ID);
+            Back();
+            this.Close();
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var type_col = ((DataView)TypeServiceGrid.ItemsSource).Table.Columns.IndexOf("id");
+            if (type_col == -1) return;
+            var typeid = ((DataRowView)TypeServiceGrid.SelectedItem)?.Row[type_col].ToString();
+            if (typeid == null) return;
+            try
+            {
+                DBTypeService.DeleteTypeService(typeid);
+                MessageBox.Show("Объект успешно удален!");
+                CurrentData = DBTypeService.GetTypeServices();
+                TypeServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+                TypeServiceGrid.Columns[3].Visibility = Visibility.Hidden;
+            }catch(System.Data.SqlClient.SqlException)
+            {
+                MessageBox.Show("Невозможно удалить данный объект!");
+            }
         }
     }
 }

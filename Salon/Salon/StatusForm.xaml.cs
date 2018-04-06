@@ -65,15 +65,22 @@ namespace Salon
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var idx = ((DataTable)StatusGrid.DataContext).Columns.IndexOf("id");
-
-            foreach (DataRowView selectedItem in StatusGrid.SelectedItems)
+            try
             {
-                DBStatus.DeleteStatus(selectedItem.Row[idx].ToString());
-            }
+                var idx = ((DataTable)StatusGrid.DataContext).Columns.IndexOf("id");
 
-            CurrentFormData = DBStatus.GetStatuses();
-            _onUpdate();
+                foreach (DataRowView selectedItem in StatusGrid.SelectedItems)
+                {
+                    DBStatus.DeleteStatus(selectedItem.Row[idx].ToString());
+                }
+
+                CurrentFormData = DBStatus.GetStatuses();
+                _onUpdate();
+            }
+            catch
+            {
+                MessageBox.Show("Невозможно удалить!");
+            }
         }
 
         private void StatusGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)

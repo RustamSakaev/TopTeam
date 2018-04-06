@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Банковская карта" Height="347" Width="328.998" >
+        Title="Подарочная карта" Height="350" Width="340" MinWidth="340" MinHeight="350" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -18,7 +18,7 @@
             <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
         </StackPanel>
         <WrapPanel>
-            <StackPanel>
+            <StackPanel Width="320">
                 <Label Content="Номер"></Label>
                 <TextBox x:Name="NumberBox" Width="305" ></TextBox>
             </StackPanel>
@@ -26,19 +26,28 @@
                 <Label Content="Дата выдачи"></Label>
                 <DatePicker x:Name="GivingDatePicker" Width="145"/>
             </StackPanel>
-            <StackPanel>
+            <StackPanel Width="165">
                 <Label Content="Номинал"></Label>
                 <TextBox x:Name="NominalBox"  Width="145" ></TextBox>
             </StackPanel>
-            <StackPanel>
-                <Label Content="Клиент"></Label>
-                <ComboBox x:Name="ClientCmbBox" Width="305" ItemsSource="{Binding ComboItems}">
-                </ComboBox>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Width="280">
+                    <Label Content="Клиент"></Label>
+                    <ComboBox x:Name="ClientCmbBox" Width="305" ItemsSource="{Binding ComboItems}" />
+                </StackPanel>
+                <StackPanel>
+                    <Button x:Name="ClientFormButton" Content="..." Style="{StaticResource threeDots}" Height="Auto" Click="ClientFormButton_Click"/>
+                </StackPanel>
             </StackPanel>
-            <StackPanel>
-                <Label Content="Сотрудник"></Label>
-                <ComboBox x:Name="WorkerCmbBox" Width="305" ItemsSource="{Binding ComboItems}">
-                </ComboBox>
+            
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Width="280">
+                    <Label Content="Сотрудник"></Label>
+                    <ComboBox x:Name="WorkerCmbBox" Width="305" ItemsSource="{Binding ComboItems}" />
+                </StackPanel>
+                <StackPanel>
+                    <Button x:Name="WorkerFormButton" Content="..." Style="{StaticResource threeDots}" Height="Auto" Click="WorkerFormButton_Click"/>
+                </StackPanel>
             </StackPanel>
         </WrapPanel>
     </DockPanel>

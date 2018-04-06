@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Salon"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Клиенты" Height="356.958" Width="758.959" Loaded="Window_Loaded">
+        Title="Клиенты" Height="400" Width="850" Loaded="Window_Loaded" MinWidth="850" MinHeight="400">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -17,7 +17,7 @@
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
             <Label Content="Фильтр:"  Margin="0"/>
             <WrapPanel>
-                <DockPanel Height="96">
+                <DockPanel Height="52" Width="835">
                     <WrapPanel DockPanel.Dock="Top">
                         <StackPanel Margin="5 0 5 0">
                             <Label  Content="ФИО:"/>
@@ -35,10 +35,11 @@
                             <Label Content="Дата рождения по:"/>
                             <DatePicker x:Name="EndDatePicker" SelectedDateChanged="EndDatePicker_SelectedDateChanged"/>
                         </StackPanel>
+
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button x:Name="ClearButton" Width="80" Content="Очистить" Click="ClearButton_Click" Height="26"/>
+                        </StackPanel>
                     </WrapPanel>
-                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button x:Name="ClearButton" Width="80" Content="Очистить" Click="ClearButton_Click"/>
-                    </StackPanel>
                 </DockPanel>
             </WrapPanel>
         </StackPanel>

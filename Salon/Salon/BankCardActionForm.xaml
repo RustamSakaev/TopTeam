@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Банковская карта" Height="242" Width="323.941" >
+        Title="Банковская карта" Height="240" Width="330" MinWidth="330" MinHeight="240" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -18,14 +18,18 @@
             <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
         </StackPanel>
         <WrapPanel>
-            <StackPanel>
-                <Label Content="Клиент"></Label>
-                <ComboBox x:Name="ClientCmbBox" Width="305" ItemsSource="{Binding ComboItems}">
-                </ComboBox>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Width="280">
+                    <Label Content="Клиент"></Label>
+                    <ComboBox x:Name="ClientCmbBox" Width="305" ItemsSource="{Binding ComboItems}" />
+                </StackPanel>
+                <StackPanel>
+                    <Button x:Name="ClientFormButton" Content="..." Style="{StaticResource threeDots}" Height="Auto" Click="ClientFormButton_Click" />
+                </StackPanel>
             </StackPanel>
             <StackPanel>
                 <Label Content="Номер"></Label>
-                <TextBox x:Name="NumberBox" Height="26" Width="705" ></TextBox>
+                <TextBox x:Name="NumberBox" Height="26" Width="310" ></TextBox>
             </StackPanel>
         </WrapPanel>
     </DockPanel>

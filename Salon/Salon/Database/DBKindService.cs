@@ -22,7 +22,7 @@ namespace Salon.Database
                     KindService.ID_KindService as id,
                     KindService.Name as Наименование 
                 FROM KindService
-                WHERE KindService.ID_KindService = {id};"
+                WHERE KindService.ID_KindService = {id}"
             );
         }
 

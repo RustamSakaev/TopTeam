@@ -55,6 +55,152 @@
         </Setter>
     </Style>
 
+    <Style TargetType="Menu">
+        <Setter Property="DockPanel.Dock" Value="Top" />
+        <Setter Property="Background" Value="#2b3043" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="Foreground" Value="#d9dfeb" />
+    </Style>
+
+    <Style  TargetType="MenuItem">
+        <Setter Property="Background" Value="#2b3043" />
+        <Setter Property="Foreground" Value="#d9dfeb"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <ControlTemplate x:Key="{x:Static MenuItem.TopLevelHeaderTemplateKey}" TargetType="{x:Type MenuItem}">
+        <Border Name="Border" >
+            <Grid>
+                <ContentPresenter 
+                    Margin="6,3,6,3" 
+                    ContentSource="Header"
+                    RecognizesAccessKey="True" />
+                <Popup 
+                    Name="Popup"
+                    Placement="Bottom"
+                    IsOpen="{TemplateBinding IsSubmenuOpen}">
+                    <Border 
+                      Background="#2b3043"
+                      BorderBrush="#2b3043"
+                      BorderThickness="0" >
+                        <StackPanel  
+                            IsItemsHost="True" 
+                            KeyboardNavigation.DirectionalNavigation="Cycle" />
+                    </Border>
+                </Popup>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsHighlighted" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="#3A445A"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{x:Static MenuItem.TopLevelItemTemplateKey}" TargetType="{x:Type MenuItem}">
+        <Border Name="Border" >
+            <Grid>
+                <ContentPresenter 
+                    Margin="6,3,6,3" 
+                    ContentSource="Header"
+                    RecognizesAccessKey="True" />
+                <Popup 
+                    Name="Popup"
+                    Placement="Bottom"
+                    IsOpen="{TemplateBinding IsSubmenuOpen}">
+                    <Border 
+                      Background="#2b3043"
+                      BorderBrush="#2b3043"
+                      BorderThickness="0" >
+                        <StackPanel  
+                            IsItemsHost="True" 
+                            KeyboardNavigation.DirectionalNavigation="Cycle" />
+                    </Border>
+                </Popup>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsHighlighted" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="#3A445A"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{x:Static MenuItem.SubmenuItemTemplateKey}" TargetType="{x:Type MenuItem}">
+        <Border Name="Border" >
+            <Grid>
+                <ContentPresenter 
+                    Margin="6,3,6,3" 
+                    ContentSource="Header"
+                    RecognizesAccessKey="True" />
+                <Popup 
+                    Name="Popup"
+                    Placement="Bottom"
+                    IsOpen="{TemplateBinding IsSubmenuOpen}">
+                    <Border 
+                      Background="#2b3043"
+                      BorderBrush="#2b3043"
+                      BorderThickness="0" >
+                        <StackPanel  
+                            IsItemsHost="True" 
+                            KeyboardNavigation.DirectionalNavigation="Cycle" />
+                    </Border>
+                </Popup>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsHighlighted" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="#3A445A"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{x:Static MenuItem.SubmenuHeaderTemplateKey}" TargetType="{x:Type MenuItem}">
+        <Border Name="Border" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="Icon"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="Shortcut"/>
+                    <ColumnDefinition Width="13"/>
+                </Grid.ColumnDefinitions>
+                <Path 
+        Grid.Column="3"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Data="M 0 0 L 0 7 L 4 3.5 Z" 
+        Fill="#fff" />
+                <ContentPresenter 
+                    Margin="6,3,6,3" 
+                    ContentSource="Header"
+                    RecognizesAccessKey="True" />
+                <Popup 
+                    Name="Popup"
+                    Placement="Right"
+                    HorizontalOffset="-4" 
+                    IsOpen="{TemplateBinding IsSubmenuOpen}"
+                    AllowsTransparency="True" 
+                    Focusable="False"
+                    PopupAnimation="Fade">
+                    <Border 
+                      Background="#2b3043"
+                      BorderBrush="#2b3043"
+                      BorderThickness="0" >
+                        <StackPanel  
+                            IsItemsHost="True" 
+                            KeyboardNavigation.DirectionalNavigation="Cycle" />     
+                    </Border>
+                </Popup>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsHighlighted" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="#3A445A"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
 
     <Style TargetType="DockPanel">
         <Setter Property="LastChildFill" Value="False" />
@@ -153,6 +299,7 @@
         <Setter Property="ColumnWidth" Value="*"/><!--растягивание столбцов-->
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="SelectionMode" Value="Single"/>
     </Style>
 
     <Style TargetType="ListBox">
@@ -171,6 +318,11 @@
         <Setter Property="Background" Value="#54607a" />
         <Setter Property="Foreground" Value="#d9dfeb" />
         <Setter Property="BorderThickness" Value="0"/>
+        <Style.Triggers>
+            <Trigger Property="DataGridCell.IsSelected" Value="True">
+                <Setter Property="Background" Value="#3A445A" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
     
     <Style TargetType="DataGridColumnHeader">
@@ -181,25 +333,6 @@
     <Style TargetType="DataGridRowHeader">
         <Setter Property="Background" Value="#2b3043"/>
         <Setter Property="Foreground" Value="#d9dfeb"/>
-    </Style>
-
-    <Style TargetType="Menu">
-        <Setter Property="DockPanel.Dock" Value="Top" />
-        <Setter Property="Background" Value="#2b3043" />
-        <Setter Property="Height" Value="25" />
-        <Setter Property="Foreground" Value="#d9dfeb" />
-    </Style>
-
-    <Style  TargetType="MenuItem">
-        <Setter Property="Background" Value="#2b3043" />
-        <Setter Property="Foreground" Value="#d9dfeb"/>
-        <Setter Property="BorderThickness" Value="0"/>
-    </Style>
-
-    <Style  TargetType="Separator">
-        <Setter Property="Background" Value="#2b3043" />
-        <Setter Property="Foreground" Value="#d9dfeb"/>
-        <Setter Property="BorderThickness" Value="0"/>
     </Style>
 
 </ResourceDictionary>

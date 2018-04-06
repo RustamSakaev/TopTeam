@@ -12,7 +12,7 @@ namespace Salon.Database
                     Tariff.ID_Tariff as id,
                     Service.Name as Услуга,
                     FORMAT(StartDate, 'dd/MM/yyyy', 'en-us')  as [Дата начала],
-                    Tariff.Cost as Стоимость,
+                    Convert(varchar(10),Tariff.Cost) as Стоимость,
                     Tariff.Service_ID as serv_id
                 FROM Tariff inner join Service on Tariff.Service_ID = Service.ID_Service;"
             );

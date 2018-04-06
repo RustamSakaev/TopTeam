@@ -25,16 +25,18 @@ namespace Salon
                 case FormState.Edit:
                     HeaderInner.Content = "Редактирование банковской карты";
                     _currentDataItem = DBBankCard.GetBankCard(editId);
-                    ClientCmbBox.Items.Add(_currentDataItem.Rows[0]["ФИО"].ToString());
-                    ClientCmbBox.SelectedItem = _currentDataItem.Rows[0]["ФИО"].ToString();
-                    ClientCmbBox.IsReadOnly = true;
+
+                    UpdateClients();
+
+                    ClientCmbBox.SelectedValue = _currentDataItem.Rows[0]["clientid"].ToString();
+                    
                     NumberBox.Text = _currentDataItem.Rows[0]["Номер"].ToString();
                     break;
                 case FormState.Add:
                     HeaderInner.Content = "Добавление банковской карты";
-                    ClientCmbBox.ItemsSource = DBClient.GetClients().DefaultView;
-                    ClientCmbBox.DisplayMemberPath = "ФИО";
-                    ClientCmbBox.SelectedValuePath = "id";
+
+                    UpdateClients();
+
                     break;
             }
         }
@@ -48,6 +50,7 @@ namespace Salon
                 case FormState.Edit:
                     DBBankCard.EditBankCard(
                         _currentDataItem.Rows[0]["id"].ToString(),
+                        ClientCmbBox.SelectedValue.ToString(),
                         NumberBox.Text
                     );
                     break;
@@ -66,6 +69,37 @@ namespace Salon
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void ClientFormButton_Click(object sender, RoutedEventArgs e)
+        {
+            var client = new ClientForm(SetClient, UpdateClients, FormOpenAs.Secondary);
+            client.ShowDialog();
+        }
+
+        private void SetClient(string id)
+        {
+            ClientCmbBox.SelectedValue = id;
+        }
+
+        private void UpdateClients()
+        {
+            var selectedClient = ClientCmbBox.SelectedValue;
+
+            ClientCmbBox.ItemsSource = DBClient.GetClients().DefaultView;
+            ClientCmbBox.DisplayMemberPath = "ФИО";
+            ClientCmbBox.SelectedValuePath = "id";
+
+            if (selectedClient == null) return;
+
+            try
+            {
+                ClientCmbBox.SelectedValue = selectedClient;
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Salon
     /// </summary>
     public partial class BankCardForm : Window
     {
-        private readonly string[] _hiddenFields = { "id" };
+        private readonly string[] _hiddenFields = { "id", "clientid" };
         private DataTable _currentFormData = new DataTable();
         private string _currentFilter = "";
 
@@ -72,14 +72,21 @@ namespace Salon
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var idx = ((DataView)BankCardGrid.DataContext).Table.Columns.IndexOf("id");
-
-            foreach (DataRowView selectedItem in BankCardGrid.SelectedItems)
+            try
             {
-                DBBankCard.DeleteBankCard(selectedItem.Row[idx].ToString());
-            }
+                var idx = ((DataView)BankCardGrid.DataContext).Table.Columns.IndexOf("id");
 
-            CurrentFormData = DBBankCard.GetBankCards();
+                foreach (DataRowView selectedItem in BankCardGrid.SelectedItems)
+                {
+                    DBBankCard.DeleteBankCard(selectedItem.Row[idx].ToString());
+                }
+
+                CurrentFormData = DBBankCard.GetBankCards();
+            }
+            catch
+            {
+                MessageBox.Show("Невозможно удалить!");
+            }
         }
 
         private void BankCardGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -92,6 +99,11 @@ namespace Salon
         private void BankCardGrid_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             DisplayDataWithFilter();
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchBox.Clear();
         }
     }
 }

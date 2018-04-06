@@ -30,16 +30,18 @@ namespace Salon
         private readonly Action Back;
         private string type_ID;
         private bool form_state_add;
+        private  DataTable _MNcurrentData;
         private DataTable CurrentData
         {
             get { return currentData; }
             set
             {
-                curData = value; TypeService_KindServiceGrid.ItemsSource = curData.DefaultView;
-               
+                curData = value;
+                TypeService_KindServiceGrid.ItemsSource = curData.DefaultView;
+                TypeService_KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;
             }
         }
-        public TypeServiceActionForm(Action b, FormState state,string type_id=null)
+        public TypeServiceActionForm(Action b=null, FormState state=FormState.View,string type_id=null)
         {
             InitializeComponent();
             Back = b;
@@ -58,7 +60,6 @@ namespace Salon
                     GroupServiceCmbBox.SelectedValue = currentData.Rows[0]["group_id"].ToString();
                     MNcurrentData = DBTypeService_KindService.GetKinds(type_id);
                     TypeService_KindServiceGrid.ItemsSource = MNcurrentData.DefaultView;
-                    //TypeService_KindServiceGrid.Columns[1].Visibility = Visibility.Hidden;
                     break;
                 case FormState.Add:
                     HeaderLabel.Content = "Добавление типа услуги";
@@ -66,14 +67,25 @@ namespace Salon
                     GroupServiceCmbBox.ItemsSource = DBGroupService.GetGroupServices().DefaultView;
                     GroupServiceCmbBox.DisplayMemberPath = "Наименование";
                     GroupServiceCmbBox.SelectedValuePath = "id";
+                    AddButton.Visibility = Visibility.Hidden;
+                    DeleteButton.Visibility = Visibility.Hidden;
                     TypeService_KindServiceGrid.Visibility = Visibility.Hidden;
+                    KindLabel.Visibility = Visibility.Hidden;
                     break;
                 
 
             }
         }
 
-      
+        public void OnLoad(object sender, RoutedEventArgs e)
+        {
+            if(type_ID!=null)
+            {
+                CurrentData = DBTypeService_KindService.GetKinds(type_ID);
+                TypeService_KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+            }
+          
+        }
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
             if (!NameBox.Validate(true))
@@ -116,13 +128,41 @@ namespace Salon
         {
             if(form_state_add)
             {
+                //var type_name = NameBox.Text;
+                //if (type_name == string.Empty) { MessageBox.Show("Заполните наименование!"); return; }
 
-            }else
+                //var group = GroupServiceCmbBox.SelectedValue;
+                //if (group.ToString() == string.Empty) { MessageBox.Show("Заполните группу услуги!"); return; }
+
+                //DBTypeService.AddTypeService(NameBox.Text, GroupServiceCmbBox.SelectedValue.ToString());
+                
+            }
+            else
             {
-                var form = new KindService(() => { CurrentData = DBTypeService_KindService.GetKinds(type_ID); },type_ID);
+                var form = new KindService(() => { CurrentData = DBTypeService_KindService.GetKinds(type_ID); TypeService_KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;  },type_ID);
                 form.ShowDialog();
             }
             
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (form_state_add)
+            {
+              
+                
+            }
+            else
+            {
+                var kind_col = ((DataView)TypeService_KindServiceGrid.ItemsSource).Table.Columns.IndexOf("kind_id");
+                if (kind_col == -1) return;
+                var kindid = ((DataRowView)TypeService_KindServiceGrid.SelectedItem)?.Row[kind_col].ToString();
+                if (kindid == null) return;
+                DBTypeService_KindService.DeleteKind(kindid);
+                _MNcurrentData = DBTypeService_KindService.GetKinds(type_ID);
+                TypeService_KindServiceGrid.ItemsSource = _MNcurrentData.DefaultView;
+                TypeService_KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;
+            }
         }
     }
 }

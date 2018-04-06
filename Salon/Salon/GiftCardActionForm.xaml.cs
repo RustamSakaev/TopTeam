@@ -25,13 +25,12 @@ namespace Salon
                 case FormState.Edit:
                     HeaderInner.Content = "Редактирование подарочной карты";
                     _currentDataItem = DBGiftCard.GetGiftCard(editId);
-                    ClientCmbBox.Items.Add(_currentDataItem.Rows[0]["Клиент"].ToString());
-                    ClientCmbBox.SelectedItem = _currentDataItem.Rows[0]["Клиент"].ToString();
-                    ClientCmbBox.IsReadOnly = true;
 
-                    WorkerCmbBox.Items.Add(_currentDataItem.Rows[0]["Сотрудник"].ToString());
-                    WorkerCmbBox.SelectedItem = _currentDataItem.Rows[0]["Сотрудник"].ToString();
-                    WorkerCmbBox.IsReadOnly = true;
+                    UpdateClients();
+                    ClientCmbBox.SelectedValue = _currentDataItem.Rows[0]["clientid"].ToString();
+
+                    UpdateWorkers();
+                    WorkerCmbBox.SelectedValue = _currentDataItem.Rows[0]["workerid"].ToString();
 
                     NumberBox.Text = _currentDataItem.Rows[0]["Номер"].ToString();
                     NominalBox.Text = _currentDataItem.Rows[0]["Номинал"].ToString();
@@ -40,13 +39,10 @@ namespace Salon
                     break;
                 case FormState.Add:
                     HeaderInner.Content = "Добавление подарочной карты";
-                    ClientCmbBox.ItemsSource = DBClient.GetClients().DefaultView;
-                    ClientCmbBox.DisplayMemberPath = "ФИО";
-                    ClientCmbBox.SelectedValuePath = "id";
 
-                    WorkerCmbBox.ItemsSource = DBWorker.GetWorkers().DefaultView;
-                    WorkerCmbBox.DisplayMemberPath = "ФИО";
-                    WorkerCmbBox.SelectedValuePath = "id";
+                    UpdateClients();
+                    UpdateWorkers();
+
                     break;
             }
         }
@@ -67,8 +63,8 @@ namespace Salon
                         NumberBox.Text, 
                         GivingDatePicker.DisplayDate.ToString(), 
                         NominalBox.Text,
-                        _currentDataItem.Rows[0]["clientid"].ToString(),
-                        _currentDataItem.Rows[0]["workerid"].ToString()
+                        ClientCmbBox.SelectedValue.ToString(),
+                        WorkerCmbBox.SelectedValue.ToString()
                     );
                     break;
                 case FormState.Add:
@@ -89,6 +85,69 @@ namespace Salon
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void ClientFormButton_Click(object sender, RoutedEventArgs e)
+        {
+            var client = new ClientForm(SetClient, UpdateClients, FormOpenAs.Secondary);
+            client.ShowDialog();
+        }
+
+        private void SetClient(string id)
+        {
+            ClientCmbBox.SelectedValue = id;
+        }
+
+        private void UpdateClients()
+        {
+            var selectedClient = ClientCmbBox.SelectedValue;
+
+            ClientCmbBox.ItemsSource = DBClient.GetClients().DefaultView;
+            ClientCmbBox.DisplayMemberPath = "ФИО";
+            ClientCmbBox.SelectedValuePath = "id";
+
+            if (selectedClient == null) return;
+
+            try
+            {
+                ClientCmbBox.SelectedValue = selectedClient;
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+        }
+
+        private void WorkerFormButton_Click(object sender, RoutedEventArgs e)
+        {
+            var worker = new WorkerForm(SetWorker, UpdateWorkers, FormOpenAs.Secondary);
+            worker.ShowDialog();
+        }
+
+
+        private void SetWorker(string id)
+        {
+            WorkerCmbBox.SelectedValue = id;
+        }
+
+        private void UpdateWorkers()
+        {
+            var selectedWorker = WorkerCmbBox.SelectedValue;
+
+            WorkerCmbBox.ItemsSource = DBWorker.GetWorkers().DefaultView;
+            WorkerCmbBox.DisplayMemberPath = "ФИО";
+            WorkerCmbBox.SelectedValuePath = "id";
+
+            if (selectedWorker == null) return;
+
+            try
+            {
+                WorkerCmbBox.SelectedValue = selectedWorker;
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
     }
 }

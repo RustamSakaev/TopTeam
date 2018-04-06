@@ -249,9 +249,6 @@ namespace Salon
                     Excel.Worksheet ws = app.Worksheets[1];
                     con = new SqlConnection(connectionStr);
                     con.Open();
-                    ComboData name = new ComboData(); 
-                    name.Id = Convert.ToInt32(FioCmbBox.SelectedItem);
-                    name.Value = Convert.ToString(FioCmbBox.SelectedItem);
                     string sql = @"SELECT Surname as Фамилия, Name as Имя, SUM(BillAmount) as Сумма FROM Worker, Bill, Visit 
                                 WHERE Visit.ID_Visit=Bill.Visit_ID AND Worker.ID_Worker=Visit.Worker_ID AND Worker.ID_Worker=" + userId +
                                 "AND Bill.Date BETWEEN '" + FromPicker.SelectedDate.Value.ToString("s") + "' AND '" + ToPicker.SelectedDate.Value.ToString("s") + "'" +
@@ -269,7 +266,7 @@ namespace Salon
                             ws.Cells[i + 2, 2].Value2 = dt.Rows[i][1];
                             ws.Cells[i + 2, 3].Value2 = dt.Rows[i][2];                          
                         }
-                        ws.Cells[1, 5].Value2 = FromPicker.SelectedDate.Value.ToString() + "-" + ToPicker.SelectedDate.Value.ToString();
+                        ws.Cells[1, 6].Value2 = FromPicker.SelectedDate.Value.ToShortDateString() + "-" + ToPicker.SelectedDate.Value.ToShortDateString();
                         app.Visible = true;
                     }
                 }
@@ -295,7 +292,6 @@ namespace Salon
                     Excel.Worksheet ws = app.Worksheets[1];
                     con = new SqlConnection(connectionStr);
                     con.Open();
-                    //ComboData name = (ComboData)FioCmbBox.SelectedItem;
                     ComboData name = new ComboData();
                     name.Id = Convert.ToInt32(FioCmbBox.SelectedValue);
                     name.Value = Convert.ToString(FioCmbBox.Text);
@@ -317,7 +313,7 @@ namespace Salon
                             ws.Cells[i + 2, 2].Value2 = dt.Rows[i][1];
                             ws.Cells[i + 2, 3].Value2 = dt.Rows[i][2];                           
                         }
-                        ws.Cells[1, 5].Value2 = FromPicker.SelectedDate.Value.ToString() + "-" + ToPicker.SelectedDate.Value.ToString();
+                        ws.Cells[1, 6].Value2 = FromPicker.SelectedDate.Value.ToShortDateString() + "-" + ToPicker.SelectedDate.Value.ToShortDateString();
                         app.Visible = true;
                     }
                 }
@@ -350,7 +346,6 @@ namespace Salon
                     Excel.Worksheet ws = app.Worksheets[1];
                     con = new SqlConnection(connectionStr);
                     con.Open();
-                    ComboData name = (ComboData)FioCmbBox.SelectedItem;
                     string sql = @"SELECT Surname as Фамилия, Name as Имя, COUNT(Client_ID) as Количество FROM Worker, Visit
                                 WHERE Worker.ID_Worker = Visit.Worker_ID AND Worker.ID_Worker="+userId+                               
                                 "AND Date BETWEEN '" + FromPicker.SelectedDate.Value.ToString("s") + "' AND '" + ToPicker.SelectedDate.Value.ToString("s") + @"'
@@ -366,9 +361,9 @@ namespace Salon
                         {
                             ws.Cells[i + 2, 1].Value2 = dt.Rows[i][0];
                             ws.Cells[i + 2, 2].Value2 = dt.Rows[i][1];
-                            ws.Cells[i + 2, 4].Value2 = dt.Rows[i][2];                           
+                            ws.Cells[i + 2, 3].Value2 = dt.Rows[i][2];                           
                         }
-                        ws.Cells[1, 5].Value2 = FromPicker.SelectedDate.Value.ToString() + "-" + ToPicker.SelectedDate.Value.ToString();
+                        ws.Cells[1, 6].Value2 = FromPicker.SelectedDate.Value.ToShortDateString() + "-" + ToPicker.SelectedDate.Value.ToShortDateString();
                         app.Visible = true;
                     }
                 }
@@ -394,11 +389,12 @@ namespace Salon
                     Excel.Worksheet ws = app.Worksheets[1];
                     con = new SqlConnection(connectionStr);
                     con.Open();
-                    ComboData name = (ComboData)FioCmbBox.SelectedItem;
+                    ComboData name = new ComboData();
+                    name.Id = Convert.ToInt32(FioCmbBox.SelectedValue);
+                    name.Value = Convert.ToString(FioCmbBox.Text);
                     string sql = @"SELECT Surname as Фамилия, Name as Имя, COUNT(Client_ID) as Количество FROM Worker, Visit
                                 WHERE Worker.ID_Worker = Visit.Worker_ID 
-                                AND Surname = '" + name.Value.Split(' ')[0] + @"' 
-                                AND Name = '" + name.Value.Split(' ')[1] + @"'
+                                AND Surname = '" + name.Value.Split(' ')[0] + @"'
                                 AND Date BETWEEN '" + FromPicker.SelectedDate.Value.ToString("s") + "' AND '" + ToPicker.SelectedDate.Value.ToString("s") + @"'
                                 GROUP BY Surname, Name";
                     if (con != null)
@@ -412,9 +408,9 @@ namespace Salon
                         {
                             ws.Cells[i + 2, 1].Value2 = dt.Rows[i][0];
                             ws.Cells[i + 2, 2].Value2 = dt.Rows[i][1];
-                            ws.Cells[i + 2, 4].Value2 = dt.Rows[i][2];                           
+                            ws.Cells[i + 2, 3].Value2 = dt.Rows[i][2];                           
                         }
-                        ws.Cells[1, 5].Value2 = FromPicker.SelectedDate.Value.ToString() + "-" + ToPicker.SelectedDate.Value.ToString();
+                        ws.Cells[1, 6].Value2 = FromPicker.SelectedDate.Value.ToShortDateString() + "-" + ToPicker.SelectedDate.Value.ToShortDateString();
                         app.Visible = true;
                     }
                 }

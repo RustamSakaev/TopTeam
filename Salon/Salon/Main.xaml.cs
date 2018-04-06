@@ -24,18 +24,7 @@ namespace Salon
 
             
             //проверка роли залогиненного пользователя
-            if (userRole == "Master")
-            {
-                ChangeUserItem.Visibility = Visibility.Collapsed;
-                Items.Visibility = Visibility.Collapsed;
-                WorkersExportItem.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                Items.Visibility = Visibility.Visible;
-                ChangeUserItem.Visibility = Visibility.Visible;
-                WorkersExportItem.Visibility = Visibility.Visible;
-            }
+            
 
         }
         private string userRole;
@@ -259,7 +248,7 @@ namespace Salon
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
+            this.Close();
         }
 
         private void masteraButton_Click(object sender, RoutedEventArgs e)
@@ -302,6 +291,18 @@ namespace Salon
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (userRole == "Master")
+            {
+                ChangeUserItem.Visibility = Visibility.Collapsed;
+                Items.Visibility = Visibility.Collapsed;
+                WorkersExportItem.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                Items.Visibility = Visibility.Visible;
+                ChangeUserItem.Visibility = Visibility.Visible;
+                WorkersExportItem.Visibility = Visibility.Visible;
+            }
             ////////////РАНДОМНЕНЬКО
             DataGridView dgv = new DataGridView();
             wfh.Child = dgv;

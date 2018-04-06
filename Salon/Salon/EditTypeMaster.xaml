@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Образец формы добавления/редактирования" Height="225.757" Width="446.934" >
+        Title="Образец формы добавления/редактирования" Height="225.757" Width="446.934" Icon="hairdresser.ico" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>

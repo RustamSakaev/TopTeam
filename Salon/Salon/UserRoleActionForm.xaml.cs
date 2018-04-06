@@ -62,7 +62,6 @@ namespace Salon
 
         public void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //DataGrid sender = new DataGrid;
             DataGridRow row = sender as DataGridRow;
             DataRowView dataRowView = (DataRowView)row.Item;
             Users main = this.Owner as Users;

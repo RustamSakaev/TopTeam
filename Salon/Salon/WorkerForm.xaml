@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Сотрудники" Height="456.717" Width="859.821" Loaded="Window_Loaded">
+        Title="Сотрудники" Height="456.717" Width="859.821" Loaded="Window_Loaded" Icon="hairdresser.ico">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>

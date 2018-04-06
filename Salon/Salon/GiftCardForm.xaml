@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Salon"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Подарочные карты" Loaded="Window_Loaded" MinWidth="495" MinHeight="400" Height="400" Width="495">
+        Title="Подарочные карты" Loaded="Window_Loaded" MinWidth="495" MinHeight="400" Height="400" Width="495" Icon="hairdresser.ico">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>

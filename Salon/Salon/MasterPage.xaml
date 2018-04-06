@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Salon"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Образец" MinWidth="800" MinHeight="500" Height="500" Width="800" >
+        Title="Образец" MinWidth="800" MinHeight="500" Height="500" Width="800" Icon="hairdresser.ico" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>

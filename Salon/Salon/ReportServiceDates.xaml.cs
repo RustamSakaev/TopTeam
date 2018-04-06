@@ -29,7 +29,7 @@ namespace Salon
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
-            string connectionStr = @"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=Salon;Integrated Security=True";
+            string connectionStr = @"Data Source=DESKTOP-H5176PR\MSSQLSERVER01;Initial Catalog=Salon;Integrated Security=True";
             SqlConnection con = null;
             SqlCommand com = null;
             try

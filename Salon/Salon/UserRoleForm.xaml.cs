@@ -56,14 +56,21 @@ namespace Salon
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            string login=UserCmbBox.SelectedValue.ToString();
-            string role = RoleCmbBox.Text == "Мастер" ? "db_master" : "db_admin";
-            DelRole(login);
-            AddRole(login, role);
+            try
+            {
+                string login = UserCmbBox.SelectedValue.ToString();
+                string role = RoleCmbBox.Text == "Мастер" ? "db_master" : "db_admin";
+                DelRole(login);
+                AddRole(login, role);
+                MessageBox.Show("Роль успешно изменена!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void PostFormButton_Click(object sender, RoutedEventArgs e)
         {
-            //this.Hide();
             UserRoleActionForm main = new UserRoleActionForm();
             main.Owner = this;
             main.ShowDialog();

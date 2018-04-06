@@ -131,7 +131,7 @@ namespace Salon
 
         public string Connection()
         {
-            string con = @"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=Salon;Integrated Security=True";
+            string con = @"Data Source=DESKTOP-H5176PR\MSSQLSERVER01;Initial Catalog=Salon;Integrated Security=True";
             return con;
         }
 
@@ -192,10 +192,12 @@ namespace Salon
                         com.CommandText = sql;
                         SqlDataAdapter adapter = new SqlDataAdapter(com);
                         adapter.Fill(dt);
+                        List<DataRow> list = dt.AsEnumerable().ToList();
+                        FioCmbBox.ItemsSource = dt.DefaultView;
                         FioCmbBox.DisplayMemberPath = "Surname";
                         FioCmbBox.SelectedValuePath = "ID_Worker";
-                        List<DataRow> list = dt.AsEnumerable().ToList();
-                        FioCmbBox.ItemsSource = list;
+                        
+                       
                     }
                 }
                 catch (Exception ex)
@@ -247,7 +249,9 @@ namespace Salon
                     Excel.Worksheet ws = app.Worksheets[1];
                     con = new SqlConnection(connectionStr);
                     con.Open();
-                    ComboData name = (ComboData)FioCmbBox.SelectedItem;
+                    ComboData name = new ComboData(); 
+                    name.Id = Convert.ToInt32(FioCmbBox.SelectedItem);
+                    name.Value = Convert.ToString(FioCmbBox.SelectedItem);
                     string sql = @"SELECT Surname as Фамилия, Name as Имя, SUM(BillAmount) as Сумма FROM Worker, Bill, Visit 
                                 WHERE Visit.ID_Visit=Bill.Visit_ID AND Worker.ID_Worker=Visit.Worker_ID AND Worker.ID_Worker=" + userId +
                                 "AND Bill.Date BETWEEN '" + FromPicker.SelectedDate.Value.ToString("s") + "' AND '" + ToPicker.SelectedDate.Value.ToString("s") + "'" +
@@ -291,11 +295,13 @@ namespace Salon
                     Excel.Worksheet ws = app.Worksheets[1];
                     con = new SqlConnection(connectionStr);
                     con.Open();
-                    ComboData name = (ComboData)FioCmbBox.SelectedItem;
-                    string sql = @"SELECT Surname as Фамилия, Name as Имя, SUM(BillAmount) as СуммаFROM Worker, Bill, Visit 
+                    //ComboData name = (ComboData)FioCmbBox.SelectedItem;
+                    ComboData name = new ComboData();
+                    name.Id = Convert.ToInt32(FioCmbBox.SelectedValue);
+                    name.Value = Convert.ToString(FioCmbBox.Text);
+                    string sql = @"SELECT Surname as Фамилия, Name as Имя, SUM(BillAmount) as Сумма FROM Worker, Bill, Visit 
                                 WHERE Visit.ID_Visit=Bill.Visit_ID AND Worker.ID_Worker=Visit.Worker_ID
-                                AND Surname = '" + name.Value.Split(' ')[0] + @"' 
-                                AND Name = '" + name.Value.Split(' ')[1] + @"'
+                                AND Surname = '" + name.Value.Split(' ')[0] + @"'                                
                                 AND Bill.Date BETWEEN '" + FromPicker.SelectedDate.Value.ToString("s") + "' AND '" + ToPicker.SelectedDate.Value.ToString("s") + "'" +
                                 "GROUP BY surname,name";
                     if (con != null)

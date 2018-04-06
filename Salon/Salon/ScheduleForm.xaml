@@ -9,34 +9,36 @@
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
-    <DockPanel>
-        <Grid Height="416" VerticalAlignment="Top" Width="701">
+    <DockPanel Height="416" VerticalAlignment="Top">
+        <Grid Width="701" Height="416" VerticalAlignment="Top">
             <Label Content="Мастер:" Margin="10,0,-141,394"/>
             <ComboBox x:Name="workerCmbBox" Margin="10,22,-119,366" Width="209" ItemsSource="{Binding}" DisplayMemberPath="Фамилия" SelectedValuePath="id" HorizontalAlignment="Left" LayoutUpdated="ComboBox_LayoutUpdated" SelectionChanged="workerChkBox_SelectionChanged" Height="Auto"/>
-            <Label Content="Тип мастера:" Margin="10,50,-119,342"/>
-            <ComboBox x:Name="typeMasterCmbBox" Margin="10,69,-119,319" ItemsSource="{Binding}" DisplayMemberPath="Name" SelectedValuePath="ID" HorizontalAlignment="Left" Width="209" Height="Auto"/>
-            <Calendar x:Name="datePicker" HorizontalAlignment="Left" Width="209" Margin="10,102,-119,137"/>
-            <WrapPanel Margin="0,279,-131,75" HorizontalAlignment="Left" Width="229">
+            <Label Content="Тип мастера:" Margin="10,50,-119,342" Visibility="Hidden"/>
+            <ComboBox x:Name="typeMasterCmbBox" Margin="10,69,-119,319" ItemsSource="{Binding}" DisplayMemberPath="Name" SelectedValuePath="ID" HorizontalAlignment="Left" Width="209" Height="Auto" Visibility="Hidden"/>
+            <Calendar x:Name="datePicker" HorizontalAlignment="Left" Width="209" Margin="10,59,0,180"/>
+            <WrapPanel Margin="0,241,0,0" HorizontalAlignment="Left" Width="229" Height="63" VerticalAlignment="Top">
                 <WrapPanel Height="32" Width="232">
                     <Label Content="С:  "/>
                     <DatePicker x:Name="fromDateDatePicker" Margin="0" Width="109"/>
-                    <TextBox x:Name="sHTB" Height="24" Margin="0" TextWrapping="Wrap" Text="13" Width="30"/>
+                    <TextBox x:Name="sHTB" Height="26" Margin="0" TextWrapping="Wrap" Text="10" Width="32" TextChanged="sHTB_TextChanged"/>
                     <TextBlock TextWrapping="Wrap" Text="ч." VerticalAlignment="Center"/>
-                    <TextBox x:Name="sMTB" Height="24" Margin="0" TextWrapping="Wrap" Text="00" Width="30"/>
+                    <TextBox x:Name="sMTB" Height="26" Margin="0" TextWrapping="Wrap" Text="00" Width="35"/>
                     <TextBlock TextWrapping="Wrap" Text="м." VerticalAlignment="Center"/>
                 </WrapPanel>
                 <WrapPanel Height="28" Width="226">
                     <Label Content="До:"/>
                     <DatePicker x:Name="beforeDateDatePicker" Margin="0" Width="107"/>
-                    <TextBox x:Name="dHTB" Height="24" Margin="0" TextWrapping="Wrap" Text="13" Width="29"/>
+                    <TextBox x:Name="dHTB" Height="26" Margin="0" TextWrapping="Wrap" Text="13" Width="33"/>
                     <TextBlock TextWrapping="Wrap" Text="ч." VerticalAlignment="Center"/>
-                    <TextBox x:Name="dMTB" Height="24" Margin="0" TextWrapping="Wrap" Text="30" Width="30"/>
+                    <TextBox x:Name="dMTB" Height="26" Margin="0" TextWrapping="Wrap" Text="30" Width="35"/>
                     <TextBlock TextWrapping="Wrap" Text="м." VerticalAlignment="Center"/>
                 </WrapPanel>
             </WrapPanel>
-            <Button Content="Сохранить"  Click="Button_Click" Margin="10,346,0,44" HorizontalAlignment="Left" Width="209"/>
-            <Button Content="Закрыть" Margin="10,377,0,13" Click="Button_Click_1" HorizontalAlignment="Left" Width="209"/>
-            <DataGrid x:Name="ScheduleGrid" Height="372" Margin="234,22,0,0" ItemsSource="{Binding}" Background="#FF484C65" HorizontalAlignment="Left" Width="448"/>
+            <Button Content="Сохранить"  Click="Button_Click" Margin="10,309,0,81" HorizontalAlignment="Left" Width="209"/>
+            <Button Content="Закрыть" Margin="10,340,0,50" Click="Button_Click_1" HorizontalAlignment="Left" Width="209"/>
+            <DataGrid x:Name="ScheduleGrid" Height="347" Margin="234,59,0,0" ItemsSource="{Binding}" Background="#FF484C65" HorizontalAlignment="Left" Width="448"/>
+            <DatePicker x:Name="dateFromTable" HorizontalAlignment="Left" Margin="254,21,0,0" VerticalAlignment="Top" Height="28" Width="149" DataContextChanged="dateFromTable_DataContextChanged" CalendarClosed="dateFromTable_CalendarClosed"/>
+            <Label Content="С:" HorizontalAlignment="Left" Margin="234,23,0,0" VerticalAlignment="Top"/>
         </Grid>
     </DockPanel>
 </Window>

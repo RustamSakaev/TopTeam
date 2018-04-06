@@ -17,13 +17,12 @@ namespace Salon
         {
             InitializeComponent();
 
-            //DBCore.Init(@"LENOVO-PC"); 
-           //DBCore.Init(@"ADMIN\SQLEXPRESS");//просто раскомментируй свою строку а не заменяй чужую
+            // DBCore.Init(@"LENOVO-PC"); 
+            //DBCore.Init(@"ADMIN\SQLEXPRESS");//просто раскомментируй свою строку а не заменяй чужую
             //DBCore.Init("DESKTOP-D3KKSHS\\SQLEXPRESS");
-
+            DBCore.Init(@"DESKTOP-87MSQRV\SQLEXPRESS");
 
             
-            //проверка роли залогиненного пользователя
             
 
         }
@@ -95,7 +94,7 @@ namespace Salon
            
         private void EmployeeData_Click(object sender, RoutedEventArgs e)
         {
-            string connectionStr = @"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=Salon;Integrated Security=True";
+            string connectionStr = @"Data Source=DESKTOP-87MSQRV\SQLEXPRESS;Initial Catalog=Salon;Integrated Security=True";
             SqlConnection con = null;
             SqlCommand com = null;
             try
@@ -147,7 +146,7 @@ namespace Salon
 
         private void TypeService_Click(object sender, RoutedEventArgs e)
         {
-            string connectionStr = @"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=Salon;Integrated Security=True";
+            string connectionStr = @"Data Source=DESKTOP-87MSQRV\SQLEXPRESS;Initial Catalog=Salon;Integrated Security=True";
             SqlConnection con = null;
             SqlCommand com = null;
             try
@@ -303,27 +302,57 @@ namespace Salon
                 ChangeUserItem.Visibility = Visibility.Visible;
                 WorkersExportItem.Visibility = Visibility.Visible;
             }
-            ////////////РАНДОМНЕНЬКО
+
             DataGridView dgv = new DataGridView();
             wfh.Child = dgv;
-
-            Random r = new Random();
             primarySetupDgv(dgv);
             setColorsDgv(dgv);
 
-            DataTable dt = getDTTestData("Бурмин", r);
+            dateSelectedDP.SelectedDate = DateTime.Now.Date;
 
-            fillDgvSchedule(dt, dgv);
+            DataTable workersDT = new DataTable();
+            workersDT = GetDTWithWorkers(dateSelectedDP.SelectedDate.Value.ToShortDateString().ToString());
 
-            DataTable dt1 = getDTTestData("Сакаев", r);
+            for (int i = 0; i < workersDT.Rows.Count; i++)
+            {
+                DataTable workerSchedule = new DataTable();
+                workerSchedule = GetDTScheduleForWorker(
+                    Convert.ToString(workersDT.Rows[i]["Worker_ID"]), 
+                    Convert.ToString(workersDT.Rows[i]["Surname"]), 
+                    dateSelectedDP.SelectedDate.Value.ToShortDateString().ToString()
+                    );
+                fillDgvSchedule(workerSchedule, dgv, workersDT.Rows[i]["Surname"].ToString());
+                Console.WriteLine(workersDT.Rows[i]["Surname"]);
+            }
 
-            fillDgvSchedule(dt1, dgv);
+            //////////////РАНДОМНЕНЬКО
+            
 
-            DataTable dt2 = getDTTestData("Холодняк", r);
+            //Random r = new Random();
+            //primarySetupDgv(dgv);
+            //setColorsDgv(dgv);
 
-            fillDgvSchedule(dt2, dgv);
+            //DataTable dt = getDTTestData("Бурмин", r);
+
+            //fillDgvSchedule(dt, dgv);
+
+            //DataTable dt1 = getDTTestData("Сакаев", r);
+
+            //fillDgvSchedule(dt1, dgv);
+
+            //DataTable dt2 = getDTTestData("Холодняк", r);
+
+            //fillDgvSchedule(dt2, dgv);
 
 
+        }
+        private DataTable GetDTScheduleForWorker(string id_worker, string surname, string date)
+        {
+            DataTable dt = new DataTable();
+            dt = DBCore.GetData("SELECT Worker_ID, Date, TStart, TEnd, Busy FROM Schedule WHERE Schedule.Worker_ID = " + id_worker + " AND Schedule.Date = '" + date + "'");
+
+
+            return dt;
         }
         private void primarySetupDgv(DataGridView dgv)
         {
@@ -356,8 +385,20 @@ namespace Salon
             }
 
         }
-        private void fillDgvSchedule(DataTable dt, DataGridView dgv)
+        private DataTable GetDTWithWorkers(string date)
         {
+            DataTable dt = new DataTable();
+
+            dt = DBCore.GetData("SELECT DISTINCT Schedule.Worker_ID, Worker.Surname FROM Schedule, Worker WHERE Schedule.Date = '" + date + "' AND Schedule.Worker_ID = Worker.ID_Worker");
+
+            return dt;
+        }
+
+        private void fillDgvSchedule(DataTable dt, DataGridView dgv, string name)
+        {
+
+
+
             dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = dgv.Columns.Count.ToString(), HeaderText = "", Width = 70 });
             //dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "1", HeaderText = "Бурмин", Width = 70 });
             
@@ -366,23 +407,26 @@ namespace Salon
                 bool flag = false;
                 for (int z = 0; z < dt.Rows.Count; z++)
                 {
-                    if (Convert.ToString(dgv.Rows[i].Cells[0].Value) == Convert.ToString(dt.Rows[z].Field<string>("TStart")))
+                    Console.WriteLine(Convert.ToString(dgv.Rows[i].Cells[0].Value) + " - " + Convert.ToString(dt.Rows[z].Field<TimeSpan>("TStart")));
+                    if (Convert.ToString(dgv.Rows[i].Cells[0].Value) == Convert.ToString(dt.Rows[z].Field<TimeSpan>("TStart")).Substring(0,5))
                     {
-                        Console.WriteLine(Convert.ToString(dt.Rows[z].Field<string>("Busy")));
-                        if (Convert.ToString(dt.Rows[z].Field<string>("Busy")) == "0")
+                        //Console.WriteLine(Convert.ToString(dt.Rows[z].Field<string>("Busy")));
+                        if (!dt.Rows[z].Field<Boolean>("Busy"))
                         {
+                            Console.WriteLine("Busy");
                             dgv.Rows[i].Cells[dgv.Columns.Count - 1].Style.BackColor = Color.Green;
                             dgv.Rows[i].Cells[dgv.Columns.Count - 1].Value = "";
                             flag = true;
-                            dgv.Rows[0].Cells[dgv.Columns.Count - 1].Value = dt.Rows[z].Field<string>("Worker_ID");
+                            dgv.Rows[0].Cells[dgv.Columns.Count - 1].Value = name;
                             break;
                         }
-                        if (Convert.ToString(dt.Rows[z].Field<string>("Busy")) == "1")
+                        if (dt.Rows[z].Field<Boolean>("Busy"))
                         {
+                            Console.WriteLine("!Busy");
                             dgv.Rows[i].Cells[dgv.Columns.Count - 1].Style.BackColor = Color.Red;
                             dgv.Rows[i].Cells[dgv.Columns.Count - 1].Value = "";
                             flag = true;
-                            dgv.Rows[0].Cells[dgv.Columns.Count - 1].Value = dt.Rows[z].Field<string>("Worker_ID");
+                            dgv.Rows[0].Cells[dgv.Columns.Count - 1].Value = name;
                             break;
                         }
                         //dgv.Columns[dgv.Columns.Count - 1].HeaderText = dt.Rows[z].Field<string>("Worker_ID");
@@ -506,25 +550,27 @@ namespace Salon
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ////////////РАНДОМНЕНЬКО
             DataGridView dgv = new DataGridView();
             wfh.Child = dgv;
-
-            Random r = new Random();
             primarySetupDgv(dgv);
             setColorsDgv(dgv);
 
-            DataTable dt = getDTTestData("Бурмин", r);
 
-            fillDgvSchedule(dt, dgv);
+            DataTable workersDT = new DataTable();
+            workersDT = GetDTWithWorkers(dateSelectedDP.SelectedDate.Value.ToShortDateString().ToString());
 
-            DataTable dt1 = getDTTestData("Сакаев", r);
+            for (int i = 0; i < workersDT.Rows.Count; i++)
+            {
+                DataTable workerSchedule = new DataTable();
+                workerSchedule = GetDTScheduleForWorker(
+                    Convert.ToString(workersDT.Rows[i]["Worker_ID"]),
+                    Convert.ToString(workersDT.Rows[i]["Surname"]),
+                    dateSelectedDP.SelectedDate.Value.ToShortDateString().ToString()
+                    );
+                fillDgvSchedule(workerSchedule, dgv, workersDT.Rows[i]["Surname"].ToString());
+                Console.WriteLine(workersDT.Rows[i]["Surname"]);
+            }
 
-            fillDgvSchedule(dt1, dgv);
-
-            DataTable dt2 = getDTTestData("Холодняк", r);
-
-            fillDgvSchedule(dt2, dgv);
 
 
         }

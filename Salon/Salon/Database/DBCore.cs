@@ -34,6 +34,11 @@ namespace Salon
         {
             using (var command = new SqlCommand(sqlQuery, _connection))
             {
+                if (command.Connection.State == ConnectionState.Closed)
+                {
+                    command.Connection.Open();
+                }
+
                 command.ExecuteNonQuery();
             }
         }
@@ -41,6 +46,7 @@ namespace Salon
         {
             sqlCommand.Connection = _connection;
             sqlCommand.ExecuteNonQuery();
+            
         }
         public static void Init(string server)
         {
@@ -59,7 +65,7 @@ namespace Salon
         {
             bool rValue = true;
             try
-           {
+            {
                 _connection = new SqlConnection();
                 var builder = new SqlConnectionStringBuilder
                 {

@@ -31,14 +31,24 @@ namespace Salon
                 FROM MasterType"
             );
         }
-        public static DataTable GetSchedule()
+        public static DataTable GetSchedule(string dateFrom, int id_worker = -9999)
         {
-            return DBCore.GetData($@"
-                SELECT Worker.Name AS Мастер
+            if (id_worker == -9999)
+            {
+                return DBCore.GetData($@"
+                SELECT Worker.Surname AS Мастер
                     ,Date AS Дата
                     ,TStart AS С
                     ,TEnd AS По
-                FROM Schedule, Worker WHERE Worker.ID_Worker = Schedule.Worker_ID"
+                FROM Schedule, Worker WHERE Worker.ID_Worker = Schedule.Worker_ID AND Schedule.Date >= '" + dateFrom + "'"
+            );
+            }
+            return DBCore.GetData($@"
+                SELECT Worker.Surname AS Мастер
+                    ,Date AS Дата
+                    ,TStart AS С
+                    ,TEnd AS По
+                FROM Schedule, Worker WHERE Worker.ID_Worker = Schedule.Worker_ID AND Schedule.Date >= '" + dateFrom + "' AND Schedule.Worker_ID = " + id_worker
             );
         }
         public static void AddScedule(string workerID, string date, string tstart, string tend, string busy = "1")

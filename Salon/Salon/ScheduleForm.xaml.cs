@@ -32,10 +32,20 @@ namespace Salon
             Busy = _busy;
         }
 
-        public string GetStringForSql()
+        public string GetValuePartForSql()
         {
+            
 
-            return "";
+            string sql = "(";
+
+            sql += Worker_ID + ", ";
+            sql += "'" + Date + "', ";
+            sql += "'" + TStart + "', ";
+            sql += "'" + TEnd + "', ";
+            sql += "0";
+
+            sql += ")";
+            return sql;
         }
     }
     /// <summary>
@@ -59,7 +69,12 @@ namespace Salon
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            CurrentFormData = DBWorker.GetSchedule();
+            LoadData();
+        }
+        private void LoadData()
+        {
+            dateFromTable.SelectedDate = DateTime.Now.Date;
+            CurrentFormData = DBWorker.GetSchedule(dateFromTable.SelectedDate.ToString());
             _workers = DBWorker.GetWorkers();
             _typesMasters = DBWorker.GetTypesOfMasters();
             workerCmbBox.DataContext = _workers.DefaultView;
@@ -67,6 +82,7 @@ namespace Salon
             if (_workers.Rows.Count > 0)
             {
                 workerCmbBox.SelectedIndex = 0;
+                CurrentFormData = DBWorker.GetSchedule(dateFromTable.SelectedDate.ToString(), Convert.ToInt32(workerCmbBox.SelectedValue));
             }
             if (_typesMasters.Rows.Count > 0)
             {
@@ -83,7 +99,7 @@ namespace Salon
 
         private void workerChkBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            CurrentFormData = DBWorker.GetSchedule(dateFromTable.SelectedDate.ToString(), Convert.ToInt32(workerCmbBox.SelectedValue));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -126,11 +142,10 @@ namespace Salon
                     scheduleList.Add(
                         new Schedule(
                             workerCmbBox.SelectedValue.ToString(),
-                            Convert.ToDateTime(fromDateDatePicker.SelectedDate).AddDays(i).ToString(),
-                            "",
-                            ""));
-                    Console.WriteLine("С:  " + Convert.ToDateTime(fromDateDatePicker.SelectedDate).AddDays(i).AddHours(Convert.ToInt32(sHTB.Text) + Convert.ToInt32(z / 4)).AddMinutes(Convert.ToInt32(sMTB.Text) + Convert.ToInt32(z % 4) * 15));
-                    Console.WriteLine("До: " + Convert.ToDateTime(fromDateDatePicker.SelectedDate).AddDays(i).AddHours(Convert.ToInt32(sHTB.Text) + Convert.ToInt32((z + 1) / 4)).AddMinutes(Convert.ToInt32(sMTB.Text) + Convert.ToInt32((z + 1) % 4) * 15).AddSeconds(-1));
+                            Convert.ToDateTime(fromDateDatePicker.SelectedDate).AddDays(i).ToShortDateString().ToString(),
+                            Convert.ToDateTime(fromDateDatePicker.SelectedDate).AddDays(i).AddHours(Convert.ToInt32(sHTB.Text) + Convert.ToInt32(z / 4)).AddMinutes(Convert.ToInt32(sMTB.Text) + Convert.ToInt32(z % 4) * 15).ToShortTimeString(),
+                            Convert.ToDateTime(fromDateDatePicker.SelectedDate).AddDays(i).AddHours(Convert.ToInt32(sHTB.Text) + Convert.ToInt32((z + 1) / 4)).AddMinutes(Convert.ToInt32(sMTB.Text) + Convert.ToInt32((z + 1) % 4) * 15).AddSeconds(-1).ToShortTimeString()));
+                    
                 }
             }
 
@@ -141,11 +156,42 @@ namespace Salon
             //    "" + dHTB.Text + ":" + dMTB.Text + ":00"
             //    );
             //CurrentFormData = DBWorker.GetSchedule();
+
+            string sqlQuery = @"insert into Schedule(Worker_ID, Date, TStart, TEnd, Busy) values";
+            for (int i = 0; i < scheduleList.Count; i++)
+            {
+                if (i != scheduleList.Count - 1)
+                {
+                    sqlQuery += scheduleList[i].GetValuePartForSql() + ",";
+                }
+                else
+                {
+                    sqlQuery += scheduleList[i].GetValuePartForSql();
+                }
+            }
+            DBCore.ExecuteSql(sqlQuery);
+            LoadData();
+            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void dateFromTable_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            
+        }
+
+        private void dateFromTable_CalendarClosed(object sender, RoutedEventArgs e)
+        {
+            CurrentFormData = DBWorker.GetSchedule(dateFromTable.SelectedDate.ToString(), Convert.ToInt32(workerCmbBox.SelectedValue));
+        }
+
+        private void sHTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

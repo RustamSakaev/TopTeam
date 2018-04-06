@@ -24,8 +24,8 @@ namespace Salon
     {
         private DataTable currentData = new DataTable();
         private readonly List<Filter> Filter = new List<Filter>();
-        private readonly Action<string> Back;
-        public GroupServiceForm(Action<string> b = null)
+        private readonly Action Back;
+        public GroupServiceForm(Action b = null)
         {
             InitializeComponent();
             Back = b;
@@ -103,6 +103,12 @@ namespace Salon
             {
                 MessageBox.Show("Невозможно удалить данный объект!");
             }
+            Back();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Back();
         }
     }
 }

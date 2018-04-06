@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="" Height="300" Width="410" Icon="hairdresser.ico" >
+        Title="Тариф" Height="300" Width="410" Icon="hairdresser.ico" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
@@ -24,6 +24,9 @@
                 <Label >Услуга:</Label>
                 <ComboBox x:Name="ServiceCmbBox"  Width="150">
                 </ComboBox>
+            </StackPanel>
+            <StackPanel>
+                <Button x:Name="ServiceFormButton" Content="..." Style="{StaticResource threeDots}" Click="ServiceFormButton_Click"></Button>
             </StackPanel>
             <StackPanel Margin="5 0 5 0">
                 <Label>Цена:</Label>

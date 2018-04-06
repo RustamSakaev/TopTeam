@@ -16,6 +16,15 @@ namespace Salon.Database
                 FROM TypeService inner join GroupService on TypeService.GroupService_ID = GroupService.ID_GroupService;"
             );
         }
+        public static DataTable GetLastTypeService()
+        {
+            return DBCore.GetData($@"
+                SELECT TOP 1
+                    TypeService.ID_TypeService as id
+                FROM TypeService inner join GroupService on TypeService.GroupService_ID = GroupService.ID_GroupService
+                ORDER BY id desc;"
+            );
+        }
 
         public static DataTable GetTypeService(string id)
         {

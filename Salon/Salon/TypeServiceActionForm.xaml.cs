@@ -31,6 +31,7 @@ namespace Salon
         private string type_ID;
         private bool form_state_add;
         private  DataTable _MNcurrentData;
+        public bool check;
         private DataTable CurrentData
         {
             get { return currentData; }
@@ -40,7 +41,7 @@ namespace Salon
                 TypeService_KindServiceGrid.ItemsSource = curData.DefaultView;
                 TypeService_KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;
             }
-        }
+        }  
         public TypeServiceActionForm(Action b=null, FormState state=FormState.View,string type_id=null)
         {
             InitializeComponent();
@@ -67,60 +68,66 @@ namespace Salon
                     GroupServiceCmbBox.ItemsSource = DBGroupService.GetGroupServices().DefaultView;
                     GroupServiceCmbBox.DisplayMemberPath = "Наименование";
                     GroupServiceCmbBox.SelectedValuePath = "id";
-                    AddButton.Visibility = Visibility.Hidden;
-                    DeleteButton.Visibility = Visibility.Hidden;
-                    TypeService_KindServiceGrid.Visibility = Visibility.Hidden;
-                    KindLabel.Visibility = Visibility.Hidden;
                     break;
-                
-
             }
         }
 
         public void OnLoad(object sender, RoutedEventArgs e)
         {
+            check = true;
             if(type_ID!=null)
             {
                 CurrentData = DBTypeService_KindService.GetKinds(type_ID);
                 TypeService_KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;
             }
-          
         }
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!NameBox.Validate(true))
+            if(check)
             {
-                return;
+                if (!NameBox.Validate(true))
+                {
+                    return;
+                }
+                switch (_state)
+                {
+                    case FormState.Edit:
+                        DBTypeService.EditTypeService(
+                            currentData.Rows[0]["id"].ToString(),
+                            NameBox.Text,
+                            GroupServiceCmbBox.SelectedValue.ToString()
+                        );
+                        break;
+                    case FormState.Add:
+                        DBTypeService.AddTypeService(
+                            NameBox.Text,
+                            GroupServiceCmbBox.SelectedValue.ToString()
+                        );
+                        break;
+                }
             }
-            switch (_state)
-            {
-                case FormState.Edit:
-                    DBTypeService.EditTypeService(
-                        currentData.Rows[0]["id"].ToString(),
-                        NameBox.Text,
-                        GroupServiceCmbBox.SelectedValue.ToString()
-                    );
-                    break;
-                case FormState.Add:
-                    DBTypeService.AddTypeService(
-                        NameBox.Text,
-                        GroupServiceCmbBox.SelectedValue.ToString()
-                    );
-                    break;
-            }
-
             Back();
             this.Close();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            if(!check)
+            {
+                var kind_col = ((DataView)TypeService_KindServiceGrid.ItemsSource).Table.Columns.IndexOf("kind_id");
+                for (int i = 0; i < TypeService_KindServiceGrid.Items.Count; i++)
+                {
+                    var kindid = ((DataRowView)TypeService_KindServiceGrid.Items[i])?.Row[kind_col].ToString();
+                    DBTypeService_KindService.DeleteKind(kindid);
+                }
+                DBTypeService.DeleteTypeService(type_ID);
+            }
             this.Close();
         }
 
         private void GroupServiceFormButton_Click(object sender, RoutedEventArgs e)
         {
-            GroupServiceForm group_service = new GroupServiceForm();
+            GroupServiceForm group_service = new GroupServiceForm(()=> { GroupServiceCmbBox.ItemsSource = DBGroupService.GetGroupServices().DefaultView;});
             group_service.ShowDialog();
         }
 
@@ -128,41 +135,37 @@ namespace Salon
         {
             if(form_state_add)
             {
-                //var type_name = NameBox.Text;
-                //if (type_name == string.Empty) { MessageBox.Show("Заполните наименование!"); return; }
-
-                //var group = GroupServiceCmbBox.SelectedValue;
-                //if (group.ToString() == string.Empty) { MessageBox.Show("Заполните группу услуги!"); return; }
-
-                //DBTypeService.AddTypeService(NameBox.Text, GroupServiceCmbBox.SelectedValue.ToString());
-                
+                var type_name = NameBox.Text;
+                if (type_name == string.Empty||type_name==null) { MessageBox.Show("Заполните наименование!"); return; }
+                var group = GroupServiceCmbBox.SelectedValue;
+                if (group==null) { MessageBox.Show("Заполните группу услуги!"); return; }
+                if(check)
+                {
+                    DBTypeService.AddTypeService(NameBox.Text, GroupServiceCmbBox.SelectedValue.ToString());
+                }
+                var cur_id = DBTypeService.GetLastTypeService().Rows[0][0].ToString();
+                type_ID = cur_id;
+                var form = new KindService(() => { { CurrentData = DBTypeService_KindService.GetKinds(type_ID); } }, type_ID,true);
+                form.ShowDialog();
             }
             else
             {
-                var form = new KindService(() => { CurrentData = DBTypeService_KindService.GetKinds(type_ID); TypeService_KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;  },type_ID);
+                var form = new KindService(() => { CurrentData = DBTypeService_KindService.GetKinds(type_ID); TypeService_KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;  },type_ID,false);
                 form.ShowDialog();
             }
-            
+            check = false;
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (form_state_add)
-            {
-              
-                
-            }
-            else
-            {
-                var kind_col = ((DataView)TypeService_KindServiceGrid.ItemsSource).Table.Columns.IndexOf("kind_id");
-                if (kind_col == -1) return;
-                var kindid = ((DataRowView)TypeService_KindServiceGrid.SelectedItem)?.Row[kind_col].ToString();
-                if (kindid == null) return;
-                DBTypeService_KindService.DeleteKind(kindid);
-                _MNcurrentData = DBTypeService_KindService.GetKinds(type_ID);
-                TypeService_KindServiceGrid.ItemsSource = _MNcurrentData.DefaultView;
-                TypeService_KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;
-            }
+           var kind_col = ((DataView)TypeService_KindServiceGrid.ItemsSource).Table.Columns.IndexOf("kind_id");
+           if (kind_col == -1) return;
+           var kindid = ((DataRowView)TypeService_KindServiceGrid.SelectedItem)?.Row[kind_col].ToString();
+           if (kindid == null) return;
+           DBTypeService_KindService.DeleteKind(kindid);
+           _MNcurrentData = DBTypeService_KindService.GetKinds(type_ID);
+           TypeService_KindServiceGrid.ItemsSource = _MNcurrentData.DefaultView;
+           TypeService_KindServiceGrid.Columns[0].Visibility = Visibility.Hidden;
         }
     }
 }

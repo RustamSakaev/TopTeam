@@ -22,10 +22,19 @@ namespace Salon.Database
                     KindService.ID_KindService as id,
                     KindService.Name as Наименование 
                 FROM KindService
-                WHERE KindService.ID_KindService = {id}"
+                WHERE KindService.ID_KindService = '{id}'"
+            );
+
+        }
+        public static DataTable GetLastKindService()
+        {
+            return DBCore.GetData($@"
+                SELECT TOP 1
+                    KindService.ID_KindService as id
+                FROM KindService
+                ORDER BY id desc;"
             );
         }
-
         public static void DeleteKindService(string id)
         {
             var command = new SqlCommand

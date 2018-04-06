@@ -11,7 +11,7 @@ namespace Salon
     /// </summary>
     public partial class BankCardForm : Window
     {
-        private readonly string[] _hiddenFields = { "id" };
+        private readonly string[] _hiddenFields = { "id", "clientid" };
         private DataTable _currentFormData = new DataTable();
         private string _currentFilter = "";
 

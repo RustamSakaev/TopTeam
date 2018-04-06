@@ -18,10 +18,14 @@
             <Button x:Name="CancelButton" Content="Отмена" Click="CancelButton_Click" Style="{StaticResource buttonOkAndCancel}"/>
         </StackPanel>
         <WrapPanel>
-            <StackPanel>
-                <Label Content="Клиент"></Label>
-                <ComboBox x:Name="ClientCmbBox" Width="305" ItemsSource="{Binding ComboItems}">
-                </ComboBox>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Width="280">
+                    <Label Content="Клиент"></Label>
+                    <ComboBox x:Name="ClientCmbBox" Width="305" ItemsSource="{Binding ComboItems}" />
+                </StackPanel>
+                <StackPanel>
+                    <Button x:Name="ClientFormButton" Content="..." Style="{StaticResource threeDots}" Height="Auto" Click="ClientFormButton_Click" />
+                </StackPanel>
             </StackPanel>
             <StackPanel>
                 <Label Content="Номер"></Label>

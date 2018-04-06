@@ -25,7 +25,7 @@
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
-                    <Button x:Name="ClientFormButton" Content="..." Style="{StaticResource threeDots}" Click="ClientForm_Click"></Button>
+                    <Button x:Name="ClientFormButton" Content="..." Style="{StaticResource threeDots}" Click="ClientForm_Click" Height="Auto"></Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
@@ -35,7 +35,7 @@
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
-                    <Button x:Name="WorkerFormButton" Content="..." Style="{StaticResource threeDots}" Click="WorkerForm_Click"/>
+                    <Button x:Name="WorkerFormButton" Content="..." Style="{StaticResource threeDots}" Click="WorkerForm_Click" Height="Auto"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel>
@@ -57,7 +57,7 @@
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
-                    <Button x:Name="StatusFormButton" Content="..." Style="{StaticResource threeDots}" Click="StatusForm_Click"/>
+                    <Button x:Name="StatusFormButton" Content="..." Style="{StaticResource threeDots}" Click="StatusForm_Click" Height="Auto"/>
                 </StackPanel>
             </StackPanel>
         </WrapPanel>

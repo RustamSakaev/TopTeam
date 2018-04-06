@@ -10,9 +10,10 @@ namespace Salon
     /// </summary>
     public partial class BillForm : Window
     {
-        private readonly string[] _hiddenFields = {"id"};
+        private readonly string[] _hiddenFields = { "id" };
         private DataTable _currentFormData = new DataTable();
         private string _currentFilter = "";
+        private string _currentClient = string.Empty;
 
         private DataTable CurrentFormData
         {
@@ -34,14 +35,18 @@ namespace Salon
             BillGrid.DataContext = displayData;
         }
 
-        public BillForm()
+        public BillForm(string client = null)
         {
             InitializeComponent();
+
+            if (client != null) _currentClient = client;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             CurrentFormData = DBBill.GetBills();
+
+            SearchBox.Text = _currentClient;
         }
 
         private void SearchBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)

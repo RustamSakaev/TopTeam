@@ -164,7 +164,7 @@ namespace Salon
 
         private void ClientForm_Click(object sender, RoutedEventArgs e)
         {
-            var client = new ClientForm(SetClient, UpdateStatuses, FormOpenAs.Secondary);
+            var client = new ClientForm(SetClient, UpdateClients, FormOpenAs.Secondary);
             client.ShowDialog();
         }
 

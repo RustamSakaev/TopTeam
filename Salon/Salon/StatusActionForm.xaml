@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Статус посещения" Height="157" Width="330" MinWidth="330" >
+        Title="Статус посещения" Height="187" Width="329" MinWidth="330" MinHeight="187" >
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>

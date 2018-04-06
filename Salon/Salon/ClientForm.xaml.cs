@@ -200,6 +200,16 @@ namespace Salon
 
                 _callback(id);
                 this.Close();
+            } else if (_openAs == FormOpenAs.Default)
+            {
+                var idx = ((DataView)ClientGrid.DataContext).Table.Columns.IndexOf("ФИО");
+                if (idx == -1) return;
+
+                var fullname = ((DataRowView)ClientGrid.SelectedItem)?.Row[idx].ToString();
+                if (fullname == null) return;
+
+                var form = new BillForm(fullname);
+                form.ShowDialog();
             }
         }
     }

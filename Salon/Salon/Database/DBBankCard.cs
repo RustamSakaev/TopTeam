@@ -24,6 +24,7 @@ namespace Salon
             return DBCore.GetData($@"
                 SELECT
                     BankCard.ID_BankCard as id,
+                    BankCard.Client_ID as clientid,
                     CONCAT_WS(' ', Client.Surname, Client.Name, Client.Patronymic) as ФИО,
                     Number as Номер
                 FROM BankCard
@@ -47,17 +48,18 @@ namespace Salon
             DBCore.ExecuteCommand(command);
         }
 
-        public static void EditBankCard(string id, string number)
+        public static void EditBankCard(string id, string clientid, string number)
         {
             var command = new SqlCommand
             {
                 CommandText = $@"
                     UPDATE BankCard
-                    SET Number = @number
+                    SET Client_ID = @clientid, Number = @number
                     WHERE ID_BankCard = @id;"
             };
 
             command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@clientid", clientid);
             command.Parameters.AddWithValue("@number", number);
 
             DBCore.ExecuteCommand(command);

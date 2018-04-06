@@ -5,11 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="Сотрудники" Height="307.2" Width="466.4" Icon="hairdresser.ico">
+        Title="Сотрудники редактирование" Height="214" Width="641" MaxHeight="214" MaxWidth="641" ResizeMode="NoResize">
     <Window.Resources>
         <ResourceDictionary Source="Styles/BasicStyles.xaml" />
     </Window.Resources>
-    <DockPanel>
-
+    <DockPanel Margin="0,0,0,0">
+        <WrapPanel Height="109" VerticalAlignment="Top">
+            <StackPanel>
+                <Label Content="Фамилия"/>
+                <TextBox x:Name="SurnameBox" Width="200"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Имя"/>
+                <TextBox x:Name="NameBox" Width="200"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Отчество"/>
+                <TextBox x:Name="PatronymicBox" Width="147"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Дата рождения"/>
+                <DatePicker x:Name="DBirthDatePicker" Width="128"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Стаж"/>
+                <TextBox x:Name="ExpBox" Width="150"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Пол"/>
+                <ComboBox x:Name="GenderCmbBox" Width="150">
+                    <ComboBoxItem IsSelected="True" Content="Мужской"/>
+                    <ComboBoxItem IsSelected="False" Content="Женский"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="О себе"/>
+                <TextBox x:Name="About" Width="109"/>
+            </StackPanel>
+        </WrapPanel>
+        <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource bottom}" Margin="-88,0,0,0" Width="80" Height="77">
+            <Button x:Name="OKButton" Content="OK" Style="{StaticResource buttonOkAndCancel}" Click="OKButton_Click"/>
+            <Button x:Name="CancelButton" Content="Отмена" Style="{StaticResource buttonOkAndCancel}" Click="CancelButton_Click"/>
+        </StackPanel>
     </DockPanel>
 </Window>

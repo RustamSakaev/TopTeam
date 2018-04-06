@@ -84,5 +84,33 @@ namespace Salon
                 this.Close();
             }
         }
+        
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            var servid = ((DataRowView)WorkersGrid.SelectedItem)?.Row[0].ToString();
+            if (servid == null) return;
+            var secondName = ((DataRowView)WorkersGrid.SelectedItem)?.Row[3].ToString();
+            var name = ((DataRowView)WorkersGrid.SelectedItem)?.Row[2].ToString();
+            var otche = ((DataRowView)WorkersGrid.SelectedItem)?.Row[4].ToString();
+            var birthday = ((DataRowView)WorkersGrid.SelectedItem)?.Row[5].ToString();
+            var staj = ((DataRowView)WorkersGrid.SelectedItem)?.Row[7].ToString();
+            var gender = ((DataRowView)WorkersGrid.SelectedItem)?.Row[6].ToString();
+            var about = ((DataRowView)WorkersGrid.SelectedItem)?.Row[8].ToString();
+
+            WorkerActionForm workerEditForm = new WorkerActionForm(secondName, name, otche, birthday, staj, gender, about, this, servid);
+            workerEditForm.ShowDialog();
+        }
+        public void UpdateDgv()
+        {
+            CurrentFormData = DBWorker.GetWorkers();
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var servid1 = ((DataRowView)WorkersGrid.SelectedItem)?.Row[0].ToString();
+            if (servid1 == null) return;
+            DBCore.ExecuteSql("DELETE FROM Worker WHERE ID_Worker = '"+servid1+"'");
+            UpdateDgv();
+        }
     }
 }

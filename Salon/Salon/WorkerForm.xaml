@@ -13,11 +13,14 @@
         <StackPanel x:Name="Header" Style="{StaticResource header}">
             <Label Content="Таблица 'Сотрудники'" Style="{StaticResource caption}"/>
         </StackPanel>
+        <StackPanel x:Name="HeaderSearch"  Style="{StaticResource header}">
+            <Label Content="Фильтр:" Style="{StaticResource caption}"/>
+        </StackPanel>
         <StackPanel x:Name="Search" Style="{StaticResource search}" >
             <StackPanel x:Name="SearchStack" >
-                <Label Content="Поиск:"/>
+                <Label Content="ФИО:"/>
                 <WrapPanel>
-                    <TextBox x:Name="SearchBox" Width="300"/>
+                    <TextBox x:Name="SearchBox" Width="200" Style="{StaticResource searchTextBox}"/>
                 </WrapPanel>
             </StackPanel>
 
@@ -25,7 +28,7 @@
         <StackPanel x:Name="ButtonsPanel"  Style="{StaticResource buttonsPanel}" >
             <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
             <Button x:Name="EditButton" Content="Редактировать"/>
-            <Button x:Name="DeleteButton"  Content="Удалить"/>
+            <Button x:Name="DeleteButton"  Content="Удалить" Style="{StaticResource buttonDelete}"/>
             <Button x:Name="ExportButton" Content="Экспорт в Excel" Click="ExportButton_Click"/>
         </StackPanel>
         <StackPanel x:Name="TablePanel" Style="{StaticResource tablePanel}" >

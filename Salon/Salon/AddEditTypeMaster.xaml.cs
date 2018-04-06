@@ -13,7 +13,7 @@ namespace Salon
         private readonly DataTable _currentDataItem;
         private readonly FormState _state;
         private readonly Action _callback;
-        public AddEditTypeMaster(Action cb, FormState state, string editId = null)
+        public AddEditTypeMaster(Action cb = null, FormState state= FormState.View, string editId = null)
         {
             InitializeComponent();
             _callback = cb;

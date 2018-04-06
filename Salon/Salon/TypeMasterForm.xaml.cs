@@ -75,7 +75,7 @@ namespace Salon
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var idx = ((DataTable)TypeMasterGrid.DataContext).Columns.IndexOf("id");
+           /* var idx = ((DataTable)TypeMasterGrid.DataContext).Columns.IndexOf("id");
 
             foreach (DataRowView selectedItem in TypeMasterGrid.SelectedItems)
             {
@@ -83,7 +83,7 @@ namespace Salon
             }
 
             CurrentData = DBTypeMaster.GetTypeMasters();
-            //_onUpdate();
+            //_onUpdate();*/
         }
     }
 }

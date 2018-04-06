@@ -173,7 +173,7 @@ namespace Salon
                     adapter.Fill(dt);
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        ws.Cells[i + 2, 1].Value2 = dt.Rows[i][0];
+                        ws.Cells[i + 2, 1].Value2 = Convert.ToString(dt.Rows[i][0]).Trim();
                         ws.Cells[i + 2, 2].Value2 = dt.Rows[i][1];
                     }
                     app.Visible = true;
